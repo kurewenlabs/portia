@@ -1,0 +1,400 @@
+body {
+  font-family: 'PT Sans Narrow', sans-serif; }
+
+nav {
+  height: 50px;
+  margin-top: -15px; }
+  nav h6 {
+    padding: 15px;
+    margin-ledt: 40px; }
+
+.logo {
+  float: rigth;
+  margin-top: 20px; }
+
+.titulo {
+  width: 85%;
+  margin-top: -30px;
+  margin-left: 100px; }
+
+#seleccion {
+  margin-left: 100px; }
+
+/*PROCESO*/
+.return {
+  display: online-block;
+  margin-top: 50px; }
+
+.return a {
+  margin-left: -40px;
+  font-size: 11px; }
+
+.right a {
+  float: right; }
+
+.endLogo {
+  width: 90px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 40px; }
+
+.progressbar {
+  counter-reset: step;
+  height: 25px;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+.progressbar li {
+  list-style-type: none;
+  float: left;
+  width: 16%;
+  position: relative;
+  text-align: center; }
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border: 1px solid teal;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: #ddd;
+  border-color: #ddd;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold; }
+
+.progressbar li.active {
+  color: teal; }
+
+.progressbar li.active:before {
+  background-color: teal !important; }
+
+.comentario {
+  color: #838383;
+  font-size: 14px;
+  display: inline-block; }
+
+.cursoData {
+  margin-bottom: 160px; }
+
+.agregar {
+  margin-top: 45px;
+  margin-left: 10px; }
+
+.rut_box {
+  position: relative !important;
+  top: 20px !important; }
+
+.box {
+  border: 1px solid #ddd;
+  background-color: #ddd;
+  height: 90px; }
+
+.box2 {
+  border: 1px solid #ddd;
+  height: 70px; }
+
+.editar {
+  float: right;
+  display: inline-block;
+  margin-top: 30px;
+  border: 1px solid #eee; }
+
+.login {
+  display: inline-block;
+  padding: 48px 48px 0px 48px;
+  border: 1px solid #EEE;
+  margin-left: 150px; }
+
+.empresa {
+  position: relative;
+  left: -90px !important;
+  top: -10px; }
+
+.fecha {
+  position: relative;
+  top: -15px;
+  left: 180px !important; }
+
+.consulta {
+  position: relative;
+  left: 130px;
+  top: 10px; }
+
+span.badge {
+  color: #fff !important;
+  text-align: center;
+  border-radius: 10px;
+  min-width: 2rem !important;
+  margin-top: 10px; }
+
+.lineaDatos1.active {
+  border: 1px solid #eee;
+  background-color: #eee;
+  height: 50px; }
+
+.lineaDatos1 {
+  width: 1200px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: -100px !important; }
+
+.filaDatos {
+  width: 1150px !important;
+  margin: 20px auto;
+  text-align: center; }
+
+.tabs {
+  border-bottom: 1px solid #eee; }
+
+.tabs .tab a {
+  color: #000; }
+
+.tabs .tab a:focus, .tabs .tab a.active, .tabs .tab a:hover {
+  background-color: rgba(242, 244, 245, 0.2);
+  color: teal !important;
+  border: 1px solid #eee;
+  border-bottom: none; }
+
+.tabs .indicator {
+  background-color: #eee; }
+
+nav.buscar {
+  color: #000;
+  background-color: #fff;
+  width: 60%;
+  height: 56px;
+  line-height: 56px;
+  position: relative;
+  left: -80px; }
+
+nav .input-field label i {
+  color: #000; }
+
+.exportar {
+  position: relative;
+  left: 1000px;
+  top: -50px;
+  border: 1px solid #eee; }
+
+.exportar i {
+  display: inline-flex !important;
+  font-size: 14px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  margin: -2px 5px 2px -10px !important;
+  color: green; }
+
+.lineaDatos1 {
+  width: 1200px !important;
+  margin-bottom: 10px;
+  position: relative;
+  left: -25px !important; }
+
+.botonadmin2 i {
+  display: inline-flex !important;
+  font-size: 14px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  margin: -2px 5px 2px -10px !important;
+  color: red; }
+
+span.badge.sinClasificar {
+  border-radius: 0 !important;
+  position: relative !important;
+  top: -10px !important;
+  left: -5px !important; }
+
+.clasificar p {
+  margin-bottom: -5px; }
+
+textarea {
+  height: 120px !important;
+  width: 280px !important; }
+
+.botonadmin {
+  top: 20px;
+  left: -30px;
+  bottom: 50px;
+  border: 1px solid #eee; }
+
+.botonadmin2 {
+  top: 20px;
+  left: 250px;
+  bottom: 50px;
+  border: 1px solid #eee; }
+
+.prev {
+  margin-top: 60px; }
+
+.borrar {
+  top: 180px;
+  border: 1px solid #eee;
+  color: red; }
+
+.borrar2 {
+  top: 240px;
+  border: 1px solid #eee;
+  color: red;
+  right: 220px; }
+
+.save {
+  top: 142px;
+  right: -100px; }
+
+.save2 {
+  top: 203px;
+  right: 110px; }
+
+.cargoEdit {
+  position: relative;
+  left: -220px;
+  top: 50px; }
+
+.editar2 {
+  top: 30px;
+  right: 390px;
+  color: blue; }
+
+.editar3 {
+  top: 30px;
+  right: 450px;
+  color: blue; }
+
+.editar4 {
+  top: 30px;
+  right: 320px;
+  color: blue; }
+
+.botonVista {
+  border: 1px solid #eee; }
+
+.botonVista2 {
+  border: 1px solid #eee;
+  color: blue;
+  left: 200px;
+  bottom: 15px; }
+
+.sueldo {
+  position: relative;
+  top: 20px;
+  right: 30px; }
+
+.add {
+  position: relative;
+  left: 850px; }
+
+.add1 {
+  position: relative;
+  top: 45px; }
+
+.prefix {
+  left: 310px; }
+
+.file-path-wrapper {
+  position: relative;
+  left: -45px; }
+
+.btn-delete {
+  position: relative !important;
+  top: 30px !important;
+  color: red;
+  left: 30px !important; }
+
+.back-box1 {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  position: relative;
+  left: 30px !important; }
+
+.back-box2 {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  position: relative;
+  left: 12px !important; }
+
+.back-box3 {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee; }
+
+.btn-delete-ref {
+  position: relative;
+  float: right;
+  top: -60px;
+  left: 790px;
+  color: red !important; }
+
+.btn-send-curso {
+  position: relative;
+  left: 40px;
+  top: 25px; }
+
+.box_estudio {
+  position: relative;
+  top: -3px; }
+
+.carreraBox {
+  position: relative;
+  top: 20px !important; }
+
+.boxDataExp {
+  height: 50px;
+  margin: 10px auto;
+  background: white;
+  border-radius: 4px; }
+
+.boxDataExpInfo {
+  color: gray;
+  font-size: 20px;
+  position: relative;
+  top: 10px; }
+
+.btnEliminarExp {
+  color: red;
+  position: relative;
+  top: 10px;
+  display: inline; }
+
+.boxsmart {
+  height: auto; }
+
+.boxSmartContent {
+  height: 30px;
+  margin: 10px auto;
+  background: white;
+  border-radius: 4px; }
+
+.dataPostulacion {
+  border: 2px solid #eee; }
+
+.detalleEdit {
+  position: relative;
+  top: 20px; }
+
+.rentaEdit {
+  position: relative;
+  top: 10px; }
+
+.chip {
+  width: 115px !important;
+  height: 50px;
+  border-radius: 0; }
+
+.chip .close {
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+  line-height: 50px;
+  color: red;
+  font-weight: bold; }

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Sistema de Postulación Portia</title>
+  <link rel="icon" href="src/img/Portia-favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.css">
+  <link rel="stylesheet" href="dist/css/main.min.css">
+  <!--REQUIRED STYLE SHEETS-->
+  </head>
+  <body>
+ <nav class="teal">
+    <h6>Sistema de Postulación Portia</h6>
+ </nav>
+
+ <div class="row"><!--titulo-->
+   <div class="col s4 col m4 col l4">
+     <h3>Tus Cargos Seleccionados</h3>
+   </div>
+    <div class="col s2 col m2 col l2 return">
+      <a href="index.html" class="">Volver a cargos</a>
+    </div>
+ </div>
+ <div class="row">
+  <div class="chip col s1 offset-s1">
+    <i class="close material-icons">close</i>
+  </div>
+</div>
+
+<div class="container"> 
+
+
+
+<div class="row">
+  <div class="col s8 m8 l8">
+    <h4>Datos Personales</h4>
+  </div>
+  <div class="col s4 m4 l4">
+    <a class="waves-effect  btn-flat editar" href="#datosPersonales">editar</a>
+  </div>
+</div>
+  <div class="row"><!--documentos-->
+    <div class="tab" id="datosPersonales">
+      <div class="tab input-field col s4 m4 l4">
+        <select class="browser-default" onselect="this.className = ''" name="documento">
+          <option value="">Tipo de Documento de identificacion</option>
+          <option value="rut">RUT</option>
+          <option value="pasaporte">Pasaporte</option>
+        </select>
+      </div>
+      <div class="tab input-field col s4 m4 l4">
+        <label for="rut">Tipo de Documento de identificacion</label>
+        <input placeholder="Ingrese rut con digito verificador" id="rut" type="text" class="validate">
+      </div>
+    </div>
+  </div><!--documentos-->
+<div class="row"><!--datos identificacion-->
+  <div class="tab">
+    <div class="tab input-field col s4 m4 l4">
+        <label for="first_name">Nombres</label>
+        <input  id="first_name" type="text" class="validate">
+      </div>
+      <div class="tab input-field col s4 m4 l4">
+        <label for="last_name">Apellido Paterno</label>
+        <input  id="last_name" type="text" class="validate">
+      </div>
+      <div class="tab input-field col s4 m4 l4">
+        <label for="last_name_2">Apellido Materno</label>
+        <input  id="last_name_2" type="text" class="validate">
+      </div>
+  </div>
+
+</div><!--datos identificacion-->
+<div class="row">
+  <div class="tab">
+    <div class="tab input-field col s3 m3 l3">
+      <label for="txtDate">Fecha de Nacimiento</label>
+      <input type="text" class="datepicker" id="txtDate"></div>
+    </div>
+    <div class="tab input-field col s3 m3 l3">
+       <select class="browser-default"  id="sexo" onselect="this.className = ''" name="sexo">
+        <option value="">Sexo</option>
+        <option value="femenino">Femenino</option>
+        <option value="masculino">Masculino</option>
+      </select>
+    </div>
+    <div class="tab input-field col s3 m3 l3">
+      <select class="browser-default" id="estado_civil" onselect="this.className = ''" name="estado_civil">
+        <option value="">Estado Civil</option>
+        <option value="soltero">Soltero(a)</option>
+        <option value="casado">Casado(a)</option>
+        <option value="divorciado">Divorciado(a)</option>
+        <option value="viudo">Viudo(a)</option>
+      </select>
+    </div>
+    <div class="tab input-field col s3 m3 l3">
+        <label for="nacionalidad">Nacionalidad</label>
+        <input  id="nacionalidad" type="text" class="validate">
+      </div>
+  </div><!--datos identificacion-->
+  <div class="row">
+    <div class="tab">
+      <div class="input-field col s4 m4 l4">
+          <input id="telefono" type="text" class="validate">
+          <label for="telefono">Telefono</label>
+        </div>
+      <div class="input-field col s4 m4 l4">
+          <input id="telefono2" type="text" class="validate">
+          <label for="telefono2">Telefono de Recado</label>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+  </div>
+<div class="row">
+  <div class="tab input-field col s4 m4 l4">
+      <select class="browser-default" id="provincia" onselect="this.className = ''" name="provincia">
+          <option value="">Region</option>
+          <option value="Tarapacá">Tarapacá</option>
+          <option value="Antofagasta">Antofagasta</option>
+          <option value="Atacama">Atacama</option>
+          <option value="Coquimbo">Coquimbo</option>
+          <option value="Valparaiso">Valparaiso</option>
+          <option value="L. G. Bernardo O'higgins">L. G. Bernardo O'higgins</option>
+          <option value="R.M.">R.M.</option>
+          <option value="Maule"> Maule</option>
+          <option value="Bio-Bio">Bio-Bio</option>
+          <option value="Araucanía">Araucanía</option>
+          <option value="Temuco">Temuco</option>
+          <option value="Los Lagos">Los Lagos</option>
+          <option value="Aysen">Aysen</option>
+          <option value="Los Ríos">Los Ríos</option>
+          <option value="Arica y Parinacota">Arica y Parinacota</option>
+        </select>
+      </select>
+    </div>
+  <div class="input-field col s4 m4 l4">
+    <input id="comuna" type="text" class="validate">
+    <label for="comuna">Comuna</label>
+  </div>
+</div>
+<div class="row">
+  <div class="input-field col s12 m12 l12">
+    <input id="direccion" type="text" class="validate">
+    <label for="direccion">Direccion</label>
+  </div>
+</div>
+<div class="row"></div>
+<div class="row"></div>
+
+<!-- --------------------------- ESTUDIOS ------------------------------ -->
+
+<div class="row">
+  <div class="col s8 m8 l8">
+    <h4>Estudios</h4>
+  </div>
+  <div class="col s4 m4 l4">
+    <a class="waves-effect  btn-flat editar" href="#estudios">editar</a>
+  </div>
+</div>
+  <div class="row"><!--documentos-->
+    <div class="tab" id="estudios">
+      <div class="tab input-field col s4 m4 l4">
+        <select class="browser-default" onselect="this.className = ''" name="estudio">
+          <option value="">Tipo de Estudios</option>
+          <option value="Secundario">Secundario</option>
+          <option value="Técnico Superior">Técnico Superior</option>
+          <option value="Universitario">Universitario</option>
+          <option value="Posgrado">Posgrado</option>
+          <option value="Master">Master</option>
+          <option value="Doctorado">Doctorado</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="tab input-field col s8 m8 l8">
+        <label for="carrera">Titulo de la Carrera</label>
+        <input  id="carrera" type="text" class="validate">
+      </div>
+    </div>
+  </div><!--documentos-->
+<div class="row"><!--datos identificacion-->
+  <div class="tab">
+    <div class="tab input-field col s4 m4 l4">
+        <select  onselect="this.className = ''" name="estado_estudio" class="browser-default">
+          <option value="">Estado</option>
+          <option value="En Curso">En Curso</option>
+          <option value="Graduado">Graduado</option>
+          <option value="Abandonado">Abandonado</option>
+        </select>
+      </div>
+      <div class="tab input-field col s4 m4 l4">
+        <label for="txtDate2">Fecha de Titulación</label>
+        <input type="text" class="datepicker" id="txtDate2">
+       <form action="#" id="fecha_estudio">
+        <p>
+          <label for="fechaEstudio">
+            <input type="checkbox" value="Al presente" id="fechaEstudio">
+            <span>Al presente</span>
+          </label>
+        </p>
+      </form>
+      </div>
+
+      <div class="tab input-field col s4 m4 l4">
+        <select onselect="this.className = ''" name="licencia" class="browser-default">
+          <option value="">Licencia de Conducir</option>
+          <option value="Clase A1">Clase A1</option>
+          <option value="Clase A2">Clase A2</option>
+          <option value="Clase A3">Clase A3</option>
+          <option value="Clase A4">Clase A4</option>
+          <option value="Clase A5">Clase A5</option>
+          <option value="Clase B">Clase B</option>
+          <option value="Clase C">Clase C</option>
+          <option value="Clase D">Clase D</option>
+          <option value="Clase E">Clase E</option>
+          <option value="Clase F">Clase F</option>
+        </select>
+      </div>
+  </div>
+</div><!--datos identificacion-->
+
+
+<div class="row">
+  <h4>Otros Conocimientos (Opcional)</h4>
+  <span class="comentario">*Ingrese Máximo 3</span>
+  <div class="divider"></div>
+</div>
+<div class="row"><!--cursos-->
+  <div class="tab input-field col s6 m6 l6">
+     <label for="curso">Curso</label>
+     <input  id="curso" type="text" class="validate">
+   </div>
+  <div class="col s4 m4 l4 input-field">
+     <label for="txtDate3">Fecha</label>
+        <input type="text" class="datepicker" id="txtDate3">
+  </div>
+<div class="col s2 m2 l2">
+    <a href="" class="waves-effect waves-light btn-large" onclick="myFunction()">Agregar</a>
+  </div>
+
+</div>
+<div class="row">
+  
+</div>
+<div class="row">
+  <div class="col s12 m12 l12 box">
+    <p id="cursoData"></p>
+  </div>
+</div>
+<div class="row"></div>
+<div class="row"></div>
+<!-- ----------------------------------------------- EXPERIENCIA LABORAL --------------------------------- -->
+<div class="row">
+  <div class="col s8 m8 l8">
+    <h4>Expriencia Laboral</h4>
+  </div>
+  <div class="col s4 m4 l4">
+    <a class="waves-effect  btn-flat editar" href="#experienciaLaboral">editar</a>
+  </div>
+</div>
+<div class="row"> 
+  <div class="tab input-field col s4 m4 l4" id="experienciaLaboral">
+        <select class="browser-default" onselect="this.className = ''" name="experiencia">
+          <option value="">¿Posee experiencia laboral?</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+</div>
+<div class="row">
+  <h4>Agregar Experiencia laboral</h4>
+  <span class="comentario">*Ingrese Máximo 3</span>
+  <div class="divider"></div>
+</div>
+<div class="row">
+  <div class="tab input-field col s5 m5 l5">
+     <label for="empresa">Empresa</label>
+     <input  id="empresa" type="text" class="validate">
+   </div>
+   <div class="tab input-field col s5 m5 l5" >
+     <label for="cargo">Cargo</label>
+     <input  id="cargo" type="text" class="validate">
+   </div>
+   <div class="col s2 m2 l2 input-field">
+     <label for="txtDate4">Fecha</label>
+        <input type="text" class="datepicker" id="txtDate4">
+  </div>
+</div>
+<div class="row">
+  <div class="col s2 m2 l2">
+    <a href="" class="waves-effect waves-light btn-large" onclick="myFunctionAgregar()">Agregar</a>
+  </div>
+</div> 
+<div class="row">
+  <div class="col s12 m12 l12 box">
+    <p id="experienciaData"></p>
+  </div>
+</div>
+
+<!-- _____________________________________________________REFERENCIA LABORAL_______________________________________ -->
+  <div class="row">
+  <div class="col s8 m8 l8">
+    <h4>Referencias Laborales</h4>
+  </div>
+  <div class="col s4 m4 l4">
+    <a class="waves-effect  btn-flat editar" href="#referenciasLaborales">editar</a>
+  </div>
+</div>
+<div class="row"> 
+  <div class="tab input-field col s5 m5 l5" id="referenciasLaborales">
+        <select class="browser-default" onselect="this.className = ''" name="referencia">
+          <option value="">¿Cuenta con referencias laborales?</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+</div>
+<div class="row">
+  <h4>Agregar Referencias</h4>
+  <span class="comentario">*Ingrese Máximo 3</span>
+  <div class="divider"></div>
+</div>
+<div class="row">
+  <div class="tab input-field col s6 m6 l6">
+     <label for="empresa2">Empresa</label>
+     <input  id="empresa2" type="text" class="validate">
+   </div>
+   <div class="tab input-field col s6 m6 l6" >
+     <label for="contacto2">Nombre del Contacto</label>
+     <input  id="contacto2" type="text" class="validate">
+   </div>
+   <div class="row">
+     <div class="tab input-field col s4 m4 l4">
+     <label for="cargo2">Cargo</label>
+     <input  id="cargo2"type="text" class="validate">
+   </div>
+   <div class="tab input-field col s4 m4 l4">
+     <label for="telefono2">Telefono</label>
+     <input  id="telefono2"type="text" class="validate">
+   </div>
+   <div class="tab input-field col s4 m4 l4">
+     <label for="email2">Email</label>
+     <input  id="email2" type="email" class="validate">
+   </div>
+  <div class="row">
+    <div class="col s2 m2 l2">
+     <a href="" class="waves-effect waves-light btn-large" onclick="myFunctionRef()">Agregar</a>
+    </div>
+  </div> 
+   </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m12 l12 box">
+    <p id="referenciaData"></p>
+  </div>
+</div>
+<div class="row"></div>
+<div class="row"></div>
+
+<!-- _____________________________________________________DATOS PREVISIONALES_______________________________________ -->
+
+<div class="row">
+  <div class="col s8 m8 l8">
+    <h4>Datos Previsionales</h4>
+  </div>
+  <div class="col s4 m4 l4">
+    <a class="waves-effect  btn-flat editar" href="#datosPrevision">editar</a>
+  </div>
+</div>
+
+<div class="row"> 
+  <div class="tab input-field col s6 m6 l6" id="datosPrevision">
+        <select class="browser-default" onselect="this.className = ''" name="afp">
+          <option value="">AFP</option>
+          <option value="AFP Capital">AFP Capital</option>
+          <option value="AFP Cuprum">AFP Cuprum</option>
+          <option value="AFP Habitat">AFP Habitat</option>
+          <option value="AFP Modelo">AFP Modelo</option>
+          <option value="AFP Planvital">AFP Planvital</option>
+          <option value="AFP Provida">AFP Provida</option>
+        </select>
+      </div>
+      <div class="tab input-field col s6 m6 l6">
+        <select class="browser-default" onselect="this.className = ''" name="isapre">
+          <option value="">Isapre o Fonasa</option>
+          <option value="Fonasa">Fonasa</option>
+          <option value="Consalud">Consalud</option>
+          <option value="Colmena">Colmena</option>
+          <option value="Cruz Blanca">Cruz Blanca</option>
+          <option value="Chuquicamata">Chuquicamata</option>
+          <option value="Banmédica">Banmédica</option>
+          <option value="Cruz del Norte">Cruz del Norte</option>
+          <option value="Nueva Masvida">Nueva Masvida</option>
+          <option value="Fundación">Fundación</option>
+          <option value="Fusat">Fusat</option>
+          <option value="Río Blanco">Río Blanco</option>
+          <option value="San Lorenzo">San Lorenzo</option>
+          <option value="Vida Tres">Vida Tres</option>
+        </select>
+      </div>
+</div>
+<div class="row">
+  <h4>Agregar Horario</h4>
+  <div class="divider"></div>
+</div>
+<div class="row">
+  <div class="tab input-field col s5 m5 l5">Dias disponibles para trabajar
+      <select class="js-example-basic-multiple" id="id_label_multiple" multiple="multiple" style="width:60%">
+         <option value="Todos">Todos</option>
+         <option value="Lunes">Lunes</option>
+         <option value="Martes">Martes</option>
+         <option value="Miercoles">Miercoles</option>
+         <option value="Jueves">Jueves</option>
+         <option value="Viernes">Viernes</option>
+         <option value="Sabado">Sabado</option>
+         <option value="Domingo">Domingo</option>
+
+      </select>   
+  </div>
+  <div class="tab input-field col s2 m2 l2">Horario Desde
+      <select class="js-example-basic-multiple" id="id_label_multiple" multiple="multiple" style="width:60%">
+         <option value="8:00">8:00</option>
+         <option value="9:00">9:00</option>
+         <option value="10:00">10:00</option>
+         <option value="11:00">11:00</option>
+         <option value="12:00">12:00</option>
+      </select>   
+  </div>
+  <div class="tab input-field col s2 m2 l2">Hasta
+      <select class="js-example-basic-multiple" id="id_label_multiple" multiple="multiple" style="width:60%">
+         <option value="13:00">13:00</option>
+         <option value="14:00">14:00</option>
+         <option value="15:00">15:00</option>
+         <option value="16:00">16:00</option>
+         <option value="17:00">17:00</option>
+         <option value="18:00">18:00</option>
+         <option value="19:00">19:00</option>
+         <option value="20:00">20:00</option>
+         <option value="21:00">21:00</option>
+      </select>   
+  </div>
+  <div class="col s3 m3 l3">
+    <a href="" class="waves-effect waves-light btn agregar">Agregar</a>
+  </div>
+</div>
+<div class="row">
+  <div class="tab input-field col s6 m6 l6">
+     <label for="comunas">Comunas disponibles para trabajar (Máx. 5)</label>
+     <input  id="comunas" type="text" class="validate">
+   </div>
+</div>
+<div class="row">
+  <h4 style="color:#838383">Horarios Agregados</h4>
+</div>
+<div class="row">
+  <div class="col s12 m12 l12 box">
+    
+  </div>
+</div>
+<div class="row"></div>
+<div class="row"></div>
+<!-- _____________________________________________________DATOS UNIFORME_______________________________________ -->
+
+<div class="row">
+  <div class="col s8 m8 l8">
+    <h4>Datos Uniforme</h4>
+  </div>
+  <div class="col s4 m4 l4">
+    <a class="waves-effect  btn-flat editar" href="#uniforme">editar</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="tab" id="uniforme">
+    <div class="tab input-field col s4 m4 l4">
+      <select class="browser-default" onselect="this.className = ' ' " name="uniforme">
+        <option value="">Talla Polera/camisa</option>
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+      </select>
+    </div>
+    <div class="tab input-field col s4 m4 l4">
+      <select class="browser-default" onselect="this.className = ' ' " name="uniforme2">
+        <option value="">Talla Poleron</option>
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+      </select>
+    </div>
+    <div class="tab input-field col s4 m4 l4">
+        <label for="tallaZapato">Talla de zapatos</label>
+        <input  id="tallaZapato" type="text" class="validate">
+      </div>
+      <div class="row">
+        <div class="tab input-field col s8 m8 l8">
+        <label for="tallaPantalon">Talla de Pantalon (ingrese detalles si necesita)</label>
+        <input  id="tallaPantalon" type="text" class="validate">
+      </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <h4>Pretensiones de Renta</h4>
+  <div class="row">
+  <div class="tab">
+    <div class="tab input-field col s4 m4 l4">
+      <select class="browser-default" onselect="this.className = ' ' " name="renta">
+        <option value="">Seleccione Rango</option>
+        <option value="275.000 - 350.000">275.000 - 350.000</option>
+        <option value="350.000 - 400.000">350.000 - 400.000</option>
+        <option value="400.000 - 450.000">400.000 - 450.000</option>
+        <option value="450.000 - 500.000">450.000 - 500.000</option>
+        <option value="500.000 - 550.000">500.000 - 550.000</option>
+        <option value="550.000 - 600.000">550.000 - 600.000</option>
+      </select>
+    </div>
+  </div>
+</div>
+</div>
+<div class="row">
+  <h4>Adjuntos (Opcional)</h4>
+  <div class="row">
+    <form class="col s8 m8 l8">
+      <div class="row">
+        <label>Curriculum</label>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Adjuntar</span>
+            <input type="file" name="curriculum">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Adjuntar Archivo"></input>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <form class="col s8 m8 l8">
+      <div class="row">
+        <label>Certificado de antecedentes</label>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Adjuntar</span>
+            <input type="file" name="antecedentes">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Adjuntar Archivo"></input>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+
+
+
+
+
+
+
+
+<!-- -----------------------------------------------BOTONES FINAL --------------------------------- -->
+<div class="row">
+  <div class="col s6 m6 l6 pull-m6 right">
+    <a href="" type="submit" class="waves-effect waves-light btn-large right">Postular</a>
+  </div>
+</div>
+</div><!--container-->
+<div class="row">
+  <div class="col s12 m12 l12">
+    <img src="src/img/logo.jpg" alt="" class="endLogo">
+  </div>
+</div>
+
+
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type = "text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
+  <script src="src/js/postulaciones.js"></script>
+</body>
+</html>
