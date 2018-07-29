@@ -173,7 +173,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
     </div>
 
     <div class="row">
-      <div class="col s12 m12 l12  box boxexperiencia boxsmart">
+      <div class="col s12 m12 l12   boxsmart">
         <p id="experienciaData"></p>
           <div id="boxDataExp1">
               <div class="boxDataExp">

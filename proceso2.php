@@ -127,7 +127,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
     <div class="divider"></div>
   </div>
   <div class="curso1before">
-    <div class="row" id="curso_box"><!--cursos-->
+    <div class="row" id="curso_box" class="noMargin"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso">Curso</label>
         <input  id="curso" type="text" class="validate">
@@ -143,7 +143,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
     </div>
   </div>
   <div class="curso2before">
-    <div class="row" id="curso2_box"><!--cursos-->
+    <div class="row" id="curso2_box" class="noMargin"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso2">Curso</label>
         <input  id="curso2" type="text" class="validate">
@@ -159,7 +159,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
     </div>
   </div>
   <div class="curso3before">
-    <div class="row" id="curso3_box"><!--cursos-->
+    <div class="row" id="curso3_box" class="noMargin"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso3">Curso</label>
         <input  id="curso3" type="text" class="validate">

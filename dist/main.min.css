@@ -1,4 +1,4 @@
-body {
+fbody {
   font-family: 'PT Sans Narrow', sans-serif; }
 
 nav {
@@ -290,7 +290,10 @@ textarea {
 
 .add {
   position: relative;
-  left: 850px; }
+  left: 863px;
+  width: 75px;
+  padding: 0;
+  top: -40px; }
 
 .add1 {
   position: relative;
@@ -311,22 +314,22 @@ textarea {
 
 .back-box1 {
   background: #fff;
-  border-radius: 10px;
-  border: 1px solid #eee;
   position: relative;
-  left: 30px !important; }
+  left: 30px !important;
+  margin-bottom: 0 !important; }
 
 .back-box2 {
   background: #fff;
-  border-radius: 10px;
-  border: 1px solid #eee;
   position: relative;
-  left: 12px !important; }
+  left: 11px !important;
+  margin-bottom: 0 !important; }
 
 .back-box3 {
   background: #fff;
-  border-radius: 10px;
-  border: 1px solid #eee; }
+  margin-bottom: 0 !important; }
+
+.noMargin {
+  margin-bottom: 0 !important; }
 
 .btn-delete-ref {
   position: relative;
@@ -355,7 +358,7 @@ textarea {
   border-radius: 4px; }
 
 .boxDataExpInfo {
-  color: gray;
+  color: #eee;
   font-size: 20px;
   position: relative;
   top: 10px; }
@@ -367,7 +370,8 @@ textarea {
   display: inline; }
 
 .boxsmart {
-  height: auto; }
+  height: auto;
+  background: #eee; }
 
 .boxSmartContent {
   height: 30px;
@@ -395,3 +399,6 @@ textarea {
   position: relative;
   top: 7px;
   right: 5px; }
+
+.noMargin {
+  margin-bottom: 0 !important; }
