@@ -1433,3 +1433,6 @@ function getData(id) {
     
 });
 }
+function myFunctionGracias() {
+    alert("Gracias por su respuesta!");
+}

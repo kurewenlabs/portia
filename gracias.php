@@ -23,15 +23,64 @@
   </nav>
 <div class="container">
   <div class="row">
-    <img src="src/img/gracias.jpg" alt="" style="margin-top: 20px">
-    <h3 style="text-align: center;">Tu Postulación ha sido enviada con Éxito!</h3>
+    <img src="src/img/Logo-H80.jpg" alt="" style="margin-top: 20px; margin-left: 350px; ">
+    <h2 style="text-align: center;">Tu Postulación ha sido enviada con Éxito!</h2>
 
     <div class="col s12  m12  l12 center">
       <a href="index.html" class="endLogo">Volver a cargos</a>
     </div>
   </div>
+
+  
+<div class="row">
+  <h5>¿A través de que medio se enteró de la postulación?</h5>
+  <div class="col s6 m6 l6">
+   <form action="#">
+    <p>
+      <label>
+        <input name=" " type="radio" class="with-gap" />
+        <span>Facebook</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name=" " type="radio" class="with-gap"/>
+        <span>Laborum</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input class="with-gap" name=" " type="radio"  />
+        <span>Linkedin</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name=" " type="radio" class="with-gap" />
+        <span>Computrabajo</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name=" " type="radio" class="with-gap" />
+        <span>Recomendacion</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name=" " type="radio" class="with-gap" />
+        <span>Otros</span>
+      </label>
+    </p>
+  </form>        
+  </div>
+
+
 </div>
-  <div class="row">
+<button onclick="myFunctionGracias()" class="waves-effect waves-light btn right">Enviar</button>
+</div>
+
+<div class="row">
   <div class="col s12 m12 l12">
     <img src="src/img/logo.jpg" alt="" class="endLogo">
   </div>
