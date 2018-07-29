@@ -6,10 +6,10 @@ nav {
   margin-top: -15px; }
   nav h6 {
     padding: 15px;
-    margin-ledt: 40px; }
+    margin-left: 40px; }
 
 .logo {
-  float: rigth;
+  float: right;
   margin-top: 20px; }
 
 .titulo {
@@ -386,13 +386,12 @@ textarea {
   position: relative;
   top: 10px; }
 
-.chip .close {
-  cursor: pointer;
-  float: right;
-  font-size: 20px;
-  line-height: 50px;
-  color: red;
-  font-weight: bold; }
+.volverUser {
+  position: relative;
+  top: 20px;
+  left: 30px; }
 
-.lineaMarjen {
-  margin-bottom: 10px; }
+.volverUser i {
+  position: relative;
+  top: 7px;
+  right: 5px; }

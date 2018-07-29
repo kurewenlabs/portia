@@ -37,6 +37,14 @@ return gulp.src('img/*.jpeg')
 	.pipe(gulp.dest('dist/img/'));
 });
 
+var cachebust = require('gulp-cache-refresh');
+
+gulp.src('./dist/*/*.html')
+    .pipe(cachebust({
+    type: 'timestamp'
+    }))
+.pipe(gulp.dest('./dist'));
+
 gulp.task('watch', function() {
     gulp.watch('js/*.js', ['lint', 'scripts']);
     gulp.watch('./sass/**/*.scss', ['sass']);
