@@ -100,12 +100,18 @@ echo "</pre>";*/
                         <a href="#!" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
                     </div>
                     <div class="col s3 m3 l3">
-                        <button class="waves-effect waves-green btn save" type="submit">Guardar</button>
+                        <button class="waves-effect waves-green btn save" type="submit" href="userportia.html.php">Guardar</button>
                     </div>
                 </div>
         </form>
     </div>
+
+<div class="row"></div>
+<div class="row"></div>
     <div class="divider"></div>
+
+     
+
     <div class="row"><!--titulo-->
         <div class="col s8 m8 l8">
             <h3>Cargos Seleccionados</h3>
@@ -704,7 +710,7 @@ echo "</pre>";*/
                 <a href="#!" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
             </div>
             <div class="col s3 m3 l3">
-                <a href="#!" class=" waves-effect waves-green btn save" type="submit">Guardar</a>
+                <a href="#!" class=" waves-effect waves-green btn save" type="submit" href="userportia.html.php">Guardar</a>
             </div>
         </div>
 
