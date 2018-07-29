@@ -1,8 +1,8 @@
 <?php
    session_start();
    
-    $imprimir_json_y_sqls = 1;
-    //$imprimir_json_y_sqls = 0;
+    //$imprimir_json_y_sqls = 1;
+    $imprimir_json_y_sqls = 0;
 
    function save_data_in_DB(){
 
@@ -495,8 +495,7 @@
    } 
    if(isset($_POST['action']) && $_POST['action'] == 'seventhpagedata'){
        $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data'];
-       //$_SESSION["postdata"]["pos"]["cv"] = $_POST['data'];
-       // save_data_in_DB();
+       save_data_in_DB();
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'lastpagedata'){
         /* $_SESSION["postdata"]["pos"]["pa"] = $_POST['data'];
@@ -523,9 +522,8 @@
         print_r($_SESSION["postdata"]);
         print '</pre>';
     }
-//save_data_in_DB();
 
    //print_r(json_encode($_SESSION));
-  // die(0);
+   //die(0);
 
 ?>
