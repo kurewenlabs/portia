@@ -386,11 +386,6 @@ textarea {
   position: relative;
   top: 10px; }
 
-.chip {
-  width: 115px !important;
-  height: 50px;
-  border-radius: 0; }
-
 .chip .close {
   cursor: pointer;
   float: right;

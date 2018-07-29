@@ -158,13 +158,13 @@ function postNumberPost(str){
               $('#email').css('border-color' , 'red');
               return false;
           }
-          if($.trim($("#provincia").val()) != "" ){
-            chkArray.push( {"provi" : $("#provincia").val()} );
-              $('#provincia').css('border-color' , '#f2f2f2');
+          if($.trim($("#region").val()) != "" ){
+            chkArray.push( {"provi" : $("#region").val()} );
+              $('#region').css('border-color' , '#f2f2f2');
           }
           else{
               notie.alert({ type: 3, text: 'Debes ingresar tu región', position: 'bottom' });
-              $('#provincia').css('border-color' , 'red');
+              $('#region').css('border-color' , 'red');
               return false;
           }
           if($.trim($("#comuna").val()) != "" ){
@@ -183,7 +183,6 @@ function postNumberPost(str){
               $('#direccion').css('border-color' , 'red');
               return false;
           }
-
 
           /* we join the array separated by the comma */
           var selected;
@@ -568,10 +567,10 @@ function postNumberPost(str){
                $.ajax({
                          url : "processform.php",
                          type: "post",
-                         data:{ action:"seventhpagedata",data:chkArray},
+                         data:{ action:"seventhpagedata",data:chkArray },
                          success:function(data){
                                  //alert("data has been saved succeesssfully");
-                                 window.location.href="gracias.html";
+                                 window.location.href="postular.php";
                                  return false
                          },
                          error:function(){
@@ -580,6 +579,26 @@ function postNumberPost(str){
 
                })
       return false;
+    })
+    $("form#postularform").submit(function(e){
+        e.preventDefault();
+        var JSONData={};
+               
+        $.ajax({
+                  url : "processform.php",
+                  type: "post",
+                  data:{ action:"lastpagedata",data:null },
+                  success:function(data){
+                          //alert("data has been saved succeesssfully");
+                          window.location.href="gracias.php";
+                          return false
+                  },
+                  error:function(){
+
+                  }
+
+        })
+        return false;
     })
 });
 

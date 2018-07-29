@@ -399,6 +399,174 @@
     <p id="experienciaData"></p>
   </div>
 </div>
+<!-- ----------------------------------------------COPIA DEL CODIGO DE PROCESO 3 ------------------------------------ -->
+
+<!-- <div id="box_experiencia">
+        <div class="row" id="">
+            <h4>Agregar Experiencia laboral</h4>
+            <span class="comentario">*Ingrese Máximo 3</span>
+            <div class="divider"></div>
+        </div>
+        <div id="experiencia_box_1">
+            <div class="row">
+                <div class=" input-field col s4 m4 l4">
+                    <label for="empresa">Empresa </label>
+                    <input  id="empresa" type="text" class="validate">
+                </div>
+                <div class=" input-field col s4 m4 l4" >
+                    <label for="cargo">Cargo</label>
+                    <input  id="cargo" type="text" class="validate">
+
+                </div>
+                <div class="col s2 m2 l2 input-field dateUntil">
+                    <label for="txtDate4">Desde mes/año</label>
+                    <input type="text" class="date" id="txtDate4">
+                    <p>
+                        <label for="fechaCargo">
+                            <input type="checkbox" value="Al presente" id="fechaCargo">
+                            <span>Al presente</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="col s2 m2 l2 input-field" id="input-fecha-until">
+                  
+                        <label for="txtDate4h">Hasta mes/año</label>
+                        <input type="text" class="date" id="txtDate4h">
+                    
+                </div>
+                <div class="col s2 m2 l2">
+                    <div id="boton_exp_1" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar()">Agregar</div>
+                </div>
+            </div>
+        </div>
+        <div id="experiencia_box_2">
+            <div class="row">
+                <div class=" input-field col s4 m4 l4">
+                    <label for="empresa2">Empresa </label>
+                    <input  id="empresa2" type="text" class="validate">
+                </div>
+                <div class=" input-field col s4 m4 l4" >
+                    <label for="cargo2">Cargo</label>
+                    <input  id="cargo2" type="text" class="validate">
+
+                </div>
+                <div class="col s2 m2 l2 input-field">
+                    <label for="txtDate42">Desde mes/año</label>
+                    <input type="text" class="date" id="txtDate42">
+                    <p>
+                        <label for="fechaCargo2">
+                            <input type="checkbox" value="Al presente" id="fechaCargo2">
+                            <span>Al presente</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="col s2 m2 l2 input-field" id="input-fecha-until2">
+                   
+                        <label for="txtDate42h">Hasta mes/año</label>
+                        <input type="text" class="date" id="txtDate42h">
+                    
+                </div>
+                <div class="col s2 m2 l2">
+                    <div id="boton_exp_2" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar2()">Agregar</div>
+                </div>
+            </div>
+        </div>
+        <div id="experiencia_box_3">
+            <div class="row">
+                <div class=" input-field col s4 m4 l4">
+                    <label for="empresa3">Empresa </label>
+                    <input  id="empresa3" type="text" class="validate">
+                </div>
+                <div class=" input-field col s4 m4 l4" >
+                    <label for="cargo3">Cargo</label>
+                    <input  id="cargo3" type="text" class="validate">
+
+                </div>
+                <div class="col s2 m2 l2 input-field">
+                    <label for="txtDate43">Desde mes/año</label>
+                    <input type="text" class="date" id="txtDate43">
+                    <p>
+                        <label for="fechaCargo3">
+                            <input type="checkbox" value="Al presente" id="fechaCargo3">
+                            <span>Al presente</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="col s2 m2 l2 input-field"id="input-fecha-until3">
+            
+                        <label for="txtDate43h">Hasta mes/año</label>
+                        <input type="text" class="date" id="txtDate43h">
+             
+                </div>
+                <div class="col s2 m2 l2">
+                    <div id="boton_exp_3" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar3()">Agregar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m12 l12  box boxexperiencia boxsmart">
+        <p id="experienciaData"></p>
+          <div id="boxDataExp1">
+              <div class="boxDataExp">
+                  <div class="col s3 m3 l3">
+                      <span class="boxDataExpInfo" id="empresaData"></span>
+                  </div>
+                  <div class="col s3 m3 l3">
+                      <span class="boxDataExpInfo" id="cargoData"></span>
+                  </div>
+                  <div class="col s2 m2 l2">
+                      <span class="boxDataExpInfo" id="fecha1Data"></span>
+                  </div>
+                  <div class="col s2 m2 l2 ">
+                      <span class="boxDataExpInfo" id="fecha2Data"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                      <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1"><i class="small material-icons">cancel</i></div>
+                  </div>
+              </div>
+          </div>
+          <div id="boxDataExp2">
+              <div class="boxDataExp">
+                  <div class="col s3 m3 l3">
+                      <span class="boxDataExpInfo" id="empresaData2"></span>
+                  </div>
+                  <div class="col s3 m3 l3">
+                      <span class="boxDataExpInfo" id="cargoData2"></span>
+                  </div>
+                  <div class="col s2 m2 l2">
+                      <span class="boxDataExpInfo" id="fecha1Data2"></span>
+                  </div>
+                  <div class="col s2 m2 l2 ">
+                      <span class="boxDataExpInfo" id="fecha2Data2"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                      <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2"><i class="small material-icons">cancel</i></div>
+                  </div>
+              </div>
+          </div>
+          <div id="boxDataExp3">
+              <div class="boxDataExp">
+                  <div class="col s3 m3 l3">
+                      <span class="boxDataExpInfo" id="empresaData3"></span>
+                  </div>
+                  <div class="col s3 m3 l3">
+                      <span class="boxDataExpInfo" id="cargoData3"></span>
+                  </div>
+                  <div class="col s2 m2 l2">
+                      <span class="boxDataExpInfo" id="fecha1Data3"></span>
+                  </div>
+                  <div class="col s2 m2 l2 ">
+                      <span class="boxDataExpInfo" id="fecha2Data3"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                      <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3"><i class="small material-icons">cancel</i></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>-->
 
 <!-- _____________________________________________________REFERENCIA LABORAL_______________________________________ -->
   <div class="row">
@@ -464,6 +632,111 @@
 </div>
 <div class="row"></div>
 <div class="row"></div>
+
+<!-- ------------------------------CODIGO PROCESO 4 ---------------------------------------- -->
+
+<!--  <div id="container_ref">
+          <div class="row">
+              <h4>Agregar Referencias</h4>
+              <span class="comentario">*Ingrese Máximo 3</span>
+              <div class="divider"></div>
+          </div>
+          <div class="row" id="refs_box1">
+              <div class=" input-field col s6 m6 l6 back-box3">
+                  <label for="empresaref">Empresa </label>
+                  <input  id="empresaref" type="text" class="validate">
+              </div>
+              <div class=" input-field col s6 m6 l6 back-box3" >
+                  <label for="contactoref">Nombre del Contacto</label>
+                  <input  id="contactoref" type="text" class="validate">
+              </div>
+              <div class="row">
+                  <div class=" input-field col s4 m4 l4 back-box2">
+                      <label for="cargoref">Cargo</label>
+                      <input  id="cargoref" type="text" class="validate">
+                  </div>
+                  <div class=" input-field col s3 m3 l3 back-box2">
+                      <label for="telefonoref">Telefono</label>
+                      <input  id="telefonoref" type="tel" class="validate">
+                  </div>
+                  <div class=" input-field col s4 m4 l4 back-box2">
+                      <label for="emailref">Email</label>
+                      <input  id="emailref" type="email" class="validate">
+                  </div>
+                  <div class="col s2 m2 l2 ">
+                      <div id="boton_refs1" class="waves-effect waves-light btn-small add" onclick="myFunctionRef()">Agregar</div>
+                      <div onclick="myFunctionEliminarRef1()" class="waves-effect btn-delete-ref" id="btn-delete-ref1"><i class="small material-icons ">cancel</i></div>
+                  </div>
+              </div>
+          </div>
+          <div class="row" id="refs_box2">
+              <div class=" input-field col s6 m6 l6 back-box3">
+                  <label for="empresaref2">Empresa 2</label>
+                  <input  id="empresaref2" type="text" class="validate">
+              </div>
+              <div class=" input-field col s6 m6 l6 back-box3" >
+                  <label for="contactoref2">Nombre del Contacto</label>
+                  <input  id="contactoref2" type="text" class="validate">
+              </div>
+              <div class="row">
+                  <div class=" input-field col s4 m4 l4 back-box2">
+                      <label for="cargoref2">Cargo</label>
+                      <input  id="cargoref2" type="text" class="validate">
+                  </div>
+                  <div class=" input-field col s3 m3 l3 back-box2">
+                      <label for="telefonoref2">Telefono</label>
+                      <input  id="telefonoref2" type="tel" class="validate">
+                  </div>
+                  <div class=" input-field col s4 m4 l4 back-box2">
+                      <label for="emailref2">Email</label>
+                      <input  id="emailref2" type="email" class="validate">
+                  </div>
+                  <div class="row">
+                      <div class="col s2 m2 l2">
+                          <div id="boton_refs2" class="waves-effect waves-light btn-small add" onclick="myFunctionRef2()">Agregar</div>
+                          <div onclick="myFunctionEliminarRef2()" class="waves-effect btn-delete-ref" id="btn-delete-ref2"><i class="small material-icons ">cancel</i></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row" id="refs_box3">
+              <div class=" input-field col s6 m6 l6 back-box3">
+                  <label for="empresaref3">Empresa 3</label>
+                  <input  id="empresaref3" type="text" class="validate">
+              </div>
+              <div class=" input-field col s6 m6 l6 back-box3" >
+                  <label for="contactoref3">Nombre del Contacto</label>
+                  <input  id="contactoref3" type="text" class="validate">
+              </div>
+              <div class="row">
+                  <div class=" input-field col s4 m4 l4 back-box2">
+                      <label for="cargoref3">Cargo</label>
+                      <input  id="cargoref3" type="text" class="validate">
+                  </div>
+                  <div class=" input-field col s3 m3 l3 back-box2">
+                      <label for="telefonoref3">Telefono</label>
+                      <input  id="telefonoref3" type="tel" class="validate">
+                  </div>
+                  <div class=" input-field col s4 m4 l4 back-box2">
+                      <label for="emailref3">Email</label>
+                      <input  id="emailref3" type="email" class="validate">
+                  </div>
+                  <div class="row">
+                      <div class="col s2 m2 l2">
+                          <div id="boton_refs3" class="waves-effect waves-light btn-small add" onclick="myFunctionRef3()">Agregar</div>
+                          <div onclick="myFunctionEliminarRef3()" class="waves-effect btn-delete-ref" id="btn-delete-ref3"><i class="small material-icons ">cancel</i></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+             
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l12 box box_referencias boxsmart">
+          <p id="referenciaData"></p>
+        </div>
+      </div>
+      -->
 
 <!-- _____________________________________________________DATOS PREVISIONALES_______________________________________ -->
 
@@ -592,9 +865,109 @@
         </select> <!-- CONSUMIR API COMUNAS/REGIONES AQUI -->
      </div> 
 </div>
-<div class="row">
-  <h4 style="color:#838383">Horarios Agregados</h4>
-</div>
+
+   <div class="row">
+        <h4 style="color:#838383">Horarios Agregados</h4>
+      </div>
+  <!-- ------------------------------------------------------------- CAJA DE HORARIOS AGREGADOS-------------------------- -->
+<!--  
+      <div class="row">
+        <div class="col s12 m12 l12 box boxsmart" >
+          <div id="containerDataHoras">
+              <div class="boxSmartContent" id="dias1Box">
+                  <div class="col s4 m4 l4">
+                      <span style="color: gray; font-size: 20px" id="diasData1"></span>
+                  </div>
+                  <div class="col s5 m5 l5">
+                      <span style="color: gray; font-size: 20px" id="comunasData1"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                  <span style="color: gray; font-size: 20px" class="right-align" >
+                      <span id="horasData1"></span>
+                      <span>a</span>
+                      <span id="horasData1h"></span>
+                  </span>
+                  </div>
+                  <div class="col s1 m1 l1 right-align">
+                      <div onclick="myFunctionEliminarHora1()" class="waves-effect" id="btn-hora-hora1"><i class="small material-icons" style="color: red">cancel</i></div>
+                  </div>
+              </div>
+              <div class="boxSmartContent" id="dias2Box">
+                  <div class="col s4 m4 l4">
+                      <span style="color: gray; font-size: 20px" id="diasData2"></span>
+                  </div>
+                  <div class="col s5 m5 l5">
+                      <span style="color: gray; font-size: 20px" id="comunasData2"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                  <span style="color: gray; font-size: 20px" class="right-align" >
+                      <span id="horasData2"></span>
+                      <span>a</span>
+                      <span id="horasData2h"></span>
+                  </span>
+                  </div>
+                  <div class="col s1 m1 l1 right-align">
+                      <div onclick="myFunctionEliminarHora2()" class="waves-effect" id="btn-hora-hora2"><i class="small material-icons" style="color: red">cancel</i></div>
+                  </div>
+              </div>
+              <div class="boxSmartContent" id="dias3Box">
+                  <div class="col s4 m4 l4">si 
+                      <span style="color: gray; font-size: 20px" id="diasData3"></span>
+                  </div>
+                  <div class="col s5 m5 l5">
+                      <span style="color: gray; font-size: 20px" id="comunasData3"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                  <span style="color: gray; font-size: 20px" class="right-align" >
+                      <span id="horasData3"></span>
+                      <span>a</span>
+                      <span id="horasData3h"></span>
+                  </span>
+                  </div>
+                  <div class="col s1 m1 l1 right-align">
+                      <div onclick="myFunctionEliminarHora3()" class="waves-effect" id="btn-hora-hora3"><i class="small material-icons" style="color: red">cancel</i></div>
+                  </div>
+              </div>
+              <div class="boxSmartContent" id="dias4Box">
+                  <div class="col s4 m4 l4">
+                      <span style="color: gray; font-size: 20px" id="diasData4"></span>
+                  </div>
+                  <div class="col s5 m5 l5">
+                      <span style="color: gray; font-size: 20px" id="comunasData4"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                  <span style="color: gray; font-size: 20px" class="right-align" >
+                      <span id="horasData4"></span>
+                      <span>a</span>
+                      <span id="horasData4h"></span>
+                  </span>
+                  </div>
+                  <div class="col s1 m1 l1 right-align">
+                      <div onclick="myFunctionEliminarHora4()" class="waves-effect" id="btn-hora-hora4"><i class="small material-icons" style="color: red">cancel</i></div>
+                  </div>
+              </div>
+              <div class="boxSmartContent" id="dias5Box">
+                  <div class="col s4 m4 l4">
+                      <span style="color: gray; font-size: 20px" id="diasData5"></span>
+                  </div>
+                  <div class="col s5 m5 l5">
+                      <span style="color: gray; font-size: 20px" id="comunasData5"></span>
+                  </div>
+                  <div class="col s2 m2 l2 right-align">
+                  <span style="color: gray; font-size: 20px" class="right-align" >
+                      <span id="horasData5"></span>
+                      <span>a</span>
+                      <span id="horasData5h"></span>
+                  </span>
+                  </div>
+                  <div class="col s1 m1 l1 right-align">
+                      <div onclick="myFunctionEliminarHora5()" class="waves-effect" id="btn-hora-hora5"><i class="small material-icons" style="color: red">cancel</i></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+      </div> -->
 <div class="row">
   <div class="col s12 m12 l12 box">
     
