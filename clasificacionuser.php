@@ -413,13 +413,10 @@ echo "</pre>"*/
     </div>
   </div><!--otros-->
  </div>     
-<div class="row">
-  
-  
-</div>
-    </div>
+
+
     <div class="modal-footer">
-      <a href="clasificacionuser.php" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+      <a href="clasificacionuser.php" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
     </div>
   </div>
 

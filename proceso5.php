@@ -478,7 +478,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
         <h4 style="color:#838383">Horarios Agregados</h4>
       </div>
       <div class="row">
-        <div class="col s12 m12 l12 box boxsmart" >
+        <div class="col s12 m12 l12  boxsmart" >
           <div id="containerDataHoras">
               <div class="boxSmartContent" id="dias1Box">
                   <div class="col s4 m4 l4">
@@ -506,7 +506,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                       <span style="font-size: 20px" id="comunasData2"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
-                  <span style="cfont-size: 20px" class="right-align" >
+                  <span style="font-size: 20px" class="right-align" >
                       <span id="horasData2"></span>
                       <span>a</span>
                       <span id="horasData2h"></span>
@@ -517,7 +517,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   </div>
               </div>
               <div class="boxSmartContent" id="dias3Box">
-                  <div class="col s4 m4 l4">si 
+                  <div class="col s4 m4 l4">
                       <span style=" font-size: 20px" id="diasData3"></span>
                   </div>
                   <div class="col s5 m5 l5">

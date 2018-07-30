@@ -401,3 +401,11 @@ textarea {
 
 .noMargin {
   margin-bottom: 0 !important; }
+
+.botonCargos {
+  position: relative;
+  top: 38px;
+  left: -180px; }
+
+.modal {
+  width: 75% !important; }
