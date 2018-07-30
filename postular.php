@@ -66,9 +66,9 @@
         <label for="rut">RUT</label>
         <input placeholder="ej. 11111111-1" id="rut" type="tel" class="validate rut_box" value="<?php if (array_key_exists('rut', $datos[$i])) { echo $datos[$i]['rut']; $i++; } ?>">
       </div>
-      <div class=" input-field col s4 m4 l4 " id="pasaporte_box" value="<?php if (array_key_exists('pasaporte', $datos[$i])) { echo $datos[$i]['pasaporte']; $i++; } ?>">
+      <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
         <label for="Pasaporte">Pasaporte</label>
-        <input  id="Pasaporte" type="tel" class="validate rut_box">
+        <input  id="Pasaporte" type="tel" class="validate rut_box" value="<?php if (array_key_exists('pasaporte', $datos[$i])) { echo $datos[$i]['pasaporte']; $i++; } ?>">
       </div>
     </div>
   </div><!--documentos-->
@@ -269,7 +269,6 @@
           </div>
         
         </div>
-
         <div class=" input-field col s4 m4 l4">Licencia de Conducir
           <select onselect="this.className = ''" name="licencia" class="browser-default" id="licencia">
             <option value=""></option>
@@ -290,6 +289,7 @@
   <?php
     $datos = $data["pos"]["cursos"];
     $i = 0;
+    $maxcursos = sizeof($datos);
   ?>
   <div class="row">
     <h4>Otros Conocimientos (Opcional)</h4>
@@ -347,10 +347,8 @@
   <div class="row">
   </div>
   <div class="row">
-    <div class="col s12 m12 l12 box" id="cursoData">
-        
-    <input type="hidden" id="cursoData_form">
-
+    <div class="col s12 m12 l12 box" id="cursoData">    
+      <input type="hidden" id="cursoData_form">
     </div>
   </div>
 <!-- ----------------------------------------------- EXPERIENCIA LABORAL --------------------------------- -->
@@ -365,6 +363,7 @@
 <?php
   $datos = $data["pos"]["experiencia"];
   $i = 0;
+  $maxexperiencia = sizeof($datos)-1;
 ?>
 <div class="row"> 
       <div class=" input-field col s4 m4 l4">¿Posee experiencia laboral?
@@ -381,27 +380,164 @@
   <div class="divider"></div>
 </div>
 <div class="row">
-  <div class="tab input-field col s5 m5 l5">
-     <label for="empresa">Empresa</label>
-     <input  id="empresa" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
-   </div>
-   <div class="tab input-field col s5 m5 l5" >
-     <label for="cargo">Cargo</label>
-     <input  id="cargo" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
-   </div>
-   <div class="col s2 m2 l2 input-field">
-     <label for="txtDate4">Fecha</label>
-        <input type="text" class="datepicker" id="txtDate4" value="<?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; $i++; } ?>">
+  <div id="experiencia_box_1">
+    <div class="row">
+        <div class=" input-field col s4 m4 l4">
+            <label for="empresa">Empresa </label>
+            <input  id="empresa" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
+        </div>
+        <div class=" input-field col s4 m4 l4" >
+            <label for="cargo">Cargo</label>
+            <input  id="cargo" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
+
+        </div>
+        <div class="col s2 m2 l2 input-field dateUntil">
+            <label for="txtDate4">Desde mes/año</label>
+            <input type="text" class="date" id="txtDate4" value="<?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; } ?>">
+            <p>
+                <label for="fechaCargo">
+                    <input type="checkbox" value="Al presente" id="fechaCargo">
+                    <span>Al presente</span>
+                </label>
+            </p>
+        </div>
+        <div class="col s2 m2 l2 input-field" id="input-fecha-until">
+          
+                <label for="txtDate4h">Hasta mes/año</label>
+                <input type="text" class="date" id="txtDate4h" value="<?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; } ?>">
+            
+        </div>
+        <div class="col s2 m2 l2">
+            <div id="boton_exp_1" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar()">Agregar</div>
+        </div>
+    </div>
+  </div>
+  <div id="experiencia_box_2">
+      <div class="row">
+          <div class=" input-field col s4 m4 l4">
+              <label for="empresa2">Empresa </label>
+              <input  id="empresa2" type="text" class="validate">
+          </div>
+          <div class=" input-field col s4 m4 l4" >
+              <label for="cargo2">Cargo</label>
+              <input  id="cargo2" type="text" class="validate">
+
+          </div>
+          <div class="col s2 m2 l2 input-field">
+              <label for="txtDate42">Desde mes/año</label>
+              <input type="text" class="date" id="txtDate42">
+              <p>
+                  <label for="fechaCargo2">
+                      <input type="checkbox" value="Al presente" id="fechaCargo2">
+                      <span>Al presente</span>
+                  </label>
+              </p>
+          </div>
+          <div class="col s2 m2 l2 input-field" id="input-fecha-until2">
+              
+                  <label for="txtDate42h">Hasta mes/año</label>
+                  <input type="text" class="date" id="txtDate42h">
+              
+          </div>
+          <div class="col s2 m2 l2">
+              <div id="boton_exp_2" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar2()">Agregar</div>
+          </div>
+      </div>
+  </div>
+  <div id="experiencia_box_3">
+      <div class="row">
+          <div class=" input-field col s4 m4 l4">
+              <label for="empresa3">Empresa </label>
+              <input  id="empresa3" type="text" class="validate">
+          </div>
+          <div class=" input-field col s4 m4 l4" >
+              <label for="cargo3">Cargo</label>
+              <input  id="cargo3" type="text" class="validate">
+
+          </div>
+          <div class="col s2 m2 l2 input-field">
+              <label for="txtDate43">Desde mes/año</label>
+              <input type="text" class="date" id="txtDate43">
+              <p>
+                  <label for="fechaCargo3">
+                      <input type="checkbox" value="Al presente" id="fechaCargo3">
+                      <span>Al presente</span>
+                  </label>
+              </p>
+          </div>
+          <div class="col s2 m2 l2 input-field"id="input-fecha-until3">
+      
+                  <label for="txtDate43h">Hasta mes/año</label>
+                  <input type="text" class="date" id="txtDate43h">
+        
+          </div>
+          <div class="col s2 m2 l2">
+              <div id="boton_exp_3" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar3()">Agregar</div>
+          </div>
+      </div>
   </div>
 </div>
+
 <div class="row">
-  <div class="col s2 m2 l2">
-    <a href="" class="waves-effect waves-light btn-large" onclick="myFunctionAgregar()">Agregar</a>
-  </div>
-</div> 
-<div class="row">
-  <div class="col s12 m12 l12 box">
+  <div class="col s12 m12 l12  box boxexperiencia boxsmart">
     <p id="experienciaData"></p>
+      <div id="boxDataExp1">
+          <div class="boxDataExp">
+              <div class="col s3 m3 l3">
+                  <span class="boxDataExpInfo" id="empresaData"></span>
+              </div>
+              <div class="col s3 m3 l3">
+                  <span class="boxDataExpInfo" id="cargoData"></span>
+              </div>
+              <div class="col s2 m2 l2">
+                  <span class="boxDataExpInfo" id="fecha1Data"></span>
+              </div>
+              <div class="col s2 m2 l2 ">
+                  <span class="boxDataExpInfo" id="fecha2Data"></span>
+              </div>
+              <div class="col s2 m2 l2 right-align">
+                  <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1"><i class="small material-icons">cancel</i></div>
+              </div>
+          </div>
+      </div>
+      <div id="boxDataExp2">
+          <div class="boxDataExp">
+              <div class="col s3 m3 l3">
+                  <span class="boxDataExpInfo" id="empresaData2"></span>
+              </div>
+              <div class="col s3 m3 l3">
+                  <span class="boxDataExpInfo" id="cargoData2"></span>
+              </div>
+              <div class="col s2 m2 l2">
+                  <span class="boxDataExpInfo" id="fecha1Data2"></span>
+              </div>
+              <div class="col s2 m2 l2 ">
+                  <span class="boxDataExpInfo" id="fecha2Data2"></span>
+              </div>
+              <div class="col s2 m2 l2 right-align">
+                  <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2"><i class="small material-icons">cancel</i></div>
+              </div>
+          </div>
+      </div>
+      <div id="boxDataExp3">
+          <div class="boxDataExp">
+              <div class="col s3 m3 l3">
+                  <span class="boxDataExpInfo" id="empresaData3"></span>
+              </div>
+              <div class="col s3 m3 l3">
+                  <span class="boxDataExpInfo" id="cargoData3"></span>
+              </div>
+              <div class="col s2 m2 l2">
+                  <span class="boxDataExpInfo" id="fecha1Data3"></span>
+              </div>
+              <div class="col s2 m2 l2 ">
+                  <span class="boxDataExpInfo" id="fecha2Data3"></span>
+              </div>
+              <div class="col s2 m2 l2 right-align">
+                  <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3"><i class="small material-icons">cancel</i></div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
 <!-- ----------------------------------------------COPIA DEL CODIGO DE PROCESO 3 ------------------------------------ -->
@@ -1246,8 +1382,42 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
-  <script language="javascript">
-    //horas Proceso 5
+  <script language="Javascript">
+    // RUT/Pasaporte
+    if($('#tipo_doc').val() == 'rut') {
+      $('#rut_box').show();
+      $('#pasaporte_box').hide();
+    } else {
+      $('#pasaporte_box').show();
+      $('#rut_box').hide();
+    }
+
+    // Estudios
+    if($('#tipoEstudio').val() == 'Secundario') {
+      $('.carreraBox').hide();
+    } else {
+      $('.carreraBox').show();
+    }
+    if($('#estado_estudio').val() == 'En Curso') {
+      $('#box_estudio').hide();
+      $("#fechaEstudio").prop("checked", true);
+    } else {
+      $('#box_estudio').show();
+      $("#fechaEstudio").prop("checked", false);
+    }
+
+    // Otros Conocimientos
+    $('#curso_box').show();
+    $('#btn-send-curso1').<?php echo ($maxcursos>=1?"hide()":"show()"); ?>;
+    $('#btn-delete-curso1').<?php echo ($maxcursos>=1?"show()":"hide()"); ?>;
+    $('#curso2_box').<?php echo ($maxcursos>=2?"show()":"hide()"); ?>;
+    $('#btn-send-curso2').<?php echo ($maxcursos>=2?"hide()":"show()"); ?>;
+    $('#btn-delete-curso2').<?php echo ($maxcursos>=2?"show()":"hide()"); ?>;
+    $('#curso3_box').<?php echo ($maxcursos>=3?"show()":"hide()"); ?>;
+    $('#btn-send-curso3').<?php echo ($maxcursos>=3?"hide()":"show()"); ?>;
+    $('#btn-delete-curso3').<?php echo ($maxcursos>=3?"show()":"hide()"); ?>;
+
+    // Horarios Disponibles
     var containerHoras = $('#containerInputHoras');
     var inputDiaHora1 = $('#inputDiaHora');
     var boxData1 = $('#dias1Box');
