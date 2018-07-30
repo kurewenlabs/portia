@@ -515,6 +515,10 @@
 //        print_r($_FILES['file']);
 //        print '</pre>';
 
+        mail($_POST['email'] . ', analista@portia.cl', 'Postulación Enviada', 
+            'Se ha registrado la postulación de ' . $_POST['first_name'] . ' ' . $_POST['last_name'], 
+            'From: noresponder@portia.cl');
+
 //   }
 
     if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
