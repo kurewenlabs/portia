@@ -105,42 +105,11 @@
 
         $fila_post .= '<td><i class="small material-icons">attach_file</i></td>
                         <td><!-- Modal Trigger -->
-              <a class="waves-effect btn-flat modal-trigger" href="adminedit.php?identificador='. $row['id_post'] .'">Editar</a>
-              <!-- Modal ver -->
-              <div id="modal1" class="modal">
-                <div class="modal-content">
-                  <div class="row">
-                    <div class="col s6 m6 l6 ">
-                       <a class="waves-effect btn-flat" id="test_admin" href="userportia.php">Volver</a>
-                    </div>
-                    <div class="col s6 m6 l6">
-                       <a class="waves-effect btn-flat">Exportar PDF</a>
-                    </div>
-                  </div>
-                  <h4>Previsualización Curriculum</h4>
-                  <p>Usted podrá editar el curriculum ingresado además de clasificar su estado</p>
-            
-            <div class="row">
-              <div class="col s4 m4 l4">
-                <p>Clasificar</p>
-                
-              </div>
-            </div>
-            
-                </div>                                <!--MODAL CONTENT END-->
-                <div class="modal-footer">
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div>
-              </div></td>
-                        <td><!-- Modal editar -->
-              <a class="waves-effect btn-flat modal-trigger" href="clasificacionuser.php?identificador='. $row['id_post'] .'">Ver</a>
-            
-              <!-- Modal Structure -->
-              <div id="modal2" class="modal">
-                <div class="modal-content">
-                
-                </div>
-              </div></td>';
+              <a class="waves-effect btn-flat" href="adminedit.php?identificador='. $row['id_post'] .'">Editar</a>
+              </td>
+                        <td>
+              <a class="waves-effect btn-flat" href="clasificacionuser.php?identificador='. $row['id_post'] .'">Ver</a>
+                </td>';
         $fila_post .= '</tr>';
 
         return $fila_post;
