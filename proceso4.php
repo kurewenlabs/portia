@@ -165,7 +165,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
       </div>
       <div class="row">
         <div class="col s12 m12 l12 box box_referencias boxsmart">
-          <p id="referenciaData"></p>
+          <p id="referenciaData" style="margin: 0"></p>
         </div>
       </div>
       <div class="row"></div>
