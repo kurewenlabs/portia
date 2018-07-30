@@ -81,12 +81,6 @@
     <?php
     function imprimir_fila_post($row){
 
-         //   print '<pre>';
-         //   print_r($row);
-         //   print '</pre>';
-
-       
-
         $fecha_post = date("d/m/Y", strtotime($row["fecha_post"]));
 
         $color='';
@@ -364,12 +358,7 @@
 <script src="src/js/postulaciones.js"></script>
 <script>
     $("#exportXml").click(function(){
-        $(".printTable.active >table").table2excel({
-            // exclude CSS class
-            exclude: ".noExl",
-            name: "Worksheet Name",
-            filename: "Postulaciones" //do not include extension
-        });
+        window.location.href="userportia.xls.php";
     });
 </script>
 </body>
