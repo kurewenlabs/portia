@@ -68,13 +68,23 @@ echo "</pre>"*/
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="chip col s1 offset-s1">
+    <div class="divider"></div>
+    <div class="row"><!--titulo-->
+        <div class="col s8 m8 l8">
+            <h3>Cargos Seleccionados</h3>
+        </div>
+
+<div class="row">
+    <div class="col s2 col m2 col l2">
+            <a  data-target="modal1" class="btn btn-small modal-trigger botonCargos">Editar cargos</a>
+        </div>
+        
+</div>
+       <div class="row">
+          <div class="chip col s1 offset-s1" id="chip">
             <?php echo $result['nombre']?><i class="close material-icons">close</i>
         </div>
-        <div class="col s2 col m2 col l2">
-            <a  data-target="modal1" class="btn modal-trigger">Editar cargos</a>
-        </div>
+        </div> 
     </div>
 
 <!-- Modal EDITAR CARGOS -->
@@ -416,10 +426,11 @@ echo "</pre>"*/
 
 
     <div class="modal-footer">
-      <a href="clasificacionuser.php" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
+      <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
     </div>
   </div>
 
+    </div>
 
 
 
