@@ -73,7 +73,7 @@ echo "</pre>"*/
             <?php echo $result['nombre']?><i class="close material-icons">close</i>
         </div>
         <div class="col s2 col m2 col l2">
-            <a href="index.html" data-target="modal1" class="btn modal-trigger">Editar cargos</a>
+            <a  data-target="modal1" class="btn modal-trigger">Editar cargos</a>
         </div>
     </div>
 

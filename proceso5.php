@@ -23,7 +23,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
  </nav>
 
  <div class="row"><!--titulo-->
-   <div class="col s4 col m4 col l4">
+   <div class="col s6 col m6 col l6">
      <h3>Tus Cargos Seleccionados</h3>
    </div>
     <div class="col s2 col m2 col l2 return">
@@ -75,16 +75,16 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
             <div class=" input-field col s6 m6 l6">
               <select class="browser-default" onselect="this.className = ''" name="isapre" id="isapre">
                 <option value="">Isapre o Fonasa</option>
-                <option value="Fonasa">Fonasa</option>
-                <option value="Consalud">Consalud</option>
-                <option value="Colmena">Colmena</option>
-                <option value="Cruz Blanca">Cruz Blanca</option>
-                <option value="Chuquicamata">Chuquicamata</option>
                 <option value="Banmédica">Banmédica</option>
+                <option value="Chuquicamata">Chuquicamata</option>
+                <option value="Consalud">Consalud</option>
+                <option value="Colmena">Colmena</option> 
+                <option value="Cruz Blanca">Cruz Blanca</option>
                 <option value="Cruz del Norte">Cruz del Norte</option>
-                <option value="Nueva Masvida">Nueva Masvida</option>
+                <option value="Fonasa">Fonasa</option>
                 <option value="Fundación">Fundación</option>
                 <option value="Fusat">Fusat</option>
+                <option value="Nueva Masvida">Nueva Masvida</option>
                 <option value="Río Blanco">Río Blanco</option>
                 <option value="San Lorenzo">San Lorenzo</option>
                 <option value="Vida Tres">Vida Tres</option>
@@ -482,13 +482,13 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
           <div id="containerDataHoras">
               <div class="boxSmartContent" id="dias1Box">
                   <div class="col s4 m4 l4">
-                      <span style="color: gray; font-size: 20px" id="diasData1"></span>
+                      <span style="font-size: 20px" id="diasData1"></span>
                   </div>
                   <div class="col s5 m5 l5">
-                      <span style="color: gray; font-size: 20px" id="comunasData1"></span>
+                      <span style="font-size: 20px" id="comunasData1"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
-                  <span style="color: gray; font-size: 20px" class="right-align" >
+                  <span style="font-size: 20px" class="right-align" >
                       <span id="horasData1"></span>
                       <span>a</span>
                       <span id="horasData1h"></span>
@@ -500,13 +500,13 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
               </div>
               <div class="boxSmartContent" id="dias2Box">
                   <div class="col s4 m4 l4">
-                      <span style="color: gray; font-size: 20px" id="diasData2"></span>
+                      <span style="font-size: 20px" id="diasData2"></span>
                   </div>
                   <div class="col s5 m5 l5">
-                      <span style="color: gray; font-size: 20px" id="comunasData2"></span>
+                      <span style="font-size: 20px" id="comunasData2"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
-                  <span style="color: gray; font-size: 20px" class="right-align" >
+                  <span style="cfont-size: 20px" class="right-align" >
                       <span id="horasData2"></span>
                       <span>a</span>
                       <span id="horasData2h"></span>
@@ -518,13 +518,13 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
               </div>
               <div class="boxSmartContent" id="dias3Box">
                   <div class="col s4 m4 l4">si 
-                      <span style="color: gray; font-size: 20px" id="diasData3"></span>
+                      <span style=" font-size: 20px" id="diasData3"></span>
                   </div>
                   <div class="col s5 m5 l5">
-                      <span style="color: gray; font-size: 20px" id="comunasData3"></span>
+                      <span style=" font-size: 20px" id="comunasData3"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
-                  <span style="color: gray; font-size: 20px" class="right-align" >
+                  <span style=" font-size: 20px" class="right-align" >
                       <span id="horasData3"></span>
                       <span>a</span>
                       <span id="horasData3h"></span>
@@ -536,13 +536,13 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
               </div>
               <div class="boxSmartContent" id="dias4Box">
                   <div class="col s4 m4 l4">
-                      <span style="color: gray; font-size: 20px" id="diasData4"></span>
+                      <span style=" font-size: 20px" id="diasData4"></span>
                   </div>
                   <div class="col s5 m5 l5">
-                      <span style="color: gray; font-size: 20px" id="comunasData4"></span>
+                      <span style=" font-size: 20px" id="comunasData4"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
-                  <span style="color: gray; font-size: 20px" class="right-align" >
+                  <span style=" font-size: 20px" class="right-align" >
                       <span id="horasData4"></span>
                       <span>a</span>
                       <span id="horasData4h"></span>
@@ -554,13 +554,13 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
               </div>
               <div class="boxSmartContent" id="dias5Box">
                   <div class="col s4 m4 l4">
-                      <span style="color: gray; font-size: 20px" id="diasData5"></span>
+                      <span style=" font-size: 20px" id="diasData5"></span>
                   </div>
                   <div class="col s5 m5 l5">
-                      <span style="color: gray; font-size: 20px" id="comunasData5"></span>
+                      <span style=" font-size: 20px" id="comunasData5"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
-                  <span style="color: gray; font-size: 20px" class="right-align" >
+                  <span style=" font-size: 20px" class="right-align" >
                       <span id="horasData5"></span>
                       <span>a</span>
                       <span id="horasData5h"></span>

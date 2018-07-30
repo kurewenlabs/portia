@@ -22,7 +22,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
  </nav>
 
  <div class="row"><!--titulo-->
-   <div class="col s4 col m4 col l4">
+   <div class="col s6 col m6 col l6">
      <h3>Tus Cargos Seleccionados</h3>
    </div>
     <div class="col s2 col m2 col l2 return">
@@ -89,7 +89,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref">Telefono</label>
-                      <input  id="telefonoref" type="tel" class="validate">
+                      <input  id="telefonoref" type="tel" class="validate" placeholder="+56(9)">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref">Email</label>
@@ -117,7 +117,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref2">Telefono</label>
-                      <input  id="telefonoref2" type="tel" class="validate">
+                      <input  id="telefonoref2" type="tel" class="validate" placeholder="+56(9)">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref2">Email</label>
@@ -147,7 +147,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref3">Telefono</label>
-                      <input  id="telefonoref3" type="tel" class="validate">
+                      <input  id="telefonoref3" type="tel" class="validate" placeholder="+56(9)">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref3">Email</label>

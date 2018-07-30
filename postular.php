@@ -25,7 +25,7 @@
  </nav>
 
  <div class="row"><!--titulo-->
-   <div class="col s4 col m4 col l4">
+   <div class="col s6 col m6 col l6">
      <h3>Tus Cargos Seleccionados</h3>
    </div>
     <div class="col s2 col m2 col l2 return">
@@ -38,9 +38,17 @@
         echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
     } ?>
   </div>
-</div>
+
+
 
 <div class="container"> 
+  <div class="row">
+  <div class="col s12 m12 l12">
+    <h5 class="center">Revise su postulación completa antes de enviar a Portia. Usted podrá editar o corregir cualquier dato de su postulación en esta pantalla.</h5>
+    <p class="return center">Consejo: Asegúrese que todos sus datos personales y contacto estén bien escritos antes de postular.</p>
+  </div>
+</div>
+<div class="row"></div>
 <div class="row">
   <div class="col s8 m8 l8">
     <h4>Datos Personales</h4>
@@ -51,8 +59,6 @@
     $i = 0;
   ?>
   <div class="col s4 m4 l4">
-    <a class="waves-effect  btn-flat editar" href="#datosPersonales">editar</a>
-  </div>
 </div>
   <div class="row"><!--documentos-->
     <div class="">
@@ -356,9 +362,6 @@
   <div class="col s8 m8 l8">
     <h4>Expriencia Laboral</h4>
   </div>
-  <div class="col s4 m4 l4">
-    <a class="waves-effect  btn-flat editar" href="#experienciaLaboral">editar</a>
-  </div>
 </div>
 <?php
   $datos = $data["pos"]["experiencia"];
@@ -547,9 +550,6 @@
   <div class="col s8 m8 l8">
     <h4>Referencias Laborales</h4>
   </div>
-  <div class="col s4 m4 l4">
-    <a class="waves-effect  btn-flat editar" href="#referenciasLaborales">editar</a>
-  </div>
 </div>
 <?php
   $datos = $data["pos"]["referencia"];
@@ -674,9 +674,6 @@
 <div class="row">
   <div class="col s8 m8 l8">
     <h4>Datos Previsionales</h4>
-  </div>
-  <div class="col s4 m4 l4">
-    <a class="waves-effect  btn-flat editar" href="#datosPrevision">editar</a>
   </div>
 </div>
 <?php
@@ -1015,9 +1012,6 @@
 <div class="row">
   <div class="col s8 m8 l8">
     <h4>Datos Uniforme</h4>
-  </div>
-  <div class="col s4 m4 l4">
-    <a class="waves-effect  btn-flat editar" href="#uniforme">editar</a>
   </div>
 </div>
 <?php

@@ -22,7 +22,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
  </nav>
 
  <div class="row"><!--titulo-->
-   <div class="col s4 col m4 col l4">
+   <div class="col s6 col m6 col l6">
      <h3>Tus Cargos Seleccionados</h3>
    </div>
     <div class="col s2 col m2 col l2 return">
