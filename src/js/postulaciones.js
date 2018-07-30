@@ -1387,10 +1387,10 @@ function myFunctionRef() {
 
 /*MULTIPLE SELECT 2*/
 $(document).ready(function() {
-/*    $('.js-example-basic-multiple').select2();
+
 $(".js-example-theme-multiple").select2({
   theme: "classic"
-});*/
+});
 });
 
 

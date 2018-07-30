@@ -13,6 +13,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="dist/css/main.min.css">
   <!--REQUIRED STYLE SHEETS-->
   </head>
@@ -91,7 +92,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
             </div>
       </div>
       <div class="row">
-        <h4>Agregar Horario</h4>
+        <h4>Comunas disponibles para Trabajar</h4>
         <div class="divider"></div>
       </div>
                   <?php
@@ -142,8 +143,8 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                         }
                     }
                     </script>
-                        <div class=" input-field col s4 m4 l4">Comuna (Máximo 5)
-                          <select class="browser-default js-example-basic-multiple" id="comuna" multiple="multiple" onselect="this.className = ''" name="Comuna">
+                        <div class=" input-field col s4 m4 l4">Comuna
+                          <select class=" browser-default" id="comuna"  onselect="this.className = ''" name="Comuna">
                           </select>
                       </div> 
                   </div>
@@ -157,7 +158,9 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
           }
         }
       </script>
+      <div class="divider"></div>
       <div id="containerInputHoras">
+        <h4>Seleccione Horario</h4>
           <div id="inputDiaHora">
               <div class="row">
                   <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
@@ -593,6 +596,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type = "text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
  </body>
