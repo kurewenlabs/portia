@@ -86,9 +86,9 @@
         $color='';
         if($row["estado_post"] == 'Seleccionado'){
             $color='green';
-        }else if($row["estado_post"] == 'No apto'){
-            $color='orange';
         }else if($row["estado_post"] == 'Fuera de Rango'){
+            $color='orange';
+        }else if($row["estado_post"] == 'No apto'){
             $color='grey';
         }else{//Sin Clasificar
             $color='yellow';
@@ -104,7 +104,7 @@
                         <td><span class="badge '.$color.'"></span><br/>'.$row["estado_post"].'</td>';
 
         $fila_post .= '<td><i class="small material-icons">attach_file</i></td>
-                        <td><!-- Modal Trigger -->
+                        <td>
               <a class="waves-effect btn-flat" href="adminedit.php?identificador='. $row['id_post'] .'">Editar</a>
               </td>
                         <td>
