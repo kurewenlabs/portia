@@ -3,7 +3,7 @@
   $data = $_SESSION["postdata"];
   $dataPostulacion = $data["pos"]["pa"];
 
-  print_r($data);
+  // print_r($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +35,7 @@
  <div class="row">
   <div class="col s1"></div>
     <?php foreach($dataPostulacion as $cargo) {
-        echo "<div class='chip col''>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
+        echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
     } ?>
   </div>
 </div>
@@ -272,15 +272,15 @@
         <div class=" input-field col s4 m4 l4">Licencia de Conducir
           <select onselect="this.className = ''" name="licencia" class="browser-default" id="licencia">
             <option value=""></option>
-            <option value="Clase A1" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A1') { echo "selected"; $i++; }  ?>>Clase A1</option>
-            <option value="Clase A2" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A2') { echo "selected"; $i++; }  ?>>Clase A2</option>
-            <option value="Clase A3" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A3') { echo "selected"; $i++; }  ?>>Clase A3</option>
-            <option value="Clase A4" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A4') { echo "selected"; $i++; }  ?>>Clase A4</option>
-            <option value="Clase A5" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A5') { echo "selected"; $i++; }  ?>>Clase A5</option>
-            <option value="Clase B" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase B') { echo "selected"; $i++; }  ?>>Clase B</option>
-            <option value="Clase C" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase C') { echo "selected"; $i++; }  ?>>Clase C</option>
-            <option value="Clase D" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase D') { echo "selected"; $i++; }  ?>>Clase D</option>
-            <option value="Clase E" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase E') { echo "selected"; $i++; }  ?>>Clase E</option>
+            <option value="Clase A1" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A1') { echo "selected"; }  ?>>Clase A1</option>
+            <option value="Clase A2" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A2') { echo "selected"; }  ?>>Clase A2</option>
+            <option value="Clase A3" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A3') { echo "selected"; }  ?>>Clase A3</option>
+            <option value="Clase A4" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A4') { echo "selected"; }  ?>>Clase A4</option>
+            <option value="Clase A5" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase A5') { echo "selected"; }  ?>>Clase A5</option>
+            <option value="Clase B" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase B') { echo "selected"; }  ?>>Clase B</option>
+            <option value="Clase C" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase C') { echo "selected"; }  ?>>Clase C</option>
+            <option value="Clase D" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase D') { echo "selected"; }  ?>>Clase D</option>
+            <option value="Clase E" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase E') { echo "selected"; }  ?>>Clase E</option>
             <option value="Clase F" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'] == 'Clase F') { echo "selected"; $i++; }  ?>>Clase F</option>
           </select>
         </div>
@@ -389,23 +389,20 @@
         <div class=" input-field col s4 m4 l4" >
             <label for="cargo">Cargo</label>
             <input  id="cargo" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
-
         </div>
         <div class="col s2 m2 l2 input-field dateUntil">
             <label for="txtDate4">Desde mes/año</label>
             <input type="text" class="date" id="txtDate4" value="<?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; } ?>">
             <p>
                 <label for="fechaCargo">
-                    <input type="checkbox" value="Al presente" id="fechaCargo">
+                    <input type="checkbox" value="Al presente" id="fechaCargo" <?php if (array_key_exists('fechaHasta', $datos[$i]) && $datos[$i]['fechaHasta']=="") { echo "checked"; } ?>>
                     <span>Al presente</span>
                 </label>
             </p>
         </div>
         <div class="col s2 m2 l2 input-field" id="input-fecha-until">
-          
                 <label for="txtDate4h">Hasta mes/año</label>
-                <input type="text" class="date" id="txtDate4h" value="<?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; } ?>">
-            
+                <input type="text" class="date" id="txtDate4h" value="<?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; $i++; } ?>">            
         </div>
         <div class="col s2 m2 l2">
             <div id="boton_exp_1" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar()">Agregar</div>
@@ -416,19 +413,19 @@
       <div class="row">
           <div class=" input-field col s4 m4 l4">
               <label for="empresa2">Empresa </label>
-              <input  id="empresa2" type="text" class="validate">
+              <input  id="empresa2" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
           </div>
           <div class=" input-field col s4 m4 l4" >
               <label for="cargo2">Cargo</label>
-              <input  id="cargo2" type="text" class="validate">
+              <input  id="cargo2" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
 
           </div>
           <div class="col s2 m2 l2 input-field">
               <label for="txtDate42">Desde mes/año</label>
-              <input type="text" class="date" id="txtDate42">
+              <input type="text" class="date" id="txtDate42" value="<?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; } ?>">
               <p>
                   <label for="fechaCargo2">
-                      <input type="checkbox" value="Al presente" id="fechaCargo2">
+                      <input type="checkbox" value="Al presente" id="fechaCargo2" <?php if (array_key_exists('fechaHasta', $datos[$i]) && $datos[$i]['fechaHasta']=="") { echo "checked"; } ?>>
                       <span>Al presente</span>
                   </label>
               </p>
@@ -436,7 +433,7 @@
           <div class="col s2 m2 l2 input-field" id="input-fecha-until2">
               
                   <label for="txtDate42h">Hasta mes/año</label>
-                  <input type="text" class="date" id="txtDate42h">
+                  <input type="text" class="date" id="txtDate42h" value="<?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; $i++; } ?>">
               
           </div>
           <div class="col s2 m2 l2">
@@ -448,27 +445,27 @@
       <div class="row">
           <div class=" input-field col s4 m4 l4">
               <label for="empresa3">Empresa </label>
-              <input  id="empresa3" type="text" class="validate">
+              <input  id="empresa3" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
           </div>
           <div class=" input-field col s4 m4 l4" >
               <label for="cargo3">Cargo</label>
-              <input  id="cargo3" type="text" class="validate">
+              <input  id="cargo3" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
 
           </div>
           <div class="col s2 m2 l2 input-field">
               <label for="txtDate43">Desde mes/año</label>
-              <input type="text" class="date" id="txtDate43">
+              <input type="text" class="date" id="txtDate43" value="<?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; } ?>">
               <p>
                   <label for="fechaCargo3">
-                      <input type="checkbox" value="Al presente" id="fechaCargo3">
+                      <input type="checkbox" value="Al presente" id="fechaCargo3" <?php if (array_key_exists('fechaHasta', $datos[$i]) && $datos[$i]['fechaHasta']=="") { echo "checked"; } ?>>
                       <span>Al presente</span>
                   </label>
               </p>
           </div>
-          <div class="col s2 m2 l2 input-field"id="input-fecha-until3">
+          <div class="col s2 m2 l2 input-field" id="input-fecha-until3">
       
                   <label for="txtDate43h">Hasta mes/año</label>
-                  <input type="text" class="date" id="txtDate43h">
+                  <input type="text" class="date" id="txtDate43h" value="<?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; $i++; } ?>">
         
           </div>
           <div class="col s2 m2 l2">
@@ -478,22 +475,26 @@
   </div>
 </div>
 
+<?php 
+  $i=0;
+?>
+
 <div class="row">
   <div class="col s12 m12 l12  box boxexperiencia boxsmart">
     <p id="experienciaData"></p>
       <div id="boxDataExp1">
           <div class="boxDataExp">
               <div class="col s3 m3 l3">
-                  <span class="boxDataExpInfo" id="empresaData"></span>
+                  <span class="boxDataExpInfo" id="empresaData"><?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?></span>
               </div>
               <div class="col s3 m3 l3">
-                  <span class="boxDataExpInfo" id="cargoData"></span>
+                  <span class="boxDataExpInfo" id="cargoData"><?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?></span>
               </div>
               <div class="col s2 m2 l2">
-                  <span class="boxDataExpInfo" id="fecha1Data"></span>
+                  <span class="boxDataExpInfo" id="fecha1Data"><?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; } ?></span>
               </div>
               <div class="col s2 m2 l2 ">
-                  <span class="boxDataExpInfo" id="fecha2Data"></span>
+                  <span class="boxDataExpInfo" id="fecha2Data"><?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; $i++; } ?></span>
               </div>
               <div class="col s2 m2 l2 right-align">
                   <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1"><i class="small material-icons">cancel</i></div>
@@ -503,16 +504,16 @@
       <div id="boxDataExp2">
           <div class="boxDataExp">
               <div class="col s3 m3 l3">
-                  <span class="boxDataExpInfo" id="empresaData2"></span>
+                  <span class="boxDataExpInfo" id="empresaData2"><?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?></span>
               </div>
               <div class="col s3 m3 l3">
-                  <span class="boxDataExpInfo" id="cargoData2"></span>
+                  <span class="boxDataExpInfo" id="cargoData2"><?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?></span>
               </div>
               <div class="col s2 m2 l2">
-                  <span class="boxDataExpInfo" id="fecha1Data2"></span>
+                  <span class="boxDataExpInfo" id="fecha1Data2"><?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; } ?></span>
               </div>
               <div class="col s2 m2 l2 ">
-                  <span class="boxDataExpInfo" id="fecha2Data2"></span>
+                  <span class="boxDataExpInfo" id="fecha2Data2"><?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; $i++; } ?></span>
               </div>
               <div class="col s2 m2 l2 right-align">
                   <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2"><i class="small material-icons">cancel</i></div>
@@ -522,16 +523,16 @@
       <div id="boxDataExp3">
           <div class="boxDataExp">
               <div class="col s3 m3 l3">
-                  <span class="boxDataExpInfo" id="empresaData3"></span>
+                  <span class="boxDataExpInfo" id="empresaData3"><?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?></span>
               </div>
               <div class="col s3 m3 l3">
-                  <span class="boxDataExpInfo" id="cargoData3"></span>
+                  <span class="boxDataExpInfo" id="cargoData3"><?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?></span>
               </div>
               <div class="col s2 m2 l2">
-                  <span class="boxDataExpInfo" id="fecha1Data3"></span>
+                  <span class="boxDataExpInfo" id="fecha1Data3"><?php if (array_key_exists('fechaDesde', $datos[$i])) { echo $datos[$i]['fechaDesde']; } ?></span>
               </div>
               <div class="col s2 m2 l2 ">
-                  <span class="boxDataExpInfo" id="fecha2Data3"></span>
+                  <span class="boxDataExpInfo" id="fecha2Data3"><?php if (array_key_exists('fechaHasta', $datos[$i])) { echo $datos[$i]['fechaHasta']; $i++; } ?></span>
               </div>
               <div class="col s2 m2 l2 right-align">
                   <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3"><i class="small material-icons">cancel</i></div>
@@ -540,174 +541,6 @@
       </div>
   </div>
 </div>
-<!-- ----------------------------------------------COPIA DEL CODIGO DE PROCESO 3 ------------------------------------ -->
-
-<!-- <div id="box_experiencia">
-        <div class="row" id="">
-            <h4>Agregar Experiencia laboral</h4>
-            <span class="comentario">*Ingrese Máximo 3</span>
-            <div class="divider"></div>
-        </div>
-        <div id="experiencia_box_1">
-            <div class="row">
-                <div class=" input-field col s4 m4 l4">
-                    <label for="empresa">Empresa </label>
-                    <input  id="empresa" type="text" class="validate">
-                </div>
-                <div class=" input-field col s4 m4 l4" >
-                    <label for="cargo">Cargo</label>
-                    <input  id="cargo" type="text" class="validate">
-
-                </div>
-                <div class="col s2 m2 l2 input-field dateUntil">
-                    <label for="txtDate4">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate4">
-                    <p>
-                        <label for="fechaCargo">
-                            <input type="checkbox" value="Al presente" id="fechaCargo">
-                            <span>Al presente</span>
-                        </label>
-                    </p>
-                </div>
-                <div class="col s2 m2 l2 input-field" id="input-fecha-until">
-                  
-                        <label for="txtDate4h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate4h">
-                    
-                </div>
-                <div class="col s2 m2 l2">
-                    <div id="boton_exp_1" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar()">Agregar</div>
-                </div>
-            </div>
-        </div>
-        <div id="experiencia_box_2">
-            <div class="row">
-                <div class=" input-field col s4 m4 l4">
-                    <label for="empresa2">Empresa </label>
-                    <input  id="empresa2" type="text" class="validate">
-                </div>
-                <div class=" input-field col s4 m4 l4" >
-                    <label for="cargo2">Cargo</label>
-                    <input  id="cargo2" type="text" class="validate">
-
-                </div>
-                <div class="col s2 m2 l2 input-field">
-                    <label for="txtDate42">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate42">
-                    <p>
-                        <label for="fechaCargo2">
-                            <input type="checkbox" value="Al presente" id="fechaCargo2">
-                            <span>Al presente</span>
-                        </label>
-                    </p>
-                </div>
-                <div class="col s2 m2 l2 input-field" id="input-fecha-until2">
-                   
-                        <label for="txtDate42h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate42h">
-                    
-                </div>
-                <div class="col s2 m2 l2">
-                    <div id="boton_exp_2" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar2()">Agregar</div>
-                </div>
-            </div>
-        </div>
-        <div id="experiencia_box_3">
-            <div class="row">
-                <div class=" input-field col s4 m4 l4">
-                    <label for="empresa3">Empresa </label>
-                    <input  id="empresa3" type="text" class="validate">
-                </div>
-                <div class=" input-field col s4 m4 l4" >
-                    <label for="cargo3">Cargo</label>
-                    <input  id="cargo3" type="text" class="validate">
-
-                </div>
-                <div class="col s2 m2 l2 input-field">
-                    <label for="txtDate43">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate43">
-                    <p>
-                        <label for="fechaCargo3">
-                            <input type="checkbox" value="Al presente" id="fechaCargo3">
-                            <span>Al presente</span>
-                        </label>
-                    </p>
-                </div>
-                <div class="col s2 m2 l2 input-field"id="input-fecha-until3">
-            
-                        <label for="txtDate43h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate43h">
-             
-                </div>
-                <div class="col s2 m2 l2">
-                    <div id="boton_exp_3" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar3()">Agregar</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 m12 l12  box boxexperiencia boxsmart">
-        <p id="experienciaData"></p>
-          <div id="boxDataExp1">
-              <div class="boxDataExp">
-                  <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="empresaData"></span>
-                  </div>
-                  <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="cargoData"></span>
-                  </div>
-                  <div class="col s2 m2 l2">
-                      <span class="boxDataExpInfo" id="fecha1Data"></span>
-                  </div>
-                  <div class="col s2 m2 l2 ">
-                      <span class="boxDataExpInfo" id="fecha2Data"></span>
-                  </div>
-                  <div class="col s2 m2 l2 right-align">
-                      <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1"><i class="small material-icons">cancel</i></div>
-                  </div>
-              </div>
-          </div>
-          <div id="boxDataExp2">
-              <div class="boxDataExp">
-                  <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="empresaData2"></span>
-                  </div>
-                  <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="cargoData2"></span>
-                  </div>
-                  <div class="col s2 m2 l2">
-                      <span class="boxDataExpInfo" id="fecha1Data2"></span>
-                  </div>
-                  <div class="col s2 m2 l2 ">
-                      <span class="boxDataExpInfo" id="fecha2Data2"></span>
-                  </div>
-                  <div class="col s2 m2 l2 right-align">
-                      <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2"><i class="small material-icons">cancel</i></div>
-                  </div>
-              </div>
-          </div>
-          <div id="boxDataExp3">
-              <div class="boxDataExp">
-                  <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="empresaData3"></span>
-                  </div>
-                  <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="cargoData3"></span>
-                  </div>
-                  <div class="col s2 m2 l2">
-                      <span class="boxDataExpInfo" id="fecha1Data3"></span>
-                  </div>
-                  <div class="col s2 m2 l2 ">
-                      <span class="boxDataExpInfo" id="fecha2Data3"></span>
-                  </div>
-                  <div class="col s2 m2 l2 right-align">
-                      <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3"><i class="small material-icons">cancel</i></div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>-->
 
 <!-- _____________________________________________________REFERENCIA LABORAL_______________________________________ -->
   <div class="row">
@@ -721,6 +554,7 @@
 <?php
   $datos = $data["pos"]["referencia"];
   $i = 0;
+  $maxreferencias = sizeof($datos);
 ?>
 <div class="row"> 
   <div class="tab input-field col s5 m5 l5" id="referenciasLaborales">¿Cuenta con referencias laborales?
@@ -731,52 +565,7 @@
         </select>
       </div>
 </div>
-<div class="row">
-  <h4>Agregar Referencias</h4>
-  <span class="comentario">*Ingrese Máximo 3</span>
-  <div class="divider"></div>
-</div>
-<div class="row">
-  <div class="tab input-field col s6 m6 l6">
-     <label for="empresa2">Empresa</label>
-     <input  id="empresa2" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
-   </div>
-   <div class="tab input-field col s6 m6 l6" >
-     <label for="contacto2">Nombre del Contacto</label>
-     <input  id="contacto2" type="text" class="validate" value="<?php if (array_key_exists('nombreContacto', $datos[$i])) { echo $datos[$i]['nombreContacto']; } ?>">
-   </div>
-   <div class="row">
-     <div class="tab input-field col s4 m4 l4">
-     <label for="cargo2">Cargo</label>
-     <input  id="cargo2"type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
-   </div>
-   <div class="tab input-field col s4 m4 l4">
-     <label for="telefono2">Telefono</label>
-     <input  id="telefono2"type="text" class="validate" value="<?php if (array_key_exists('telefono', $datos[$i])) { echo $datos[$i]['telefono']; } ?>">
-   </div>
-   <div class="tab input-field col s4 m4 l4">
-     <label for="email2">Email</label>
-     <input  id="email2" type="email" class="validate" value="<?php if (array_key_exists('email', $datos[$i])) { echo $datos[$i]['email']; $i++; } ?>">
-   </div>
-  <div class="row">
-    <div class="col s2 m2 l2">
-     <a href="" class="waves-effect waves-light btn-large" onclick="myFunctionRef()">Agregar</a>
-    </div>
-  </div> 
-   </div>
-</div>
-
-<div class="row">
-  <div class="col s12 m12 l12 box">
-    <p id="referenciaData"></p>
-  </div>
-</div>
-<div class="row"></div>
-<div class="row"></div>
-
-<!-- ------------------------------CODIGO PROCESO 4 ---------------------------------------- -->
-
-<!--  <div id="container_ref">
+<div id="container_ref">
           <div class="row">
               <h4>Agregar Referencias</h4>
               <span class="comentario">*Ingrese Máximo 3</span>
@@ -785,24 +574,24 @@
           <div class="row" id="refs_box1">
               <div class=" input-field col s6 m6 l6 back-box3">
                   <label for="empresaref">Empresa </label>
-                  <input  id="empresaref" type="text" class="validate">
+                  <input  id="empresaref" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
               </div>
               <div class=" input-field col s6 m6 l6 back-box3" >
                   <label for="contactoref">Nombre del Contacto</label>
-                  <input  id="contactoref" type="text" class="validate">
+                  <input  id="contactoref" type="text" class="validate" value="<?php if (array_key_exists('nombreContacto', $datos[$i])) { echo $datos[$i]['nombreContacto']; } ?>">
               </div>
               <div class="row">
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="cargoref">Cargo</label>
-                      <input  id="cargoref" type="text" class="validate">
+                      <input  id="cargoref" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref">Telefono</label>
-                      <input  id="telefonoref" type="tel" class="validate">
+                      <input  id="telefonoref" type="tel" class="validate" value="<?php if (array_key_exists('telefono', $datos[$i])) { echo $datos[$i]['telefono']; } ?>">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref">Email</label>
-                      <input  id="emailref" type="email" class="validate">
+                      <input  id="emailref" type="email" class="validate" value="<?php if (array_key_exists('email', $datos[$i])) { echo $datos[$i]['email']; $i++; } ?>">
                   </div>
                   <div class="col s2 m2 l2 ">
                       <div id="boton_refs1" class="waves-effect waves-light btn-small add" onclick="myFunctionRef()">Agregar</div>
@@ -813,24 +602,24 @@
           <div class="row" id="refs_box2">
               <div class=" input-field col s6 m6 l6 back-box3">
                   <label for="empresaref2">Empresa 2</label>
-                  <input  id="empresaref2" type="text" class="validate">
+                  <input  id="empresaref2" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
               </div>
               <div class=" input-field col s6 m6 l6 back-box3" >
                   <label for="contactoref2">Nombre del Contacto</label>
-                  <input  id="contactoref2" type="text" class="validate">
+                  <input  id="contactoref2" type="text" class="validate" value="<?php if (array_key_exists('nombreContacto', $datos[$i])) { echo $datos[$i]['nombreContacto']; } ?>">
               </div>
               <div class="row">
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="cargoref2">Cargo</label>
-                      <input  id="cargoref2" type="text" class="validate">
+                      <input  id="cargoref2" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref2">Telefono</label>
-                      <input  id="telefonoref2" type="tel" class="validate">
+                      <input  id="telefonoref2" type="tel" class="validate" value="<?php if (array_key_exists('telefono', $datos[$i])) { echo $datos[$i]['telefono']; } ?>">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref2">Email</label>
-                      <input  id="emailref2" type="email" class="validate">
+                      <input  id="emailref2" type="email" class="validate" value="<?php if (array_key_exists('email', $datos[$i])) { echo $datos[$i]['email']; $i++; } ?>">
                   </div>
                   <div class="row">
                       <div class="col s2 m2 l2">
@@ -843,24 +632,24 @@
           <div class="row" id="refs_box3">
               <div class=" input-field col s6 m6 l6 back-box3">
                   <label for="empresaref3">Empresa 3</label>
-                  <input  id="empresaref3" type="text" class="validate">
+                  <input  id="empresaref3" type="text" class="validate" value="<?php if (array_key_exists('empresa', $datos[$i])) { echo $datos[$i]['empresa']; } ?>">
               </div>
               <div class=" input-field col s6 m6 l6 back-box3" >
                   <label for="contactoref3">Nombre del Contacto</label>
-                  <input  id="contactoref3" type="text" class="validate">
+                  <input  id="contactoref3" type="text" class="validate" value="<?php if (array_key_exists('nombreContacto', $datos[$i])) { echo $datos[$i]['nombreContacto']; } ?>">
               </div>
               <div class="row">
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="cargoref3">Cargo</label>
-                      <input  id="cargoref3" type="text" class="validate">
+                      <input  id="cargoref3" type="text" class="validate" value="<?php if (array_key_exists('cargo', $datos[$i])) { echo $datos[$i]['cargo']; } ?>">
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref3">Telefono</label>
-                      <input  id="telefonoref3" type="tel" class="validate">
+                      <input  id="telefonoref3" type="tel" class="validate" value="<?php if (array_key_exists('telefono', $datos[$i])) { echo $datos[$i]['telefono']; } ?>">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref3">Email</label>
-                      <input  id="emailref3" type="email" class="validate">
+                      <input  id="emailref3" type="email" class="validate" value="<?php if (array_key_exists('email', $datos[$i])) { echo $datos[$i]['email']; $i++; } ?>">
                   </div>
                   <div class="row">
                       <div class="col s2 m2 l2">
@@ -877,7 +666,8 @@
           <p id="referenciaData"></p>
         </div>
       </div>
-      -->
+<div class="row"></div>
+<div class="row"></div>
 
 <!-- _____________________________________________________DATOS PREVISIONALES_______________________________________ -->
 
@@ -1416,6 +1206,16 @@
     $('#curso3_box').<?php echo ($maxcursos>=3?"show()":"hide()"); ?>;
     $('#btn-send-curso3').<?php echo ($maxcursos>=3?"hide()":"show()"); ?>;
     $('#btn-delete-curso3').<?php echo ($maxcursos>=3?"show()":"hide()"); ?>;
+
+    // Experiencia Laboral
+    $('#boxDataExp1').<?php echo ($maxexperiencia>=1?"show()":"hide()"); ?>;
+    $('#boxDataExp2').<?php echo ($maxexperiencia>=2?"show()":"hide()"); ?>;
+    $('#boxDataExp3').<?php echo ($maxexperiencia>=3?"show()":"hide()"); ?>;
+
+    // Referencias
+    $('#refs_box1').<?php echo ($maxreferencias>=1?"show()":"hide()"); ?>;
+    $('#refs_box2').<?php echo ($maxreferencias>=2?"show()":"hide()"); ?>;
+    $('#refs_box3').<?php echo ($maxreferencias>=3?"show()":"hide()"); ?>;
 
     // Horarios Disponibles
     var containerHoras = $('#containerInputHoras');
