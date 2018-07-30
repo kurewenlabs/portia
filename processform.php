@@ -507,7 +507,7 @@
         $_SESSION["postdata"]["pos"]["horarioT"] = $_POST['data'];
         $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data']; */ 
        // save_data_in_DB();
-   } 
+   //} 
 //   if(isset($_FILES['file']) && $_POST['action'] == 'seventhpagedata'){
 //       $_SESSION["postdata"]["pos"]["cv"] = $_FILES['file'];
        
@@ -515,7 +515,64 @@
 //        print_r($_FILES['file']);
 //        print '</pre>';
 
-//   }
+        require('src/mailer/PHPMailerAutoload.php');
+
+        $datos = $_SESSION["postdata"]["pos"];
+        $email = '';
+        $nombre = '';
+        $postulaciones = '';
+        $data_array = $datos["pa"];
+        foreach($data_array as $field) {
+            $postulaciones .= $field["nom"] . ', ';
+        }
+        $postulaciones = substr($postulaciones, 0, strlen($postulaciones)-2);
+        $data_array = $datos["datos"];
+        foreach($data_array as $field) {
+            if (array_key_exists('noms', $field)) {
+                $nombre = $field["noms"];
+            }
+            if (array_key_exists('apeP', $field)) {
+                $nombre .= ' ' . $field["apeP"];
+            }
+            if (array_key_exists('apeP', $field)) {
+                $nombre .= ' ' . $field["apeM"];
+            }
+            if (array_key_exists('email', $field)) {
+                $email = $field["email"];
+            }
+        }
+
+        error_log('To: ' . $nombre . ' <' . $email . '>');
+        error_log('Jobs: ' . $postulaciones);
+
+        error_log((extension_loaded('openssl')?'SSL loaded':'SSL not loaded'));
+        error_log('Sending mail...');
+
+        $mail = new PHPMailer();
+
+        $mail->AddAddress($email, $nombre);
+        $mail->AddAddress('andres@kurewen.cl', 'Andrés Muñoz');
+        // $mail->AddAddress('curzua@portia.cl', 'curzua@portia.cl');
+        // $mail->AddAddress('drincon@portia.cl', 'drincon@portia.cl');
+        // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
+        $mail->Subject = 'Postulación enviada con éxito';
+        $mail->Body = 'Se ha registrado la postulación de ' . $nombre . ' a los cargos de ' . $postulaciones . '.'; 
+        $mail->From = "contacto@kurewen.cl";
+        $mail->FromName = "Postulaciones Portia";
+        
+        $mail->IsSMTP();
+        $mail->Host = 'mail.kurewen.cl';
+        $mail->SMTPSecure = 'ssl'; // tls
+        $mail->Port = 465; // 587
+        $mail->SMTPAuth = true;
+        $mail->Username = 'andres@kurewen.cl';
+        $mail->Password = 'Andreskurewen';
+
+        $mail->send();
+
+        error_log('DONE!');
+
+    }
 
     if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
         print '<pre>';

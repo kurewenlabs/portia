@@ -48,7 +48,7 @@ echo "</pre>";*/
             <a class="waves-effect btn-flat botonadmin" href="userportia.html.php">Volver</a>
         </div>
         <div class="col s6 m6 l6">
-            <a type="button" onclick="window.print();"  class="waves-effect btn-flat botonadmin2"><i class="tiny material-icons">picture_as_pdf</i>Exportar PDF</a>
+            <a type="button" onclick="document.location.href = 'adminedit.pdf.php?identificador=<?php echo $id; ?>';"  class="waves-effect btn-flat botonadmin2"><i class="tiny material-icons">picture_as_pdf</i>Exportar PDF</a>
 
         </div>
     </div>
