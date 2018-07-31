@@ -186,10 +186,10 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   <div class="col s2 m2 l2">
                       <span class="boxDataExpInfo" id="fecha1Data"></span>
                   </div>
-                  <div class="col s2 m2 l2 ">
+                  <div class="col s3 m3 l3 ">
                       <span class="boxDataExpInfo" id="fecha2Data"></span>
                   </div>
-                  <div class="col s2 m2 l2 right-align">
+                  <div class="col s1 m1 l1 right-align">
                       <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1"><i class="small material-icons">cancel</i></div>
                   </div>
               </div>
@@ -205,10 +205,10 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   <div class="col s2 m2 l2">
                       <span class="boxDataExpInfo" id="fecha1Data2"></span>
                   </div>
-                  <div class="col s2 m2 l2 ">
+                  <div class="col s3 m3 l3 ">
                       <span class="boxDataExpInfo" id="fecha2Data2"></span>
                   </div>
-                  <div class="col s2 m2 l2 right-align">
+                  <div class="col s1 m1 l1 right-align">
                       <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2"><i class="small material-icons">cancel</i></div>
                   </div>
               </div>
@@ -224,10 +224,10 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   <div class="col s2 m2 l2">
                       <span class="boxDataExpInfo" id="fecha1Data3"></span>
                   </div>
-                  <div class="col s2 m2 l2 ">
+                  <div class="col s3 m3 l3 ">
                       <span class="boxDataExpInfo" id="fecha2Data3"></span>
                   </div>
-                  <div class="col s2 m2 l2 right-align">
+                  <div class="col s1 m1 l1 right-align">
                       <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3"><i class="small material-icons">cancel</i></div>
                   </div>
               </div>

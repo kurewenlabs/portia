@@ -27,7 +27,7 @@
     <h2 style="text-align: center;">Tu Postulación ha sido enviada con Éxito!</h2>
 
     <div class="col s12  m12  l12 center">
-      <a href="index.html" class="endLogo">Volver a cargos</a>
+      <a href="index.php" >Volver a cargos</a>
     </div>
   </div>
 

@@ -45,23 +45,25 @@
   <div class="row">
   <div class="col s12 m12 l12">
     <h5 class="center">Revise su postulación completa antes de enviar a Portia. Usted podrá editar o corregir cualquier dato de su postulación en esta pantalla.</h5>
-    <p class="return center">Consejo: Asegúrese que todos sus datos personales y contacto estén bien escritos antes de postular.</p>
+    <p class="center">Consejo: Asegúrese que todos sus datos personales y contacto estén bien escritos antes de postular.</p>
   </div>
 </div>
-<div class="row"></div>
 <div class="row">
   <div class="col s8 m8 l8">
     <h4>Datos Personales</h4>
   </div>
+</div>
+<div class="row">
+  
+
   <form id="postularform" onsubmit="return false;">         
   <?php
     $datos = $data["pos"]["datos"];
     $i = 0;
   ?>
-  <div class="col s4 m4 l4">
-</div>
+
   <div class="row"><!--documentos-->
-    <div class="">
+
       <div class=" input-field col s4 m4 l4">Documento de Identificacion
         <select class="browser-default" onselect="this.className = ''" name="documento" id="tipo_doc">
           <option value="rut" <?php if (array_key_exists('rut', $datos[0])) echo "selected" ?>>RUT</option>
@@ -76,7 +78,7 @@
         <label for="Pasaporte">Pasaporte</label>
         <input  id="Pasaporte" type="tel" class="validate rut_box" value="<?php if (array_key_exists('pasaporte', $datos[$i])) { echo $datos[$i]['pasaporte']; $i++; } ?>">
       </div>
-    </div>
+   </div>
   </div><!--documentos-->
 <div class="row"><!--datos identificacion-->
   <div class="tab">
@@ -353,7 +355,7 @@
   <div class="row">
   </div>
   <div class="row">
-    <div class="col s12 m12 l12 box" id="cursoData">    
+    <div class="col s12 m12 l12 boxsmart" id="cursoData">    
       <input type="hidden" id="cursoData_form">
     </div>
   </div>
@@ -484,7 +486,7 @@
 
 <div class="row">
   <div class="col s12 m12 l12  box boxexperiencia boxsmart">
-    <p id="experienciaData"></p>
+    <p id="experienciaData" style="margin: 0"></p>
       <div id="boxDataExp1">
           <div class="boxDataExp">
               <div class="col s3 m3 l3">
@@ -662,8 +664,8 @@
              
       </div>
       <div class="row">
-        <div class="col s12 m12 l12 box box_referencias boxsmart">
-          <p id="referenciaData"></p>
+        <div class="col s12 m12 l12  box_referencias boxsmart">
+          <p id="referenciaData" style="margin: 0"></p>
         </div>
       </div>
 <div class="row"></div>
@@ -792,7 +794,7 @@
       ?>
   <!-- ------------------------------------------------------------- CAJA DE HORARIOS AGREGADOS-------------------------- -->
       <div class="row">
-        <div class="col s12 m12 l12 box boxsmart" >
+        <div class="col s12 m12 l12  boxsmart" >
           <div id="containerDataHoras">
               <div class="boxSmartContent" id="dias1Box">
                 <?php
@@ -1000,11 +1002,7 @@
         </div>
 
       </div>
-<div class="row">
-  <div class="col s12 m12 l12 box">
-    
-  </div>
-</div>
+
 <div class="row"></div>
 <div class="row"></div>
 <!-- _____________________________________________________DATOS UNIFORME_______________________________________ -->
@@ -1148,7 +1146,7 @@
 
 <!-- -----------------------------------------------BOTONES FINAL --------------------------------- -->
 <div class="row">
-  <div class="col s6 m6 l6 pull-m6 right">
+  <div class="col s6 m6 l6 right">
     <button type="submit" class="waves-effect waves-light btn right" >Postular</button>
   </div>
 </div>

@@ -22,15 +22,16 @@ nav {
 
 /*PROCESO*/
 .return {
-  display: online-block;
+  display: inline-block;
   margin-top: 50px; }
 
 .return a {
-  margin-left: -40px;
+  position: relative;
+  left: -150px;
   font-size: 11px; }
 
-.right a {
-  float: right; }
+.right button {
+  right: 120px; }
 
 .endLogo {
   width: 90px;
@@ -423,3 +424,11 @@ textarea {
   margin-bottom: 5px;
   margin-right: 5px;
   width: auto !important; }
+
+.chip .close {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px;
+  padding-top: 5px !important; }
