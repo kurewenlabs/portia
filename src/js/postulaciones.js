@@ -598,6 +598,23 @@ function postNumberPost(str){
                   }
 
         })
+        return false;e.preventDefault();
+        var JSONData={};
+               
+        $.ajax({
+                  url : "processform.php",
+                  type: "post",
+                  data:{ action:"lastpagedata",data:null },
+                  success:function(data){
+                          //alert("data has been saved succeesssfully");
+                          window.location.href="gracias.php";
+                          return false
+                  },
+                  error:function(){
+
+                  }
+
+        })
         return false;
     })
 });
@@ -1387,10 +1404,9 @@ function myFunctionRef() {
 
 /*MULTIPLE SELECT 2*/
 $(document).ready(function() {
-
-$(".js-example-theme-multiple").select2({
-  theme: "classic"
-});
+    $(".js-example-theme-multiple").select2({
+        theme: "classic"
+    });
 });
 
 
@@ -1436,3 +1452,43 @@ function getData(id) {
 function myFunctionGracias() {
     alert("Gracias por su respuesta!");
 }
+
+// Admin
+$("form#login").submit(function(e){
+    e.preventDefault();
+    var chkArray = [];
+    if($.trim($("#email").val()) != "" ){
+        chkArray.push( {"email" : $("#email").val()} );
+        $('#email').css('border-color' , '#f2f2f2');
+    } else {
+        notie.alert({ type: 3, text: 'Debes ingresar tu nombre de usuario (correo electrónico)', position: 'bottom' });
+        $('#email').css('border-color' , 'red');
+        return false;
+    }
+    if($.trim($("#password").val()) != "" ){
+        chkArray.push( {"password" : $("#password").val()} );
+        $('#password').css('border-color' , '#f2f2f2');
+    } else {
+        notie.alert({ type: 3, text: 'Debes ingresar tu contraseña', position: 'bottom' });
+        $('#password').css('border-color' , 'red');
+        return false;
+    }
+    $.ajax({
+        url : "adminform.php",
+        type: "post",
+        data: { action:"login", data:chkArray },
+        success:function(data) {
+            if (data == 'FAIL') {
+                notie.alert({ type: 3, text: 'Nombre de usuario o contraseña inválidos', position: 'bottom' });
+                $('#email').css('border-color' , 'red');    
+            } else {
+                window.location.href="userportia.html.php";
+            }
+            return false;
+        },
+        error:function() {
+            return false;
+        }
+    })
+    return false;
+});

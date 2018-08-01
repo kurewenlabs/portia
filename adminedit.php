@@ -29,7 +29,7 @@ $sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.rut, a.nombres, a.apell
 $result1 = $conn->query($sql);
 $result = $result1->fetch_assoc();
 ?>
-<pre><?php // print_r($result); ?></pre>
+<pre><?php // print_r($result1); ?></pre>
 <!DOCTYPE html>
 <html lang="en">
 <head>

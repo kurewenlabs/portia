@@ -25,7 +25,7 @@
   <div class="container">
         <div class="z-depth-1 grey lighten-4 row login">
 
-          <form class="col s12 m12 l12" method="post">
+          <form id="login" class="col s12 m12 l12" method="post" onSubmit="return false;">
             <div class='row'>
               <div class='col s12'>
               </div>
@@ -33,14 +33,14 @@
 
             <div class='row'>
               <div class='input-field col s12'>
-                <input class='validate' type='email' name='email' id='email' value="test-admin@portia.cl"/>
+                <input class='validate' type='email' name='email' id='email'/>
                 <label for='email'>Usuario</label>
               </div>
             </div>
 
             <div class='row'>
               <div class='input-field col s12'>
-                <input class='validate' type='password' name='password' id='password' value="test-password"/>
+                <input class='validate' type='password' name='password' id='password'/>
                 <label for='password'>Contraseña</label>
               </div>
               
@@ -49,7 +49,7 @@
             <br />
             <center>
               <div class='row'>
-                <a type='submit' name='btn_login' class='col s12 btn btn-large waves-effect teal' href="userportia.html.php">Login</a>
+                <button type="submit" class="waves-effect waves-light btn-large center" href="">Login</button>
               </div>
             </center>
           </form>
@@ -74,5 +74,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
+
+<?php if (isset($_GET["status"])) {
+  ?>
+  <script language="Javascript">
+    notie.alert({ type: 3, text: 'Nombre de usuario o contraseña inválidos', position: 'bottom' });
+    $('#email').css('border-color' , 'red');
+  </script>
+  <?php
+}
+?>
 </body>
 </html>
