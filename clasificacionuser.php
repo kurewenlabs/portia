@@ -48,7 +48,7 @@ echo "</pre>"*/
 </div>
 <div class="row">
     <h3 class="center-align">Editar postulación</h3>
-    <p class="center-align"> imprimir la fecha aqui</p><!-- DEBE PASAR LA FECHA DEL DIA AQUI -->
+  <!--  <p class="center-align"> imprimir la fecha aqui</p> DEBE PASAR LA FECHA DEL DIA AQUI -->
 </div>
 <div class="container">
     <div class="row">
