@@ -2,27 +2,34 @@
 $id = $_GET['identificador'];
 require_once 'db.php';
 global $conn;
-$sql = "SELECT * FROM (SELECT * FROM kurewenc_db_portia.tbl_postulante) a
-            LEFT JOIN
-    (
-        SELECT id_post,nombre 
-        FROM  tbl_datos_postulacion_abierta
-        -- LIMIT 0 , 1s
-    ) b ON a.id_post = b.id_post 
-    left outer join tbl_documento c ON c.id_post=b.id_post 
-    left outer join tbl_estudio d ON d.id_post=b.id_post 
-    left outer join tbl_horario_trabajo e ON e.id_post=b.id_post  
-    left outer join tbl_curso f ON f.id_post=b.id_post  
-    left outer join tbl_experiencia_laboral g ON g.id_post=b.id_post  
-    left outer join tbl_referencia_laboral h ON h.id_post=b.id_post  
-    where a.id_post='".$id."' 
-LIMIT 2";
+$sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
+               a.estado_civil, a.nacionalidad, a.telefono, a.telefono_recado, a.email, a.provincia, a.comuna, a.domicilio, 
+               a.tpolera, a.tpantalon, a.tpoleron, a.tzapatos, a.renta, a.tlicenciaconducir, a.afp, a.prestadorsalud, 
+               a.experiencialaboral, a.referencialaboral, b.nombre, c.antecedentes, d.tipo_estudio, d.titulo, d.estado, 
+               d.fecha_titulacion, e.dias, e.horarios, e.comunas, f.curso, f.fecha, g.empresa as exp_empresa, g.cargo as exp_cargo, 
+               g.fecha_desde as exp_fecha_desde, g.fecha_hasta as exp_fecha_hasta, h.empresa as ref_empresa, h.nombre_contacto
+               as ref_nombre_contacto, h.cargo as ref_cargo, h.telefono as ref_telefono, h.email as ref_email FROM 
+        (
+            SELECT * 
+            FROM tbl_postulante
+        ) a
+        LEFT JOIN
+        (
+            SELECT id_post,nombre 
+            FROM  tbl_datos_postulacion_abierta
+        ) b ON a.id_post = b.id_post 
+        LEFT OUTER JOIN tbl_documento c ON c.id_post = b.id_post 
+        LEFT OUTER JOIN tbl_estudio d ON d.id_post = b.id_post 
+        LEFT OUTER JOIN tbl_horario_trabajo e ON e.id_post = b.id_post  
+        LEFT OUTER JOIN tbl_curso f ON f.id_post = b.id_post  
+        LEFT OUTER JOIN tbl_experiencia_laboral g ON g.id_post = b.id_post  
+        LEFT OUTER JOIN tbl_referencia_laboral h ON h.id_post = b.id_post  
+        WHERE a.id_post='".$id."' 
+        LIMIT 2";
 $result1 = $conn->query($sql);
 $result = $result1->fetch_assoc();
-/*echo "<pre>";
-print_r($result);
-echo "</pre>";*/
 ?>
+<pre><?php // print_r($result); ?></pre>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -484,6 +491,7 @@ echo "</pre>";*/
         </div>
        
     </div>
+
     <form action="process_editar.php" method="POST">
         <input type="hidden" name="identificador" value="<?= $id ?>" />
         <input type="hidden" name="pagina" value="datos_personales" />
