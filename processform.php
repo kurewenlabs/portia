@@ -4,6 +4,14 @@
     //$imprimir_json_y_sqls = 1;
     $imprimir_json_y_sqls = 0;
 
+    function var_error_log( $object=null ){
+        ob_start();                    // start buffer capture
+        var_dump( $object );           // dump the values
+        $contents = ob_get_contents(); // put the buffer into a variable
+        ob_end_clean();                // end capture
+        error_log( $contents );        // log contents of the result of var_dump( $object )
+    }
+
    function save_data_in_DB(){
 
         require_once 'db.php';
@@ -37,7 +45,7 @@
         $email='';
         $provi='';
         $comuna='';
-        $domicilio='';
+        $direccion='';
         $tPolera='';
         $tPantalon='';
         $tPoleron='';
@@ -101,7 +109,7 @@
             '$email',
             '$provi',
             '$comuna',
-            '$domicilio',
+            '$direccion',
             '$tPolera',
             '$tPantalon',
             '$tPoleron',
@@ -473,49 +481,41 @@
    if(!isset($_SESSION["postdata"])){
         $_SESSION["postdata"]=array("post"=>array());
         $_SESSION["postdata"]["pos"]["id"]=$_POST['pid'];
+        var_error_log($_SESSION["postdata"]["pos"]["id"]);
    }
    if(isset($_POST['action']) && $_POST['action'] == 'firstpagedata'){
        $_SESSION["postdata"]["pos"]["pa"] = $_POST['data'];
-   } 
+       var_error_log($_SESSION["postdata"]["pos"]["pa"]);
+    } 
    if(isset($_POST['action']) && $_POST['action'] == 'secondpagedata'){
       $_SESSION["postdata"]["pos"]["datos"] = $_POST['data'];
-   } 
+      var_error_log($_SESSION["postdata"]["pos"]["datos"]);
+    } 
    if(isset($_POST['action']) && $_POST['action'] == 'thirdpagedata'){
        $_SESSION["postdata"]["pos"]["estudios"] = $_POST['data'];
+       var_error_log($_SESSION["postdata"]["pos"]["estudios"]);
        $_SESSION["postdata"]["pos"]["cursos"] = $_POST['data2'];
-   } 
+       var_error_log($_SESSION["postdata"]["pos"]["cursos"]);
+    } 
    if(isset($_POST['action']) && $_POST['action'] == 'fourthpagedata'){
        $_SESSION["postdata"]["pos"]["experiencia"] = $_POST['data'];
-   } 
+       var_error_log($_SESSION["postdata"]["pos"]["experiencia"]);
+    } 
    if(isset($_POST['action']) && $_POST['action'] == 'fifthpagedata'){
        $_SESSION["postdata"]["pos"]["referencia"] = $_POST['data'];
-   } 
+       var_error_log($_SESSION["postdata"]["pos"]["referencia"]);
+    } 
    if(isset($_POST['action']) && $_POST['action'] == 'sixthpagedata'){
        $_SESSION["postdata"]["pos"]["horarioT"] = $_POST['data'];
-   } 
+       var_error_log($_SESSION["postdata"]["pos"]["horarioT"]);
+    } 
    if(isset($_POST['action']) && $_POST['action'] == 'seventhpagedata'){
        $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data'];
+       var_error_log($_SESSION["postdata"]["pos"]["documentos"]);
        save_data_in_DB();
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'lastpagedata'){
-        /* $_SESSION["postdata"]["pos"]["pa"] = $_POST['data'];
-        $_SESSION["postdata"]["pos"]["datos"] = $_POST['data'];
-        $_SESSION["postdata"]["pos"]["estudios"] = $_POST['data'];
-        $_SESSION["postdata"]["pos"]["cursos"] = $_POST['data2'];
-        $_SESSION["postdata"]["pos"]["experiencia"] = $_POST['data'];
-        $_SESSION["postdata"]["pos"]["referencia"] = $_POST['data'];
-        $_SESSION["postdata"]["pos"]["horarioT"] = $_POST['data'];
-        $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data']; */ 
-       // save_data_in_DB();
-   //} 
-//   if(isset($_FILES['file']) && $_POST['action'] == 'seventhpagedata'){
-//       $_SESSION["postdata"]["pos"]["cv"] = $_FILES['file'];
-       
-//        print '<pre>';
-//        print_r($_FILES['file']);
-//        print '</pre>';
-
-        require('src/mailer/PHPMailerAutoload.php');
+        require_once('src/mailer/PHPMailerAutoload.php');
 
         $datos = $_SESSION["postdata"]["pos"];
         $email = '';

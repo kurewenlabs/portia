@@ -243,6 +243,9 @@ function postNumberPost(str){
                 }
           }
 
+          if($.trim($("#txtSemestres").val()) != "" ){
+            chkArray.push( {"semestres" : $("#txtSemestres").val()} );
+          }
           if($.trim($("#estado_estudio").val()) != "" ){
             chkArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
           }

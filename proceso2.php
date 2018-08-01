@@ -98,8 +98,8 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
         </div>
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
-            <label for="txtDate2ftitulacion">Semestres cursados</label>
-            <input type="text" class="date" id="txtDate2ftitulacion" placeholder="">
+            <label for="txtSemestres">Semestres cursados</label>
+            <input type="text" class="date" id="txtSemestres" placeholder="Semestres">
           </div>
         
         </div>
