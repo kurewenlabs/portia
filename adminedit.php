@@ -1,33 +1,73 @@
 <?php
-$id = $_GET['identificador'];
-require_once 'db.php';
-global $conn;
-$sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
-               a.estado_civil, a.nacionalidad, a.telefono, a.telefono_recado, a.email, a.provincia, a.comuna, a.domicilio, 
-               a.tpolera, a.tpantalon, a.tpoleron, a.tzapatos, a.renta, a.tlicenciaconducir, a.afp, a.prestadorsalud, 
-               a.experiencialaboral, a.referencialaboral, b.nombre, c.antecedentes, d.tipo_estudio, d.titulo, d.estado, 
-               d.fecha_titulacion, e.dias, e.horarios, e.comunas, f.curso, f.fecha, g.empresa as exp_empresa, g.cargo as exp_cargo, 
-               g.fecha_desde as exp_fecha_desde, g.fecha_hasta as exp_fecha_hasta, h.empresa as ref_empresa, h.nombre_contacto
-               as ref_nombre_contacto, h.cargo as ref_cargo, h.telefono as ref_telefono, h.email as ref_email FROM 
-        (
-            SELECT * 
-            FROM tbl_postulante
-        ) a
-        LEFT JOIN
-        (
-            SELECT id_post,nombre 
-            FROM  tbl_datos_postulacion_abierta
-        ) b ON a.id_post = b.id_post 
-        LEFT OUTER JOIN tbl_documento c ON c.id_post = b.id_post 
-        LEFT OUTER JOIN tbl_estudio d ON d.id_post = b.id_post 
-        LEFT OUTER JOIN tbl_horario_trabajo e ON e.id_post = b.id_post  
-        LEFT OUTER JOIN tbl_curso f ON f.id_post = b.id_post  
-        LEFT OUTER JOIN tbl_experiencia_laboral g ON g.id_post = b.id_post  
-        LEFT OUTER JOIN tbl_referencia_laboral h ON h.id_post = b.id_post  
-        WHERE a.id_post='".$id."' 
-        LIMIT 2";
-$result1 = $conn->query($sql);
-$result = $result1->fetch_assoc();
+    $id = $_GET['identificador'];
+    require_once 'db.php';
+    global $conn;
+    $sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
+                a.estado_civil, a.nacionalidad, a.telefono, a.telefono_recado, a.email, a.provincia, a.comuna, a.domicilio, 
+                a.tpolera, a.tpantalon, a.tpoleron, a.tzapatos, a.renta, a.tlicenciaconducir, a.afp, a.prestadorsalud, 
+                a.experiencialaboral, a.referencialaboral, b.nombre, c.cv, c.antecedentes, c.carnet, c.foto, d.tipo_estudio, d.titulo, d.estado, 
+                d.fecha_titulacion, d.semestres FROM 
+            (
+                SELECT * 
+                FROM tbl_postulante
+            ) a
+            LEFT JOIN
+            (
+                SELECT id_post,nombre 
+                FROM  tbl_datos_postulacion_abierta
+            ) b ON a.id_post = b.id_post 
+            LEFT OUTER JOIN tbl_documento c ON c.id_post = b.id_post 
+            LEFT OUTER JOIN tbl_estudio d ON d.id_post = b.id_post 
+            WHERE a.id_post='".$id."' 
+            LIMIT 1";
+    $result1 = $conn->query($sql);
+    $result = $result1->fetch_assoc();
+
+    $sql = "SELECT * FROM tbl_curso WHERE id_post = '" . $id . "'";
+    $result1 = $conn->query($sql);
+    if ($result1) {
+        $i = 0;
+        while($fila = $result1->fetch_assoc()) {
+           $result["cursos"][$i] = $fila;
+           $i++;
+        }
+    }
+
+    if ($result["experiencialaboral"] == 'Si') {
+        $sql = "SELECT * FROM tbl_experiencia_laboral WHERE id_post = '" . $id . "'";
+        $result1 = $conn->query($sql);
+        if ($result1) {
+            $i = 0;
+            while($fila = $result1->fetch_assoc()) {
+               $result["experiencia"][$i] = $fila;
+               $i++;
+            }
+        }
+    }
+
+    if ($result["referencialaboral"] == 'Si') {
+        $sql = "SELECT * FROM tbl_referencia_laboral WHERE id_post = '" . $id . "'";
+        $result1 = $conn->query($sql);
+        if ($result1) {
+            $i = 0;
+            while($fila = $result1->fetch_assoc()) {
+               $result["referencias"][$i] = $fila;
+               $i++;
+            }
+        }
+    }
+
+    $sql = "SELECT * FROM tbl_horario_trabajo WHERE id_post = '" . $id . "'";
+    $result1 = $conn->query($sql);
+    if ($result1) {
+        $i = 0;
+        while($fila = $result1->fetch_assoc()) {
+           $result["horarios"][$i] = $fila;
+           $i++;
+        }
+    }
+
+    // print_r($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -498,8 +538,8 @@ $result = $result1->fetch_assoc();
             <div  id="datosPersonales">
                 <div class="tab input-field col s4 m4 l4">Tipo de Documento de identificacion
                     <select class="browser-default" onselect="this.className = ''" name="documento">
-                        <option <?php if($result['documento']=="rut"){ print ' selected'; }?> value="rut">RUT</option>
-                        <option <?php if($result['documento']=="pasaporte"){ print ' selected'; }?> value="pasaporte">Pasaporte</option>
+                        <option <?php if($result['documento']=="rut"){ echo 'selected'; }?> value="rut">RUT</option>
+                        <option <?php if($result['documento']=="pasaporte"){ echo 'selected'; }?> value="pasaporte">Pasaporte</option>
                     </select>
                 </div>
                 <div class=" input-field col s4 m4 l4 " id="rut_box">
@@ -575,23 +615,79 @@ $result = $result1->fetch_assoc();
                 <label for="email">Email</label>
             </div>
         </div>
+        <?php
+            // Obtenemos la información directa del servicio y la almacenamos localmente
+            $regiones = json_decode(file_get_contents('regiones.json'), true);
+        ?>
         <div class="row">
             <div class=" input-field col s4 m4 l4">Region
-                <select class="browser-default validate" id="provincia" onselect="this.className = ''" name="region" value="<?php echo $result['provincia']?>">
-                    <option value="<?php echo $result['provincia']?>"><?php echo $result['provincia']?></option>
+                <select class="browser-default validate" id="region" onselect="this.className = ''" name="region">
+                    <option>Seleccione región</option>
+                    <?php 
+                    // Recorremos el JSON buscando los valores asociados a las regiones existentes
+                    foreach($regiones['regiones'] as $region) {
+                        echo "<option value='" . $region['region'] . "'" . ($result['provincia'] == $region['region']?" selected":"") . ">" . $region['region'] . "</option>\n";
+                    }
+                    $i++;
+                    ?>
                 </select> <!-- CONSUMIR API COMUNAS/REGIONES AQUI -->
 
             </div>
+            <script language="Javascript">
+                function cargarComunas() {
+                    var comunas = {
+                    <?php
+                        // Creamos un arreglo asociativo dinámico que llene las comunas en función de la región seleccionada
+                        $j = 1; 
+                        $k = 0;
+                        foreach($regiones['regiones'] as $region) {
+                        echo "region" . $j . " : [";
+                        $z = 1;
+                        foreach($region['comunas'] as $comuna) {
+                            echo "\"" . $comuna . "\", ";
+                            if ($region['region'] == $result['provincia'] && $comuna == $result['comuna']) {
+                            $k = $z;
+                            }
+                            $z++;
+                        }
+                        echo "\"\"],\n";
+                        $j++;
+                        }
+                        if ($k != 0) $i++;
+                        ?>
+                    };
+                    
+                    var campoRegion = document.getElementById('region');
+                    var campoComuna = document.getElementById('comuna');
+                    regionSeleccionada = campoRegion.selectedIndex;
+                    campoComuna.innerHTML = '<option>Selecciona comuna</option>';
 
+                    if (regionSeleccionada != "") {
+                    regionSeleccionada = comunas["region" + regionSeleccionada];
+                    regionSeleccionada.forEach(function(comuna){
+                        if (comuna!="") {
+                        var opcion = document.createElement('option');
+                        opcion.value = comuna;
+                        opcion.text = comuna;
+                        campoComuna.add(opcion);
+                        }
+                    });
+                    }
+
+                    campoComuna.selectedIndex = <?php echo $k; ?>;
+                }
+                </script>
             <div class=" input-field col s4 m4 l4">Comuna
-                <select class="browser-default validate" id="provincia" onselect="this.className = ''" name="comuna" value="<?php echo $result['comuna']?>">
-                    <option value="<?php echo $result['comuna']?>"><?php echo $result['comuna']?></option>
+                <select class="browser-default validate" id="comuna" onselect="this.className = ''" name="comuna">
                 </select> <!-- CONSUMIR API COMUNAS/REGIONES AQUI -->
             </div>
+            <script language="Javascript">
+                cargarComunas();
+            </script>
         </div>
         <div class="row">
             <div class="input-field col s12 m12 l12">
-                <input id="direccion" type="text" class="validate" value="<?php echo $result['comuna']?>" name="domicilio">
+                <input id="direccion" type="text" class="validate" value="<?php echo $result['domicilio']?>" name="domicilio">
                 <label for="direccion">Direccion</label>
             </div>
         </div>
@@ -612,18 +708,18 @@ $result = $result1->fetch_assoc();
             <div class="tab input-field col s4 m4 l4">
                 <select class="browser-default" onselect="this.className = ''" name="estudio">
                     <option value="">Tipo de Estudios</option>
-                    <option value="Secundario">Secundario</option>
-                    <option value="Técnico Superior">Técnico Superior</option>
-                    <option value="Universitario">Universitario</option>
-                    <option value="Posgrado">Posgrado</option>
-                    <option value="Master">Master</option>
-                    <option value="Doctorado">Doctorado</option>
-                    <option value="Otro">Otro</option>
+                    <option value="Secundario" <?php echo ($result['tipo_estudio']=='Secundario'?"selected":""); ?>>Secundario</option>
+                    <option value="Técnico Superior" <?php echo ($result['tipo_estudio']=='Técnico Superior'?"selected":""); ?>>Técnico Superior</option>
+                    <option value="Universitario" <?php echo ($result['tipo_estudio']=='Universitario'?"selected":""); ?>>Universitario</option>
+                    <option value="Posgrado"> <?php echo ($result['tipo_estudio']=='Posgrado'?"selected":""); ?></option>
+                    <option value="Master" <?php echo ($result['tipo_estudio']=='Master'?"selected":""); ?>>Master</option>
+                    <option value="Doctorado" <?php echo ($result['tipo_estudio']=='Doctorado'?"selected":""); ?>>Doctorado</option>
+                    <option value="Otro" <?php echo ($result['tipo_estudio']=='Otro'?"selected":""); ?>>Otro</option>
                 </select>
             </div>
             <div class="tab input-field col s8 m8 l8">
                 <label for="carrera">Titulo de la Carrera</label>
-                <input  id="carrera" type="text" class="validate">
+                <input  id="carrera" type="text" class="validate" value="<?php echo $result['titulo']; ?>">
             </div>
         </div>
     </div><!--documentos-->
@@ -632,22 +728,22 @@ $result = $result1->fetch_assoc();
             <div class="tab input-field col s4 m4 l4">
                 <select  onselect="this.className = ''" name="estado_estudio" class="browser-default">
                     <option value="">Estado</option>
-                    <option value="En Curso">En Curso</option>
-                    <option value="Graduado">Graduado</option>
-                    <option value="Abandonado">Abandonado</option>
+                    <option value="En Curso" <?php echo ($result['estado']=='En Curso'?"selected":""); ?>>En Curso</option>
+                    <option value="Graduado" <?php echo ($result['estado']=='Graduado'?"selected":""); ?>>Graduado</option>
+                    <option value="Abandonado" <?php echo ($result['estado']=='Abandonado'?"selected":""); ?>>Abandonado</option>
                 </select>
             </div>
             <div class=" input-field col s2 m2 l2">
                 <div id="box_estudio" class="box_estudio">
                     <label for="txtDate2ftitulacion">Año de Titulación</label>
-                    <input type="text" class="date" id="txtDate2ftitulacion" placeholder="Ingrese año">
+                    <input type="text" class="date" id="txtDate2ftitulacion" placeholder="Ingrese año" value="<?php echo $result['fecha_titulacion']; ?>">
                 </div>
 
             </div>
             <div class=" input-field col s2 m2 l2">
                 <div id="box_estudio" class="box_estudio">
-                    <label for="txtDate2ftitulacion">Semestres cursados</label>
-                    <input type="text" class="date" id="txtDate2ftitulacion" placeholder="">
+                    <label for="txtSemestres">Semestres cursados</label>
+                    <input type="text" class="date" id="txtSemestres" placeholder="" value="<?php echo $result['semestres']; ?>">
                 </div>
 
             </div>
@@ -655,16 +751,16 @@ $result = $result1->fetch_assoc();
             <div class="tab input-field col s4 m4 l4">
                 <select onselect="this.className = ''" name="licencia" class="browser-default">
                     <option value="">Licencia de Conducir</option>
-                    <option value="Clase A1">Clase A1</option>
-                    <option value="Clase A2">Clase A2</option>
-                    <option value="Clase A3">Clase A3</option>
-                    <option value="Clase A4">Clase A4</option>
-                    <option value="Clase A5">Clase A5</option>
-                    <option value="Clase B">Clase B</option>
-                    <option value="Clase C">Clase C</option>
-                    <option value="Clase D">Clase D</option>
-                    <option value="Clase E">Clase E</option>
-                    <option value="Clase F">Clase F</option>
+                    <option value="Clase A1" <?php echo ($result['tlicenciaconducir']=='Clase A1'?"selected":""); ?>>Clase A1</option>
+                    <option value="Clase A2" <?php echo ($result['tlicenciaconducir']=='Clase A2'?"selected":""); ?>>Clase A2</option>
+                    <option value="Clase A3" <?php echo ($result['tlicenciaconducir']=='Clase A3'?"selected":""); ?>>Clase A3</option>
+                    <option value="Clase A4" <?php echo ($result['tlicenciaconducir']=='Clase A4'?"selected":""); ?>>Clase A4</option>
+                    <option value="Clase A5" <?php echo ($result['tlicenciaconducir']=='Clase A5'?"selected":""); ?>>Clase A5</option>
+                    <option value="Clase B" <?php echo ($result['tlicenciaconducir']=='Clase B'?"selected":""); ?>>Clase B</option>
+                    <option value="Clase C" <?php echo ($result['tlicenciaconducir']=='Clase C'?"selected":""); ?>>Clase C</option>
+                    <option value="Clase D" <?php echo ($result['tlicenciaconducir']=='Clase D'?"selected":""); ?>>Clase D</option>
+                    <option value="Clase E" <?php echo ($result['tlicenciaconducir']=='Clase E'?"selected":""); ?>>Clase E</option>
+                    <option value="Clase F" <?php echo ($result['tlicenciaconducir']=='Clase F'?"selected":""); ?>>Clase F</option>
                 </select>
             </div>
         </div>
@@ -680,11 +776,11 @@ $result = $result1->fetch_assoc();
     <div class="row" id="curso_box" class="noMargin"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso">Curso</label>
-        <input  id="curso" type="text" class="validate">
+        <input  id="curso" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["curso"]:""); ?>">
       </div>
       <div class="col s4 m4 l4 input-field back-box1">
         <label for="txtDate3">Fecha</label>
-        <input type="text" class="date" id="txtDate3" placeholder="Ingrese mes/año">
+        <input type="text" class="date" id="txtDate3" placeholder="Ingrese mes/año" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["fecha"]:""); ?>">
       </div>
       <div class="col s2 m2 l2">
         <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso1" onclick="myFunctionCurso1()">Agregar</div>
@@ -696,11 +792,11 @@ $result = $result1->fetch_assoc();
     <div class="row" id="curso2_box" class="noMargin"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso2">Curso</label>
-        <input  id="curso2" type="text" class="validate">
+        <input  id="curso2" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["curso"]:""); ?>">
       </div>
       <div class="col s4 m4 l4 input-field back-box1">
         <label for="txtDate3c2">Fecha</label>
-        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c2">
+        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c2" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["fecha"]:""); ?>">
       </div>
       <div class="col s2 m2 l2">
         <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso2" onclick="myFunctionCurso2()">Agregar</div>
@@ -712,11 +808,11 @@ $result = $result1->fetch_assoc();
     <div class="row" id="curso3_box" class="noMargin"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso3">Curso</label>
-        <input  id="curso3" type="text" class="validate">
+        <input  id="curso3" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["curso"]:""); ?>">
       </div>
       <div class="col s4 m4 l4 input-field back-box1">
         <label for="txtDate3c3">Fecha</label>
-        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c3">
+        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c3" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["fecha"]:""); ?>">
       </div>
       <div class="col s2 m2 l2">
         <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso3" onclick="myFunctionCurso3()">Agregar</div>
@@ -738,7 +834,7 @@ $result = $result1->fetch_assoc();
     <!-- ----------------------------------------------- EXPERIENCIA LABORAL --------------------------------- -->
     <div class="row">
         <div class="col s8 m8 l8">
-            <h4>3.- Expriencia Laboral</h4>
+            <h4>3.- Experiencia Laboral</h4>
         </div>
       
     </div>
@@ -748,8 +844,8 @@ $result = $result1->fetch_assoc();
       <div class=" input-field col s4 m4 l4">¿Posee experiencia laboral?
             <select class="browser-default" onselect="this.className = ''" name="experiencia" id="experiencia">
               <option value=""></option>
-              <option value="Si">Si</option>
-              <option value="No">No</option>
+              <option value="Si" <?php echo ($result["experiencialaboral"]=="Si"?"selected":""); ?>>Si</option>
+              <option value="No" <?php echo ($result["experiencialaboral"]=="No"?"selected":""); ?>>No</option>
             </select>
           </div>
     </div>
@@ -763,19 +859,19 @@ $result = $result1->fetch_assoc();
             <div class="row">
                 <div class=" input-field col s4 m4 l4">
                     <label for="empresa">Empresa </label>
-                    <input  id="empresa" type="text" class="validate">
+                    <input  id="empresa" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["empresa"]:""); ?>">
                 </div>
                 <div class=" input-field col s4 m4 l4" >
                     <label for="cargo">Cargo</label>
-                    <input  id="cargo" type="text" class="validate">
+                    <input  id="cargo" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["cargo"]:""); ?>">
 
                 </div>
                 <div class="col s2 m2 l2 input-field dateUntil">
                     <label for="txtDate4">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate4">
+                    <input type="text" class="date" id="txtDate4" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_desde"]:""); ?>">
                     <p>
                         <label for="fechaCargo">
-                            <input type="checkbox" value="Al presente" id="fechaCargo">
+                            <input type="checkbox" value="Al presente" id="fechaCargo" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1 && $result["experiencia"][0]["fecha_hasta"]==""?"checked":""); ?>>
                             <span>Al presente</span>
                         </label>
                     </p>
@@ -783,7 +879,7 @@ $result = $result1->fetch_assoc();
                 <div class="col s2 m2 l2 input-field" id="input-fecha-until">
                   
                         <label for="txtDate4h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate4h">
+                        <input type="text" class="date" id="txtDate4h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_hasta"]:""); ?>">
                     
                 </div>
                 <div class="col s2 m2 l2">
@@ -795,19 +891,19 @@ $result = $result1->fetch_assoc();
             <div class="row">
                 <div class=" input-field col s4 m4 l4">
                     <label for="empresa2">Empresa </label>
-                    <input  id="empresa2" type="text" class="validate">
+                    <input  id="empresa2" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["empresa"]:""); ?>">
                 </div>
                 <div class=" input-field col s4 m4 l4" >
                     <label for="cargo2">Cargo</label>
-                    <input  id="cargo2" type="text" class="validate">
+                    <input  id="cargo2" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["cargo"]:""); ?>">
 
                 </div>
                 <div class="col s2 m2 l2 input-field">
                     <label for="txtDate42">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate42">
+                    <input type="text" class="date" id="txtDate42" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_desde"]:""); ?>">
                     <p>
                         <label for="fechaCargo2">
-                            <input type="checkbox" value="Al presente" id="fechaCargo2">
+                            <input type="checkbox" value="Al presente" id="fechaCargo2" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2 && $result["experiencia"][1]["fecha_hasta"]==""?"checked":""); ?>>
                             <span>Al presente</span>
                         </label>
                     </p>
@@ -815,7 +911,7 @@ $result = $result1->fetch_assoc();
                 <div class="col s2 m2 l2 input-field" id="input-fecha-until2">
                    
                         <label for="txtDate42h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate42h">
+                        <input type="text" class="date" id="txtDate42h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_hasta"]:""); ?>">
                     
                 </div>
                 <div class="col s2 m2 l2">
@@ -827,19 +923,19 @@ $result = $result1->fetch_assoc();
             <div class="row">
                 <div class=" input-field col s4 m4 l4">
                     <label for="empresa3">Empresa </label>
-                    <input  id="empresa3" type="text" class="validate">
+                    <input  id="empresa3" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["empresa"]:""); ?>">
                 </div>
                 <div class=" input-field col s4 m4 l4" >
                     <label for="cargo3">Cargo</label>
-                    <input  id="cargo3" type="text" class="validate">
+                    <input  id="cargo3" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["cargo"]:""); ?>">
 
                 </div>
                 <div class="col s2 m2 l2 input-field">
                     <label for="txtDate43">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate43">
+                    <input type="text" class="date" id="txtDate43" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_desde"]:""); ?>">
                     <p>
                         <label for="fechaCargo3">
-                            <input type="checkbox" value="Al presente" id="fechaCargo3">
+                            <input type="checkbox" value="Al presente" id="fechaCargo3" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3 && $result["experiencia"][2]["fecha_hasta"]==""?"checked":""); ?>>
                             <span>Al presente</span>
                         </label>
                     </p>
@@ -847,7 +943,7 @@ $result = $result1->fetch_assoc();
                 <div class="col s2 m2 l2 input-field"id="input-fecha-until3">
             
                         <label for="txtDate43h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate43h">
+                        <input type="text" class="date" id="txtDate43h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_hasta"]:""); ?>">
              
                 </div>
                 <div class="col s2 m2 l2">
@@ -863,16 +959,16 @@ $result = $result1->fetch_assoc();
           <div id="boxDataExp1">
               <div class="boxDataExp">
                   <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="empresaData"></span>
+                      <span class="boxDataExpInfo" id="empresaData"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["empresa"]:""); ?></span>
                   </div>
                   <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="cargoData"></span>
+                      <span class="boxDataExpInfo" id="cargoData"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["cargo"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2">
-                      <span class="boxDataExpInfo" id="fecha1Data"></span>
+                      <span class="boxDataExpInfo" id="fecha1Data"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_desde"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2 ">
-                      <span class="boxDataExpInfo" id="fecha2Data"></span>
+                      <span class="boxDataExpInfo" id="fecha2Data"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_hasta"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
                       <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1"><i class="small material-icons">cancel</i></div>
@@ -882,16 +978,16 @@ $result = $result1->fetch_assoc();
           <div id="boxDataExp2">
               <div class="boxDataExp">
                   <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="empresaData2"></span>
+                      <span class="boxDataExpInfo" id="empresaData2"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["empresa"]:""); ?></span>
                   </div>
                   <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="cargoData2"></span>
+                      <span class="boxDataExpInfo" id="cargoData2"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["cargo"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2">
-                      <span class="boxDataExpInfo" id="fecha1Data2"></span>
+                      <span class="boxDataExpInfo" id="fecha1Data2"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_desde"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2 ">
-                      <span class="boxDataExpInfo" id="fecha2Data2"></span>
+                      <span class="boxDataExpInfo" id="fecha2Data2"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_hasta"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
                       <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2"><i class="small material-icons">cancel</i></div>
@@ -901,16 +997,16 @@ $result = $result1->fetch_assoc();
           <div id="boxDataExp3">
               <div class="boxDataExp">
                   <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="empresaData3"></span>
+                      <span class="boxDataExpInfo" id="empresaData3"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["empresa"]:""); ?></span>
                   </div>
                   <div class="col s3 m3 l3">
-                      <span class="boxDataExpInfo" id="cargoData3"></span>
+                      <span class="boxDataExpInfo" id="cargoData3"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["cargo"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2">
-                      <span class="boxDataExpInfo" id="fecha1Data3"></span>
+                      <span class="boxDataExpInfo" id="fecha1Data3"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_desde"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2 ">
-                      <span class="boxDataExpInfo" id="fecha2Data3"></span>
+                      <span class="boxDataExpInfo" id="fecha2Data3"><?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_hasta"]:""); ?></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
                       <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3"><i class="small material-icons">cancel</i></div>
@@ -939,8 +1035,8 @@ $result = $result1->fetch_assoc();
         <div class="tab input-field col s5 m5 l5">¿Cuenta con referencias laborales?
               <select class="browser-default" onselect="this.className = ''" name="referencia" id="referencia_laboral">
                 <option value=""></option>
-                <option value="Si">Si</option>
-                <option value="No">No</option>
+                <option value="Si" <?php echo ($result["referencialaboral"]=="Si"?"selected":""); ?>>Si</option>
+                <option value="No" <?php echo ($result["referencialaboral"]=="No"?"selected":""); ?>>No</option>
               </select>
             </div>
       </div>
@@ -1779,13 +1875,77 @@ $result = $result1->fetch_assoc();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
 <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 <script src="src/js/postulaciones.js"></script>
-<script>
-    <?php
+<script language="Javascript">
+<?php
     $error = $_POST['mensaje'];
-    if($error <> null) {
-
+    if($error <> null) { }
+?>
+    // RUT/Pasaporte
+    if($('#tipo_doc').val() == 'rut') {
+      $('#rut_box').show();
+      $('#pasaporte_box').hide();
+    } else {
+      $('#pasaporte_box').show();
+      $('#rut_box').hide();
     }
-    ?>
+
+    // Estudios
+    if($('#tipoEstudio').val() == 'Secundario') {
+      $('.carreraBox').hide();
+    } else {
+      $('.carreraBox').show();
+    }
+    if($('#estado_estudio').val() == 'En Curso') {
+      $('#box_estudio').hide();
+      $("#fechaEstudio").prop("checked", true);
+    } else {
+      $('#box_estudio').show();
+      $("#fechaEstudio").prop("checked", false);
+    }
+
+    // Otros Conocimientos
+    $('#curso1before').show();
+    $('#btn-send-curso1').<?php echo (count($result["cursos"])>=1?"hide()":"show()"); ?>;
+    $('#btn-delete-curso1').<?php echo (count($result["cursos"])>=1?"show()":"hide()"); ?>;
+    $('#curso2before').<?php echo (count($result["cursos"])>=2?"show()":"hide()"); ?>;
+    $('#btn-send-curso2').<?php echo (count($result["cursos"])>=2?"hide()":"show()"); ?>;
+    $('#btn-delete-curso2').<?php echo (count($result["cursos"])>=2?"show()":"hide()"); ?>;
+    $('#curso3before').<?php echo (count($result["cursos"])>=3?"show()":"hide()"); ?>;
+    $('#btn-send-curso3').<?php echo (count($result["cursos"])>=3?"hide()":"show()"); ?>;
+    $('#btn-delete-curso3').<?php echo (count($result["cursos"])>=3?"show()":"hide()"); ?>;
+
+    // Experiencia Laboral
+    $('#boxDataExp1').<?php echo ($maxexperiencia>=1?"show()":"hide()"); ?>;
+    $('#boxDataExp2').<?php echo ($maxexperiencia>=2?"show()":"hide()"); ?>;
+    $('#boxDataExp3').<?php echo ($maxexperiencia>=3?"show()":"hide()"); ?>;
+
+    // Referencias
+    $('#refs_box1').<?php echo ($maxreferencias>=1?"show()":"hide()"); ?>;
+    $('#refs_box2').<?php echo ($maxreferencias>=2?"show()":"hide()"); ?>;
+    $('#refs_box3').<?php echo ($maxreferencias>=3?"show()":"hide()"); ?>;
+
+    // Horarios Disponibles
+    var containerHoras = $('#containerInputHoras');
+    var inputDiaHora1 = $('#inputDiaHora');
+    var boxData1 = $('#dias1Box');
+    $(boxData1).<?php echo ($show_horarios>=1?"show()":"hide()") ?>;
+    $(inputDiaHora1).<?php echo ($show_horarios==0?"show()":"hide()") ?>;
+    var inputDiaHora2 = $('#inputDiaHora2');
+    var boxData2 = $('#dias2Box');
+    $(boxData2).<?php echo ($show_horarios>=2?"show()":"hide()") ?>;
+    $(inputDiaHora2).<?php echo ($show_horarios==1?"show()":"hide()") ?>;
+    var inputDiaHora3 = $('#inputDiaHora3');
+    var boxData3 = $('#dias3Box');
+    $(boxData3).<?php echo ($show_horarios>=3?"show()":"hide()") ?>;
+    $(inputDiaHora3).<?php echo ($show_horarios==2?"show()":"hide()") ?>;
+    var inputDiaHora4 = $('#inputDiaHora4');
+    var boxData4 = $('#dias4Box');
+    $(boxData4).<?php echo ($show_horarios>=4?"show()":"hide()") ?>;
+    $(inputDiaHora4).<?php echo ($show_horarios==3?"show()":"hide()") ?>;
+    var inputDiaHora5 = $('#inputDiaHora5');
+    var boxData5 = $('#dias5Box');
+    $(boxData5).<?php echo ($show_horarios>=5?"show()":"hide()") ?>;
+    $(inputDiaHora5).<?php echo ($show_horarios==4?"show()":"hide()") ?>;
 </script>
 </body>
 </html>

@@ -97,18 +97,19 @@
         $fila_post = '<tr>
                         <td> '.$fecha_post.'</td>
                         <td>'.$row["rut"].'</td>
-                        <td><i class="small material-icons">person</i> '.$row["nombres"].' '. $row["apellidop"].'</td>
+                        <td> '.$row["nombres"].' '. $row["apellidop"].'</td>
                         <td>'.$row["nacionalidad"].'</td>
                         <td>'.$row["nombre"].'</td>
-                        <td>'.$row["renta"].'</td></td>
+                        <td>'. $row["sexo"] .'</td>
+                        <td>'.$row["renta"].'</td>
                         <td><span class="badge '.$color.'"></span><br/>'.$row["estado_post"].'</td>';
 
-        $fila_post .= '<td><i class="small material-icons">attach_file</i></td>
+        $fila_post .= '<td>'. $row["provincia"] .'</td>
+                        <td>'. $row["comuna"] .'</td>
+              
+              
                         <td>
-              <a class="waves-effect btn-flat" href="adminedit.php?identificador='. $row['id_post'] .'">Editar</a>
-              </td>
-                        <td>
-              <a class="waves-effect btn-flat" href="clasificacionuser.php?identificador='. $row['id_post'] .'">Ver</a>
+                 <a class="waves-effect btn-flat" href="adminedit.php?identificador='. $row['id_post'] .'">Ver</a>
                 </td>';
         $fila_post .= '</tr>';
 
@@ -118,7 +119,7 @@
     require_once 'db.php';
     global $conn;
 
-    $sql = "SELECT estado_post, count(*) AS count FROM (SELECT * FROM kurewenc_db_portia.tbl_postulante) a
+    $sql = "SELECT estado_post, count(*) AS count FROM (SELECT * FROM tbl_postulante) a
                         LEFT JOIN
                 (
                     SELECT id_post,nombre 
@@ -166,10 +167,13 @@
                 <th>ID</th> <!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
                 <th>Postulante</th>
                 <th>Nacionalidad</th>
+                
                 <th>Cargo</th>
+                <th>Sexo</th>
                 <th>Rango Renta</th>
                 <th>Estado</th>
-                <th>Adjuntos</th>
+                <th>Region</th>
+                <th>Comuna</th>
             </tr>
             </thead>
             <tbody>
@@ -177,7 +181,7 @@
             //        require_once 'db.php';
             //        global $conn;
 
-            $sql = "SELECT * FROM (SELECT * FROM kurewenc_db_portia.tbl_postulante) a
+            $sql = "SELECT * FROM (SELECT * FROM tbl_postulante) a
                                  LEFT JOIN
                          (
                              SELECT id_post,nombre 
@@ -226,13 +230,16 @@
             <thead>
             <tr>
                 <th>Fecha</th>
-                <th>ID</th><!-- AQUI DEBE IMPRIMIR RUT O PASAPORTE -->
+                <th>ID</th> <!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
                 <th>Postulante</th>
                 <th>Nacionalidad</th>
                 <th>Cargo</th>
+                <th>Sexo</th>
+                
                 <th>Rango Renta</th>
                 <th>Estado</th>
-                <th>Adjuntos</th>
+                <th>Region</th>
+                <th>Comuna</th>
             </tr>
             </thead>
             <tbody>
@@ -245,13 +252,16 @@
             <thead>
             <tr>
                 <th>Fecha</th>
-                <th>ID</th><!-- AQUI DEBE IMPRIMIR RUT O PASAPORTE -->
+                <th>ID</th> <!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
                 <th>Postulante</th>
                 <th>Nacionalidad</th>
+                
                 <th>Cargo</th>
+                <th>Sexo</th>
                 <th>Rango Renta</th>
                 <th>Estado</th>
-                <th>Adjuntos</th>
+                <th>Region</th>
+                <th>Comuna</th>
             </tr>
             </thead>
             <tbody>
@@ -264,13 +274,16 @@
             <thead>
             <tr>
                 <th>Fecha</th>
-                <th>ID</th><!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
+                <th>ID</th> <!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
                 <th>Postulante</th>
                 <th>Nacionalidad</th>
+                
                 <th>Cargo</th>
+                <th>Sexo</th>
                 <th>Rango Renta</th>
                 <th>Estado</th>
-                <th>Adjuntos</th>
+                <th>Region</th>
+                <th>Comuna</th>
             </tr>
             </thead>
             <tbody>
@@ -283,13 +296,15 @@
             <thead>
             <tr>
                 <th>Fecha</th>
-                <th>ID</th><!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
+                <th>ID</th> <!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
                 <th>Postulante</th>
                 <th>Nacionalidad</th>
                 <th>Cargo</th>
+                <th>Sexo</th>
                 <th>Rango Renta</th>
                 <th>Estado</th>
-                <th>Adjuntos</th>
+                <th>Region</th>
+                <th>Comuna</th>
             </tr>
             </thead>
             <tbody>
@@ -302,13 +317,15 @@
             <thead>
             <tr>
                 <th>Fecha</th>
-                <th>ID</th><!--DEBE IMPRIMIR EL PASAPORTE O RUT  -->
+                <th>ID</th> <!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
                 <th>Postulante</th>
                 <th>Nacionalidad</th>
                 <th>Cargo</th>
+                <th>Sexo</th>
                 <th>Rango Renta</th>
                 <th>Estado</th>
-                <th>Adjuntos</th>
+                <th>Region</th>
+                <th>Comuna</th>
             </tr>
             </thead>
             <tbody>

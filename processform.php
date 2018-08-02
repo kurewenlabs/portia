@@ -138,6 +138,7 @@
             $titulo='';
             $estado_estudio='';
             $fecha_titulacion='';
+            $semestres='';
             
             $valores_enviados = array();
             foreach($data['pos']['estudios'] AS $registro_i){
