@@ -151,9 +151,8 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
       <script language="Javascript">
         function changeStatus(select) {
           if (select.selectedIndex == 0) {
-            select.options[0].selected = false;
             for(var i=1; i<select.length; i++) {
-              select.options[i].selected = true;
+              select.options[i].selected = false;
             }
           }
         }
