@@ -1049,24 +1049,24 @@
           <div class="row" id="refs_box1">
               <div class=" input-field col s6 m6 l6 back-box3">
                   <label for="empresaref">Empresa </label>
-                  <input  id="empresaref" type="text" class="validate">
+                  <input  id="empresaref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["empresa"]:""); ?>">
               </div>
               <div class=" input-field col s6 m6 l6 back-box3" >
                   <label for="contactoref">Nombre del Contacto</label>
-                  <input  id="contactoref" type="text" class="validate">
+                  <input  id="contactoref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["nombre contacto"]:""); ?>">
               </div>
               <div class="row">
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="cargoref">Cargo</label>
-                      <input  id="cargoref" type="text" class="validate">
+                      <input  id="cargoref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["cargo"]:""); ?>">
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref">Telefono</label>
-                      <input  id="telefonoref" type="tel" class="validate" placeholder="+56(9)">
+                      <input  id="telefonoref" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["telefono"]:""); ?>">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref">Email</label>
-                      <input  id="emailref" type="email" class="validate">
+                      <input  id="emailref" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["email"]:""); ?>">
                   </div>
                   <div class="col s2 m2 l2 ">
                       <div id="boton_refs1" class="waves-effect waves-light btn-small add" onclick="myFunctionRef()">Agregar</div>
@@ -1077,24 +1077,24 @@
           <div class="row" id="refs_box2">
               <div class=" input-field col s6 m6 l6 back-box3">
                   <label for="empresaref2">Empresa 2</label>
-                  <input  id="empresaref2" type="text" class="validate">
+                  <input  id="empresaref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["empresa"]:""); ?>">
               </div>
               <div class=" input-field col s6 m6 l6 back-box3" >
                   <label for="contactoref2">Nombre del Contacto</label>
-                  <input  id="contactoref2" type="text" class="validate">
+                  <input  id="contactoref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["nombre contacto"]:""); ?>">
               </div>
               <div class="row">
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="cargoref2">Cargo</label>
-                      <input  id="cargoref2" type="text" class="validate">
+                      <input  id="cargoref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["cargo"]:""); ?>">
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref2">Telefono</label>
-                      <input  id="telefonoref2" type="tel" class="validate" placeholder="+56(9)">
+                      <input  id="telefonoref2" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["telefono"]:""); ?>">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref2">Email</label>
-                      <input  id="emailref2" type="email" class="validate">
+                      <input  id="emailref2" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["email"]:""); ?>">
                   </div>
                   <div class="row">
                       <div class="col s2 m2 l2">
@@ -1107,24 +1107,24 @@
           <div class="row" id="refs_box3">
               <div class=" input-field col s6 m6 l6 back-box3">
                   <label for="empresaref3">Empresa 3</label>
-                  <input  id="empresaref3" type="text" class="validate">
+                  <input  id="empresaref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["empresa"]:""); ?>">
               </div>
               <div class=" input-field col s6 m6 l6 back-box3" >
                   <label for="contactoref3">Nombre del Contacto</label>
-                  <input  id="contactoref3" type="text" class="validate">
+                  <input  id="contactoref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["nombre contacto"]:""); ?>">
               </div>
               <div class="row">
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="cargoref3">Cargo</label>
-                      <input  id="cargoref3" type="text" class="validate">
+                      <input  id="cargoref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["cargo"]:""); ?>">
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref3">Telefono</label>
-                      <input  id="telefonoref3" type="tel" class="validate" placeholder="+56(9)">
+                      <input  id="telefonoref3" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["telefono"]:""); ?>">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref3">Email</label>
-                      <input  id="emailref3" type="email" class="validate">
+                      <input  id="emailref3" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["email"]:""); ?>">
                   </div>
                   <div class="row">
                       <div class="col s2 m2 l2">
@@ -1158,30 +1158,30 @@
         <div class="tab input-field col s6 m6 l6" id="datosPrevision">
             <select class="browser-default" onselect="this.className = ''" name="afp">
                 <option value="">AFP</option>
-                <option value="AFP Capital">AFP Capital</option>
-                <option value="AFP Cuprum">AFP Cuprum</option>
-                <option value="AFP Habitat">AFP Habitat</option>
-                <option value="AFP Modelo">AFP Modelo</option>
-                <option value="AFP Planvital">AFP Planvital</option>
-                <option value="AFP Provida">AFP Provida</option>
+                <option value="AFP Capital" <?php echo ($result["afp"]=='AFP Capital'?"selected":""); ?>>AFP Capital</option>
+                <option value="AFP Cuprum" <?php echo ($result["afp"]=='AFP Cuprum'?"selected":""); ?>>AFP Cuprum</option>
+                <option value="AFP Habitat" <?php echo ($result["afp"]=='AFP Habitat'?"selected":""); ?>>AFP Habitat</option>
+                <option value="AFP Modelo" <?php echo ($result["afp"]=='AFP Modelo'?"selected":""); ?>>AFP Modelo</option>
+                <option value="AFP Planvital" <?php echo ($result["afp"]=='AFP Planvital'?"selected":""); ?>>AFP Planvital</option>
+                <option value="AFP Provida" <?php echo ($result["afp"]=='AFP Provida'?"selected":""); ?>>AFP Provida</option>
             </select>
         </div>
         <div class=" input-field col s6 m6 l6">
               <select class="browser-default" onselect="this.className = ''" name="isapre" id="isapre">
                 <option value="">Isapre o Fonasa</option>
-                <option value="Banmédica">Banmédica</option>
-                <option value="Chuquicamata">Chuquicamata</option>
-                <option value="Consalud">Consalud</option>
-                <option value="Colmena">Colmena</option> 
-                <option value="Cruz Blanca">Cruz Blanca</option>
-                <option value="Cruz del Norte">Cruz del Norte</option>
-                <option value="Fonasa">Fonasa</option>
-                <option value="Fundación">Fundación</option>
-                <option value="Fusat">Fusat</option>
-                <option value="Nueva Masvida">Nueva Masvida</option>
-                <option value="Río Blanco">Río Blanco</option>
-                <option value="San Lorenzo">San Lorenzo</option>
-                <option value="Vida Tres">Vida Tres</option>
+                <option value="Banmédica" <?php echo ($result["prestadorsalud"]=='Banmédica'?"selected":""); ?>>Banmédica</option>
+                <option value="Chuquicamata" <?php echo ($result["prestadorsalud"]=='Chuquicamata'?"selected":""); ?>>Chuquicamata</option>
+                <option value="Consalud" <?php echo ($result["prestadorsalud"]=='Consalud'?"selected":""); ?>>Consalud</option>
+                <option value="Colmena" <?php echo ($result["prestadorsalud"]=='Colmena'?"selected":""); ?>>Colmena</option> 
+                <option value="Cruz Blanca" <?php echo ($result["prestadorsalud"]=='Cruz Blanca'?"selected":""); ?>>Cruz Blanca</option>
+                <option value="Cruz del Norte" <?php echo ($result["prestadorsalud"]=='Cruz del Norte'?"selected":""); ?>>Cruz del Norte</option>
+                <option value="Fonasa" <?php echo ($result["prestadorsalud"]=='Fonasa'?"selected":""); ?>>Fonasa</option>
+                <option value="Fundación" <?php echo ($result["prestadorsalud"]=='Fundación'?"selected":""); ?>>Fundación</option>
+                <option value="Fusat" <?php echo ($result["prestadorsalud"]=='Fusat'?"selected":""); ?>>Fusat</option>
+                <option value="Nueva Masvida" <?php echo ($result["prestadorsalud"]=='Nueva Masvida'?"selected":""); ?>>Nueva Masvida</option>
+                <option value="Río Blanco" <?php echo ($result["prestadorsalud"]=='Río Blanco'?"selected":""); ?>>Río Blanco</option>
+                <option value="San Lorenzo" <?php echo ($result["prestadorsalud"]=='San Lorenzo'?"selected":""); ?>>San Lorenzo</option>
+                <option value="Vida Tres" <?php echo ($result["prestadorsalud"]=='Vida Tres'?"selected":""); ?>>Vida Tres</option>
               </select>
             </div>
     </div>
@@ -1256,53 +1256,57 @@
    <div id="containerInputHoras">
         <h4>Seleccione Horario</h4>
           <div id="inputDiaHora">
+              <?php
+                $dias_array = false;
+                if (count($result["horarios"])>=1) {
+                   $dias_array = explode(",", $result["horarios"][0]["dias"]);
+                }
+              ?>
               <div class="row">
                   <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
                       <select class="js-example-basic-multiple" id="dias" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                          <option value="Todos">Todos</option>
-                          <option value="Lunes">Lunes</option>
-                          <option value="Martes">Martes</option>
-                          <option value="Miercoles">Miercoles</option>
-                          <option value="Jueves">Jueves</option>
-                          <option value="Viernes">Viernes</option>
-                          <option value="Sabado">Sabado</option>
-                          <option value="Domingo">Domingo</option>
-
+                          <option value="Todos" <?php echo ($dias_array && array_search('Todos', $dias_array)?"selected":""); ?>>Todos</option>
+                          <option value="Lunes" <?php echo ($dias_array && array_search('Lunes', $dias_array)?"selected":""); ?>>Lunes</option>
+                          <option value="Martes" <?php echo ($dias_array && array_search('Martes', $dias_array)?"selected":""); ?>>Martes</option>
+                          <option value="Miercoles" <?php echo ($dias_array && array_search('Miercoles', $dias_array)?"selected":""); ?>>Miercoles</option>
+                          <option value="Jueves" <?php echo ($dias_array && array_search('Jueves', $dias_array)?"selected":""); ?>>Jueves</option>
+                          <option value="Viernes" <?php echo ($dias_array && array_search('Viernes', $dias_array)?"selected":""); ?>>Viernes</option>
+                          <option value="Sabado" <?php echo ($dias_array && array_search('Sabado', $dias_array)?"selected":""); ?>>Sabado</option>
+                          <option value="Domingo" <?php echo ($dias_array && array_search('Domingo', $dias_array)?"selected":""); ?>>Domingo</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple"  style="width:60%">
                           <option value="">Obligatorio</option>
-
-                          <option value="1:00">1:00</option>
-                          <option value="2:00">2:00</option>
-                          <option value="3:00">3:00</option>
-                          <option value="4:00">4:00</option>
-                          <option value="5:00">5:00</option>
-                          <option value="6:00">6:00</option>
-                          <option value="7:00">7:00</option>
-                          <option value="8:00">8:00</option>
-                          <option value="9:00">9:00</option>
-                          <option value="10:00">10:00</option>
-                          <option value="11:00">11:00</option>
-                          <option value="12:00">12:00</option>
+                          <option value="1:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
+                          <option value="2:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
+                          <option value="3:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
+                          <option value="4:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="4:00"?"selected":""); ?>>4:00</option>
+                          <option value="5:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="5:00"?"selected":""); ?>>5:00</option>
+                          <option value="6:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="6:00"?"selected":""); ?>>6:00</option>
+                          <option value="7:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="7:00"?"selected":""); ?>>7:00</option>
+                          <option value="8:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="8:00"?"selected":""); ?>>8:00</option>
+                          <option value="9:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="9:00"?"selected":""); ?>>9:00</option>
+                          <option value="10:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
+                          <option value="11:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
+                          <option value="12:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple1"  style="width:60%">
                           <option value="">Obligatorio</option>
-                          <option value="13:00">13:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="15:00">15:00</option>
-                          <option value="16:00">16:00</option>
-                          <option value="17:00">17:00</option>
-                          <option value="18:00">18:00</option>
-                          <option value="19:00">19:00</option>
-                          <option value="20:00">20:00</option>
-                          <option value="21:00">21:00</option>
-                          <option value="22:00">22:00</option>
-                          <option value="23:00">23:00</option>
-                          <option value="24:00">24:00</option>
+                          <option value="13:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
+                          <option value="14:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
+                          <option value="15:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
+                          <option value="16:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="16:00"?"selected":""); ?>>16:00</option>
+                          <option value="17:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="17:00"?"selected":""); ?>>17:00</option>
+                          <option value="18:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="18:00"?"selected":""); ?>>18:00</option>
+                          <option value="19:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="19:00"?"selected":""); ?>>19:00</option>
+                          <option value="20:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="20:00"?"selected":""); ?>>20:00</option>
+                          <option value="21:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="21:00"?"selected":""); ?>>21:00</option>
+                          <option value="22:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="22:00"?"selected":""); ?>>22:00</option>
+                          <option value="23:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="23:00"?"selected":""); ?>>23:00</option>
+                          <option value="24:00" <?php echo (count($result["horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                       </select>
                   </div>
 
@@ -1320,53 +1324,57 @@
           </div>
 
           <div id="inputDiaHora2">
+              <?php
+                $dias_array = false;
+                if (count($result["horarios"])>=2) {
+                   $dias_array = explode(",", $result["horarios"][1]["dias"]);
+                }
+              ?>
               <div class="row">
                   <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
                       <select class="js-example-basic-multiple" id="dias2" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                          <option value="Todos">Todos</option>
-                          <option value="Lunes">Lunes</option>
-                          <option value="Martes">Martes</option>
-                          <option value="Miercoles">Miercoles</option>
-                          <option value="Jueves">Jueves</option>
-                          <option value="Viernes">Viernes</option>
-                          <option value="Sabado">Sabado</option>
-                          <option value="Domingo">Domingo</option>
-
+                          <option value="Todos" <?php echo ($dias_array && array_search('Todos', $dias_array)?"selected":""); ?>>Todos</option>
+                          <option value="Lunes" <?php echo ($dias_array && array_search('Lunes', $dias_array)?"selected":""); ?>>Lunes</option>
+                          <option value="Martes" <?php echo ($dias_array && array_search('Martes', $dias_array)?"selected":""); ?>>Martes</option>
+                          <option value="Miercoles" <?php echo ($dias_array && array_search('Miercoles', $dias_array)?"selected":""); ?>>Miercoles</option>
+                          <option value="Jueves" <?php echo ($dias_array && array_search('Jueves', $dias_array)?"selected":""); ?>>Jueves</option>
+                          <option value="Viernes" <?php echo ($dias_array && array_search('Viernes', $dias_array)?"selected":""); ?>>Viernes</option>
+                          <option value="Sabado" <?php echo ($dias_array && array_search('Sabado', $dias_array)?"selected":""); ?>>Sabado</option>
+                          <option value="Domingo" <?php echo ($dias_array && array_search('Domingo', $dias_array)?"selected":""); ?>>Domingo</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple2"  style="width:60%">
                           <option value="">Obligatorio</option>
-
-                          <option value="1:00">1:00</option>
-                          <option value="2:00">2:00</option>
-                          <option value="3:00">3:00</option>
-                          <option value="4:00">4:00</option>
-                          <option value="5:00">5:00</option>
-                          <option value="6:00">6:00</option>
-                          <option value="7:00">7:00</option>
-                          <option value="8:00">8:00</option>
-                          <option value="9:00">9:00</option>
-                          <option value="10:00">10:00</option>
-                          <option value="11:00">11:00</option>
-                          <option value="12:00">12:00</option>
+                          <option value="1:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
+                          <option value="2:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
+                          <option value="3:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
+                          <option value="4:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="4:00"?"selected":""); ?>>4:00</option>
+                          <option value="5:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="5:00"?"selected":""); ?>>5:00</option>
+                          <option value="6:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="6:00"?"selected":""); ?>>6:00</option>
+                          <option value="7:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="7:00"?"selected":""); ?>>7:00</option>
+                          <option value="8:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="8:00"?"selected":""); ?>>8:00</option>
+                          <option value="9:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="9:00"?"selected":""); ?>>9:00</option>
+                          <option value="10:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
+                          <option value="11:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
+                          <option value="12:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple12"  style="width:60%">
                           <option value="">Obligatorio</option>
-                          <option value="13:00">13:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="15:00">15:00</option>
-                          <option value="16:00">16:00</option>
-                          <option value="17:00">17:00</option>
-                          <option value="18:00">18:00</option>
-                          <option value="19:00">19:00</option>
-                          <option value="20:00">20:00</option>
-                          <option value="21:00">21:00</option>
-                          <option value="22:00">22:00</option>
-                          <option value="23:00">23:00</option>
-                          <option value="24:00">24:00</option>
+                          <option value="13:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
+                          <option value="14:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
+                          <option value="15:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
+                          <option value="16:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="16:00"?"selected":""); ?>>16:00</option>
+                          <option value="17:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="17:00"?"selected":""); ?>>17:00</option>
+                          <option value="18:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="18:00"?"selected":""); ?>>18:00</option>
+                          <option value="19:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="19:00"?"selected":""); ?>>19:00</option>
+                          <option value="20:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="20:00"?"selected":""); ?>>20:00</option>
+                          <option value="21:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="21:00"?"selected":""); ?>>21:00</option>
+                          <option value="22:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="22:00"?"selected":""); ?>>22:00</option>
+                          <option value="23:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="23:00"?"selected":""); ?>>23:00</option>
+                          <option value="24:00" <?php echo (count($result["horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                       </select>
                   </div>
 
@@ -1382,53 +1390,57 @@
               </div>
           </div>
           <div id="inputDiaHora3">
+              <?php
+                $dias_array = false;
+                if (count($result["horarios"])>=3) {
+                   $dias_array = explode(",", $result["horarios"][2]["dias"]);
+                }
+              ?>
               <div class="row">
                   <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
                       <select class="js-example-basic-multiple" id="dias3" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                          <option value="Todos">Todos</option>
-                          <option value="Lunes">Lunes</option>
-                          <option value="Martes">Martes</option>
-                          <option value="Miercoles">Miercoles</option>
-                          <option value="Jueves">Jueves</option>
-                          <option value="Viernes">Viernes</option>
-                          <option value="Sabado">Sabado</option>
-                          <option value="Domingo">Domingo</option>
-
+                          <option value="Todos" <?php echo ($dias_array && array_search('Todos', $dias_array)?"selected":""); ?>>Todos</option>
+                          <option value="Lunes" <?php echo ($dias_array && array_search('Lunes', $dias_array)?"selected":""); ?>>Lunes</option>
+                          <option value="Martes" <?php echo ($dias_array && array_search('Martes', $dias_array)?"selected":""); ?>>Martes</option>
+                          <option value="Miercoles" <?php echo ($dias_array && array_search('Miercoles', $dias_array)?"selected":""); ?>>Miercoles</option>
+                          <option value="Jueves" <?php echo ($dias_array && array_search('Jueves', $dias_array)?"selected":""); ?>>Jueves</option>
+                          <option value="Viernes" <?php echo ($dias_array && array_search('Viernes', $dias_array)?"selected":""); ?>>Viernes</option>
+                          <option value="Sabado" <?php echo ($dias_array && array_search('Sabado', $dias_array)?"selected":""); ?>>Sabado</option>
+                          <option value="Domingo" <?php echo ($dias_array && array_search('Domingo', $dias_array)?"selected":""); ?>>Domingo</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple3"  style="width:60%">
                           <option value="">Obligatorio</option>
-
-                          <option value="1:00">1:00</option>
-                          <option value="2:00">2:00</option>
-                          <option value="3:00">3:00</option>
-                          <option value="4:00">4:00</option>
-                          <option value="5:00">5:00</option>
-                          <option value="6:00">6:00</option>
-                          <option value="7:00">7:00</option>
-                          <option value="8:00">8:00</option>
-                          <option value="9:00">9:00</option>
-                          <option value="10:00">10:00</option>
-                          <option value="11:00">11:00</option>
-                          <option value="12:00">12:00</option>
+                          <option value="1:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
+                          <option value="2:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
+                          <option value="3:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
+                          <option value="4:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="4:00"?"selected":""); ?>>4:00</option>
+                          <option value="5:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="5:00"?"selected":""); ?>>5:00</option>
+                          <option value="6:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="6:00"?"selected":""); ?>>6:00</option>
+                          <option value="7:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="7:00"?"selected":""); ?>>7:00</option>
+                          <option value="8:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="8:00"?"selected":""); ?>>8:00</option>
+                          <option value="9:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="9:00"?"selected":""); ?>>9:00</option>
+                          <option value="10:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
+                          <option value="11:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
+                          <option value="12:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple13"  style="width:60%">
                           <option value="">Obligatorio</option>
-                          <option value="13:00">13:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="15:00">15:00</option>
-                          <option value="16:00">16:00</option>
-                          <option value="17:00">17:00</option>
-                          <option value="18:00">18:00</option>
-                          <option value="19:00">19:00</option>
-                          <option value="20:00">20:00</option>
-                          <option value="21:00">21:00</option>
-                          <option value="22:00">22:00</option>
-                          <option value="23:00">23:00</option>
-                          <option value="24:00">24:00</option>
+                          <option value="13:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
+                          <option value="14:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
+                          <option value="15:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
+                          <option value="16:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="16:00"?"selected":""); ?>>16:00</option>
+                          <option value="17:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="17:00"?"selected":""); ?>>17:00</option>
+                          <option value="18:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="18:00"?"selected":""); ?>>18:00</option>
+                          <option value="19:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="19:00"?"selected":""); ?>>19:00</option>
+                          <option value="20:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="20:00"?"selected":""); ?>>20:00</option>
+                          <option value="21:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="21:00"?"selected":""); ?>>21:00</option>
+                          <option value="22:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="22:00"?"selected":""); ?>>22:00</option>
+                          <option value="23:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="23:00"?"selected":""); ?>>23:00</option>
+                          <option value="24:00" <?php echo (count($result["horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                       </select>
                   </div>
 
@@ -1443,53 +1455,57 @@
               </div>
           </div>
           <div id="inputDiaHora4">
+              <?php
+                $dias_array = false;
+                if (count($result["horarios"])>=4) {
+                   $dias_array = explode(",", $result["horarios"][3]["dias"]);
+                }
+              ?>
               <div class="row">
                   <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
                       <select class="js-example-basic-multiple" id="dias4" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                          <option value="Todos">Todos</option>
-                          <option value="Lunes">Lunes</option>
-                          <option value="Martes">Martes</option>
-                          <option value="Miercoles">Miercoles</option>
-                          <option value="Jueves">Jueves</option>
-                          <option value="Viernes">Viernes</option>
-                          <option value="Sabado">Sabado</option>
-                          <option value="Domingo">Domingo</option>
-
+                          <option value="Todos" <?php echo ($dias_array && array_search('Todos', $dias_array)?"selected":""); ?>>Todos</option>
+                          <option value="Lunes" <?php echo ($dias_array && array_search('Lunes', $dias_array)?"selected":""); ?>>Lunes</option>
+                          <option value="Martes" <?php echo ($dias_array && array_search('Martes', $dias_array)?"selected":""); ?>>Martes</option>
+                          <option value="Miercoles" <?php echo ($dias_array && array_search('Miercoles', $dias_array)?"selected":""); ?>>Miercoles</option>
+                          <option value="Jueves" <?php echo ($dias_array && array_search('Jueves', $dias_array)?"selected":""); ?>>Jueves</option>
+                          <option value="Viernes" <?php echo ($dias_array && array_search('Viernes', $dias_array)?"selected":""); ?>>Viernes</option>
+                          <option value="Sabado" <?php echo ($dias_array && array_search('Sabado', $dias_array)?"selected":""); ?>>Sabado</option>
+                          <option value="Domingo" <?php echo ($dias_array && array_search('Domingo', $dias_array)?"selected":""); ?>>Domingo</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple4"  style="width:60%">
                           <option value="">Obligatorio</option>
-
-                          <option value="1:00">1:00</option>
-                          <option value="2:00">2:00</option>
-                          <option value="3:00">3:00</option>
-                          <option value="4:00">4:00</option>
-                          <option value="5:00">5:00</option>
-                          <option value="6:00">6:00</option>
-                          <option value="7:00">7:00</option>
-                          <option value="8:00">8:00</option>
-                          <option value="9:00">9:00</option>
-                          <option value="10:00">10:00</option>
-                          <option value="11:00">11:00</option>
-                          <option value="12:00">12:00</option>
+                          <option value="1:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
+                          <option value="2:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
+                          <option value="3:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
+                          <option value="4:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="4:00"?"selected":""); ?>>4:00</option>
+                          <option value="5:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="5:00"?"selected":""); ?>>5:00</option>
+                          <option value="6:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="6:00"?"selected":""); ?>>6:00</option>
+                          <option value="7:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="7:00"?"selected":""); ?>>7:00</option>
+                          <option value="8:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="8:00"?"selected":""); ?>>8:00</option>
+                          <option value="9:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="9:00"?"selected":""); ?>>9:00</option>
+                          <option value="10:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
+                          <option value="11:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
+                          <option value="12:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple14"  style="width:60%">
                           <option value="">Obligatorio</option>
-                          <option value="13:00">13:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="15:00">15:00</option>
-                          <option value="16:00">16:00</option>
-                          <option value="17:00">17:00</option>
-                          <option value="18:00">18:00</option>
-                          <option value="19:00">19:00</option>
-                          <option value="20:00">20:00</option>
-                          <option value="21:00">21:00</option>
-                          <option value="22:00">22:00</option>
-                          <option value="23:00">23:00</option>
-                          <option value="24:00">24:00</option>
+                          <option value="13:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
+                          <option value="14:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
+                          <option value="15:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
+                          <option value="16:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="16:00"?"selected":""); ?>>16:00</option>
+                          <option value="17:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="17:00"?"selected":""); ?>>17:00</option>
+                          <option value="18:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="18:00"?"selected":""); ?>>18:00</option>
+                          <option value="19:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="19:00"?"selected":""); ?>>19:00</option>
+                          <option value="20:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="20:00"?"selected":""); ?>>20:00</option>
+                          <option value="21:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="21:00"?"selected":""); ?>>21:00</option>
+                          <option value="22:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="22:00"?"selected":""); ?>>22:00</option>
+                          <option value="23:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="23:00"?"selected":""); ?>>23:00</option>
+                          <option value="24:00" <?php echo (count($result["horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                       </select>
                   </div>
 
@@ -1505,53 +1521,57 @@
               </div>
           </div>
           <div id="inputDiaHora5">
+              <?php
+                $dias_array = false;
+                if (count($result["horarios"])>=5) {
+                   $dias_array = explode(",", $result["horarios"][4]["dias"]);
+                }
+              ?>
               <div class="row">
                   <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
                       <select class="js-example-basic-multiple" id="dias5" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                          <option value="Todos">Todos</option>
-                          <option value="Lunes">Lunes</option>
-                          <option value="Martes">Martes</option>
-                          <option value="Miercoles">Miercoles</option>
-                          <option value="Jueves">Jueves</option>
-                          <option value="Viernes">Viernes</option>
-                          <option value="Sabado">Sabado</option>
-                          <option value="Domingo">Domingo</option>
-
+                          <option value="Todos" <?php echo ($dias_array && array_search('Todos', $dias_array)?"selected":""); ?>>Todos</option>
+                          <option value="Lunes" <?php echo ($dias_array && array_search('Lunes', $dias_array)?"selected":""); ?>>Lunes</option>
+                          <option value="Martes" <?php echo ($dias_array && array_search('Martes', $dias_array)?"selected":""); ?>>Martes</option>
+                          <option value="Miercoles" <?php echo ($dias_array && array_search('Miercoles', $dias_array)?"selected":""); ?>>Miercoles</option>
+                          <option value="Jueves" <?php echo ($dias_array && array_search('Jueves', $dias_array)?"selected":""); ?>>Jueves</option>
+                          <option value="Viernes" <?php echo ($dias_array && array_search('Viernes', $dias_array)?"selected":""); ?>>Viernes</option>
+                          <option value="Sabado" <?php echo ($dias_array && array_search('Sabado', $dias_array)?"selected":""); ?>>Sabado</option>
+                          <option value="Domingo" <?php echo ($dias_array && array_search('Domingo', $dias_array)?"selected":""); ?>>Domingo</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple5"  style="width:60%">
                           <option value="">Obligatorio</option>
-
-                          <option value="1:00">1:00</option>
-                          <option value="2:00">2:00</option>
-                          <option value="3:00">3:00</option>
-                          <option value="4:00">4:00</option>
-                          <option value="5:00">5:00</option>
-                          <option value="6:00">6:00</option>
-                          <option value="7:00">7:00</option>
-                          <option value="8:00">8:00</option>
-                          <option value="9:00">9:00</option>
-                          <option value="10:00">10:00</option>
-                          <option value="11:00">11:00</option>
-                          <option value="12:00">12:00</option>
+                          <option value="1:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
+                          <option value="2:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
+                          <option value="3:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
+                          <option value="4:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="4:00"?"selected":""); ?>>4:00</option>
+                          <option value="5:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="5:00"?"selected":""); ?>>5:00</option>
+                          <option value="6:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="6:00"?"selected":""); ?>>6:00</option>
+                          <option value="7:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="7:00"?"selected":""); ?>>7:00</option>
+                          <option value="8:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="8:00"?"selected":""); ?>>8:00</option>
+                          <option value="9:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="9:00"?"selected":""); ?>>9:00</option>
+                          <option value="10:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
+                          <option value="11:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
+                          <option value="12:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple15"  style="width:60%">
                           <option value="">Obligatorio</option>
-                          <option value="13:00">13:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="15:00">15:00</option>
-                          <option value="16:00">16:00</option>
-                          <option value="17:00">17:00</option>
-                          <option value="18:00">18:00</option>
-                          <option value="19:00">19:00</option>
-                          <option value="20:00">20:00</option>
-                          <option value="21:00">21:00</option>
-                          <option value="22:00">22:00</option>
-                          <option value="23:00">23:00</option>
-                          <option value="24:00">24:00</option>
+                          <option value="13:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
+                          <option value="14:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
+                          <option value="15:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
+                          <option value="16:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="16:00"?"selected":""); ?>>16:00</option>
+                          <option value="17:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="17:00"?"selected":""); ?>>17:00</option>
+                          <option value="18:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="18:00"?"selected":""); ?>>18:00</option>
+                          <option value="19:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="19:00"?"selected":""); ?>>19:00</option>
+                          <option value="20:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="20:00"?"selected":""); ?>>20:00</option>
+                          <option value="21:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="21:00"?"selected":""); ?>>21:00</option>
+                          <option value="22:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="22:00"?"selected":""); ?>>22:00</option>
+                          <option value="23:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="23:00"?"selected":""); ?>>23:00</option>
+                          <option value="24:00" <?php echo (count($result["horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                       </select>
                   </div>
 
@@ -1576,16 +1596,16 @@
           <div id="containerDataHoras">
               <div class="boxSmartContent" id="dias1Box">
                   <div class="col s4 m4 l4">
-                      <span style="font-size: 20px" id="diasData1"></span>
+                      <span style="font-size: 20px" id="diasData1"><?php echo (count($result["horarios"])>=1?$result["horarios"][0]["dias"]:""); ?></span>
                   </div>
                   <div class="col s5 m5 l5">
                       <span style="font-size: 20px" id="comunasData1"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
                   <span style="font-size: 20px" class="right-align" >
-                      <span id="horasData1"></span>
+                      <span id="horasData1"><?php echo (count($result["horarios"])>=1?substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1):""); ?></span>
                       <span>a</span>
-                      <span id="horasData1h"></span>
+                      <span id="horasData1h"><?php echo (count($result["horarios"])>=1?substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2):""); ?></span>
                   </span>
                   </div>
                   <div class="col s1 m1 l1 right-align">
@@ -1594,16 +1614,16 @@
               </div>
               <div class="boxSmartContent" id="dias2Box">
                   <div class="col s4 m4 l4">
-                      <span style="font-size: 20px" id="diasData2"></span>
+                      <span style="font-size: 20px" id="diasData2"><?php echo (count($result["horarios"])>=2?$result["horarios"][1]["dias"]:""); ?></span>
                   </div>
                   <div class="col s5 m5 l5">
                       <span style="font-size: 20px" id="comunasData2"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
                   <span style="font-size: 20px" class="right-align" >
-                      <span id="horasData2"></span>
+                      <span id="horasData2"><?php echo (count($result["horarios"])>=2?substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1):""); ?></span>
                       <span>a</span>
-                      <span id="horasData2h"></span>
+                      <span id="horasData2h"><?php echo (count($result["horarios"])>=2?substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2):""); ?></span>
                   </span>
                   </div>
                   <div class="col s1 m1 l1 right-align">
@@ -1612,16 +1632,16 @@
               </div>
               <div class="boxSmartContent" id="dias3Box">
                   <div class="col s4 m4 l4">
-                      <span style=" font-size: 20px" id="diasData3"></span>
+                      <span style=" font-size: 20px" id="diasData3"><?php echo (count($result["horarios"])>=3?$result["horarios"][2]["dias"]:""); ?></span>
                   </div>
                   <div class="col s5 m5 l5">
                       <span style=" font-size: 20px" id="comunasData3"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
                   <span style=" font-size: 20px" class="right-align" >
-                      <span id="horasData3"></span>
+                      <span id="horasData3"><?php echo (count($result["horarios"])>=3?substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1):""); ?></span>
                       <span>a</span>
-                      <span id="horasData3h"></span>
+                      <span id="horasData3h"><?php echo (count($result["horarios"])>=3?substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2):""); ?></span>
                   </span>
                   </div>
                   <div class="col s1 m1 l1 right-align">
@@ -1630,16 +1650,16 @@
               </div>
               <div class="boxSmartContent" id="dias4Box">
                   <div class="col s4 m4 l4">
-                      <span style=" font-size: 20px" id="diasData4"></span>
+                      <span style=" font-size: 20px" id="diasData4"><?php echo (count($result["horarios"])>=4?$result["horarios"][3]["dias"]:""); ?></span>
                   </div>
                   <div class="col s5 m5 l5">
                       <span style=" font-size: 20px" id="comunasData4"></span>
                   </div>
                   <div class="col s2 m2 l2 right-align">
                   <span style=" font-size: 20px" class="right-align" >
-                      <span id="horasData4"></span>
+                      <span id="horasData4"><?php echo (count($result["horarios"])>=4?substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1):""); ?></span>
                       <span>a</span>
-                      <span id="horasData4h"></span>
+                      <span id="horasData4h"><?php echo (count($result["horarios"])>=4?substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2):""); ?></span>
                   </span>
                   </div>
                   <div class="col s1 m1 l1 right-align">
@@ -1655,9 +1675,9 @@
                   </div>
                   <div class="col s2 m2 l2 right-align">
                   <span style=" font-size: 20px" class="right-align" >
-                      <span id="horasData5"></span>
+                      <span id="horasData5"><?php echo substr($result["horarios"][2]["horarios"], 0, strpos('a', $result["horarios"][2]["horarios"])-2); ?></span>
                       <span>a</span>
-                      <span id="horasData5h"></span>
+                      <span id="horasData5h"><?php echo substr($result["horarios"][2]["horarios"], strpos('a', $result["horarios"][2]["horarios"])+2); ?></span>
                   </span>
                   </div>
                   <div class="col s1 m1 l1 right-align">
@@ -1684,33 +1704,33 @@
             <div class="tab input-field col s4 m4 l4">
                 <select class="browser-default" onselect="this.className = ' ' " name="uniforme">
                     <option value="">Talla Polera/camisa</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
+                    <option value="XS" <?php echo ($result["tpolera"]=='XS'?"selected":""); ?>>XS</option>
+                    <option value="S" <?php echo ($result["tpolera"]=='S'?"selected":""); ?>>S</option>
+                    <option value="M" <?php echo ($result["tpolera"]=='M'?"selected":""); ?>>M</option>
+                    <option value="L" <?php echo ($result["tpolera"]=='L'?"selected":""); ?>>L</option>
+                    <option value="XL" <?php echo ($result["tpolera"]=='XL'?"selected":""); ?>>XL</option>
+                    <option value="XXL" <?php echo ($result["tpolera"]=='XXL'?"selected":""); ?>>XXL</option>
                 </select>
             </div>
             <div class="tab input-field col s4 m4 l4">
                 <select class="browser-default" onselect="this.className = ' ' " name="uniforme2">
                     <option value="">Talla Poleron</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
+                    <option value="XS" <?php echo ($result["tpoleron"]=='XS'?"selected":""); ?>>XS</option>
+                    <option value="S" <?php echo ($result["tpoleron"]=='S'?"selected":""); ?>>S</option>
+                    <option value="M" <?php echo ($result["tpoleron"]=='M'?"selected":""); ?>>M</option>
+                    <option value="L" <?php echo ($result["tpoleron"]=='L'?"selected":""); ?>>L</option>
+                    <option value="XL" <?php echo ($result["tpoleron"]=='XL'?"selected":""); ?>>XL</option>
+                    <option value="XXL" <?php echo ($result["tpoleron"]=='XXL'?"selected":""); ?>>XXL</option>
                 </select>
             </div>
             <div class="tab input-field col s4 m4 l4">
                 <label for="tallaZapato">Talla de zapatos</label>
-                <input  id="tallaZapato" type="text" class="validate">
+                <input  id="tallaZapato" type="text" class="validate" value="<?php echo $result["tzapatos"]; ?>">
             </div>
             <div class="row">
                 <div class="tab input-field col s8 m8 l8">
                     <label for="tallaPantalon">Talla de Pantalon (ingrese detalles si necesita)</label>
-                    <input  id="tallaPantalon" type="text" class="validate">
+                    <input  id="tallaPantalon" type="text" class="validate" value="<?php echo $result["tpantalon"]; ?>">
                 </div>
             </div>
         </div>
@@ -1722,15 +1742,15 @@
                 <div class="tab input-field col s4 m4 l4">
                     <select class="browser-default" onselect="this.className = ' ' " name="renta">
                         <option value="">Seleccione Rango</option>
-                        <option value="275.000 - 350.000">275.000 - 350.000</option>
-                        <option value="350.000 - 400.000">350.000 - 400.000</option>
-                        <option value="400.000 - 450.000">400.000 - 450.000</option>
-                        <option value="450.000 - 500.000">450.000 - 500.000</option>
-                        <option value="500.000 - 550.000">500.000 - 550.000</option>
-                        <option value="550.000 - 600.000">550.000 - 600.000</option>
-                        <option value="600.000 - 800.000">600.000 - 800.000</option>
-                        <option value="800.000 - 1.000.000">800.000 - 1.000.000</option>
-                        <option value="Más de 1.000.000">Más de 1.000.000</option>
+                        <option value="275.000 - 350.000" <?php echo ($result["renta"]=='275.000 - 350.000'?"selected":""); ?>>275.000 - 350.000</option>
+                        <option value="350.000 - 400.000" <?php echo ($result["renta"]=='350.000 - 400.000'?"selected":""); ?>>350.000 - 400.000</option>
+                        <option value="400.000 - 450.000" <?php echo ($result["renta"]=='400.000 - 450.000'?"selected":""); ?>>400.000 - 450.000</option>
+                        <option value="450.000 - 500.000" <?php echo ($result["renta"]=='450.000 - 500.000'?"selected":""); ?>>450.000 - 500.000</option>
+                        <option value="500.000 - 550.000" <?php echo ($result["renta"]=='500.000 - 550.000'?"selected":""); ?>>500.000 - 550.000</option>
+                        <option value="550.000 - 600.000" <?php echo ($result["renta"]=='550.000 - 600.000'?"selected":""); ?>>550.000 - 600.000</option>
+                        <option value="600.000 - 800.000" <?php echo ($result["renta"]=='600.000 - 800.000'?"selected":""); ?>>600.000 - 800.000</option>
+                        <option value="800.000 - 1.000.000" <?php echo ($result["renta"]=='800.000 - 1.000.000'?"selected":""); ?>>800.000 - 1.000.000</option>
+                        <option value="Más de 1.000.000" <?php echo ($result["renta"]=='Más de 1.000.000'?"selected":""); ?>>Más de 1.000.000</option>
                     </select>
                 </div>
             </div>
@@ -1861,11 +1881,6 @@
     </div>
 
 
-
-
-
-
-
 </div>
 
 </div><!--container-->
@@ -1915,37 +1930,37 @@
     $('#btn-delete-curso3').<?php echo (count($result["cursos"])>=3?"show()":"hide()"); ?>;
 
     // Experiencia Laboral
-    $('#boxDataExp1').<?php echo ($maxexperiencia>=1?"show()":"hide()"); ?>;
-    $('#boxDataExp2').<?php echo ($maxexperiencia>=2?"show()":"hide()"); ?>;
-    $('#boxDataExp3').<?php echo ($maxexperiencia>=3?"show()":"hide()"); ?>;
+    $('#boxDataExp1').<?php echo (count($result["experiencia"])>=1?"show()":"hide()"); ?>;
+    $('#boxDataExp2').<?php echo (count($result["experiencia"])>=2?"show()":"hide()"); ?>;
+    $('#boxDataExp3').<?php echo (count($result["experiencia"])>=3?"show()":"hide()"); ?>;
 
     // Referencias
-    $('#refs_box1').<?php echo ($maxreferencias>=1?"show()":"hide()"); ?>;
-    $('#refs_box2').<?php echo ($maxreferencias>=2?"show()":"hide()"); ?>;
-    $('#refs_box3').<?php echo ($maxreferencias>=3?"show()":"hide()"); ?>;
+    $('#refs_box1').<?php echo (count($result["referencias"])>=1?"show()":"hide()"); ?>;
+    $('#refs_box2').<?php echo (count($result["referencias"])>=2?"show()":"hide()"); ?>;
+    $('#refs_box3').<?php echo (count($result["referencias"])>=3?"show()":"hide()"); ?>;
 
     // Horarios Disponibles
     var containerHoras = $('#containerInputHoras');
     var inputDiaHora1 = $('#inputDiaHora');
     var boxData1 = $('#dias1Box');
-    $(boxData1).<?php echo ($show_horarios>=1?"show()":"hide()") ?>;
-    $(inputDiaHora1).<?php echo ($show_horarios==0?"show()":"hide()") ?>;
+    $(boxData1).<?php echo (count($result["horarios"])>=1?"show()":"hide()") ?>;
+    $(inputDiaHora1).<?php echo (count($result["horarios"])==0?"show()":"hide()") ?>;
     var inputDiaHora2 = $('#inputDiaHora2');
     var boxData2 = $('#dias2Box');
-    $(boxData2).<?php echo ($show_horarios>=2?"show()":"hide()") ?>;
-    $(inputDiaHora2).<?php echo ($show_horarios==1?"show()":"hide()") ?>;
+    $(boxData2).<?php echo (count($result["horarios"])>=2?"show()":"hide()") ?>;
+    $(inputDiaHora2).<?php echo (count($result["horarios"])==1?"show()":"hide()") ?>;
     var inputDiaHora3 = $('#inputDiaHora3');
     var boxData3 = $('#dias3Box');
-    $(boxData3).<?php echo ($show_horarios>=3?"show()":"hide()") ?>;
-    $(inputDiaHora3).<?php echo ($show_horarios==2?"show()":"hide()") ?>;
+    $(boxData3).<?php echo (count($result["horarios"])>=3?"show()":"hide()") ?>;
+    $(inputDiaHora3).<?php echo (count($result["horarios"])==2?"show()":"hide()") ?>;
     var inputDiaHora4 = $('#inputDiaHora4');
     var boxData4 = $('#dias4Box');
-    $(boxData4).<?php echo ($show_horarios>=4?"show()":"hide()") ?>;
-    $(inputDiaHora4).<?php echo ($show_horarios==3?"show()":"hide()") ?>;
+    $(boxData4).<?php echo (count($result["horarios"])>=4?"show()":"hide()") ?>;
+    $(inputDiaHora4).<?php echo (count($result["horarios"])==3?"show()":"hide()") ?>;
     var inputDiaHora5 = $('#inputDiaHora5');
     var boxData5 = $('#dias5Box');
-    $(boxData5).<?php echo ($show_horarios>=5?"show()":"hide()") ?>;
-    $(inputDiaHora5).<?php echo ($show_horarios==4?"show()":"hide()") ?>;
+    $(boxData5).<?php echo (count($result["horarios"])>=5?"show()":"hide()") ?>;
+    $(inputDiaHora5).<?php echo (count($result["horarios"])==4?"show()":"hide()") ?>;
 </script>
 </body>
 </html>

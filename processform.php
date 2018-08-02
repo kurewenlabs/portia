@@ -558,16 +558,16 @@
         // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
         $mail->Subject = 'Postulación enviada con éxito';
         $mail->Body = 'Se ha registrado la postulación de ' . $nombre . ' a los cargos de ' . $postulaciones . '.'; 
-        $mail->From = "contacto@kurewen.cl";
+        $mail->From = "postulacion@portia.cl";
         $mail->FromName = "Postulaciones Portia";
         
         $mail->IsSMTP();
-        $mail->Host = 'mail.kurewen.cl';
+        $mail->Host = 'correo.portia.cl';
         $mail->SMTPSecure = 'ssl'; // tls
         $mail->Port = 465; // 587
         $mail->SMTPAuth = true;
-        $mail->Username = 'andres@kurewen.cl';
-        $mail->Password = 'Andreskurewen';
+        $mail->Username = 'postulacion@portia.cl';
+        $mail->Password = 'PP.2018!!';
 
         $mail->send();
 
