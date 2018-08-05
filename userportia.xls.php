@@ -47,7 +47,9 @@
                         <td>'.$row["renta"].'</td></td>
                         <td>'.$row["estado_post"].'</td>';
 
-        $fila_post .= '<td></td>';
+        $fila_post .= '<td>'.$row["sexo"].'</td>
+                        <td>'.$row["provincia"].'</td>
+                        <td>'.$row["comuna"].'</td>';
         $fila_post .= '</tr>';
 
         return $fila_post;
@@ -56,7 +58,7 @@
     require_once 'db.php';
     global $conn;
 
-    $sql = "SELECT estado_post, count(*) AS count FROM (SELECT * FROM kurewenc_db_portia.tbl_postulante) a
+    $sql = "SELECT estado_post, count(*) AS count FROM (SELECT * FROM postulacion.tbl_postulante) a
                         LEFT JOIN
                 (
                     SELECT id_post,nombre 
@@ -91,10 +93,13 @@
                 <th>ID</th> <!-- AQUI DEBE IMPRIMIR EL RUT O PASAPORTE -->
                 <th>Postulante</th>
                 <th>Nacionalidad</th>
+                
                 <th>Cargo</th>
                 <th>Rango Renta</th>
                 <th>Estado</th>
-                <th>Adjuntos</th>
+                <th>Sexo</th>
+                <th>Region</th>
+                <th>Comuna</th>
             </tr>
             </thead>
             <tbody>
@@ -102,7 +107,7 @@
             //        require_once 'db.php';
             //        global $conn;
 
-            $sql = "SELECT * FROM (SELECT * FROM kurewenc_db_portia.tbl_postulante) a
+            $sql = "SELECT * FROM (SELECT * FROM postulacion.tbl_postulante) a
                                  LEFT JOIN
                          (
                              SELECT id_post,nombre 

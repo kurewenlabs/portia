@@ -424,9 +424,7 @@ textarea{
     top: 7px;
     right: 5px;
 }
-.noMargin{
-	margin-bottom: 0 !important;
-}
+
 .botonCargos{
     position: relative;
     top: 38px;
@@ -457,4 +455,7 @@ textarea{
     line-height: 32px;
     padding-left: 8px;
     padding-top: 5px !important;
+}
+.borde{
+	border: 1px solid #eee;
 }

@@ -64,13 +64,12 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
       <div class=" input-field col s4 m4 l4">Tipo de Estudios
         <select id="tipoEstudio" class="browser-default" onselect="this.className = ''" name="estudio">
           <option value=""></option>
-          <option value="Secundario">Secundario</option>
-          <option value="Técnico Superior">Técnico Superior</option>
-          <option value="Universitario">Universitario</option>
+          <option value="basica">Enseñanza Básica</option>
+          <option value="enseñanza media">Enseñanza Media</option>
+          <option value="técnico superior">Técnico Superior</option>
+          <option value="universitario">Universitario</option>
           <option value="Posgrado">Posgrado</option>
-          <option value="Master">Master</option>
-          <option value="Doctorado">Doctorado</option>
-          <option value="Otro">Otro</option>
+        
         </select>
       </div>
       <div class="input-field col s8 m8 l8 carreraBox">
@@ -85,8 +84,8 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
           <select  onselect="this.className = ''" name="estado_estudio" class="browser-default" id="estado_estudio">
             <option value=""></option>
             <option value="En Curso">En Curso</option>
-            <option value="Graduado">Graduado</option>
-            <option value="Abandonado">Abandonado</option>
+            <option value="Graduado">Egresado</option>
+            <option value="Abandonado">Titulado</option>
           </select>
         </div>
         <div class=" input-field col s2 m2 l2">
@@ -104,9 +103,13 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
         
         </div>
 
-        <div class=" input-field col s4 m4 l4">Licencia de Conducir
-          <select onselect="this.className = ''" name="licencia" class="browser-default" id="licencia">
+    </div>
+  </div><!--datos identificacion-->
+  <div class="row">
+     <div class=" input-field col s4 m4 l4">Licencia de Conducir
+          <select class="js-example-basic-multiple" id="id_label_multiple" multiple="multiple" onselect="this.className = ''" name="licencia" id="licencia">
             <option value=""></option>
+            <option value="sin licencia">Sin Licencia</option>
             <option value="Clase A1">Clase A1</option>
             <option value="Clase A2">Clase A2</option>
             <option value="Clase A3">Clase A3</option>
@@ -119,15 +122,14 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
             <option value="Clase F">Clase F</option>
           </select>
         </div>
-    </div>
-  </div><!--datos identificacion-->
+  </div>
   <div class="row">
     <h4>Otros Conocimientos (Opcional)</h4>
     <span class="comentario">*Ingrese Máximo 3</span>
     <div class="divider"></div>
   </div>
   <div class="curso1before">
-    <div class="row" id="curso_box" class="noMargin"><!--cursos-->
+    <div class="row" id="curso_box" ><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso">Curso</label>
         <input  id="curso" type="text" class="validate">
@@ -143,7 +145,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
     </div>
   </div>
   <div class="curso2before">
-    <div class="row" id="curso2_box" class="noMargin"><!--cursos-->
+    <div class="row" id="curso2_box" ><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso2">Curso</label>
         <input  id="curso2" type="text" class="validate">
@@ -159,7 +161,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
     </div>
   </div>
   <div class="curso3before">
-    <div class="row" id="curso3_box" class="noMargin"><!--cursos-->
+    <div class="row" id="curso3_box" ><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso3">Curso</label>
         <input  id="curso3" type="text" class="validate">
@@ -207,6 +209,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type = "text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
 </body>
 </html>

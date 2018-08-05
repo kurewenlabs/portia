@@ -66,7 +66,7 @@
         }
 
     //insert tabla tbl_postulante
-    $sql =  "INSERT INTO kurewenc_db_portia.tbl_postulante(
+    $sql =  "INSERT INTO postulacion.tbl_postulante(
             id_post, 
             fecha_post, 
             rut, 
@@ -149,7 +149,7 @@
             }
             
             //inset tbl_estudio
-            $sql =  "INSERT INTO kurewenc_db_portia.tbl_estudio(
+            $sql =  "INSERT INTO postulacion.tbl_estudio(
                     id_post, 
                     rut, 
                     tipo_estudio, 
@@ -185,7 +185,7 @@
                 $$id = $value;
             }
             
-            $sql = "INSERT INTO kurewenc_db_portia.tbl_curso(
+            $sql = "INSERT INTO postulacion.tbl_curso(
                     id_post,
                     rut,
                     curso,
@@ -236,7 +236,7 @@
                 
             }else{
                 
-                $sql = "INSERT INTO kurewenc_db_portia.tbl_experiencia_laboral(
+                $sql = "INSERT INTO postulacion.tbl_experiencia_laboral(
                         id_post,
                         rut,
                         empresa,
@@ -297,7 +297,7 @@
                 
             }else{
             
-                $sql = "INSERT INTO kurewenc_db_portia.tbl_referencia_laboral(
+                $sql = "INSERT INTO postulacion.tbl_referencia_laboral(
                         id_post,
                         rut,
                         empresa,
@@ -351,7 +351,7 @@
             }
             if($dias != ''){
                 
-                $sql = "INSERT INTO kurewenc_db_portia.tbl_horario_trabajo(
+                $sql = "INSERT INTO postulacion.tbl_horario_trabajo(
                         id_post,
                         rut,
                         dias,
@@ -408,7 +408,7 @@
 
             //$contenido_pdf_cv = file_get_contents($cv);            
             //inset tbl_documento
-            $sql =  "INSERT INTO kurewenc_db_portia.tbl_documento(
+            $sql =  "INSERT INTO postulacion.tbl_documento(
                     id_post, 
                     rut, 
                     cv, 
@@ -453,7 +453,7 @@
                 $$id = $value;
             }
             
-            $sql = "INSERT INTO kurewenc_db_portia.tbl_datos_postulacion_abierta(
+            $sql = "INSERT INTO postulacion.tbl_datos_postulacion_abierta(
                     id_post,
                     rut,
                     num,
@@ -558,16 +558,16 @@
         // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
         $mail->Subject = 'Postulación enviada con éxito';
         $mail->Body = 'Se ha registrado la postulación de ' . $nombre . ' a los cargos de ' . $postulaciones . '.'; 
-        $mail->From = "postulacion@portia.cl";
+        $mail->From = "contacto@kurewen.cl";
         $mail->FromName = "Postulaciones Portia";
         
         $mail->IsSMTP();
-        $mail->Host = 'correo.portia.cl';
+        $mail->Host = 'mail.kurewen.cl';
         $mail->SMTPSecure = 'ssl'; // tls
         $mail->Port = 465; // 587
         $mail->SMTPAuth = true;
-        $mail->Username = 'postulacion@portia.cl';
-        $mail->Password = 'PP.2018!!';
+        $mail->Username = 'andres@kurewen.cl';
+        $mail->Password = 'Andreskurewen';
 
         $mail->send();
 

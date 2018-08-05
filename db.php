@@ -1,9 +1,9 @@
 <?php
 // Datos para la conexion
 $host = 'localhost';
-$database = 'kurewenc_db_portia';
-$username = 'kurewenc_portia';
-$password = 'kureportiawenc';
+$database = 'postulacion';
+$username = 'postulacion';
+$password = 'Web.Portia.2018';
 global $conn;
 // Conectarse a MySQL
 $conn = mysqli_connect($host, $username, $password, $database);

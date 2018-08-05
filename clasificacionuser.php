@@ -2,7 +2,7 @@
 $id = $_GET['identificador'];
 require_once 'db.php';
 global $conn;
-$sql = "SELECT * FROM (SELECT * FROM kurewenc_db_portia.tbl_postulante) a
+$sql = "SELECT * FROM (SELECT * FROM postulacion.tbl_postulante) a
             LEFT JOIN
     (
         SELECT id_post,nombre 
@@ -47,7 +47,7 @@ echo "</pre>"*/
     </div>
 </div>
 <div class="row">
-    <h3 class="center-align">Editar postulación</h3>
+    <h3 class="center-align">Preview postulación</h3>
   <!--  <p class="center-align"> imprimir la fecha aqui</p> DEBE PASAR LA FECHA DEL DIA AQUI -->
 </div>
 <div class="container">

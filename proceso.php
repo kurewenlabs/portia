@@ -69,7 +69,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
       </div>
       <div class=" input-field col s4 m4 l4 " id="rut_box">
         <label for="rut">RUT</label>
-        <input placeholder="ej. 11111111-1" id="rut" type="tel" class="validate rut_box">
+        <input placeholder="sin puntos ni guion" id="rut" type="tel" class="validate rut_box">
       </div>
       <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
         <label for="Pasaporte">Pasaporte</label>
@@ -124,11 +124,11 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <div class="row">
     <div class="">
       <div class="input-field col s4 m4 l4">
-          <input id="telefono" type="tel" class="validate" placeholder="+56(9)">
+          <input id="telefono" type="tel" class="validate" placeholder="+56(9)2222 2222">
           <label for="telefono">Telefono</label>
         </div>
       <div class="input-field col s4 m4 l4">
-          <input id="telefono2" type="tel" placeholder="*Opcional" class="validate">
+          <input id="telefono2" type="tel" placeholder="*Opcional" class="validate" placeholder="+56(9)2222 2222">
           <label for="telefono2">Telefono de Recado</label>
         </div>
     </div>

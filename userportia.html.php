@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.jqueryui.min.css">
     <link rel="stylesheet" href="dist/css/main.min.css">
     <!--REQUIRED STYLE SHEETS-->
 </head>
@@ -65,18 +66,9 @@
         </div>
     </div>
     <div class="row">
-        <nav class="buscar">
-            <div class="nav-wrapper ">
-                <form>
-                    <div class="input-field">
-                        <input id="search" class="" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons" style="color:#000;">close</i>
-                    </div>
-                </form>
-            </div>
+       
             <a id="exportXml" class="waves-effect btn-flat exportar"><i class="tiny material-icons">data_usage</i>Exportar XLS</a>
-        </nav>
+ 
     </div>
     <?php
     function imprimir_fila_post($row){
@@ -109,7 +101,7 @@
               
               
                         <td>
-                 <a class="waves-effect btn-flat" href="adminedit.php?identificador='. $row['id_post'] .'">Ver</a>
+                 <a class="waves-effect btn-flat btn-small" href="adminedit.php?identificador='. $row['id_post'] .'">Ver</a>
                 </td>';
         $fila_post .= '</tr>';
 
@@ -146,7 +138,7 @@
     //    print '</pre>';
 
     ?>
-    <div class="row">
+<div class="row">
         <div class="col s12 lineaDatos1">
             <ul class="tabs">
                 <li class="tab col s2"><a href="#test6"><span class="badge yellow"><?php echo isset($postulacion_por_tipo[ 'Sin Clasificar' ])? $postulacion_por_tipo[ 'Sin Clasificar' ]: 0 ?></span>Sin Clasificar</a></li>
@@ -160,7 +152,7 @@
         </div>
     </div>
     <div id="test1" class="col s12 empresa lineaDatos1 printTable">
-        <table class="centered highlight">
+        <table id="tablaPortia" class="centered highlight">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -170,7 +162,7 @@
                 
                 <th>Cargo</th>
                 <th>Sexo</th>
-                <th>Rango Renta</th>
+                <th>Renta</th>
                 <th>Estado</th>
                 <th>Region</th>
                 <th>Comuna</th>
@@ -226,7 +218,7 @@
         </table>
     </div>
     <div id="test2" class="col s12 empresa lineaDatos1 printTable">
-        <table class="centered highlight">
+        <table id="tablaPortia" class="centered highlight">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -236,7 +228,7 @@
                 <th>Cargo</th>
                 <th>Sexo</th>
                 
-                <th>Rango Renta</th>
+                <th>Renta</th>
                 <th>Estado</th>
                 <th>Region</th>
                 <th>Comuna</th>
@@ -248,7 +240,7 @@
         </table>
     </div>
     <div id="test3" class="col s12 empresa lineaDatos1 printTable">
-        <table class="centered highlight">
+        <table id="tablaPortia" class="centered highlight">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -258,7 +250,7 @@
                 
                 <th>Cargo</th>
                 <th>Sexo</th>
-                <th>Rango Renta</th>
+                <th>Renta</th>
                 <th>Estado</th>
                 <th>Region</th>
                 <th>Comuna</th>
@@ -270,7 +262,7 @@
         </table>
     </div>
     <div id="test4" class="col s12 empresa lineaDatos1 printTable">
-        <table class="centered highlight">
+        <table id="tablaPortia" class="centered highlight">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -280,7 +272,7 @@
                 
                 <th>Cargo</th>
                 <th>Sexo</th>
-                <th>Rango Renta</th>
+                <th>Renta</th>
                 <th>Estado</th>
                 <th>Region</th>
                 <th>Comuna</th>
@@ -292,7 +284,7 @@
         </table>
     </div>
     <div id="test5" class="col s12 empresa lineaDatos1 printTable">
-        <table class="centered highlight">
+        <table id="tablaPortia" class="centered highlight">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -301,7 +293,7 @@
                 <th>Nacionalidad</th>
                 <th>Cargo</th>
                 <th>Sexo</th>
-                <th>Rango Renta</th>
+                <th>Renta</th>
                 <th>Estado</th>
                 <th>Region</th>
                 <th>Comuna</th>
@@ -313,7 +305,7 @@
         </table>
     </div>
     <div id="test6" class="col s12 empresa lineaDatos1 printTable">
-        <table id="sin_clasificar_table" class="centered highlight">
+        <table id="tablaPortia" id="sin_clasificar_table" class="centered highlight">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -322,7 +314,7 @@
                 <th>Nacionalidad</th>
                 <th>Cargo</th>
                 <th>Sexo</th>
-                <th>Rango Renta</th>
+                <th>Renta</th>
                 <th>Estado</th>
                 <th>Region</th>
                 <th>Comuna</th>
@@ -337,10 +329,14 @@
 </div><!--container-->
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type = "text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.jqueryui.min.js"></script>
+
 <script src="src/jquery.table2excel.js"></script>
+
 <script src="src/js/postulaciones.js"></script>
 <script>
     $("#exportXml").click(function(){

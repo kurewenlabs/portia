@@ -72,7 +72,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                 <option value="XXL">XXL</option>
               </select>
             </div>
-            <div class="tab input-field col s4 m4 l4">Talla Poleron
+            <div class="tab input-field col s4 m4 l4">Talla Poleron/Chaqueta
               <select class="browser-default" onselect="this.className = ' ' " name="uniforme2" id="uniforme2">
                 <option value=""></option>
                 <option value="XS">XS</option>

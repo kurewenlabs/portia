@@ -243,9 +243,6 @@ function postNumberPost(str){
                 }
           }
 
-          if($.trim($("#txtSemestres").val()) != "" ){
-            chkArray.push( {"semestres" : $("#txtSemestres").val()} );
-          }
           if($.trim($("#estado_estudio").val()) != "" ){
             chkArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
           }
@@ -1413,11 +1410,7 @@ $(document).ready(function() {
 });
 
 
-var htmldata;
 
-$.get( "edituserportia.html", function( data ) {
-    htmldata = data;    
-});
 /*TABS INIT*/
   $(document).ready(function(){
     $('.tabs').tabs();
@@ -1430,30 +1423,10 @@ $.get( "edituserportia.html", function( data ) {
     $('.modal').modal();
   });
 
-$('.modal-trigger').on("click", function() {
-    getData($(this).attr('alt'));
-    $('.modal-content').html(htmldata);
-})
 
-
-function getData(id) {
-    
-    $.ajax({ 
-    type: 'GET', 
-    url: 'saveportia.php', 
-    data: { id_post: id }, 
-    dataType: 'html',
-    success: function (data) { 
-        
-        $('.modal-content').html(data);
-        //console.log(data);
-        // data;
-    }
-    
-});
-}
 function myFunctionGracias() {
-    alert("Gracias por su respuesta!");
+    alert("Gracias por contestar nuestra encuesta.  Haga click en botón Ok para volver a postulaciones." );
+    window.location.href="index.php";
 }
 
 // Admin
@@ -1495,3 +1468,11 @@ $("form#login").submit(function(e){
     })
     return false;
 });
+/*DATATABLES*/ 
+$(document).ready(function() {
+    $('#tablaPortia').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "processform.php"
+    } );
+} );
