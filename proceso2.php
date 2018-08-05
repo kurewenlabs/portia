@@ -65,14 +65,13 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
         <select id="tipoEstudio" class="browser-default" onselect="this.className = ''" name="estudio">
           <option value=""></option>
           <option value="basica">Enseñanza Básica</option>
-          <option value="enseñanza media">Enseñanza Media</option>
+          <option value="media">Enseñanza Media</option>
           <option value="técnico superior">Técnico Superior</option>
           <option value="universitario">Universitario</option>
           <option value="Posgrado">Posgrado</option>
-        
         </select>
       </div>
-      <div class="input-field col s8 m8 l8 carreraBox">
+      <div class="input-field col s8 m8 l8 carreraBox" id="carrerabox">
         <label for="carrera">Titulo de la Carrera</label>
         <input id="carrera" type="text" class="validate">
       </div>
@@ -96,11 +95,10 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
         
         </div>
         <div class=" input-field col s2 m2 l2">
-          <div id="box_estudio" class="box_estudio">
+          <div class="box_estudio" id="estudiobox">
             <label for="txtSemestres">Semestres cursados</label>
             <input type="text" class="date" id="txtSemestres" placeholder="Semestres">
           </div>
-        
         </div>
 
     </div>

@@ -119,6 +119,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                             $i = 1;
                             foreach($regiones['regiones'] as $region) {
                             echo "region" . $i . " : [";
+                            natsort($region['comunas']);
                             foreach($region['comunas'] as $comuna) {
                                 echo "\"" . $comuna . "\", ";
                             }
@@ -171,13 +172,11 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                           <option value="Viernes">Viernes</option>
                           <option value="Sabado">Sabado</option>
                           <option value="Domingo">Domingo</option>
-
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple" placeholder="Obligatorio"  style="width:60%">
-                          <option value=""></option>
-
+                          <option value="">Obligatorio</option>
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
                           <option value="3:00">3:00</option>
@@ -190,7 +189,6 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                           <option value="10:00">10:00</option>
                           <option value="11:00">11:00</option>
                           <option value="12:00">12:00</option>
-                          <option value="">Obligatorio</option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -236,15 +234,10 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                   </div>
 
                   <div class="row">
-
-
                       <div class="col s2 m2 l2">
                           <div id="boton_dias1" class="waves-effect waves-light btn-small add1" onclick="agregarDias1()">Agregar</div>
                       </div>
-
                   </div>
-                   
-
               </div>
           </div>
 
@@ -260,13 +253,11 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
                           <option value="Viernes">Viernes</option>
                           <option value="Sabado">Sabado</option>
                           <option value="Domingo">Domingo</option>
-
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple2"  style="width:60%">
                           <option value="">Obligatorio</option>
-
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
                           <option value="3:00">3:00</option>

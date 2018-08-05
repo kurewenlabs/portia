@@ -74,13 +74,24 @@ function postNumberPost(str){
       e.preventDefault();
           var chkArray = [];
           /* look for all checkboes that have a parent id  attached to it and check if it was checked */
-          if($.trim($("#rut").val()) != "" ){
-            chkArray.push( {"rut" : $("#rut").val()} );
-              $('#rut').css('border-color' , '#f2f2f2');
-          }else{
-              notie.alert({ type: 3, text: 'Debes ingresar rut o pasaporte', position: 'bottom' });
-              $('#rut').css('border-color' , 'red');
-              return false;
+          if($.trim($("#tipo_doc").val()) == "rut") {
+            if($.trim($("#rut").val()) != "" ){
+                chkArray.push( {"rut" : $("#rut").val()} );
+                $('#rut').css('border-color' , '#f2f2f2');
+            }else{
+                notie.alert({ type: 3, text: 'Debes ingresar rut', position: 'bottom' });
+                $('#rut').css('border-color' , 'red');
+                return false;
+            }
+          } else {
+            if($.trim($("#Pasaporte").val()) != "" ){
+                chkArray.push( {"pasaporte" : $("#rut").val()} );
+                $('#Pasaporte').css('border-color' , '#f2f2f2');
+            }else{
+                notie.alert({ type: 3, text: 'Debes ingresar pasaporte', position: 'bottom' });
+                $('#Pasaporte').css('border-color' , 'red');
+                return false;
+            }
           }
           if($.trim($("#first_name").val()) != "" ){
             chkArray.push( {"noms" : $("#first_name").val()} );
@@ -674,11 +685,13 @@ function postNumberPost(str){
  });
 
  $('#tipoEstudio').change(function(){
-     if($('#tipoEstudio').val() == 'Secundario') {
-         $('.carreraBox').hide();
-     } else {
-         $('.carreraBox').show();
-     }
+     if($('#tipoEstudio').val() == 'basica' || $('#tipoEstudio').val() == 'media' ) {
+        $('#carrerabox').hide();
+        $('#estudiobox').hide();
+    } else {
+         $('#carrerabox').show();
+         $('#estudiobox').show();
+        }
  });
  $('#estado_estudio').change(function(){
      if($('#estado_estudio').val() == 'En Curso') {

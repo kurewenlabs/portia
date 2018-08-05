@@ -165,6 +165,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
             $i = 1;
             foreach($regiones['regiones'] as $region) {
               echo "region" . $i . " : [";
+              natsort($region['comunas']);
               foreach($region['comunas'] as $comuna) {
                 echo "\"" . $comuna . "\", ";
               }
