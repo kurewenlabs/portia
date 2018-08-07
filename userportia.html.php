@@ -66,9 +66,9 @@
         </div>
     </div>
     <div class="row">
-       
+        <div class="col s12 empresa">
             <a id="exportXml" class="waves-effect btn-flat exportar"><i class="tiny material-icons">data_usage</i>Exportar XLS</a>
- 
+        </div>
     </div>
     <?php
     function imprimir_fila_post($row){

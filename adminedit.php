@@ -2109,15 +2109,31 @@
 
             </div>
 
+            <div class="row"></div>
+            <div class="row"></div>
+
+        <!-- -----------------------------------------------BOTONES FINAL --------------------------------- -->
+            <div class="row">
+                <div class="col s6 m6 l6 right">
+                    <button type="submit" class="waves-effect waves-light btn right" >Postular</button>
+                </div>
+            </div>
+            </form>
+        </div><!--container-->
+
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <img src="src/img/logo.jpg" alt="" class="endLogo">
+            </div>
         </div>
-        <!--container-->
+
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
         <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
-        <script src="src/js/postulaciones.js"></script>
+        <!-- script src="src/js/postulaciones.js"></script -->
         <script language="Javascript">
             <?php
     $error = $_POST['mensaje'];
@@ -2215,5 +2231,4 @@
             <?php echo (count($result["horarios"])==4?"show()":"hide()") ?>;
         </script>
     </body>
-
 </html>
