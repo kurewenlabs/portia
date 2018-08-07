@@ -1,20 +1,22 @@
 <?php
     $id = $_GET['identificador'];
+    $postula = $_GET['postulacion'];
     require_once 'db.php';
     global $conn;
     $sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
                 a.estado_civil, a.nacionalidad, a.telefono, a.telefono_recado, a.email, a.provincia, a.comuna, a.domicilio, 
                 a.tpolera, a.tpantalon, a.tpoleron, a.tzapatos, a.renta, a.tlicenciaconducir, a.afp, a.prestadorsalud, 
-                a.experiencialaboral, a.referencialaboral, b.nombre, c.cv, c.antecedentes, c.carnet, c.fotografia, d.tipo_estudio, d.titulo, d.estado, 
-                d.fecha_titulacion, d.semestres FROM 
+                a.experiencialaboral, a.referencialaboral, b.nombre, b.estado, b.observacion, c.cv, c.antecedentes, c.carnet, 
+                c.fotografia, d.tipo_estudio, d.titulo, d.estado as estado_estudio, d.fecha_titulacion, d.semestres FROM 
             (
                 SELECT * 
                 FROM tbl_postulante
             ) a
             LEFT JOIN
             (
-                SELECT id_post,nombre 
+                SELECT id_post, nombre, estado, observacion 
                 FROM  tbl_datos_postulacion_abierta
+                WHERE nombre = '".$postula."'
             ) b ON a.id_post = b.id_post 
             LEFT OUTER JOIN tbl_documento c ON c.id_post = b.id_post 
             LEFT OUTER JOIN tbl_estudio d ON d.id_post = b.id_post 
@@ -96,7 +98,7 @@
                     <a class="waves-effect btn-flat botonadmin" href="userportia.html.php">Volver</a>
                 </div>
                 <div class="col s6 m6 l6">
-                    <a type="button" onclick="document.location.href = 'adminedit.pdf.php?identificador=<?php echo $id; ?>';" class="waves-effect btn-flat botonadmin2">
+                    <a type="button" onclick="document.location.href = 'adminedit.pdf.php?identificador=<?php echo $id; ?>&postulacion=<?php echo $postula; ?>';" class="waves-effect btn-flat botonadmin2">
                         <i class="tiny material-icons">picture_as_pdf</i>Exportar PDF</a>
                 </div>
             </div>
@@ -105,6 +107,7 @@
             <div class="row">
                 <form method="POST" action="process_editar.php" id="print-edit">
                     <input type="hidden" name="identificador" value="<?= $id ?>" />
+                    <input type="hidden" name="postulacion" value="<?= $postula ?>" />
                     <input type="hidden" name="pagina" value="actualizar_estado" />
                     <div class="">
                         <p>Clasificar</p>
@@ -112,7 +115,7 @@
                             <p>
                                 <label for="sinClasificar2">
                                     <input value="Sin Clasificar" id="sinClasificar2" class="with-gap" name="group1" type="radio" <?php if($result[
-                                        'estado_post']=='Sin Clasificar' ) echo "checked='checked'"; else "";?>/>
+                                        'estado']=='Sin Clasificar' ) echo "checked='checked'"; else "";?>/>
                                     <span>
                                         <span class="badge yellow sinClasificar"> Sin Clasificar</span>
                                     </span>
@@ -120,7 +123,7 @@
                             </p>
                             <p>
                                 <label for="apto2">
-                                    <input value="Seleccionado" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado_post']=='Seleccionado'
+                                    <input value="Apto" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Apto'
                                         ) echo "checked='checked'"; else "";?>/>
                                     <span>
                                         <span class="badge green sinClasificar">Apto</span>
@@ -130,7 +133,7 @@
                             <p>
                                 <label for="fueraRango2">
                                     <input value="Fuera Rango Renta" id="fueraRango2" class="with-gap" name="group1" type="radio" <?php if($result[
-                                        'estado_post']=='Fuera Rango Renta' ) echo "checked='checked'"; else "";?>/>
+                                        'estado']=='Fuera Rango Renta' ) echo "checked='checked'"; else "";?>/>
                                     <span>
                                         <span class="badge orange sinClasificar"> Fuera Rango Renta</span>
                                     </span>
@@ -138,10 +141,10 @@
                             </p>
                             <p>
                                 <label for="noApto2">
-                                    <input value="No Apto" id="noApto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado_post']=='No Apto'
+                                    <input value="No Apto" id="noApto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='No Apto'
                                         ) echo "checked='checked'"; else "";?>/>
                                     <span>
-                                        <span class="badge grey sinClasificar"> No Apto</span>
+                                        <span class="badge grey sinClasificar">No Apto</span>
                                     </span>
                                 </label>
                             </p>
@@ -150,9 +153,7 @@
                             <p class="left-align">Observación</p>
                             <form>
                                 <div class="input-field">
-                                    <textarea id="textarea1" name="observacion" class="browser-default">
-                                        <?php echo $result['observacion']?>
-                                    </textarea>
+                                    <textarea id="textarea1" name="observacion" class="browser-default"><?php echo $result['observacion']?></textarea>
                                     <label for="textarea1"></label>
                                 </div>
                             </form>
@@ -766,9 +767,9 @@
                         <div class="tab input-field col s4 m4 l4">
                             <select onselect="this.className = ''" name="estado_estudio" class="browser-default">
                                 <option value="">Estado</option>
-                                <option value="En Curso" <?php echo ($result[ 'estado']=='En Curso' ? "selected": ""); ?>>En Curso</option>
-                                <option value="Graduado" <?php echo ($result[ 'estado']=='Graduado' ? "selected": ""); ?>>Graduado</option>
-                                <option value="Abandonado" <?php echo ($result[ 'estado']=='Abandonado' ? "selected": ""); ?>>Abandonado</option>
+                                <option value="En Curso" <?php echo ($result[ 'estado_estudio']=='En Curso' ? "selected": ""); ?>>En Curso</option>
+                                <option value="Graduado" <?php echo ($result[ 'estado_estudio']=='Graduado' ? "selected": ""); ?>>Graduado</option>
+                                <option value="Abandonado" <?php echo ($result[ 'estado_estudio']=='Abandonado' ? "selected": ""); ?>>Abandonado</option>
                             </select>
                         </div>
                         <div class=" input-field col s2 m2 l2">

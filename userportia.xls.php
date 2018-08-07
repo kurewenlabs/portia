@@ -27,17 +27,6 @@
 
         $fecha_post = date("d/m/Y", strtotime($row["fecha_post"]));
 
-        $color='';
-        if($row["estado_post"] == 'Seleccionado'){
-            $color='green';
-        }else if($row["estado_post"] == 'No apto'){
-            $color='orange';
-        }else if($row["estado_post"] == 'Fuera de Rango'){
-            $color='grey';
-        }else{//Sin Clasificar
-            $color='yellow';
-        }
-
         $fila_post = '<tr>
                         <td> '.$fecha_post.'</td>
                         <td>'.$row["rut"].'</td>
@@ -45,7 +34,7 @@
                         <td>'.$row["nacionalidad"].'</td>
                         <td>'.$row["nombre"].'</td>
                         <td>'.$row["renta"].'</td></td>
-                        <td>'.$row["estado_post"].'</td>';
+                        <td>'.$row["estado"].'</td>';
 
         $fila_post .= '<td>'.$row["sexo"].'</td>
                         <td>'.$row["provincia"].'</td>
@@ -57,32 +46,6 @@
 
     require_once 'db.php';
     global $conn;
-
-    $sql = "SELECT estado_post, count(*) AS count FROM (SELECT * FROM postulacion.tbl_postulante) a
-                        LEFT JOIN
-                (
-                    SELECT id_post,nombre 
-                    FROM  tbl_datos_postulacion_abierta
-                    -- LIMIT 0 , 1
-                ) b ON a.id_post = b.id_post
-            GROUP BY estado_post";
-
-  $postulacion_por_tipo = array();
-  $result1 = $conn->query($sql);
-
-   if ($result1->num_rows > 0) {
-        // output data of each row
-   $total = 0;
-      while($row2 = $result1->fetch_assoc()) {
-         $postulacion_por_tipo[ $row2['estado_post'] ] = $row2['count'];
-         $total += $row2['count'];
-        }
-      $postulacion_por_tipo[ 'total' ] = $total;
-    }
-
-    //    print '<pre>';
-    //    print_r($postulacion_por_tipo);
-    //    print '</pre>';
 
     ?>
     <div id="test1" class="col s12 empresa lineaDatos1 printTable">
@@ -107,40 +70,16 @@
             //        require_once 'db.php';
             //        global $conn;
 
-            $sql = "SELECT * FROM (SELECT * FROM postulacion.tbl_postulante) a
-                                 LEFT JOIN
-                         (
-                             SELECT id_post,nombre 
-                             FROM  tbl_datos_postulacion_abierta
-                             -- LIMIT 0 , 1
-                         ) b ON a.id_post = b.id_post";
-
+            $sql = "SELECT a.nombre, a.estado, b.* "
+            . "FROM tbl_datos_postulacion_abierta a, tbl_postulante b "
+            . "WHERE a.id_post = b.id_post";
             $result = $conn->query($sql);
-
-            $fila_post_select = '';
-            $fila_post_fuera_rango = '';
-            $fila_post_no_apto = '';
-            $fila_post_eliminado = '';
-            $fila_post_sin_clasif = '';
 
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     //        echo "id: " . $row["id_post"]." " .$row["rut"]  ." - Name: " . $row["nombres"]. " " . $row["apellidop"]. "<br>";
                     $fila_post = imprimir_fila_post($row);
-
-                    if($row['estado_post'] == 'Seleccionado' ){
-                        $fila_post_select .= $fila_post;
-                    }else if($row['estado_post'] == 'Fuera de Rango'){
-                        $fila_post_fuera_rango .= $fila_post;
-                    }else if($row['estado_post'] == 'No apto'){
-                        $fila_post_no_apto .= $fila_post;
-                    }else if($row['estado_post'] == 'Eliminados'){
-                        $fila_post_eliminado .= $fila_post;
-                    }else if($row['estado_post'] == 'Sin Clasificar'){
-                        $fila_post_sin_clasif .= $fila_post;
-                    }
-
                     echo $fila_post;
                 }
             }

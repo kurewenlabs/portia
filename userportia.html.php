@@ -76,11 +76,11 @@
         $fecha_post = date("d/m/Y", strtotime($row["fecha_post"]));
 
         $color='';
-        if($row["estado_post"] == 'Seleccionado'){
+        if($row["estado"] == 'Apto'){
             $color='green';
-        }else if($row["estado_post"] == 'Fuera de Rango'){
+        }else if($row["estado"] == 'Fuera Rango Renta'){
             $color='orange';
-        }else if($row["estado_post"] == 'No apto'){
+        }else if($row["estado"] == 'No apto'){
             $color='grey';
         }else{//Sin Clasificar
             $color='yellow';
@@ -94,14 +94,14 @@
                         <td>'.$row["nombre"].'</td>
                         <td>'. $row["sexo"] .'</td>
                         <td>'.$row["renta"].'</td>
-                        <td><span class="badge '.$color.'"></span><br/>'.$row["estado_post"].'</td>';
+                        <td><span class="badge '.$color.'"></span><br/>'.$row["estado"].'</td>';
 
         $fila_post .= '<td>'. $row["provincia"] .'</td>
                         <td>'. $row["comuna"] .'</td>
               
               
                         <td>
-                 <a class="waves-effect btn-flat btn-small" href="adminedit.php?identificador='. $row['id_post'] .'">Ver</a>
+                 <a class="waves-effect btn-flat btn-small" href="adminedit.php?identificador='. $row['id_post'] .'&postulacion=' . $row["nombre"] . '">Ver</a>
                 </td>';
         $fila_post .= '</tr>';
 
@@ -111,14 +111,9 @@
     require_once 'db.php';
     global $conn;
 
-    $sql = "SELECT estado_post, count(*) AS count FROM (SELECT * FROM tbl_postulante) a
-                        LEFT JOIN
-                (
-                    SELECT id_post,nombre 
-                    FROM  tbl_datos_postulacion_abierta
-                    -- LIMIT 0 , 1
-                ) b ON a.id_post = b.id_post
-            GROUP BY estado_post";
+    $sql = "SELECT estado, count(id) as cuenta "
+         . "FROM tbl_datos_postulacion_abierta "
+         . "GROUP BY estado";
 
   $postulacion_por_tipo = array();
   $result1 = $conn->query($sql);
@@ -127,8 +122,8 @@
         // output data of each row
    $total = 0;
       while($row2 = $result1->fetch_assoc()) {
-         $postulacion_por_tipo[ $row2['estado_post'] ] = $row2['count'];
-         $total += $row2['count'];
+         $postulacion_por_tipo[ $row2['estado'] ] = $row2['cuenta'];
+         $total += $row2['cuenta'];
         }
       $postulacion_por_tipo[ 'total' ] = $total;
     }
@@ -143,9 +138,9 @@
             <ul class="tabs">
                 <li class="tab col s2"><a href="#test6"><span class="badge yellow"><?php echo isset($postulacion_por_tipo[ 'Sin Clasificar' ])? $postulacion_por_tipo[ 'Sin Clasificar' ]: 0 ?></span>Sin Clasificar</a></li>
                 <li class="tab col s2"><a href="#test1"><span class="badge teal"><?php echo isset($postulacion_por_tipo[ 'total' ])? $postulacion_por_tipo[ 'total' ]: 0 ?></span>Postulaciones</a></li>
-                <li class="tab col s2"><a href="#test2"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Seleccionado' ])? $postulacion_por_tipo[ 'Seleccionado' ]: 0 ?></span>Seleccionadas Aptas</a></li>
-                <li class="tab col s2"><a href="#test3"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera de Rango' ])? $postulacion_por_tipo[ 'Fuera de Rango' ]: 0 ?></span>Fuera Rango Renta</a></li>
-                <li class="tab col s2"><a href="#test4"><span class="badge grey"><?php echo isset($postulacion_por_tipo[ 'No apto' ])? $postulacion_por_tipo[ 'No apto' ]: 0 ?></span>No Aptos</a></li>
+                <li class="tab col s2"><a href="#test2"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Apto' ])? $postulacion_por_tipo[ 'Apto' ]: 0 ?></span>Seleccionadas Aptas</a></li>
+                <li class="tab col s2"><a href="#test4"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera Rango Renta' ])? $postulacion_por_tipo[ 'Fuera Rango Renta' ]: 0 ?></span>Fuera Rango Renta</a></li>
+                <li class="tab col s2"><a href="#test3"><span class="badge grey"><?php echo isset($postulacion_por_tipo[ 'No apto' ])? $postulacion_por_tipo[ 'No apto' ]: 0 ?></span>No Aptos</a></li>
                 <li class="tab col s2"><a href="#test5"><span class="badge red"><?php echo isset($postulacion_por_tipo[ 'Eliminados' ])? $postulacion_por_tipo[ 'Eliminados' ]: 0 ?></span>Eliminados</a></li>
                 
             </ul>
@@ -173,14 +168,9 @@
             //        require_once 'db.php';
             //        global $conn;
 
-            $sql = "SELECT * FROM (SELECT * FROM tbl_postulante) a
-                                 LEFT JOIN
-                         (
-                             SELECT id_post,nombre 
-                             FROM  tbl_datos_postulacion_abierta
-                             -- LIMIT 0 , 1
-                         ) b ON a.id_post = b.id_post";
-
+            $sql = "SELECT a.nombre, a.estado, b.* "
+            . "FROM tbl_datos_postulacion_abierta a, tbl_postulante b "
+            . "WHERE a.id_post = b.id_post";
             $result = $conn->query($sql);
 
             $fila_post_select = '';
@@ -195,15 +185,15 @@
                     //        echo "id: " . $row["id_post"]." " .$row["rut"]  ." - Name: " . $row["nombres"]. " " . $row["apellidop"]. "<br>";
                     $fila_post = imprimir_fila_post($row);
 
-                    if($row['estado_post'] == 'Seleccionado' ){
+                    if($row['estado'] == 'Apto' ){
                         $fila_post_select .= $fila_post;
-                    }else if($row['estado_post'] == 'Fuera de Rango'){
+                    }else if($row['estado'] == 'Fuera Rango Renta'){
                         $fila_post_fuera_rango .= $fila_post;
-                    }else if($row['estado_post'] == 'No apto'){
+                    }else if($row['estado'] == 'No Apto'){
                         $fila_post_no_apto .= $fila_post;
-                    }else if($row['estado_post'] == 'Eliminados'){
+                    }else if($row['estado'] == 'Eliminados'){
                         $fila_post_eliminado .= $fila_post;
-                    }else if($row['estado_post'] == 'Sin Clasificar'){
+                    }else if($row['estado'] == 'Sin Clasificar'){
                         $fila_post_sin_clasif .= $fila_post;
                     }
 

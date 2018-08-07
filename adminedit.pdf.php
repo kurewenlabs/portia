@@ -1,5 +1,6 @@
 <?php
     $id = $_GET['identificador'];
+    $postula = $_GET['postulacion'];
     require_once 'db.php';
     require_once 'src/dompdf/autoload.inc.php';
     use Dompdf\Dompdf;
@@ -17,6 +18,7 @@
             (
                 SELECT id_post,nombre 
                 FROM  tbl_datos_postulacion_abierta
+                WHERE nombre = '".$postula."'
             ) b ON a.id_post = b.id_post 
             LEFT OUTER JOIN tbl_documento c ON c.id_post = b.id_post 
             LEFT OUTER JOIN tbl_estudio d ON d.id_post = b.id_post 

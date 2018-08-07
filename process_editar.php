@@ -8,6 +8,7 @@
 
 // 0.- Redcibir identificador
 $id = $_POST['identificador'];
+$postula = $_POST['postulacion'];
 
 // 1.- Conectarse a base de datos
 require_once 'db.php';
@@ -42,39 +43,35 @@ switch ($pagina) {
     case 'datos_personales':
         $sql = "SELECT COUNT(*) AS cantidad FROM tbl_postulante where id_post='".$id."'";
         $cantidad = 1;
+        $estado = $_POST["group1"];
+        echo $estado;
         if($cantidad == 0) {
             // 3.1.- Insertar registro
             throw new Exception('Debe estar registrado el postulante');
         }
         else {
-            $in_apellido = $_POST['primerApellido'];
-            if($in_apellido == null || trim($in_apellido) <> "") {
-                //header('Location: ' . $_SERVER["HTTP_REFERER"] ."&mensaje=error_apellido" );
-
-            }
-            $in_rut = $_POST['rut'];
-            $sql = "UPDATE tbl_postulante "
-                . " SET rut = '". $in_rut . "', "
-                . " nombre = '". $_POST['primerNombre'] ."', "
-                . " apellido = '". $_POST['primerApellido'] ."', "
-                . " WHERE id_post = '". $id ."'";
+            $sql = "UPDATE tbl_datos_postulacion_abierta "
+                . " SET estado = '". $estado . "', "
+                . " WHERE id_post = '". $id ."'" 
+                . " AND nombre = '". $postula ."'";
 
             if($conn->query($sql) === TRUE) {
                 //echo 'Estado actualizado de forma exitosa';
-                header('Location: ' . $_SERVER["HTTP_REFERER"] .'&actualizado=ok2');
+                // header('Location: ' . $_SERVER["HTTP_REFERER"] .'&actualizado=ok2');
             }
             else {
-                header('Location: ' . $_SERVER["HTTP_REFERER"] .'&actualizado=error2');
+                // header('Location: ' . $_SERVER["HTTP_REFERER"] .'&actualizado=error2');
             }
         }
         break;
     case 'actualizar_estado':
         $estado = $_POST['group1'];
         $observacion = $_POST['observacion'];
-        $sql = "UPDATE tbl_postulante "
-            . " SET estado_post = '". $estado ."', "
+        $sql = "UPDATE tbl_datos_postulacion_abierta "
+            . " SET estado = '". $estado ."', "
             . " observacion = '" . $observacion . "' "
-            . " WHERE id_post = '". $id ."'";
+            . " WHERE id_post = '". $id ."'" 
+            . " AND nombre = '". $postula ."'";
 
         /*  return print_r(array(
             'estado' => $estado,
