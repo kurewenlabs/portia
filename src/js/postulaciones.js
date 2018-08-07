@@ -235,12 +235,12 @@ function postNumberPost(str){
               $('#tipoEstudio').css('border-color' , 'red');
               return false;
           }
-          if($('#tipoEstudio').val() !== "Secundario"){
+          if($('#tipoEstudio').val() !== "media"){
               if($.trim($("#carrera").val()) != "" ){
                   chkArray.push( {"titulo" : $("#carrera").val()} );
                   $('#carrera').css('border-color' , '#f2f2f2');
               }else{
-                  notie.alert({ type: 3, text: 'Debes ingresar Titulo de la carrera', position: 'bottom' });
+                 notie.alert({ type: 3, text: 'Debes ingresar Titulo de la carrera', position: 'bottom' });
                   $('#carrera').css('border-color' , 'red');
                   return false;
               }

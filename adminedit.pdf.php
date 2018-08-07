@@ -90,7 +90,7 @@
 
         <div class="row">
             <div class="col s6 m6 l6">
-                <h5>Nombre y apellidos  del postulante</h5><!-- pasar aqui el nombre dle psotulante -->
+                <h5>' . $result['nombre'] . '' . $result['apellidoP'] . '</h5><!-- pasar aqui el nombre dle psotulante -->
                 <p><strong>Cargo al que postula : ' . $result['nombre'] . '</strong> </p> 
                 <p><strong>' . (isset($result['rut'])?'RUT':'Pasaporte') . ' Numero : ' . (isset($result['rut'])?$result['rut']:$result['pasaporte']) . '</strong></p> 
                 <p><strong>Fecha de Nacimiento : ' . $result['fecha_nacimiento'] . '</strong> </p> 
