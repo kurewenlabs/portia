@@ -1,6 +1,6 @@
 <?php
 // Datos para la conexion
- $host = 'localhost';
+$host = 'localhost';
 $database = 'postulacion';
 $username = 'postulacion';
 $password = 'Web.Portia.2018'; 

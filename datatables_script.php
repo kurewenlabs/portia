@@ -5,18 +5,16 @@
  * Copyright: 2010 - Allan Jardine
  * License:   GPL v2 or BSD (3-point)
  */
+require_once "db.php";
   
 class TableData {
  
  	private $_db;
 	public function __construct() {
-		try {
-			 $host = 'localhost';
-			 $database = 'postulacion';
-			 $username = 'postulacion';
-			 $password = 'Web.Portia.2018'; 
-		
-		    $this->_db = new PDO('mysql:host='.$host.';dbname='.$database, $user, $passwd, array(PDO::ATTR_PERSISTENT => true));
+		global $host, $database, $username, $password;
+		try {		
+		    $this->_db = new PDO('mysql:host='.$host.';dbname='.$database, $username, $password, array(PDO::ATTR_PERSISTENT => true));
+		    error_log("Connection succesfully!");
 		} catch (PDOException $e) {
 		    error_log("Failed to connect to database: ".$e->getMessage());
 		}		
@@ -122,6 +120,7 @@ class TableData {
 			$output['aaData'][] = $row;
 		}
 		
+		error_log(json_encode($output));
 		echo json_encode( $output );
 	}
 }
@@ -130,7 +129,7 @@ header('Cache-Control: no-store, no-cache, must-revalidate');
 // Create instance of TableData class
 $table_data = new TableData();
 // Get the data
-$table_data->get('table_name', 'index_column', array('column1', 'column2', 'columnN'));
+$table_data->get('tbl_postulante', 'id_post', array('fecha_post', 'rut', 'nombres', 'apellidop', 'apellidom', 'fecha_nacimiento'));
 /*
  * Alternatively, you may want to use the same class for several differnt tables for different pages.
  * By adding something similar to the following to your .htaccess file you can control this a little more...

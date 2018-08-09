@@ -1481,11 +1481,3 @@ $("form#login").submit(function(e){
     })
     return false;
 });
-/*DATATABLES*/ 
-$(document).ready(function() {
-    $('#tablaPortia').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "ajax": "processform.php"
-    } );
-} );

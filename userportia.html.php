@@ -71,69 +71,65 @@
         </div>
     </div>
     <?php
-    function imprimir_fila_post($row){
+        function imprimir_fila_post($row){
 
-        $fecha_post = date("d/m/Y", strtotime($row["fecha_post"]));
+            $fecha_post = date("d/m/Y", strtotime($row["fecha_post"]));
 
-        $color='';
-        if($row["estado"] == 'Apto'){
-            $color='green';
-        }else if($row["estado"] == 'Fuera Rango Renta'){
-            $color='orange';
-        }else if($row["estado"] == 'No apto'){
-            $color='grey';
-        }else{//Sin Clasificar
-            $color='yellow';
+            $color='';
+            if($row["estado"] == 'Apto'){
+                $color='green';
+            }else if($row["estado"] == 'Fuera Rango Renta'){
+                $color='orange';
+            }else if($row["estado"] == 'No apto'){
+                $color='grey';
+            }else{//Sin Clasificar
+                $color='yellow';
+            }
+
+            $fila_post = '<tr>
+                            <td> '.$fecha_post.'</td>
+                            <td>'.$row["rut"].'</td>
+                            <td> '.$row["nombres"].' '. $row["apellidop"].'</td>
+                            <td>'.$row["nacionalidad"].'</td>
+                            <td>'.$row["nombre"].'</td>
+                            <td>'. $row["sexo"] .'</td>
+                            <td>'.$row["renta"].'</td>
+                            <td><span class="badge '.$color.'"></span><br/>'.$row["estado"].'</td>';
+
+            $fila_post .= '<td>'. $row["provincia"] .'</td>
+                            <td>'. $row["comuna"] .'</td>
+                
+                
+                            <td>
+                    <a class="waves-effect btn-flat btn-small" href="adminedit.php?identificador='. $row['id_post'] .'&postulacion=' . $row["nombre"] . '">Ver</a>
+                    </td>';
+            $fila_post .= '</tr>';
+
+            return $fila_post;
         }
 
-        $fila_post = '<tr>
-                        <td> '.$fecha_post.'</td>
-                        <td>'.$row["rut"].'</td>
-                        <td> '.$row["nombres"].' '. $row["apellidop"].'</td>
-                        <td>'.$row["nacionalidad"].'</td>
-                        <td>'.$row["nombre"].'</td>
-                        <td>'. $row["sexo"] .'</td>
-                        <td>'.$row["renta"].'</td>
-                        <td><span class="badge '.$color.'"></span><br/>'.$row["estado"].'</td>';
+        require_once 'db.php';
+        global $conn;
 
-        $fila_post .= '<td>'. $row["provincia"] .'</td>
-                        <td>'. $row["comuna"] .'</td>
-              
-              
-                        <td>
-                 <a class="waves-effect btn-flat btn-small" href="adminedit.php?identificador='. $row['id_post'] .'&postulacion=' . $row["nombre"] . '">Ver</a>
-                </td>';
-        $fila_post .= '</tr>';
+        $sql = "SELECT estado, count(id) as cuenta "
+            . "FROM tbl_datos_postulacion_abierta "
+            . "GROUP BY estado";
 
-        return $fila_post;
-    }
+        $postulacion_por_tipo = array();
+        $result1 = $conn->query($sql);
 
-    require_once 'db.php';
-    global $conn;
-
-    $sql = "SELECT estado, count(id) as cuenta "
-         . "FROM tbl_datos_postulacion_abierta "
-         . "GROUP BY estado";
-
-  $postulacion_por_tipo = array();
-  $result1 = $conn->query($sql);
-
-   if ($result1->num_rows > 0) {
-        // output data of each row
-   $total = 0;
-      while($row2 = $result1->fetch_assoc()) {
-         $postulacion_por_tipo[ $row2['estado'] ] = $row2['cuenta'];
-         $total += $row2['cuenta'];
+        if ($result1->num_rows > 0) {
+            // output data of each row
+            $total = 0;
+            while($row2 = $result1->fetch_assoc()) {
+                $postulacion_por_tipo[ $row2['estado'] ] = $row2['cuenta'];
+                $total += $row2['cuenta'];
+            }
+            $postulacion_por_tipo[ 'total' ] = $total;
         }
-      $postulacion_por_tipo[ 'total' ] = $total;
-    }
-
-    //    print '<pre>';
-    //    print_r($postulacion_por_tipo);
-    //    print '</pre>';
 
     ?>
-<div class="row">
+    <div class="row">
         <div class="col s12 lineaDatos1">
             <ul class="tabs">
                 <li class="tab col s2"><a href="#test6"><span class="badge yellow"><?php echo isset($postulacion_por_tipo[ 'Sin Clasificar' ])? $postulacion_por_tipo[ 'Sin Clasificar' ]: 0 ?></span>Sin Clasificar</a></li>
@@ -142,7 +138,6 @@
                 <li class="tab col s2"><a href="#test4"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera Rango Renta' ])? $postulacion_por_tipo[ 'Fuera Rango Renta' ]: 0 ?></span>Fuera Rango Renta</a></li>
                 <li class="tab col s2"><a href="#test3"><span class="badge grey"><?php echo isset($postulacion_por_tipo[ 'No apto' ])? $postulacion_por_tipo[ 'No apto' ]: 0 ?></span>No Aptos</a></li>
                 <li class="tab col s2"><a href="#test5"><span class="badge red"><?php echo isset($postulacion_por_tipo[ 'Eliminados' ])? $postulacion_por_tipo[ 'Eliminados' ]: 0 ?></span>Eliminados</a></li>
-                
             </ul>
         </div>
     </div>
@@ -324,14 +319,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.jqueryui.min.js"></script>
-
 <script src="src/jquery.table2excel.js"></script>
-
 <script src="src/js/postulaciones.js"></script>
 <script>
     $("#exportXml").click(function(){
         window.location.href="userportia.xls.php";
     });
+
+    /*DATATABLES*/ 
+    /* $(document).ready(function() {
+        $('#tablaPortia_test').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "ajax": "datatables_script.php"
+        } );
+    } ); */
 </script>
 </body>
 </html>

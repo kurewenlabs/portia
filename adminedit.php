@@ -2166,37 +2166,37 @@
             // Otros Conocimientos
             $('#curso1before').show();
             $('#btn-send-curso1').
-            <?php echo (count($result["cursos"])>=1?"hide()":"show()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?"hide()":"show()"); ?>;
             $('#btn-delete-curso1').
-            <?php echo (count($result["cursos"])>=1?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?"show()":"hide()"); ?>;
             $('#curso2before').
-            <?php echo (count($result["cursos"])>=2?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?"show()":"hide()"); ?>;
             $('#btn-send-curso2').
-            <?php echo (count($result["cursos"])>=2?"hide()":"show()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?"hide()":"show()"); ?>;
             $('#btn-delete-curso2').
-            <?php echo (count($result["cursos"])>=2?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?"show()":"hide()"); ?>;
             $('#curso3before').
-            <?php echo (count($result["cursos"])>=3?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?"show()":"hide()"); ?>;
             $('#btn-send-curso3').
-            <?php echo (count($result["cursos"])>=3?"hide()":"show()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?"hide()":"show()"); ?>;
             $('#btn-delete-curso3').
-            <?php echo (count($result["cursos"])>=3?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?"show()":"hide()"); ?>;
 
             // Experiencia Laboral
             $('#boxDataExp1').
-            <?php echo (count($result["experiencia"])>=1?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?"show()":"hide()"); ?>;
             $('#boxDataExp2').
-            <?php echo (count($result["experiencia"])>=2?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?"show()":"hide()"); ?>;
             $('#boxDataExp3').
-            <?php echo (count($result["experiencia"])>=3?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?"show()":"hide()"); ?>;
 
             // Referencias
             $('#refs_box1').
-            <?php echo (count($result["referencias"])>=1?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?"show()":"hide()"); ?>;
             $('#refs_box2').
-            <?php echo (count($result["referencias"])>=2?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?"show()":"hide()"); ?>;
             $('#refs_box3').
-            <?php echo (count($result["referencias"])>=3?"show()":"hide()"); ?>;
+            <?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?"show()":"hide()"); ?>;
 
             // Horarios Disponibles
             var containerHoras = $('#containerInputHoras');
