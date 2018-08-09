@@ -129,7 +129,8 @@ header('Cache-Control: no-store, no-cache, must-revalidate');
 // Create instance of TableData class
 $table_data = new TableData();
 // Get the data
-$table_data->get('tbl_postulante', 'id_post', array('fecha_post', 'rut', 'nombres', 'apellidop', 'apellidom', 'fecha_nacimiento'));
+$table_data->get('vta_postulaciones', 'id_post', 
+	array('fecha_post', 'id', 'nombre', 'nacionalidad', 'cargo', 'sexo', 'renta', 'estado', 'region', 'comuna'));
 /*
  * Alternatively, you may want to use the same class for several differnt tables for different pages.
  * By adding something similar to the following to your .htaccess file you can control this a little more...

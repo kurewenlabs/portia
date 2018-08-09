@@ -113,9 +113,13 @@
                     <th>Fecha</th>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Fecha de Nacimiento</th>
+                    <th>Nacionalidad</th>
+                    <th>Cargo</th>
+                    <th>Sexo</th>
+                    <th>Renta</th>
+                    <th>Estado</th>
+                    <th>Región</th>
+                    <th>Comuna</th>
                 </tr>
             </thead>
             <tfoot>
@@ -123,9 +127,13 @@
                     <th>Fecha</th>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Fecha de Nacimiento</th>
+                    <th>Nacionalidad</th>
+                    <th>Cargo</th>
+                    <th>Sexo</th>
+                    <th>Renta</th>
+                    <th>Estado</th>
+                    <th>Región</th>
+                    <th>Comuna</th>
                 </tr>
             </tfoot>
         </table>
@@ -151,7 +159,7 @@
         $('#tablaPortia').DataTable( {
             "processing": true,
             "serverSide": true,
-            "ajax": "datatables_script.php"
+            "ajax": "datatables_script.php<?php echo (isset($_GET["mode"])?"?mode=dev":""); ?>"
         } );
     //} );
 </script>
