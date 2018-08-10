@@ -1,6 +1,12 @@
 <?php
-session_start();
-$dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+    session_start();
+    $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+
+    if (isset($_SESSION["mode"])) {
+        echo "<!--";
+        print_r($_SESSION);
+        echo "-->"; 
+    }    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -259,8 +265,16 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
- <script>
 
- </script>
+  <script language="Javascript">
+  <?php 
+    if (isset($_SESSION["mode"])) {
+  ?>
+      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+  <?php
+    }
+  ?>
+  </script>
+
 </body>
 </html>

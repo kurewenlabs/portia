@@ -1,8 +1,6 @@
 <?php
-  $mode = $_GET["mode"];
-
   // Datos para la conexion
-  if (isset($mode)) {
+  if (isset($_SESSION["mode"])) {
     $host = 'localhost';
     $database = 'kurewenc_db_portia';
     $username = 'root';

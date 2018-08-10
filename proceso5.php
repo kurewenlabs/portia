@@ -1,6 +1,13 @@
 <?php
-session_start();
-$dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+    session_start();
+    $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+
+    if (isset($_SESSION["mode"])) {
+        echo "<!--";
+        print_r($_SESSION);
+        echo "-->";
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +40,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
 <div class="row">
     <div class="col s1"></div>
     <?php foreach($dataPostulacion as $cargo) {
-        echo "<div class='chip col''>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
+        echo "<div class=\"chip col\">" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
     } ?>
 </div>
 
@@ -95,59 +102,58 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
         <h4>Comunas disponibles para Trabajar</h4>
         <div class="divider"></div>
       </div>
-                  <?php
-                        // Obtenemos la información directa del servicio y la almacenamos localmente
-                        $regiones = json_decode(file_get_contents('regiones.json'), true);
-                    ?>
-                  <div class="row">
-                    <div class="input-field col s4 m4 l4">Region
-                          <select class="browser-default " id="region" onselect="this.className = ''" name="region" onchange="cargarComunas();">
-                            <option>Seleccione región</option>
-                            <?php 
-                            // Recorremos el JSON buscando los valores asociados a las regiones existentes
-                            foreach($regiones['regiones'] as $region) {
-                                echo "<option value='" . $region['region'] . "'>" . $region['region'] . "</option>\n";
-                            }
-                            ?>
-                          </select>
-                    </div>
-                    <script language="Javascript">
-                    function cargarComunas() {
-                        var comunas = {
-                        <?php
-                            // Creamos un arreglo asociativo dinámico que llene las comunas en función de la región seleccionada
-                            $i = 1;
-                            foreach($regiones['regiones'] as $region) {
-                            echo "region" . $i . " : [";
-                            natsort($region['comunas']);
-                            foreach($region['comunas'] as $comuna) {
-                                echo "\"" . $comuna . "\", ";
-                            }
-                            echo "\"\"],\n";
-                            $i++;
-                            }
-                        ?>
-                        };
-                        
-                        var campoRegion = document.getElementById('region');
-                        var campoComuna = document.getElementById('comuna');
-                        regionSeleccionada = campoRegion.selectedIndex;
-
-                        if (regionSeleccionada != "") {
-                            regionSeleccionada = comunas["region" + regionSeleccionada];
-                            regionSeleccionada.forEach(function(comuna){
-                                var opcion = document.createElement('option');
-                                opcion.value = comuna;
-                                opcion.text = comuna;
-                                campoComuna.add(opcion);
-                            });
-                        }
+        <?php
+            // Obtenemos la información directa del servicio y la almacenamos localmente
+            $regiones = json_decode(file_get_contents('regiones.json'), true);
+        ?>
+        <div class="row">
+        <div class="input-field col s4 m4 l4">Region
+                <select class="" id="region" onselect="this.className = ''" name="region" onchange="cargarComunas();">
+                <option>Seleccione región</option>
+                <?php 
+                // Recorremos el JSON buscando los valores asociados a las regiones existentes
+                foreach($regiones['regiones'] as $region) {
+                    echo "<option value='" . $region['region'] . "'>" . $region['region'] . "</option>\n";
+                }
+                ?>
+                </select>
+        </div>
+        <script language="Javascript">
+            var comunas = {
+            <?php
+                $i = 1;
+                foreach($regiones['regiones'] as $region) {
+                    echo "                region" . $i . " = [\n";
+                    natsort($region['comunas']);
+                    $j = 1;
+                    foreach($region['comunas'] as $comuna) {
+                        echo "                    {\n";
+                        echo "                        id: '" . $comuna . "',\n";
+                        echo "                        text: '" . $comuna . "'\n";
+                        echo "                    }" . ($j<sizeof($region['comunas'])?",":"") . "\n";
+                        $j++;
                     }
-                    </script>
-                        <div class=" input-field col s4 m4 l4">Comuna
-                            <select class="js-example-basic-multiple"  id="comuna" name="comuna[]" multiple="multiple" onselect="this.className = ''">
-                      </div> 
-                  </div>
+                    echo "                ]" . ($i<sizeof($regiones['regiones'])?",":"") . "\n";
+                    $i++;
+                }
+                echo "            };\n";
+            ?>
+
+            function cargarComunas() {
+                var campoRegion = document.getElementById('region');
+                regionSeleccionada = campoRegion.selectedIndex;
+                var data = comunas["region" + regionSeleccionada];
+
+                $(".js-example-basic-multiple").select2({
+                    data: data
+                });                      
+            }
+        </script>
+            <div class=" input-field col s4 m4 l4">Comuna
+                <select class="js-example-basic-multiple" id="comuna" name="comuna" multiple="multiple" onselect="this.className = ''">
+                </select>
+            </div> 
+        </div>
       <script language="Javascript">
         function changeStatus(select) {
           if (select.selectedIndex == 0) {
@@ -613,5 +619,16 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
+
+  <script language="Javascript">
+  <?php 
+    if (isset($_SESSION["mode"])) {
+  ?>
+      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+  <?php
+    }
+  ?>
+  </script>
+
  </body>
 </html>

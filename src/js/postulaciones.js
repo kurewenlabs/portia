@@ -84,12 +84,12 @@ function postNumberPost(str){
                 return false;
             }
           } else {
-            if($.trim($("#Pasaporte").val()) != "" ){
-                chkArray.push( {"pasaporte" : $("#rut").val()} );
-                $('#Pasaporte').css('border-color' , '#f2f2f2');
+            if($.trim($("#pasaporte").val()) != "" ){
+                chkArray.push( {"pasaporte" : $("#pasaporte").val()} );
+                $('#pasaporte').css('border-color' , '#f2f2f2');
             }else{
                 notie.alert({ type: 3, text: 'Debes ingresar pasaporte', position: 'bottom' });
-                $('#Pasaporte').css('border-color' , 'red');
+                $('#pasaporte').css('border-color' , 'red');
                 return false;
             }
           }

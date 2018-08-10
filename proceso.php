@@ -1,6 +1,12 @@
 <?php
-session_start();
-$dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+  session_start();
+  $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+
+  if (isset($_SESSION["mode"])) {
+    echo "<!--";
+    print_r($_SESSION);
+    echo "-->"; 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,8 +78,8 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
         <input placeholder="sin puntos ni guion" id="rut" type="tel" class="validate rut_box">
       </div>
       <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
-        <label for="Pasaporte">Pasaporte</label>
-        <input  id="Pasaporte" type="tel" class="validate rut_box">
+        <label for="pasaporte">Pasaporte</label>
+        <input  id="pasaporte" type="tel" class="validate rut_box">
       </div>
     </div>
   </div><!--documentos-->
@@ -228,8 +234,15 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
 
- <script>
+  <script language="Javascript">
+  <?php 
+    if (isset($_SESSION["mode"])) {
+  ?>
+      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+  <?php
+    }
+  ?>
+  </script>
 
- </script>
 </body>
 </html>

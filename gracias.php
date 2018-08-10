@@ -76,25 +76,31 @@
   </div>
 
 
-</div>
-<button onclick="myFunctionGracias()" class="waves-effect waves-light btn right">Enviar</button>
-</div>
-
-<div class="row">
-  <div class="col s12 m12 l12">
-    <img src="src/img/logo.jpg" alt="" class="endLogo">
   </div>
-</div>
-</body>
+  <button onclick="myFunctionGracias()" class="waves-effect waves-light btn right">Enviar</button>
+  </div>
 
-
-
-
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <img src="src/img/logo.jpg" alt="" class="endLogo">
+    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type = "text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
+
+  <script language="Javascript">
+  <?php 
+    if (isset($_SESSION["mode"])) {
+  ?>
+      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+  <?php
+    }
+  ?>
+  </script>
+
 </body>
 </html>

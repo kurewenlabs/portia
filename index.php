@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if (array_key_exists("mode", $_GET)) {
+    $_SESSION["mode"] = $_GET["mode"];
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -371,10 +377,20 @@
 
  </form>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
- 
+
+  <script language="Javascript">
+  <?php 
+    if (isset($_SESSION["mode"])) {
+  ?>
+      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+  <?php
+    }
+  ?>
+  </script>
+
 </body>
 </html>

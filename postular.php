@@ -1232,5 +1232,16 @@
     $(boxData5).<?php echo ($show_horarios>=5?"show()":"hide()") ?>;
     $(inputDiaHora5).<?php echo ($show_horarios==4?"show()":"hide()") ?>;
   </script>
+
+  <script language="Javascript">
+  <?php 
+    if (isset($_SESSION["mode"])) {
+  ?>
+      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+  <?php
+    }
+  ?>
+  </script>
+
 </body>
 </html>

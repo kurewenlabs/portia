@@ -1,6 +1,12 @@
 <?php
-session_start();
-$dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+  session_start();
+  $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+  
+  if (isset($_SESSION["mode"])) {
+    echo "<!--";
+    print_r($_SESSION);
+    echo "-->"; 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +111,7 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   </div><!--datos identificacion-->
   <div class="row">
      <div class=" input-field col s4 m4 l4">Licencia de Conducir
-          <select class="js-example-basic-multiple" id="id_label_multiple" multiple="multiple" onselect="this.className = ''" name="licencia" id="licencia">
+          <select class="js-example-basic-multiple" multiple="multiple" onselect="this.className = ''" name="licencia" id="licencia">
             <option value=""></option>
             <option value="sin licencia">Sin Licencia</option>
             <option value="Clase A1">Clase A1</option>
@@ -207,7 +213,18 @@ $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type = "text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
+
+  <script language="Javascript">
+  <?php 
+    if (isset($_SESSION["mode"])) {
+  ?>
+      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+  <?php
+    }
+  ?>
+  </script>
+
 </body>
 </html>
