@@ -1,0 +1,14 @@
+SELECT pa.id as id_post,
+       pb.fecha_post, 
+       pb.rut as id, 
+       CONCAT(pb.nombres, ' ', pb.apellidop, ' ', pb.apellidom) as nombre, 
+       pb.nacionalidad, 
+       pa.nombre as cargo, 
+       pb.sexo,
+       pb.renta,
+       pa.estado,
+       pb.provincia as region,
+       pb.comuna
+  FROM tbl_datos_postulacion_abierta pa, tbl_postulante pb
+ WHERE pa.id_post = pb.id_post
+ ORDER BY pb.fecha_post DESC 
