@@ -81,17 +81,17 @@
             <div class=" input-field col s6 m6 l6">
               <select class="browser-default" onselect="this.className = ''" name="isapre" id="isapre">
                 <option value="">Isapre o Fonasa</option>
-                <option value="Banmédica">Banmédica</option>
+                <option value="Banmedica">Banmédica</option>
                 <option value="Chuquicamata">Chuquicamata</option>
                 <option value="Consalud">Consalud</option>
                 <option value="Colmena">Colmena</option> 
                 <option value="Cruz Blanca">Cruz Blanca</option>
                 <option value="Cruz del Norte">Cruz del Norte</option>
                 <option value="Fonasa">Fonasa</option>
-                <option value="Fundación">Fundación</option>
+                <option value="Fundacion">Fundación</option>
                 <option value="Fusat">Fusat</option>
                 <option value="Nueva Masvida">Nueva Masvida</option>
-                <option value="Río Blanco">Río Blanco</option>
+                <option value="Rio Blanco">Río Blanco</option>
                 <option value="San Lorenzo">San Lorenzo</option>
                 <option value="Vida Tres">Vida Tres</option>
               </select>

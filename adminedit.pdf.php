@@ -1,11 +1,15 @@
 <?php
+    session_start();
+
     $id = $_GET['identificador'];
     $postula = $_GET['postulacion'];
+
     require_once 'db.php';
     require_once 'src/dompdf/autoload.inc.php';
+
     use Dompdf\Dompdf;
     global $conn;
-    $sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
+    $sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.tipo_documento, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
                 a.estado_civil, a.nacionalidad, a.telefono, a.telefono_recado, a.email, a.provincia, a.comuna, a.domicilio, 
                 a.tpolera, a.tpantalon, a.tpoleron, a.tzapatos, a.renta, a.tlicenciaconducir, a.afp, a.prestadorsalud, 
                 a.experiencialaboral, a.referencialaboral, b.nombre, c.cv, c.antecedentes, c.carnet, c.fotografia, d.tipo_estudio, d.titulo, d.estado, 
@@ -61,6 +65,16 @@
         }
     }
 
+    $sql = "SELECT * FROM tbl_comuna WHERE id_post = '" . $id . "'";
+    $result1 = $conn->query($sql);
+    if ($result1) {
+        $i = 0;
+        while($fila = $result1->fetch_assoc()) {
+           $result["comunas"][$i] = $fila;
+           $i++;
+        }
+    }
+    
     $sql = "SELECT * FROM tbl_horario_trabajo WHERE id_post = '" . $id . "'";
     $result1 = $conn->query($sql);
     if ($result1) {
@@ -92,7 +106,7 @@
             <div class="col s6 m6 l6">
                 <h5>' . $result['nombre'] . '' . $result['apellidoP'] . '</h5><!-- pasar aqui el nombre dle psotulante -->
                 <p><strong>Cargo al que postula : ' . $result['nombre'] . '</strong> </p> 
-                <p><strong>' . (isset($result['rut'])?'RUT':'Pasaporte') . ' Numero : ' . (isset($result['rut'])?$result['rut']:$result['pasaporte']) . '</strong></p> 
+                <p><strong>' . ($result['tipo_documento']=='rut'?'RUT':'Pasaporte') . ' Numero : ' . $result['rut'] . '</strong></p> 
                 <p><strong>Fecha de Nacimiento : ' . $result['fecha_nacimiento'] . '</strong> </p> 
                 <p><strong>Sexo : ' . $result['sexo'] . '</strong></p>    
             </div>
@@ -190,7 +204,8 @@
             </div>
         </div>
         
-        <p><strong>Comunas para Trabajar : </strong></p><!-- pasa aqui region y comunas -->
+        <p><strong>Comunas para Trabajar : ' . $result['comunas'][0]['comuna'] . ', región ' . $result['comunas'][0]['region'] . ' </strong></p>
+
         <p><strong>Horarios seleccionados : ';
         
         foreach($result['horarios'] as $horario) {

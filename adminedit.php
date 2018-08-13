@@ -61,6 +61,16 @@
         }
     }
 
+    $sql = "SELECT * FROM tbl_comuna WHERE id_post = '" . $id . "'";
+    $result1 = $conn->query($sql);
+    if ($result1) {
+        $i = 0;
+        while($fila = $result1->fetch_assoc()) {
+           $result["comunas"][$i] = $fila;
+           $i++;
+        }
+    }
+
     $sql = "SELECT * FROM tbl_horario_trabajo WHERE id_post = '" . $id . "'";
     $result1 = $conn->query($sql);
     if ($result1) {
@@ -71,9 +81,11 @@
         }
     }
 
-    echo "<!-- ";
-    print_r($result);
-    echo " -->";
+    if (isset($_SESSION["mode"])) {
+        echo "<!-- ";
+        print_r($result);
+        echo " -->";
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -505,7 +517,7 @@
                         <!--documentos-->
                         <div id="datosPersonales">
                             <div class="tab input-field col s4 m4 l4">Tipo de Documento de identificacion
-                                <select class="browser-default" onselect="this.className = ''" name="documento">
+                                <select class="browser-default" onselect="this.className = ''" name="documento" id="documento">
                                     <option <?php if($result['tipo_documento']=="rut" ){ echo 'selected'; }?> value="rut">RUT</option>
                                     <option <?php if($result['tipo_documento']=="pasaporte" ){ echo 'selected'; }?> value="pasaporte">Pasaporte</option>
                                 </select>
@@ -729,6 +741,7 @@
                         <div class="tab input-field col s4 m4 l4">
                             <select onselect="this.className = ''" name="licencia" class="browser-default">
                                 <option value="">Licencia de Conducir</option>
+                                <option value="Sin Licencia" <?php echo ($result[ 'tlicenciaconducir']=='Sin Licencia' || $result[ 'tlicenciaconducir']==''? "selected": ""); ?>>Sin Licencia</option>
                                 <option value="Clase A1" <?php echo ($result[ 'tlicenciaconducir']=='Clase A1' ? "selected": ""); ?>>Clase A1</option>
                                 <option value="Clase A2" <?php echo ($result[ 'tlicenciaconducir']=='Clase A2' ? "selected": ""); ?>>Clase A2</option>
                                 <option value="Clase A3" <?php echo ($result[ 'tlicenciaconducir']=='Clase A3' ? "selected": ""); ?>>Clase A3</option>
@@ -1178,30 +1191,30 @@
                     <div class="tab input-field col s6 m6 l6" id="datosPrevision">
                         <select class="browser-default" onselect="this.className = ''" name="afp">
                             <option value="">AFP</option>
-                            <option value="AFP Capital" <?php echo ($result[ "afp"]=='AFP Capital' ? "selected": ""); ?>>AFP Capital</option>
-                            <option value="AFP Cuprum" <?php echo ($result[ "afp"]=='AFP Cuprum' ? "selected": ""); ?>>AFP Cuprum</option>
-                            <option value="AFP Habitat" <?php echo ($result[ "afp"]=='AFP Habitat' ? "selected": ""); ?>>AFP Habitat</option>
-                            <option value="AFP Modelo" <?php echo ($result[ "afp"]=='AFP Modelo' ? "selected": ""); ?>>AFP Modelo</option>
-                            <option value="AFP Planvital" <?php echo ($result[ "afp"]=='AFP Planvital' ? "selected": ""); ?>>AFP Planvital</option>
-                            <option value="AFP Provida" <?php echo ($result[ "afp"]=='AFP Provida' ? "selected": ""); ?>>AFP Provida</option>
+                            <option value="AFP Capital" <?php echo ($result["afp"]=='AFP Capital' ? "selected": ""); ?>>AFP Capital</option>
+                            <option value="AFP Cuprum" <?php echo ($result["afp"]=='AFP Cuprum' ? "selected": ""); ?>>AFP Cuprum</option>
+                            <option value="AFP Habitat" <?php echo ($result["afp"]=='AFP Habitat' ? "selected": ""); ?>>AFP Habitat</option>
+                            <option value="AFP Modelo" <?php echo ($result["afp"]=='AFP Modelo' ? "selected": ""); ?>>AFP Modelo</option>
+                            <option value="AFP Planvital" <?php echo ($result["afp"]=='AFP Planvital' ? "selected": ""); ?>>AFP Planvital</option>
+                            <option value="AFP Provida" <?php echo ($result["afp"]=='AFP Provida' ? "selected": ""); ?>>AFP Provida</option>
                         </select>
                     </div>
                     <div class=" input-field col s6 m6 l6">
                         <select class="browser-default" onselect="this.className = ''" name="isapre" id="isapre">
                             <option value="">Isapre o Fonasa</option>
-                            <option value="Banmédica" <?php echo ($result[ "prestadorsalud"]=='Banmédica' ? "selected": ""); ?>>Banmédica</option>
-                            <option value="Chuquicamata" <?php echo ($result[ "prestadorsalud"]=='Chuquicamata' ? "selected": ""); ?>>Chuquicamata</option>
-                            <option value="Consalud" <?php echo ($result[ "prestadorsalud"]=='Consalud' ? "selected": ""); ?>>Consalud</option>
-                            <option value="Colmena" <?php echo ($result[ "prestadorsalud"]=='Colmena' ? "selected": ""); ?>>Colmena</option>
-                            <option value="Cruz Blanca" <?php echo ($result[ "prestadorsalud"]=='Cruz Blanca' ? "selected": ""); ?>>Cruz Blanca</option>
-                            <option value="Cruz del Norte" <?php echo ($result[ "prestadorsalud"]=='Cruz del Norte' ? "selected": ""); ?>>Cruz del Norte</option>
-                            <option value="Fonasa" <?php echo ($result[ "prestadorsalud"]=='Fonasa' ? "selected": ""); ?>>Fonasa</option>
-                            <option value="Fundación" <?php echo ($result[ "prestadorsalud"]=='Fundación' ? "selected": ""); ?>>Fundación</option>
-                            <option value="Fusat" <?php echo ($result[ "prestadorsalud"]=='Fusat' ? "selected": ""); ?>>Fusat</option>
-                            <option value="Nueva Masvida" <?php echo ($result[ "prestadorsalud"]=='Nueva Masvida' ? "selected": ""); ?>>Nueva Masvida</option>
-                            <option value="Río Blanco" <?php echo ($result[ "prestadorsalud"]=='Río Blanco' ? "selected": ""); ?>>Río Blanco</option>
-                            <option value="San Lorenzo" <?php echo ($result[ "prestadorsalud"]=='San Lorenzo' ? "selected": ""); ?>>San Lorenzo</option>
-                            <option value="Vida Tres" <?php echo ($result[ "prestadorsalud"]=='Vida Tres' ? "selected": ""); ?>>Vida Tres</option>
+                            <option value="Banmédica" <?php echo ($result["prestadorsalud"]=='Banmedica' ? "selected": ""); ?>>Banmédica</option>
+                            <option value="Chuquicamata" <?php echo ($result["prestadorsalud"]=='Chuquicamata' ? "selected": ""); ?>>Chuquicamata</option>
+                            <option value="Consalud" <?php echo ($result["prestadorsalud"]=='Consalud' ? "selected": ""); ?>>Consalud</option>
+                            <option value="Colmena" <?php echo ($result["prestadorsalud"]=='Colmena' ? "selected": ""); ?>>Colmena</option>
+                            <option value="Cruz Blanca" <?php echo ($result["prestadorsalud"]=='Cruz Blanca' ? "selected": ""); ?>>Cruz Blanca</option>
+                            <option value="Cruz del Norte" <?php echo ($result["prestadorsalud"]=='Cruz del Norte' ? "selected": ""); ?>>Cruz del Norte</option>
+                            <option value="Fonasa" <?php echo ($result["prestadorsalud"]=='Fonasa' ? "selected": ""); ?>>Fonasa</option>
+                            <option value="Fundación" <?php echo ($result["prestadorsalud"]=='Fundacion' ? "selected": ""); ?>>Fundación</option>
+                            <option value="Fusat" <?php echo ($result["prestadorsalud"]=='Fusat' ? "selected": ""); ?>>Fusat</option>
+                            <option value="Nueva Masvida" <?php echo ($result["prestadorsalud"]=='Nueva Masvida' ? "selected": ""); ?>>Nueva Masvida</option>
+                            <option value="Río Blanco" <?php echo ($result["prestadorsalud"]=='Rio Blanco' ? "selected": ""); ?>>Río Blanco</option>
+                            <option value="San Lorenzo" <?php echo ($result["prestadorsalud"]=='San Lorenzo' ? "selected": ""); ?>>San Lorenzo</option>
+                            <option value="Vida Tres" <?php echo ($result["prestadorsalud"]=='Vida Tres' ? "selected": ""); ?>>Vida Tres</option>
                         </select>
                     </div>
                 </div>
@@ -1220,7 +1233,7 @@
                                 <?php 
                                     // Recorremos el JSON buscando los valores asociados a las regiones existentes
                                     foreach($regiones['regiones'] as $region) {
-                                        echo "<option value='" . $region['region'] . "'>" . $region['region'] . "</option>\n";
+                                        echo "<option value='" . $region['region'] . "' " . ($region['region']==$result['comunas'][0]['region']?"selected":"") . ">" . $region['region'] . "</option>\n";
                                     }
                                 ?>
                             </select>
@@ -1231,11 +1244,17 @@
                                     <?php
                                         // Creamos un arreglo asociativo dinámico que llene las comunas en función de la región seleccionada
                                         $i = 1;
+                                        $j = 0;
                                         foreach($regiones['regiones'] as $region) {
                                             echo "region" . $i . " : [";
                                             natsort($region['comunas']);
+                                            $k = 1;
                                             foreach($region['comunas'] as $comuna) {
                                                 echo "\"" . $comuna . "\", ";
+                                                if ($comuna == $result['comunas'][0]['comuna']) {
+                                                    $j = $k;
+                                                }
+                                                $k++;
                                             }
                                             echo "\"\"],\n";
                                             $i++;
@@ -1246,6 +1265,7 @@
                                 var campoRegion = document.getElementById('region_work');
                                 var campoComuna = document.getElementById('comuna_work');
                                 regionSeleccionada = campoRegion.selectedIndex;
+                                campoComuna.innerHTML = '<option>Selecciona comuna</option>';
 
                                 if (regionSeleccionada != "") {
                                     regionSeleccionada = comunas["region" + regionSeleccionada];
@@ -1256,14 +1276,17 @@
                                         campoComuna.add(opcion);
                                     });
                                 }
+
+                                campoComuna.selectedIndex = <?php echo $j; ?>;
                             }
                         </script>
                         <div class=" input-field col s4 m4 l4">Comuna
-                            <select class=" browser-default" id="comuna_work" onselect="this.className = ''" name="Comuna_work">
+                            <select class=" browser-default" id="comuna_work" onselect="this.className = ''" name="comuna_work">
                             </select>
                         </div>
                     </div>
                     <script language="Javascript">
+                        cargarComunasWork();
                         function changeStatus(select) {
                             if (select.selectedIndex == 0) {
                                 for(var i=1; i<select.length; i++) {
@@ -1808,7 +1831,7 @@
                                         <option value="550.000 - 600.000" <?php echo ($result[ "renta"]=='550.000 - 600.000' ? "selected": ""); ?>>550.000 - 600.000</option>
                                         <option value="600.000 - 800.000" <?php echo ($result[ "renta"]=='600.000 - 800.000' ? "selected": ""); ?>>600.000 - 800.000</option>
                                         <option value="800.000 - 1.000.000" <?php echo ($result[ "renta"]=='800.000 - 1.000.000' ? "selected": ""); ?>>800.000 - 1.000.000</option>
-                                        <option value="Más de 1.000.000" <?php echo ($result[ "renta"]=='Más de 1.000.000' ? "selected": ""); ?>>Más de 1.000.000</option>
+                                        <option value="Más de 1.000.000" <?php echo ($result[ "renta"]=='Mas de 1.000.000' ? "selected": ""); ?>>Más de 1.000.000</option>
                                     </select>
                                 </div>
                             </div>
@@ -1984,7 +2007,7 @@
     if($error <> null) { }
 ?>
             // RUT/Pasaporte
-            if ($('#tipo_doc').val() == 'rut') {
+            if ($('#documento').val() == 'rut') {
                 $('#rut_box').show();
                 $('#pasaporte_box').hide();
             } else {

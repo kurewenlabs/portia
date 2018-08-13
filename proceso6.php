@@ -116,7 +116,7 @@
                 <option value="550.000 - 600.000">550.000 - 600.000</option>
                 <option value="600.000 - 800.000">600.000 - 800.000</option>
                 <option value="800.000 - 1.000.000">800.000 - 1.000.000</option>
-                <option value="Más de 1.000.000">Más de 1.000.000</option>
+                <option value="Mas de 1.000.000">Más de 1.000.000</option>
               </select>
             </div>
           </div>
