@@ -30,8 +30,9 @@
 
         //identificador de postulacion
         $idPost=$data['pos']['id'];
-        //$a=`date +"%s"`;P1320186283654435
-        //$idPost='P'.$a;
+        if (isset($_SESSION["mode"])) {
+            $idPost='Pte' . date('YmdHis');
+        }
 
         $fecha_post = date('Y-m-d');
         $tipo_documento='';
@@ -74,6 +75,7 @@
     $sql =  "INSERT INTO tbl_postulante(
             id_post, 
             fecha_post, 
+            tipo_documento,
             rut, 
             nombres, 
             apellidop, 
@@ -101,6 +103,7 @@
             VALUES (
             '$idPost',
             '$fecha_post',
+            '$tipo_documento',
             '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
             '$noms',
             '$apeP',
@@ -133,8 +136,8 @@
 
             if(!mysqli_query($conn,$sql))
             {
-                die('Error : tbl_postulante ' . mysqli_error($conn));
-                exit(0);
+                error_log('Error : tbl_postulante ' . mysqli_error($conn));
+                die();
             }
 
    
@@ -169,7 +172,7 @@
                     '$tipoEstudio',
                     '$titulo',
                     '$estado_estudio',
-                    '$fecha_titulacion'
+                    '$fecha_titulacion',
                     $semestres
                     );";
 
@@ -179,7 +182,8 @@
 
             if(!mysqli_query($conn,$sql))
             {
-                die('Error : tbl_estudio ' . mysqli_error($conn));
+                error_log('Error : tbl_estudio ' . mysqli_error($conn));
+                die();
             }
 
 
@@ -211,7 +215,8 @@
                             
             if(!mysqli_query($conn,$sql))
             {
-                die('Error : tbl_curso ' . mysqli_error($conn));
+                error_log('Error : tbl_curso ' . mysqli_error($conn));
+                die();
             }
         }
         if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
@@ -241,7 +246,8 @@
             
                 if(!mysqli_query($conn,$sql))
                 {
-                    die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+                    error_log('Error : tbl_postulante' . mysqli_error($conn));
+                    die();
                 }
                 
             }else{
@@ -268,7 +274,8 @@
         
                 if(!mysqli_query($conn,$sql))
                 {
-                    die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+                    error_log('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+                    die();
                 }
             }
         }
@@ -299,7 +306,8 @@
     
                 if(!mysqli_query($conn,$sql))
                 {
-                    die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+                    error_log('Error : tbl_postulante ' . mysqli_error($conn));
+                    die();
                 }
                 
             }else{
@@ -327,7 +335,8 @@
 
                 if(!mysqli_query($conn,$sql))
                 {
-                    die('Error : tbl_referencia_laboral ' . mysqli_error($conn));
+                    error_log('Error : tbl_referencia_laboral ' . mysqli_error($conn));
+                    die();    
                 }
             }
         }
@@ -372,7 +381,8 @@
 
                 if(!mysqli_query($conn,$sql))
                 {
-                    die('Error : tbl_horario_trabajo ' . mysqli_error($conn));
+                    error_log('Error : tbl_horario_trabajo ' . mysqli_error($conn));
+                    die();
                 }
         
             }
@@ -393,7 +403,8 @@
                     
                 if(!mysqli_query($conn,$sql))
                 {
-                    die('Error : tbl_comuna ' . mysqli_error($conn));
+                    error_log('Error : tbl_comuna ' . mysqli_error($conn));
+                    die();    
                 }
         
             }
@@ -407,7 +418,8 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+            error_log('Error : tbl_postulante ' . mysqli_error($conn));
+            die();
         }
 
             $uniforme='';
@@ -442,10 +454,10 @@
                     VALUES (
                     '$idPost',
                     '$rut',
-                    $cv,
-                    $cerAntecedentes,
-                    $carnet,
-                    $fotografia);";
+                    " . (isset($cv) && $cv!=''?$cv:'null') . ",
+                    " . (isset($cerAntecedentes) && $cerAntecedentes!=''?$cerAntecedentes:'null') . ",
+                    " . (isset($carnet) && $carnet!=''?$carnet:'null') . ",
+                    " . (isset($fotografia) && $fotografia!=''?$fotografia:'null') . ");";
             
             if (isset($_SESSION["mode"])) {
                 error_log('Query: '. $sql);
@@ -453,7 +465,8 @@
 
             if(!mysqli_query($conn,$sql))
             {
-                die('Error : tbl_documento ' . mysqli_error($conn));
+                error_log('Error : tbl_documento ' . mysqli_error($conn));
+                die();
             }
 
         $sql = "UPDATE `tbl_postulante` SET `tpolera` = '$uniforme', `tpoleron` = '$uniforme2', `tpantalon` = '$tallaPantalon', `tzapatos` = '$tallaZapato', `renta` = '$renta'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
@@ -464,7 +477,8 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            die('Error : tbl_postulante ' . mysqli_error($conn));
+            error_log('Error : tbl_postulante ' . mysqli_error($conn));
+            die();
         }
         
         
@@ -499,11 +513,12 @@
 
             if(!mysqli_query($conn,$sql))
             {
-                die('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn));
+                error_log('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn));
+                die();
             }
         }
     
-        error_log("Postulación <b>".$idPost."</b> almacenada en DB!");
+        error_log("Postulación ".$idPost." almacenada en DB!");
    }
    
    
@@ -602,8 +617,9 @@
 
     }
 
+    // Modo desarrollador
     if (isset($_SESSION["mode"])) {
-        var_error_log($_SESSION["postdata"]);
+        // var_error_log($_SESSION["postdata"]);
     }
 
 ?>

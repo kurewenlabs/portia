@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -334,6 +337,12 @@
             "ajax": "datatables_script.php"
         } );
     } ); */
+</script>
+
+<script language="Javascript">
+<?php if (isset($_SESSION["mode"])) { ?>
+    notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+<?php } ?>
 </script>
 </body>
 </html>

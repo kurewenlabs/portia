@@ -9,22 +9,23 @@ $(document).ready(function () {
 
 //Esta Función Genera el Número del Post
 function postNumberPost(str){
-        var result;
-        var dateString = "";
-        var newDate = new Date();
+    var result;
+    var dateString = "";
+    var newDate = new Date();
 
-        str=str.substring(0,2);
-        dateString += newDate.getFullYear();
-        dateString += (newDate.getMonth() + 1);
-        dateString += newDate.getDate();
-        dateString += newDate.getMinutes();
-        dateString += newDate.getSeconds();
-        dateString += newDate.getMilliseconds();
+    str=str.substring(0,2);
+    dateString += newDate.getFullYear();
+    dateString += (newDate.getMonth() + 1);
+    dateString += newDate.getDate();
+    dateString += newDate.getMinutes();
+    dateString += newDate.getSeconds();
+    dateString += newDate.getMilliseconds();
 
-        result= 'P'+str+dateString;
+    result= 'P'+str+dateString;
 
-        return result;
-    }
+    return result;
+}
+
     $("form#selectionForm").submit(function(e){
          e.preventDefault();
          var chkArray = [];
@@ -55,19 +56,19 @@ function postNumberPost(str){
 
           var JSONData={};
           var pid = postNumberPost("test");
-               $.ajax({
-                         url : "processform.php",
-                         type:"post",
-                         data:{ action:"firstpagedata",data:chkArray,pid:pid},
-                         success:function(data){
-                                 window.location.href="proceso.php";
-                                 return false
-                         },
-                         error:function(){
+            $.ajax({
+                        url : "processform.php",
+                        type: "post",
+                        data:{ action:"firstpagedata",data:chkArray,pid:pid},
+                        success:function(data){
+                                window.location.href="proceso.php";
+                                return false
+                        },
+                        error:function(){
 
-                         }
+                        }
 
-               })
+            })
         return false;
     })
     $("form#procesoform").submit(function(e){

@@ -7,7 +7,7 @@
         echo "<!--";
         print_r($_SESSION);
         echo "-->";
-    }  session_start();
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -270,7 +270,7 @@
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
             <label for="fechaEstudio">Año de Titulación</label>
-            <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año" value="<?php if (array_key_exists('fecha_titulacion', $datos[$i])) { echo $datos[$i]['fecha_titulacion']; $i++; } ?>">
+            <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año" value="<?php if (array_key_exists('fechaEstudio', $datos[$i])) { echo $datos[$i]['fechaEstudio']; $i++; } ?>">
           </div>
         
         </div>

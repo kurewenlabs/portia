@@ -1,9 +1,11 @@
 <?php
+    session_start();
+
     $id = $_GET['identificador'];
     $postula = $_GET['postulacion'];
     require_once 'db.php';
     global $conn;
-    $sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
+    $sql = "SELECT a.id_post, a.fecha_post, a.estado_post, a.tipo_documento, a.rut, a.nombres, a.apellidoP, a.apellidoM, a.fecha_nacimiento, a.sexo, 
                 a.estado_civil, a.nacionalidad, a.telefono, a.telefono_recado, a.email, a.provincia, a.comuna, a.domicilio, 
                 a.tpolera, a.tpantalon, a.tpoleron, a.tzapatos, a.renta, a.tlicenciaconducir, a.afp, a.prestadorsalud, 
                 a.experiencialaboral, a.referencialaboral, b.nombre, b.estado, b.observacion, c.cv, c.antecedentes, c.carnet, 
@@ -571,17 +573,17 @@
                         <div id="datosPersonales">
                             <div class="tab input-field col s4 m4 l4">Tipo de Documento de identificacion
                                 <select class="browser-default" onselect="this.className = ''" name="documento">
-                                    <option <?php if($result[ 'documento']=="rut" ){ echo 'selected'; }?> value="rut">RUT</option>
-                                    <option <?php if($result[ 'documento']=="pasaporte" ){ echo 'selected'; }?> value="pasaporte">Pasaporte</option>
+                                    <option <?php if($result['tipo_documento']=="rut" ){ echo 'selected'; }?> value="rut">RUT</option>
+                                    <option <?php if($result['tipo_documento']=="pasaporte" ){ echo 'selected'; }?> value="pasaporte">Pasaporte</option>
                                 </select>
                             </div>
                             <div class=" input-field col s4 m4 l4 " id="rut_box">
                                 <label for="rut">RUT</label>
-                                <input name="rut" placeholder="Ingrese rut con digito verificador" id="rut" type="text" class="validate" value="<?php echo $result['rut']?>">
+                                <input name="rut" placeholder="Ingrese rut con digito verificador" id="rut" type="text" class="validate" value="<?php echo ($result['tipo_documento']=="rut"?$result['rut']:""); ?>">
                             </div>
                             <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
-                                <label for="Pasaporte">Pasaporte</label>
-                                <input id="Pasaporte" type="tel" class="validate rut_box">
+                                <label for="pasaporte">Pasaporte</label>
+                                <input name="pasaporte" type="tel" class="validate rut_box" id="pasaporte" type="text" class="validate" value="<?php echo ($result['tipo_documento']=="pasaporte"?$result['rut']:""); ?>">
                             </div>
                         </div>
                     </div>
@@ -2077,6 +2079,10 @@
             $(inputDiaHora5).
             <?php echo (count($result["horarios"])==4?"show()":"hide()") ?>;
         </script>
+        <script language="Javascript">
+        <?php if (isset($_SESSION["mode"])) { ?>
+            notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+        <?php } ?>
+        </script>
     </body>
-
-    </html>
+</html>

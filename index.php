@@ -388,6 +388,9 @@
   ?>
       notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
   <?php
+      if (isset($_GET["flush"])) {
+        unset($_SESSION["postdata"]);
+      }
     }
   ?>
   </script>

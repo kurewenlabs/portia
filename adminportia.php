@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if (array_key_exists("mode", $_GET)) {
+    $_SESSION["mode"] = $_GET["mode"];
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -82,7 +88,12 @@
   <?php } ?>
   <?php if (isset($_SESSION["mode"])) { ?>
       notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
-  <?php } ?>
+  <?php 
+      if (isset($_GET["flush"])) {
+        unset($_SESSION["postdata"]);
+      }
+    } 
+  ?>
   </script>
 
 </body>
