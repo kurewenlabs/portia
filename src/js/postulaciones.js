@@ -235,7 +235,7 @@ function postNumberPost(str){
               $('#tipoEstudio').css('border-color' , 'red');
               return false;
           }
-          if($('#tipoEstudio').val() !== "media"){
+          if($('#tipoEstudio').val() !== "Media"){
               if($.trim($("#carrera").val()) != "" ){
                   chkArray.push( {"titulo" : $("#carrera").val()} );
                   $('#carrera').css('border-color' , '#f2f2f2');
@@ -257,16 +257,16 @@ function postNumberPost(str){
           if($.trim($("#estado_estudio").val()) != "" ){
             chkArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
           }
-          if($.trim($("#licencia").val()) != "" ){
-            chkArray.push( {"licencia" : $("#licencia").val()} );
-          }
           if($.trim($("#fechaEstudio").val()) != "" ){
             chkArray.push( {"fechaEstudio" : $("#fechaEstudio").val()} );
           }
+          if($.trim($("#semestres").val()) != "" ){
+            chkArray.push( {"semestres" : $("#semestres").val()} );
+          }
+          if($.trim($("#licencia").val()) != "" ){
+            chkArray.push( {"licencia" : $("#licencia").val()} );
+          }
           
-          
-          
-
           var chkArray2 = [];
           if($.trim($("#curso").val()) != "" ){
             chkArray2.push( {"nombre" : $("#curso").val(), "fecha" : $("#txtDate3").val()} );
@@ -422,7 +422,15 @@ function postNumberPost(str){
              $('#isapre').css('border-color' , 'red');
              return false;
          }
-         if($.trim($("#dias").val()) != "" ){
+         if($.trim($("#comunaswork").val()) != "" ){
+            chkArray.push( {"region" : $("#regionwork").val(), "comunas" : $("#comunaswork").val()} );
+            $('#comunas').css('border-color' , '#f2f2f2');
+        }else{
+            notie.alert({ type: 3, text: 'Debes elegir las comunas disponibles para trabajar', position: 'bottom' });
+            $('#comunas').css('border-color' , 'red');
+            return false;
+        }
+        if($.trim($("#dias").val()) != "" ){
              chkArray.push( {"dias" : $("#dias").val(), "horarios" : $("#id_label_multiple").val()+' a '+$("#id_label_multiple1").val()} );
              $('#dias').siblings('input').css('border-color' , '#f2f2f2');
              $('#id_label_multiple').siblings('input').css('border-color' , '#f2f2f2');
@@ -436,25 +444,20 @@ function postNumberPost(str){
          }
          if($.trim($("#dias2").val()) != "" ){
              chkArray.push( {"dias" : $("#dias2").val(), "horarios" : $("#id_label_multiple2").val()+' a '+$("#id_label_multiple12").val()} );
+             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
          }
          if($.trim($("#dias3").val()) != "" ){
              chkArray.push( {"dias" : $("#dias3").val(), "horarios" : $("#id_label_multiple3").val()+' a '+$("#id_label_multiple13").val()} );
+             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
          }
          if($.trim($("#dias4").val()) != "" ){
              chkArray.push( {"dias" : $("#dias4").val(), "horarios" : $("#id_label_multiple4").val()+' a '+$("#id_label_multiple14").val()} );
+             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
          }
          if($.trim($("#dias5").val()) != "" ){
              chkArray.push( {"dias" : $("#dias5").val(), "horarios" : $("#id_label_multiple5").val()+' a '+$("#id_label_multiple15").val()} );
+             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
          }
-         //Checkear esto.
-         /*if($.trim($("#comunas1").val()) != "" ){
-             chkArray.push( {"comunas" : $("#comunas1").val()} );
-             $('#comunas1').css('border-color' , '#f2f2f2');
-         }else{
-             notie.alert({ type: 3, text: 'Debes elegir las comunas disponibles para trabajar', position: 'bottom' });
-             $('#comunas1').css('border-color' , 'red');
-             return false;
-         }*/
          if ($(containerDataHoras).find(dias1Data).length < 1){
              notie.alert({ type: 3, text: 'Debes Horario Disponible para trabajar', position: 'bottom' });
              $('#comunas1').css('border-color' , 'red');

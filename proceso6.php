@@ -1,6 +1,12 @@
 <?php
-session_start();
-$dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+    session_start();
+    $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
+
+    if (isset($_SESSION["mode"])) {
+        echo "<!--";
+        print_r($_SESSION);
+        echo "-->";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

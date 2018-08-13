@@ -7,7 +7,6 @@
         print_r($_SESSION);
         echo "-->";
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +107,7 @@
         ?>
         <div class="row">
         <div class="input-field col s4 m4 l4">Region
-                <select class="" id="region" onselect="this.className = ''" name="region" onchange="cargarComunas();">
+                <select class="" id="regionwork" onselect="this.className = ''" name="regionwork" onchange="cargarComunas();">
                 <option>Seleccione región</option>
                 <?php 
                 // Recorremos el JSON buscando los valores asociados a las regiones existentes
@@ -119,38 +118,67 @@
                 </select>
         </div>
         <script language="Javascript">
-            var comunas = {
-            <?php
-                $i = 1;
-                foreach($regiones['regiones'] as $region) {
-                    echo "                region" . $i . " = [\n";
-                    natsort($region['comunas']);
-                    $j = 1;
-                    foreach($region['comunas'] as $comuna) {
-                        echo "                    {\n";
-                        echo "                        id: '" . $comuna . "',\n";
-                        echo "                        text: '" . $comuna . "'\n";
-                        echo "                    }" . ($j<sizeof($region['comunas'])?",":"") . "\n";
-                        $j++;
-                    }
-                    echo "                ]" . ($i<sizeof($regiones['regiones'])?",":"") . "\n";
-                    $i++;
-                }
-                echo "            };\n";
-            ?>
-
             function cargarComunas() {
-                var campoRegion = document.getElementById('region');
+                // var comunas = [
+                var comunas = {
+                <?php
+                    $i = 1;
+                    foreach($regiones['regiones'] as $region) {
+                        echo "region" . $i . " : [";
+                        natsort($region['comunas']);
+                        foreach($region['comunas'] as $comuna) {
+                            echo "\"" . $comuna . "\", ";
+                        }
+                        echo "\"\"],\n";
+                        $i++;
+                    }
+                    /* $i = 1;
+                    foreach($regiones['regiones'] as $region) {
+                        echo "                {\n";
+                        echo "                    region" . $i . " : [\n";
+                        natsort($region['comunas']);
+                        $j = 1;
+                        foreach($region['comunas'] as $comuna) {
+                            echo "                        {\n";
+                            echo "                            id: '" . $comuna . "',\n";
+                            echo "                            text: '" . $comuna . "'\n";
+                            echo "                        }" . ($j<sizeof($region['comunas'])?",":"") . "\n";
+                            $j++;
+                        }
+                        echo "                    ]\n";
+                        echo "                }" . ($i<sizeof($regiones['regiones'])?",":"") . "\n";
+                        $i++;
+                    } */
+                ?>
+                };
+                // ];
+                
+                /* var campoRegion = document.getElementById('region');
                 regionSeleccionada = campoRegion.selectedIndex;
                 var data = comunas["region" + regionSeleccionada];
 
-                $(".js-example-basic-multiple").select2({
-                    data: data
-                });                      
+                $("#comuna").select2({
+                    data: data,
+                    closeOnSelect: false
+                }); */                      
+                var campoRegion = document.getElementById('regionwork');
+                var campoComuna = document.getElementById('comunaswork');
+                regionSeleccionada = campoRegion.selectedIndex;
+                campoComuna.innerHTML = '<option>Selecciona comuna</option>';
+
+                if (regionSeleccionada != "") {
+                    regionSeleccionada = comunas["region" + regionSeleccionada];
+                    regionSeleccionada.forEach(function(comuna){
+                        var opcion = document.createElement('option');
+                        opcion.value = comuna;
+                        opcion.text = comuna;
+                        campoComuna.add(opcion);
+                    });
+                }
             }
         </script>
-            <div class=" input-field col s4 m4 l4">Comuna
-                <select class="js-example-basic-multiple" id="comuna" name="comuna" multiple="multiple" onselect="this.className = ''">
+            <div class="input-field col s4 m4 l4">Comuna
+                <select class=".js-example-data-array browser-default" id="comunaswork" name="comunaswork" onselect="this.className = ''">
                 </select>
             </div> 
         </div>

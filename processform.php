@@ -26,13 +26,17 @@
             
         $sql = '';
         
+        error_log("Comenzando el almacenado del postulante...");
+
         //identificador de postulacion
         $idPost=$data['pos']['id'];
         //$a=`date +"%s"`;P1320186283654435
         //$idPost='P'.$a;
 
         $fecha_post = date('Y-m-d');
-        
+        $tipo_documento='';
+        $rut='';
+        $pasaporte='';
         $noms='';
         $apeP='';
         $apeM='';
@@ -64,9 +68,10 @@
                 $$id = $value;
             }
         }
+        $tipo_documento = (isset($pasaporte)?'pasaporte':'rut');
 
     //insert tabla tbl_postulante
-    $sql =  "INSERT INTO postulacion.tbl_postulante(
+    $sql =  "INSERT INTO tbl_postulante(
             id_post, 
             fecha_post, 
             rut, 
@@ -96,7 +101,7 @@
             VALUES (
             '$idPost',
             '$fecha_post',
-            '$rut',
+            '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
             '$noms',
             '$apeP',
             '$apeM',
@@ -122,9 +127,10 @@
             '$referencialaboral'
             );";
             
-            if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                echo '****'. $sql .'<br/><br/>';
+            if (isset($_SESSION["mode"])) {
+                error_log('Query: '. $sql);
             }
+
             if(!mysqli_query($conn,$sql))
             {
                 die('Error : tbl_postulante ' . mysqli_error($conn));
@@ -149,13 +155,14 @@
             }
             
             //inset tbl_estudio
-            $sql =  "INSERT INTO postulacion.tbl_estudio(
+            $sql =  "INSERT INTO tbl_estudio(
                     id_post, 
                     rut, 
                     tipo_estudio, 
                     titulo, 
                     estado, 
-                    fecha_titulacion) 
+                    fecha_titulacion,
+                    semestres) 
                     VALUES (
                     '$idPost',
                     '$rut',
@@ -163,9 +170,11 @@
                     '$titulo',
                     '$estado_estudio',
                     '$fecha_titulacion'
+                    $semestres
                     );";
-            if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                echo $sql.'<br/>';
+
+            if (isset($_SESSION["mode"])) {
+                error_log('Query: '. $sql);
             }
 
             if(!mysqli_query($conn,$sql))
@@ -185,7 +194,7 @@
                 $$id = $value;
             }
             
-            $sql = "INSERT INTO postulacion.tbl_curso(
+            $sql = "INSERT INTO tbl_curso(
                     id_post,
                     rut,
                     curso,
@@ -196,10 +205,10 @@
                     '$nombre',    
                     '$fecha')";
                     
-            if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                echo '****'. $sql .'<br/>';
+            if (isset($_SESSION["mode"])) {
+                error_log('Query: '. $sql);
             }
-            
+                            
             if(!mysqli_query($conn,$sql))
             {
                 die('Error : tbl_curso ' . mysqli_error($conn));
@@ -225,10 +234,11 @@
             }
             if($experiencia != ''){
                 $sql = "UPDATE `tbl_postulante` SET `experiencialaboral` = '$experiencia'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
-                if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                    echo '****'.$sql .'<br/>';
-                }
 
+                if (isset($_SESSION["mode"])) {
+                    error_log('Query: '. $sql);
+                }
+            
                 if(!mysqli_query($conn,$sql))
                 {
                     die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
@@ -236,7 +246,7 @@
                 
             }else{
                 
-                $sql = "INSERT INTO postulacion.tbl_experiencia_laboral(
+                $sql = "INSERT INTO tbl_experiencia_laboral(
                         id_post,
                         rut,
                         empresa,
@@ -252,18 +262,15 @@
                         '$fechaHasta'
                         )";
                         
-                    if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                        echo '****'.$sql .'<br/>';
-                    }
-
-                    if(!mysqli_query($conn,$sql))
-                    {
-                        die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
-                    }
+                if (isset($_SESSION["mode"])) {
+                    error_log('Query: '. $sql);
+                }
+        
+                if(!mysqli_query($conn,$sql))
+                {
+                    die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+                }
             }
-        }
-        if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-            echo '<br/>';
         }
 
     
@@ -286,10 +293,10 @@
             if($referencia_laboral != ''){
                 $sql = "UPDATE `tbl_postulante` SET `referencialaboral` = '$referencia_laboral'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
                 
-                if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                    echo '****'.$sql .'<br/>';
+                if (isset($_SESSION["mode"])) {
+                    error_log('Query: '. $sql);
                 }
-
+    
                 if(!mysqli_query($conn,$sql))
                 {
                     die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
@@ -297,7 +304,7 @@
                 
             }else{
             
-                $sql = "INSERT INTO postulacion.tbl_referencia_laboral(
+                $sql = "INSERT INTO tbl_referencia_laboral(
                         id_post,
                         rut,
                         empresa,
@@ -314,19 +321,16 @@
                         '$telefono',
                         '$email')";
                 
-                if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                    echo '***'.$sql . '<br/>';
+                if (isset($_SESSION["mode"])) {
+                    error_log('Query: '. $sql);
                 }
+
                 if(!mysqli_query($conn,$sql))
                 {
                     die('Error : tbl_referencia_laboral ' . mysqli_error($conn));
                 }
             }
         }
-        if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-            echo '<br/>';
-        }
-
     
         //tabla tbl_horario_trabajo
         $comunas='';
@@ -351,26 +355,45 @@
             }
             if($dias != ''){
                 
-                $sql = "INSERT INTO postulacion.tbl_horario_trabajo(
+                $sql = "INSERT INTO tbl_horario_trabajo(
                         id_post,
                         rut,
                         dias,
-                        horarios,
-                        comunas)
+                        horarios)
                         VALUES(
                         '$idPost',
                         '$rut',
                         '$dias',
-                        '$horarios',
-                        '$comunas')";
+                        '$horarios')";
                 
-                if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                    echo '****'.$sql .'<br/>';
+                if (isset($_SESSION["mode"])) {
+                    error_log('Query: '. $sql);
                 }
-                
+
                 if(!mysqli_query($conn,$sql))
                 {
                     die('Error : tbl_horario_trabajo ' . mysqli_error($conn));
+                }
+        
+            }
+            if($comunas != ''){
+                
+                $sql = "INSERT INTO tbl_comuna(
+                        id_post,
+                        region,
+                        comuna)
+                        VALUES(
+                        '$idPost',
+                        '$region',
+                        '$comunas')";
+                
+                if (isset($_SESSION["mode"])) {
+                    error_log('Query: '. $sql);
+                }
+                    
+                if(!mysqli_query($conn,$sql))
+                {
+                    die('Error : tbl_comuna ' . mysqli_error($conn));
                 }
         
             }
@@ -378,9 +401,8 @@
         
         $sql = "UPDATE `tbl_postulante` SET `afp` = '$afp', `prestadorsalud` = '$isapre'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
         
-        if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-            echo '****'.$sql .'<br/>';
-            echo '<br/>';
+        if (isset($_SESSION["mode"])) {
+            error_log('Query: '. $sql);
         }
 
         if(!mysqli_query($conn,$sql))
@@ -395,8 +417,10 @@
             $renta='';
             
             //tabla tbl_documento
-            $cv='';
-            $cerAntecedentes='';
+            $cv=null;
+            $cerAntecedentes=null;
+            $carnet=null;
+            $fotografia=null;
             
             $valores_enviados = array();
             foreach($data['pos']['documentos'] AS $registro_i){
@@ -408,21 +432,25 @@
 
             //$contenido_pdf_cv = file_get_contents($cv);            
             //inset tbl_documento
-            $sql =  "INSERT INTO postulacion.tbl_documento(
+            $sql =  "INSERT INTO tbl_documento(
                     id_post, 
                     rut, 
                     cv, 
-                    antecedentes) 
+                    antecedentes,
+                    carnet,
+                    fotografia) 
                     VALUES (
                     '$idPost',
                     '$rut',
-                    '$cv',
-                    '$cerAntecedentes');";
+                    $cv,
+                    $cerAntecedentes,
+                    $carnet,
+                    $fotografia);";
             
-            if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                echo '****'.$sql.'<br/>';
+            if (isset($_SESSION["mode"])) {
+                error_log('Query: '. $sql);
             }
-            
+
             if(!mysqli_query($conn,$sql))
             {
                 die('Error : tbl_documento ' . mysqli_error($conn));
@@ -430,14 +458,13 @@
 
         $sql = "UPDATE `tbl_postulante` SET `tpolera` = '$uniforme', `tpoleron` = '$uniforme2', `tpantalon` = '$tallaPantalon', `tzapatos` = '$tallaZapato', `renta` = '$renta'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
         
-        if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-            echo '****'.$sql .'<br/>';
-            echo '<br/>';
+        if (isset($_SESSION["mode"])) {
+            error_log('Query: '. $sql);
         }
 
         if(!mysqli_query($conn,$sql))
         {
-            die('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+            die('Error : tbl_postulante ' . mysqli_error($conn));
         }
         
         
@@ -453,7 +480,7 @@
                 $$id = $value;
             }
             
-            $sql = "INSERT INTO postulacion.tbl_datos_postulacion_abierta(
+            $sql = "INSERT INTO tbl_datos_postulacion_abierta(
                     id_post,
                     rut,
                     num,
@@ -466,53 +493,53 @@
                     '$nom',
                     '$cat')";
                     
-            if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-                echo '*** '. $sql .'<br/><br/>';
+            if (isset($_SESSION["mode"])) {
+                error_log('Query: '. $sql);
             }
+
             if(!mysqli_query($conn,$sql))
             {
                 die('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn));
             }
         }
     
-        echo "Postulación <b>".$idPost."</b> almacenada en DB!";
+        error_log("Postulación <b>".$idPost."</b> almacenada en DB!");
    }
    
    
    if(!isset($_SESSION["postdata"])){
         $_SESSION["postdata"]=array("post"=>array());
         $_SESSION["postdata"]["pos"]["id"]=$_POST['pid'];
-        var_error_log($_SESSION["postdata"]["pos"]["id"]);
+        // var_error_log($_SESSION["postdata"]["pos"]["id"]);
    }
    if(isset($_POST['action']) && $_POST['action'] == 'firstpagedata'){
        $_SESSION["postdata"]["pos"]["pa"] = $_POST['data'];
-       var_error_log($_SESSION["postdata"]["pos"]["pa"]);
+       // var_error_log($_SESSION["postdata"]["pos"]["pa"]);
     } 
    if(isset($_POST['action']) && $_POST['action'] == 'secondpagedata'){
       $_SESSION["postdata"]["pos"]["datos"] = $_POST['data'];
-      var_error_log($_SESSION["postdata"]["pos"]["datos"]);
+      // var_error_log($_SESSION["postdata"]["pos"]["datos"]);
     } 
    if(isset($_POST['action']) && $_POST['action'] == 'thirdpagedata'){
        $_SESSION["postdata"]["pos"]["estudios"] = $_POST['data'];
-       var_error_log($_SESSION["postdata"]["pos"]["estudios"]);
+       // var_error_log($_SESSION["postdata"]["pos"]["estudios"]);
        $_SESSION["postdata"]["pos"]["cursos"] = $_POST['data2'];
-       var_error_log($_SESSION["postdata"]["pos"]["cursos"]);
+       // var_error_log($_SESSION["postdata"]["pos"]["cursos"]);
     } 
    if(isset($_POST['action']) && $_POST['action'] == 'fourthpagedata'){
        $_SESSION["postdata"]["pos"]["experiencia"] = $_POST['data'];
-       var_error_log($_SESSION["postdata"]["pos"]["experiencia"]);
+       // var_error_log($_SESSION["postdata"]["pos"]["experiencia"]);
     } 
    if(isset($_POST['action']) && $_POST['action'] == 'fifthpagedata'){
        $_SESSION["postdata"]["pos"]["referencia"] = $_POST['data'];
-       var_error_log($_SESSION["postdata"]["pos"]["referencia"]);
+       // var_error_log($_SESSION["postdata"]["pos"]["referencia"]);
     } 
    if(isset($_POST['action']) && $_POST['action'] == 'sixthpagedata'){
        $_SESSION["postdata"]["pos"]["horarioT"] = $_POST['data'];
-       var_error_log($_SESSION["postdata"]["pos"]["horarioT"]);
+       // var_error_log($_SESSION["postdata"]["pos"]["horarioT"]);
     } 
    if(isset($_POST['action']) && $_POST['action'] == 'seventhpagedata'){
        $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data'];
-       var_error_log($_SESSION["postdata"]["pos"]["documentos"]);
        save_data_in_DB();
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'lastpagedata'){
@@ -575,13 +602,8 @@
 
     }
 
-    if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-        print '<pre>';
-        print_r($_SESSION["postdata"]);
-        print '</pre>';
+    if (isset($_SESSION["mode"])) {
+        var_error_log($_SESSION["postdata"]);
     }
-
-   //print_r(json_encode($_SESSION));
-   //die(0);
 
 ?>

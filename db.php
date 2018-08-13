@@ -2,7 +2,7 @@
   // Datos para la conexion
   if (isset($_SESSION["mode"])) {
     $host = 'localhost';
-    $database = 'kurewenc_db_portia';
+    $database = 'postulacion';
     $username = 'root';
     $password = '';
   } else {

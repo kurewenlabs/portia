@@ -70,10 +70,10 @@
       <div class=" input-field col s4 m4 l4">Tipo de Estudios
         <select id="tipoEstudio" class="browser-default" onselect="this.className = ''" name="estudio">
           <option value=""></option>
-          <option value="basica">Enseñanza Básica</option>
-          <option value="media">Enseñanza Media</option>
-          <option value="técnico superior">Técnico Superior</option>
-          <option value="universitario">Universitario</option>
+          <option value="Básica">Enseñanza Básica</option>
+          <option value="Media">Enseñanza Media</option>
+          <option value="Técnico Superior">Técnico Superior</option>
+          <option value="Universitario">Universitario</option>
           <option value="Posgrado">Posgrado</option>
         </select>
       </div>
@@ -95,15 +95,15 @@
         </div>
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
-            <label for="txtDate2ftitulacion">Año de Titulación</label>
-            <input type="text" class="date" id="txtDate2ftitulacion" placeholder="Ingrese año">
+            <label for="fechaEstudio">Año de Titulación</label>
+            <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año">
           </div>
         
         </div>
         <div class=" input-field col s2 m2 l2">
           <div class="box_estudio" id="estudiobox">
-            <label for="txtSemestres">Semestres cursados</label>
-            <input type="text" class="date" id="txtSemestres" placeholder="Semestres">
+            <label for="semestres">Semestres cursados</label>
+            <input type="text" class="date" id="semestres" namew="semestres" placeholder="Semestres">
           </div>
         </div>
 
@@ -113,7 +113,7 @@
      <div class=" input-field col s4 m4 l4">Licencia de Conducir
           <select class="js-example-basic-multiple" multiple="multiple" onselect="this.className = ''" name="licencia" id="licencia">
             <option value=""></option>
-            <option value="sin licencia">Sin Licencia</option>
+            <option value="Sin licencia">Sin Licencia</option>
             <option value="Clase A1">Clase A1</option>
             <option value="Clase A2">Clase A2</option>
             <option value="Clase A3">Clase A3</option>
