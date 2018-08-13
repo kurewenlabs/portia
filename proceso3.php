@@ -93,7 +93,7 @@
                 </div>
                 <div class="col s2 m2 l2 input-field dateUntil">
                     <label for="txtDate4">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate4">
+                    <input type="text" class="date" id="txtDate4" placeholder="01/2018">
                     <p>
                         <label for="fechaCargo">
                             <input type="checkbox" value="Al presente" id="fechaCargo">
@@ -125,7 +125,7 @@
                 </div>
                 <div class="col s2 m2 l2 input-field">
                     <label for="txtDate42">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate42">
+                    <input type="text" class="date" id="txtDate42" placeholder="01/2018">
                     <p>
                         <label for="fechaCargo2">
                             <input type="checkbox" value="Al presente" id="fechaCargo2">
@@ -157,7 +157,7 @@
                 </div>
                 <div class="col s2 m2 l2 input-field">
                     <label for="txtDate43">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate43">
+                    <input type="text" class="date" id="txtDate43" placeholder="01/2018">
                     <p>
                         <label for="fechaCargo3">
                             <input type="checkbox" value="Al presente" id="fechaCargo3">
@@ -168,7 +168,7 @@
                 <div class="col s2 m2 l2 input-field"id="input-fecha-until3">
             
                         <label for="txtDate43h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate43h">
+                        <input type="text" class="date" id="txtDate43h" placeholder="01/2018">
              
                 </div>
                 <div class="col s2 m2 l2">
