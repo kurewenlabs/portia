@@ -576,7 +576,7 @@
                                 <label for="telefono">Telefono</label>
                             </div>
                             <div class="input-field col s4 m4 l4">
-                                <input id="telefono2" type="tel" placeholder="*Opcional" class="validate" name="telefonoRecado" value="<?php echo $result['telefono_recado']?>">
+                                <input id="telefono2" type="tel" placeholder="+56(9)" class="validate" name="telefonoRecado" value="<?php echo $result['telefono_recado']?>">
                                 <label for="telefono2">Telefono de Recado</label>
                             </div>
                         </div>
