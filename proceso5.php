@@ -210,7 +210,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple" placeholder="Obligatorio"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
                           <option value="3:00">3:00</option>
@@ -291,7 +291,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple2"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
                           <option value="3:00">3:00</option>
@@ -308,7 +308,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple12"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -352,7 +352,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple3"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
 
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
@@ -370,7 +370,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple13"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -413,7 +413,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple4"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
 
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
@@ -431,7 +431,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple14"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -475,7 +475,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple5"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
 
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
@@ -493,7 +493,7 @@
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple15"  style="width:60%">
-                          <option value="">Obligatorio</option>
+                          <option value=""></option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -622,8 +622,7 @@
         </div>
 
       </div>
-      <div class="row"></div>
-      <div class="row"></div>
+      <br><br>
       <div class="row">
         <div class="col s6 m6 l6">
           <!-- <a href="proceso4.html" class="waves-effect waves-light btn-large">Atrás</a> -->
