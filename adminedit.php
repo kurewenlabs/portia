@@ -107,74 +107,7 @@
             </div>
             <h4 class="left-align prev">Previsualización Curriculum</h4>
             <p class="left-align">Usted podrá editar el curriculum ingresado además de clasificar su estado</p>
-            <div class="row">
-                <form method="POST" action="process_editar.php" id="print-edit">
-                    <input type="hidden" name="identificador" value="<?= $id ?>" />
-                    <input type="hidden" name="postulacion" value="<?= $postula ?>" />
-                    <input type="hidden" name="pagina" value="actualizar_estado" />
-                    <div class="">
-                        <p>Clasificar</p>
-                        <div class="clasificar col s4 m4 l4 left-align">
-                            <p>
-                                <label for="sinClasificar2">
-                                    <input value="Sin Clasificar" id="sinClasificar2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Sin Clasificar'
-                                        ) echo "checked='checked'"; else "";?>/>
-                                    <span>
-                                        <span class="badge yellow sinClasificar"> Sin Clasificar</span>
-                                    </span>
-                                </label>
-                            </p>
-                            <p>
-                                <label for="apto2">
-                                    <input value="Apto" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Apto' ) echo
-                                        "checked='checked'"; else "";?>/>
-                                    <span>
-                                        <span class="badge green sinClasificar">Apto</span>
-                                    </span>
-                                </label>
-                            </p>
-                            <p>
-                                <label for="fueraRango2">
-                                    <input value="Fuera Rango Renta" id="fueraRango2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Fuera Rango Renta'
-                                        ) echo "checked='checked'"; else "";?>/>
-                                    <span>
-                                        <span class="badge orange sinClasificar"> Fuera Rango Renta</span>
-                                    </span>
-                                </label>
-                            </p>
-                            <p>
-                                <label for="noApto2">
-                                    <input value="No Apto" id="noApto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='No Apto' )
-                                        echo "checked='checked'"; else "";?>/>
-                                    <span>
-                                        <span class="badge grey sinClasificar">No Apto</span>
-                                    </span>
-                                </label>
-                            </p>
-                        </div>
-                        <div class="col s4 m4 l4">
-                            <p class="left-align">Observación</p>
-                            <form>
-                                <div class="input-field">
-                                    <textarea id="textarea1" name="observacion" class="browser-default">
-                                        <?php echo $result['observacion']?>
-                                    </textarea>
-                                    <label for="textarea1"></label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="row">
-                            <div class="col s3 m3 l3">
-                                <a href="#!" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
-                            </div>
-                            <div class="col s3 m3 l3">
-                                <button class="waves-effect waves-green btn save" type="submit" href="userportia.html.php">Guardar</button>
-                            </div>
-                        </div>
-                </form>
-                </div>
-
-
+            
                 <div class="row"></div>
                 <div class="divider"></div>
 
@@ -1008,17 +941,17 @@
                                 <p id="experienciaData" style="margin: 0"></p>
                                 <div id="boxDataExp1">
                                     <div class="boxDataExp">
-                                        <div class="col s3 m3 l3">
+                                        <div class="col s4 m4 l4">
                                             <span class="boxDataExpInfo" id="empresaData">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["empresa"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s3 m3 l3">
+                                        <div class="col s4 m4 l4">
                                             <span class="boxDataExpInfo" id="cargoData">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["cargo"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s2 m2 l2">
+                                        <div class="col s1 m1 l1">
                                             <span class="boxDataExpInfo" id="fecha1Data">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_desde"]:""); ?>
                                             </span>
@@ -1028,7 +961,7 @@
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_hasta"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s2 m2 l2 right-align">
+                                        <div class="col s1 m1 l1 right-align">
                                             <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1">
                                                 <i class="small material-icons">cancel</i>
                                             </div>
@@ -1037,17 +970,17 @@
                                 </div>
                                 <div id="boxDataExp2">
                                     <div class="boxDataExp">
-                                        <div class="col s3 m3 l3">
+                                        <div class="col s4 m4 l4">
                                             <span class="boxDataExpInfo" id="empresaData2">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["empresa"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s3 m3 l3">
+                                        <div class="col s4 m4 l4">
                                             <span class="boxDataExpInfo" id="cargoData2">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["cargo"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s2 m2 l2">
+                                        <div class="col s1 m1 l1">
                                             <span class="boxDataExpInfo" id="fecha1Data2">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_desde"]:""); ?>
                                             </span>
@@ -1057,7 +990,7 @@
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_hasta"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s2 m2 l2 right-align">
+                                        <div class="col s1 m1 l1 right-align">
                                             <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2">
                                                 <i class="small material-icons">cancel</i>
                                             </div>
@@ -1066,17 +999,17 @@
                                 </div>
                                 <div id="boxDataExp3">
                                     <div class="boxDataExp">
-                                        <div class="col s3 m3 l3">
+                                        <div class="col s4 m4 l4">
                                             <span class="boxDataExpInfo" id="empresaData3">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["empresa"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s3 m3 l3">
+                                        <div class="col s4 m4 l4">
                                             <span class="boxDataExpInfo" id="cargoData3">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["cargo"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s2 m2 l2">
+                                        <div class="col s1 m1 l1">
                                             <span class="boxDataExpInfo" id="fecha1Data3">
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_desde"]:""); ?>
                                             </span>
@@ -1086,7 +1019,7 @@
                                                 <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_hasta"]:""); ?>
                                             </span>
                                         </div>
-                                        <div class="col s2 m2 l2 right-align">
+                                        <div class="col s1 m1 l1 right-align">
                                             <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3">
                                                 <i class="small material-icons">cancel</i>
                                             </div>
@@ -1095,8 +1028,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row"></div>
-                        <div class="row"></div>
+                        <br><br>
 
                     </form>
                 </div>
@@ -1127,11 +1059,11 @@
                                 <div class="divider"></div>
                             </div>
                             <div class="row" id="refs_box1">
-                                <div class=" input-field col s6 m6 l6 back-box3">
+                                <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="empresaref">Empresa </label>
                                     <input id="empresaref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["empresa"]:" "); ?>">
                                 </div>
-                                <div class=" input-field col s6 m6 l6 back-box3">
+                                <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="contactoref">Nombre del Contacto</label>
                                     <input id="contactoref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["nombre_contacto"]:" "); ?>">
                                 </div>
@@ -1157,11 +1089,11 @@
                                 </div>
                             </div>
                             <div class="row" id="refs_box2">
-                                <div class=" input-field col s6 m6 l6 back-box3">
+                                <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="empresaref2">Empresa 2</label>
                                     <input id="empresaref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["empresa"]:" "); ?>">
                                 </div>
-                                <div class=" input-field col s6 m6 l6 back-box3">
+                                <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="contactoref2">Nombre del Contacto</label>
                                     <input id="contactoref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["nombre_contacto"]:" "); ?>">
                                 </div>
@@ -1189,11 +1121,11 @@
                                 </div>
                             </div>
                             <div class="row" id="refs_box3">
-                                <div class=" input-field col s6 m6 l6 back-box3">
+                                <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="empresaref3">Empresa 3</label>
                                     <input id="empresaref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["empresa"]:" "); ?>">
                                 </div>
-                                <div class=" input-field col s6 m6 l6 back-box3">
+                                <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="contactoref3">Nombre del Contacto</label>
                                     <input id="contactoref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["nombre_contacto"]:" "); ?>">
                                 </div>
@@ -1889,30 +1821,29 @@
                                 <div class="col s6 m6 l6">
                                     <label>Curriculum</label>
                                     <div class="file-field input-field">
-                                        <div class="btn">
-                                            <span>Adjuntar</span>
+                                        <div class="btn-flat">
+                                            
                                             <input type="file" id="cv" name="curriculum">
                                             <?php echo ($result['cv']!=''?'<a href="download.php?identificador='. $result['cv'] . '&documento=Curriculum">Descargar</a>':''); ?>
                                         </div>
                                         <div class="file-path-wrapper">
                                             <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath()" class="material-icons btn-flat prefix">cancel</i>
                                             <!-- este es el btn de remover -->
-                                            <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Adjuntar Archivo">
+                                            <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Descargar Archivo">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col s6 m6 l6">
                                     <label>Certificado de antecedentes</label>
                                     <div class="file-field input-field">
-                                        <div class="btn">
-                                            <span>Adjuntar</span>
-                                            <input type="file" id="cerAntecedentes" name="antecedentes">
+                                        <div class="btn-flat">
+                                             <input type="file" id="cerAntecedentes" name="antecedentes">
                                             <?php echo ($result['antecedentes']!=''?'<a href="download.php?identificador='. $result['antecedentes'] . '&documento=Antecedentes">Descargar</a>':''); ?>
                                         </div>
                                         <div class="file-path-wrapper">
                                             <i style="right: 0;left: auto" id="remove-antecedentes" onclick="removeAntecedentesPath()" class="material-icons btn-flat prefix">cancel</i>
                                             <!-- este es el btn de remover -->
-                                            <input style="width: 80%" id="antecedentes-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
+                                            <input style="width: 80%" id="antecedentes-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
                                         </div>
                                     </div>
                                 </div>
@@ -1921,15 +1852,15 @@
                                 <div class="col s6 m6 l6">
                                     <label>Carnet o Pasaporte</label>
                                     <div class="file-field input-field">
-                                        <div class="btn">
-                                            <span>Adjuntar</span>
+                                        <div class="btn-flat">
+                                           
                                             <input type="file" id="docIdentidad" name="docIdentidad">
                                             <?php echo ($result['carnet']!=''?'<a href="download.php?identificador='. $result['carnet'] . '&documento=Carnet">Descargar</a>':''); ?>
                                         </div>
                                         <div class="file-path-wrapper">
                                             <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i>
                                             <!-- este es el btn de remover -->
-                                            <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
+                                            <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
 
                                         </div>
                                     </div>
@@ -1937,15 +1868,15 @@
                                 <div class="col s6 m6 l6">
                                     <label>Fotografía del o la Postulante</label>
                                     <div class="file-field input-field">
-                                        <div class="btn">
-                                            <span>Adjuntar</span>
+                                        <div class="btn-flat">
+                                            
                                             <input type="file" id="fotografia" name="fotografia">
                                             <?php echo ($result['fotografia']!=''?'<a href="download.php?identificador='. $result['fotografia'] . '&documento=Fotografia">Descargar</a>':''); ?>
                                         </div>
                                         <div class="file-path-wrapper">
                                             <i style="right: 0;left: auto" id="remove-picture" onclick="removePicturePath()" class="material-icons btn-flat prefix">cancel</i>
                                             <!-- este es el btn de remover -->
-                                            <input style="width: 80%" id="picture-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
+                                            <input style="width: 80%" id="picture-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
                                         </div>
                                     </div>
                                 </div>
@@ -1953,26 +1884,90 @@
                         </div>
                     </div>
 
-            </div>
-
-            <div class="row"></div>
-            <div class="row"></div>
+<br>
+           <br>
+<div class="divider"></div>
 
             <!-- -----------------------------------------------BOTONES FINAL --------------------------------- -->
-            <div class="row">
-                <div class="col s6 m6 l6 right">
-                    <button type="submit" class="waves-effect waves-light btn right">Postular</button>
+           <div class="row">
+                <form method="POST" action="process_editar.php" id="print-edit">
+                    <input type="hidden" name="identificador" value="<?= $id ?>" />
+                    <input type="hidden" name="postulacion" value="<?= $postula ?>" />
+                    <input type="hidden" name="pagina" value="actualizar_estado" />
+                    <div class="">
+                        <p>Clasificar</p>
+                        <div class="clasificar col s4 m4 l4 left-align">
+                            <p>
+                                <label for="sinClasificar2">
+                                    <input value="Sin Clasificar" id="sinClasificar2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Sin Clasificar'
+                                        ) echo "checked='checked'"; else "";?>/>
+                                    <span>
+                                        <span class="badge yellow sinClasificar"> Sin Clasificar</span>
+                                    </span>
+                                </label>
+                            </p>
+                            <p>
+                                <label for="apto2">
+                                    <input value="Apto" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Apto' ) echo
+                                        "checked='checked'"; else "";?>/>
+                                    <span>
+                                        <span class="badge green sinClasificar">Apto</span>
+                                    </span>
+                                </label>
+                            </p>
+                            <p>
+                                <label for="fueraRango2">
+                                    <input value="Fuera Rango Renta" id="fueraRango2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Fuera Rango Renta'
+                                        ) echo "checked='checked'"; else "";?>/>
+                                    <span>
+                                        <span class="badge orange sinClasificar"> Fuera Rango Renta</span>
+                                    </span>
+                                </label>
+                            </p>
+                            <p>
+                                <label for="noApto2">
+                                    <input value="No Apto" id="noApto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='No Apto' )
+                                        echo "checked='checked'"; else "";?>/>
+                                    <span>
+                                        <span class="badge grey sinClasificar">No Apto</span>
+                                    </span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col s4 m4 l4">
+                            <p class="left-align">Observación</p>
+                            <form>
+                                <div class="input-field">
+                                    <textarea id="textarea1" name="observacion" class="browser-default">
+                                        <?php echo $result['observacion']?>
+                                    </textarea>
+                                    <label for="textarea1"></label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <div class="col s3 m3 l3">
+                                <a href="#!" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
+                            </div>
+                            <div class="col s3 m3 l3">
+                                <button class="waves-effect waves-green btn save" type="submit" href="userportia.html.php">Guardar</button>
+                            </div>
+                        </div>
+                </form>
                 </div>
+
+
             </div>
-            </form>
+
+           
         </div>
         <!--container-->
-
         <div class="row">
             <div class="col s12 m12 l12">
                 <img src="src/img/logo.jpg" alt="" class="endLogo">
             </div>
         </div>
+
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
