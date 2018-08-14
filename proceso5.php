@@ -304,11 +304,36 @@
                           <option value="10:00">10:00</option>
                           <option value="11:00">11:00</option>
                           <option value="12:00">12:00</option>
+                          <option value="13:00">13:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">19:00</option>
+                          <option value="20:00">20:00</option>
+                          <option value="21:00">21:00</option>
+                          <option value="22:00">22:00</option>
+                          <option value="23:00">23:00</option>
+                          <option value="24:00">24:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple12"  style="width:60%">
                           <option value=""></option>
+                          
+                          <option value="1:00">1:00</option>
+                          <option value="2:00">2:00</option>
+                          <option value="3:00">3:00</option>
+                          <option value="4:00">4:00</option>
+                          <option value="5:00">5:00</option>
+                          <option value="6:00">6:00</option>
+                          <option value="7:00">7:00</option>
+                          <option value="8:00">8:00</option>
+                          <option value="9:00">9:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -353,7 +378,6 @@
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple3"  style="width:60%">
                           <option value=""></option>
-
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
                           <option value="3:00">3:00</option>
@@ -366,11 +390,35 @@
                           <option value="10:00">10:00</option>
                           <option value="11:00">11:00</option>
                           <option value="12:00">12:00</option>
+                          <option value="13:00">13:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">19:00</option>
+                          <option value="20:00">20:00</option>
+                          <option value="21:00">21:00</option>
+                          <option value="22:00">22:00</option>
+                          <option value="23:00">23:00</option>
+                          <option value="24:00">24:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple13"  style="width:60%">
-                          <option value=""></option>
+                         <option value=""></option>
+                          <option value="1:00">1:00</option>
+                          <option value="2:00">2:00</option>
+                          <option value="3:00">3:00</option>
+                          <option value="4:00">4:00</option>
+                          <option value="5:00">5:00</option>
+                          <option value="6:00">6:00</option>
+                          <option value="7:00">7:00</option>
+                          <option value="8:00">8:00</option>
+                          <option value="9:00">9:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -414,7 +462,6 @@
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple4"  style="width:60%">
                           <option value=""></option>
-
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
                           <option value="3:00">3:00</option>
@@ -427,11 +474,35 @@
                           <option value="10:00">10:00</option>
                           <option value="11:00">11:00</option>
                           <option value="12:00">12:00</option>
+                          <option value="13:00">13:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">19:00</option>
+                          <option value="20:00">20:00</option>
+                          <option value="21:00">21:00</option>
+                          <option value="22:00">22:00</option>
+                          <option value="23:00">23:00</option>
+                          <option value="24:00">24:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple14"  style="width:60%">
                           <option value=""></option>
+                          <option value="1:00">1:00</option>
+                          <option value="2:00">2:00</option>
+                          <option value="3:00">3:00</option>
+                          <option value="4:00">4:00</option>
+                          <option value="5:00">5:00</option>
+                          <option value="6:00">6:00</option>
+                          <option value="7:00">7:00</option>
+                          <option value="8:00">8:00</option>
+                          <option value="9:00">9:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>
@@ -476,7 +547,6 @@
                   <div class=" input-field col s2 m2 l2">Horario Desde
                       <select class="js-example-basic-multiple" id="id_label_multiple5"  style="width:60%">
                           <option value=""></option>
-
                           <option value="1:00">1:00</option>
                           <option value="2:00">2:00</option>
                           <option value="3:00">3:00</option>
@@ -489,11 +559,35 @@
                           <option value="10:00">10:00</option>
                           <option value="11:00">11:00</option>
                           <option value="12:00">12:00</option>
+                          <option value="13:00">13:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">19:00</option>
+                          <option value="20:00">20:00</option>
+                          <option value="21:00">21:00</option>
+                          <option value="22:00">22:00</option>
+                          <option value="23:00">23:00</option>
+                          <option value="24:00">24:00</option>
                       </select>
                   </div>
                   <div class=" input-field col s2 m2 l2">Hasta
                       <select class="js-example-basic-multiple" id="id_label_multiple15"  style="width:60%">
                           <option value=""></option>
+                          <option value="1:00">1:00</option>
+                          <option value="2:00">2:00</option>
+                          <option value="3:00">3:00</option>
+                          <option value="4:00">4:00</option>
+                          <option value="5:00">5:00</option>
+                          <option value="6:00">6:00</option>
+                          <option value="7:00">7:00</option>
+                          <option value="8:00">8:00</option>
+                          <option value="9:00">9:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
                           <option value="13:00">13:00</option>
                           <option value="14:00">14:00</option>
                           <option value="15:00">15:00</option>

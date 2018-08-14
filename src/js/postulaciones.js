@@ -246,7 +246,7 @@ function postNumberPost(str){
                   return false;
               }
           }
-          if($.trim($("#estado_estudio").val()) == "Graduado" ){
+          if($.trim($("#estado_estudio").val()) == "Graduado" || == "Abandonado" ){
               if($.trim($("#txtDate2ftitulacion").val()) != "" ){
                   chkArray.push( {"fecha_titulacion" : $("#txtDate2ftitulacion").val()} );
               }else{
