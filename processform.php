@@ -15,7 +15,7 @@
    function save_data_in_DB(){
 
         require_once 'db.php';
-v        global $conn;
+        global $conn;
      
         //leemos el JSON
         $data = $_SESSION["postdata"];
