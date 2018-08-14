@@ -596,7 +596,7 @@
         $mail = new PHPMailer();
 
         $mail->AddAddress($email, $nombre);
-        $mail->AddAddress('andres@kurewen.cl', 'Andrés Muñoz');
+        $mail->AddAddress('contacto@kurewen.cl', 'contacto');
         // $mail->AddAddress('curzua@portia.cl', 'curzua@portia.cl');
         // $mail->AddAddress('drincon@portia.cl', 'drincon@portia.cl');
         // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
@@ -611,8 +611,8 @@
             $mail->SMTPSecure = 'ssl'; // tls
             $mail->Port = 465; // 587
             $mail->SMTPAuth = true;
-            $mail->Username = 'andres@kurewen.cl';
-            $mail->Password = 'Andreskurewen';
+            $mail->Username = 'contacto@kurewen.cl';
+            $mail->Password = 'malf0805';
         }
         else {
             $mail->Host = 'correo.portia.cl';
