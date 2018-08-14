@@ -496,6 +496,7 @@ function postNumberPost(str){
     })
 	 $("form#proceso6form").submit(function(e){
       e.preventDefault();
+      alert("CAPTURED!!!");
           var chkArray = [];
           /* look for all checkboes that have a parent id  attached to it and check if it was checked */
          if($.trim($("#uniforme").val()) != "" ){
@@ -539,14 +540,14 @@ function postNumberPost(str){
              return false;
          }
 
-         if($.trim($("#cv").val()) != "" ){
+         /* if($.trim($("#cv").val()) != "" ){
              chkArray.push( {"cv" : $("#cv").val()} );
              $('#cv').css('border-color' , '#f2f2f2');
          }
          if($.trim($("#cerAntecedentes").val()) != "" ){
              chkArray.push( {"cerAntecedentes" : $("#cerAntecedentes").val()} );
              $('#cerAntecedentes').css('border-color' , '#f2f2f2');
-         }
+         } */
 
 
 

@@ -458,7 +458,7 @@
                     '$rut',
                     " . (isset($cv) && $cv!=''?$cv:'null') . ",
                     " . (isset($cerAntecedentes) && $cerAntecedentes!=''?$cerAntecedentes:'null') . ",
-                    " . (isset($id) && $carnet!=''?$id:'null') . ",
+                    " . (isset($id) && $id!=''?$id:'null') . ",
                     " . (isset($fotografia) && $fotografia!=''?$fotografia:'null') . ");";
             
             if (isset($_SESSION["mode"])) {

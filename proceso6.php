@@ -65,7 +65,7 @@
           <h4>Datos de Uniforme</h4>
         </div>
 
-  <form id="proceso6form" onsubmit="return false;">         
+        <form id="proceso6form" name="proceso6form" onsubmit="return false;">         
         <div class="row">
           <div class="tab">
             <div class="tab input-field col s4 m4 l4">Talla Polera/camisa
@@ -212,17 +212,16 @@
         <div class="row"></div>
         <div class="row"></div>
         <div class="row">
-       
           <div class="col s6 m6 l6 pull-m6 right">
-            <button type="button" class="waves-effect waves-light btn right" onClick="this.process6form.submit();" >Siguiente</button>
+            <button type="button" class="waves-effect waves-light btn right" onClick="document.proceso6form.submit();" >Siguiente</button>
           </div>
         </div>
-</div><!--container-->
-<div class="row">
-  <div class="col s12 m12 l12">
-    <img src="src/img/logo.jpg" alt="" class="endLogo">
-  </div>
-</div>
+      </div><!--container-->
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <img src="src/img/logo.jpg" alt="" class="endLogo">
+        </div>
+      </div>
 
 
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -232,13 +231,13 @@
   <script src="src/js/postulaciones.js"></script>
 
   <script language="Javascript">
-  <?php 
-    if (isset($_SESSION["mode"])) {
-  ?>
-      notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
-  <?php
-    }
-  ?>
+    <?php 
+      if (isset($_SESSION["mode"])) {
+    ?>
+        notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+    <?php
+      }
+    ?>
   </script>
 
 </body>
