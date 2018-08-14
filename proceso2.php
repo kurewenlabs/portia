@@ -95,7 +95,7 @@
         </div>
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
-            <label for="fechaEstudio">Año de Titulación</label>
+            <label for="fechaEstudio">Año </label>
             <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año">
           </div>
         
@@ -112,7 +112,6 @@
   <div class="row">
      <div class=" input-field col s4 m4 l4">Licencia de Conducir
           <select class="js-example-basic-multiple" multiple="multiple" onselect="this.className = ''" name="licencia" id="licencia">
-            <option value=""></option>
             <option value="Sin licencia">Sin Licencia</option>
             <option value="Clase A1">Clase A1</option>
             <option value="Clase A2">Clase A2</option>

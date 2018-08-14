@@ -1,4 +1,4 @@
-<?php
+ <?php
   session_start();
   $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
 
@@ -130,11 +130,11 @@
   <div class="row">
     <div class="">
       <div class="input-field col s4 m4 l4">
-          <input id="telefono" type="tel" class="validate" placeholder="+56(9)2222 2222">
+          <input id="telefono" type="tel" class="validate" placeholder="+56(9)">
           <label for="telefono">Telefono</label>
         </div>
       <div class="input-field col s4 m4 l4">
-          <input id="telefono2" type="tel" placeholder="*Opcional" class="validate" placeholder="+56(9)2222 2222">
+          <input id="telefono2" type="tel" placeholder="*+56(9) Opcional " class="validate" >
           <label for="telefono2">Telefono de Recado</label>
         </div>
     </div>

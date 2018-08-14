@@ -104,7 +104,7 @@
                 <div class="col s2 m2 l2 input-field" id="input-fecha-until">
                   
                         <label for="txtDate4h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate4h">
+                        <input type="text" class="date" id="txtDate4h"  placeholder="01/2018">
                     
                 </div>
                 <div class="col s2 m2 l2">
@@ -136,7 +136,7 @@
                 <div class="col s2 m2 l2 input-field" id="input-fecha-until2">
                    
                         <label for="txtDate42h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate42h">
+                        <input type="text" class="date" id="txtDate42h"  placeholder="01/2018">
                     
                 </div>
                 <div class="col s2 m2 l2">
