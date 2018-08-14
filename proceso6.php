@@ -122,6 +122,12 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col s6 m6 l6 pull-m6 right">
+            <button id="button_save" name="button_save" type="submit" class="waves-effect waves-light btn right" onClick="submit">Siguiente</button>
+          </div>
+        </div>
+
         </div>
         </form>      
 
@@ -213,7 +219,7 @@
         <div class="row"></div>
         <div class="row">
           <div class="col s6 m6 l6 pull-m6 right">
-            <button type="button" class="waves-effect waves-light btn right" onClick="document.proceso6form.submit();" >Siguiente</button>
+            <!-- button type="button" class="waves-effect waves-light btn right" onClick="document.proceso6form.submit();" >Siguiente</button -->
           </div>
         </div>
       </div><!--container-->

@@ -426,54 +426,55 @@
             die();
         }
 
-            $uniforme='';
-            $uniforme2='';
-            $tallaPantalon='';
-            $tallaZapato='';
-            $renta='';
-            
-            //tabla tbl_documento
-            $cv = null;
-            $cerAntecedentes = null;
-            $carnet = null;
-            $fotografia = null;
+        $uniforme='';
+        $uniforme2='';
+        $tallaPantalon='';
+        $tallaZapato='';
+        $renta='';
+        
+        //tabla tbl_documento
+        $cv = null;
+        $cerAntecedentes = null;
+        $carnet = null;
+        $fotografia = null;
 
-            // Vemos los archivos cargados
-            $sql = "SELECT tipo_archivo, id FROM tbl_archivo WHERE id_post = '$idPost' AND estado = 1";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                    $$row['tipo_archivo'] = $row['id'];
-                }
+        // Vemos los archivos cargados
+        /* $sql = "SELECT tipo_archivo, id FROM tbl_archivo WHERE id_post = '$idPost' AND estado = 1";
+        if (isset($_SESSION["mode"])) {
+            error_log('Query: '. $sql);
+        }
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $$row['tipo_archivo'] = $row['id'];
             }
+        } */
 
-            //$contenido_pdf_cv = file_get_contents($cv);            
-            //inset tbl_documento
-            $sql =  "INSERT INTO tbl_documento(
-                    id_post, 
-                    rut, 
-                    cv, 
-                    antecedentes,
-                    carnet,
-                    fotografia) 
-                    VALUES (
-                    '$idPost',
-                    '$rut',
-                    " . (isset($cv) && $cv!=''?$cv:'null') . ",
-                    " . (isset($cerAntecedentes) && $cerAntecedentes!=''?$cerAntecedentes:'null') . ",
-                    " . (isset($id) && $id!=''?$id:'null') . ",
-                    " . (isset($fotografia) && $fotografia!=''?$fotografia:'null') . ");";
-            
-            if (isset($_SESSION["mode"])) {
-                error_log('Query: '. $sql);
-            }
+        $sql =  "INSERT INTO tbl_documento(
+                id_post, 
+                rut, 
+                cv, 
+                antecedentes,
+                carnet,
+                fotografia) 
+                VALUES (
+                '$idPost',
+                '$rut',
+                " . (isset($cv) && $cv!=''?$cv:'null') . ",
+                " . (isset($cerAntecedentes) && $cerAntecedentes!=''?$cerAntecedentes:'null') . ",
+                " . (isset($id) && $id!=''?$id:'null') . ",
+                " . (isset($fotografia) && $fotografia!=''?$fotografia:'null') . ");";
+        
+        if (isset($_SESSION["mode"])) {
+            error_log('Query: '. $sql);
+        }
 
-            if(!mysqli_query($conn,$sql))
-            {
-                error_log('Error : tbl_documento ' . mysqli_error($conn));
-                die();
-            }
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_documento ' . mysqli_error($conn));
+            die();
+        }
 
         $sql = "UPDATE `tbl_postulante` SET `tpolera` = '$uniforme', `tpoleron` = '$uniforme2', `tpantalon` = '$tallaPantalon', `tzapatos` = '$tallaZapato', `renta` = '$renta'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
         
@@ -486,7 +487,6 @@
             error_log('Error : tbl_postulante ' . mysqli_error($conn));
             die();
         }
-        
         
         //tabla tbl_datos_postulacion_abierta
         $valores_enviados = array();
