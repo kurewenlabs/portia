@@ -246,7 +246,7 @@ function postNumberPost(str){
                   return false;
               }
           }
-          if($.trim($("#estado_estudio").val()) == "Graduado" || == "Abandonado" ){
+          if($.trim($("#estado_estudio").val()) == "Graduado" ){
               if($.trim($("#txtDate2ftitulacion").val()) != "" ){
                   chkArray.push( {"fecha_titulacion" : $("#txtDate2ftitulacion").val()} );
               }else{
@@ -496,7 +496,6 @@ function postNumberPost(str){
     })
 	 $("form#proceso6form").submit(function(e){
       e.preventDefault();
-      alert("CAPTURED!!!");
           var chkArray = [];
           /* look for all checkboes that have a parent id  attached to it and check if it was checked */
          if($.trim($("#uniforme").val()) != "" ){
@@ -549,34 +548,9 @@ function postNumberPost(str){
              $('#cerAntecedentes').css('border-color' , '#f2f2f2');
          } */
 
-
-
           /* we join the array separated by the comma */
           var selected;
           selected = chkArray.join(' , ') ;
-          
-          /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
-          /*if(selected.length== 0){
-             alert("Selecciona al menos 1 cargo");
-            return false;
-          }*/
-          
-//        var file_data = $('#cv').prop('files')[0];   
-//        var form_data = new FormData();                  
-//        form_data.append('file', file_data);
-//        //alert(form_data);
-//        $.ajax({
-//            url: 'processform.php', // point to server-side PHP script 
-//            dataType: 'text',  // what to expect back from the PHP script, if anything
-//            cache: false,
-//            contentType: false,
-//            processData: false,
-//            data: form_data,                         
-//            type: 'post',
-//            success: function(php_script_response){
-//                //alert(php_script_response); // display response from the PHP script, if any
-//            }
-//         });
 
           var JSONData={};
                

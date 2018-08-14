@@ -16,7 +16,11 @@
 
         require_once 'db.php';
         global $conn;
-     
+    
+        if (isset($_SESSION["mode"])) {
+            error_log('save_data_in_DB() en progreso');
+        }
+
         //leemos el JSON
         $data = $_SESSION["postdata"];
 
@@ -596,10 +600,6 @@
         $mail = new PHPMailer();
 
         $mail->AddAddress($email, $nombre);
-        $mail->AddAddress('contacto@kurewen.cl', 'contacto');
-        // $mail->AddAddress('curzua@portia.cl', 'curzua@portia.cl');
-        // $mail->AddAddress('drincon@portia.cl', 'drincon@portia.cl');
-        // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
         $mail->Subject = 'Postulación enviada con éxito';
         $mail->Body = 'Se ha registrado la postulación de ' . $nombre . ' a los cargos de ' . $postulaciones . '.'; 
         $mail->From = "postulacion@portia.cl";
@@ -607,6 +607,9 @@
         
         $mail->IsSMTP();
         if (isset($_SESSION["mode"])) {
+            // Solo en ambiente de desarrollo
+            $mail->AddAddress('contacto@kurewen.cl', 'contacto');
+            $mail->AddAddress('andres@kurewen.cl', 'contacto');
             $mail->Host = 'mail.kurewen.cl';
             $mail->SMTPSecure = 'ssl'; // tls
             $mail->Port = 465; // 587
@@ -615,6 +618,11 @@
             $mail->Password = 'malf0805';
         }
         else {
+            // Ambiente de producción
+            // $mail->AddAddress('curzua@portia.cl', 'curzua@portia.cl');
+            // $mail->AddAddress('drincon@portia.cl', 'drincon@portia.cl');
+            // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
+            $mail->AddAddress('contacto@kurewen.cl', 'contacto');
             $mail->Host = 'correo.portia.cl';
             $mail->SMTPSecure = 'ssl'; // tls
             $mail->Port = 465; // 587
