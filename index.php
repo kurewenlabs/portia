@@ -124,7 +124,7 @@
     </p>
     <p>
       <label for="a3">
-        <input type="checkbox" value="asistente contable"data-index="13"  id="a3">
+        <input type="checkbox" value="asistente contable" data-index="13"  id="a3">
         <span>Asistente contable</span>
       </label>
     </p>
