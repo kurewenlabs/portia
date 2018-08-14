@@ -133,7 +133,8 @@
               <div class="row">
                 <div class="col s6 m6 l6">
                   <label>Curriculum</label>
-                  <form id="form_cv" class="form_cv" method="POST" enctype="multipart/form-data" onSubmit="return false;">
+                  <iframe frameborder="0" width="200" height="28" name="cv_loader"></iframe>
+                  <form id="form_cv" class="form_cv" method="POST" action="upload.php" enctype="multipart/form-data" target="cv_loader">
                     <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
                     <input type="hidden" name="file_type" value="cv" />
                     <div class="file-field input-field">
@@ -147,71 +148,61 @@
                       </div>
                     </div>
                   </form>
-
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                  <script>
-                  $(document).ready(function(event) {
-                    $('#form_cv').on('submit', function(event) {
-                      var dataForm = new FormData();
-                      dataForm.append("id_post", $('#id_post').val());
-                      dataForm.append("file_type", $('#file_type').val());
-                      dataForm.append("file", $('#cv').get(0).files[0]);
-                      event.preventDefault();               
-                      $.ajax({
-                        url: 'upload.php', 
-                        contentType: 'multipart/form-data',
-                        processData: false,
-                        cache: false,
-                        type: 'POST',
-                        data: dataForm,
-                        success: function(data) {
-                          // notie.alert({ type: 1, text: 'Archivo subido OK', position: 'bottom' });
-                        }
-                      });
-                    });
-                  });
-                  </script>
                 </div>
                 <div class="col s6 m6 l6">
-                <label>Certificado de antecedentes</label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="cerAntecedentes" name="antecedentes">
-                  </div>
-                  <div class="file-path-wrapper">
-                      <i style="right: 0;left: auto" id="remove-antecedentes" onclick="removeAntecedentesPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                      <input style="width: 80%"  id="antecedentes-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
-                  </div>
-                </div>
-                </div>
+                  <label>Certificado de antecedentes</label>
+                  <iframe frameborder="0" width="200" height="28" name="antecedentes_loader"></iframe>
+                  <form id="form_antecedentes" class="form_antecedentes" method="POST" action="upload.php" enctype="multipart/form-data" target="antecedentes_loader">
+                    <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+                    <input type="hidden" name="file_type" value="cerAntecedentes" />
+                    <div class="file-field input-field">
+                      <div class="btn">
+                        <span>Adjuntar</span>
+                        <input type="file" id="cerAntecedentes" name="cerAntecedentes" onchange="$('#form_antecedentes').submit();">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <i style="right: 0!important; left: auto;" id="remove-antecedentes" onclick="removeAntecedentesPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                        <input style="width: 80%" class="file-path validate" id="antecedentes-path" type="text" placeholder="Adjuntar Archivo">
+                      </div>
+                    </div>
+                  </form>
               </div>
               <div class="row">
                 <div class="col s6 m6 l6">
-                <label>Carnet o Pasaporte</label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="docIdentidad" name="docIdentidad">
-                  </div>
-                  <div class="file-path-wrapper">
-                      <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                    <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
-                  </div>
-                </div>
+                  <label>Carnet o Pasaporte</label>
+                  <iframe frameborder="0" width="200" height="28" name="id_loader"></iframe>
+                  <form id="form_id" class="form_id" method="POST" action="upload.php" enctype="multipart/form-data" target="id_loader">
+                    <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+                    <input type="hidden" name="file_type" value="id" />
+                    <div class="file-field input-field">
+                      <div class="btn">
+                        <span>Adjuntar</span>
+                        <input type="file" id="id" name="id" onchange="$('#form_id').submit();">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <i style="right: 0!important; left: auto;" id="remove-id" onclick="removeIdPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                        <input style="width: 80%" class="file-path validate" id="id-path" type="text" placeholder="Adjuntar Archivo">
+                      </div>
+                    </div>
+                  </form>
                 </div>
                 <div class="col s6 m6 l6">
-                <label>Fotografía del o la Postulante</label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="fotografia" name="fotografia">
-                  </div>
-                  <div class="file-path-wrapper">
-                      <i style="right: 0;left: auto" id="remove-picture" onclick="removePicturePath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                    <input style="width: 80%" id="picture-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
-                  </div>
-                </div>
+                  <label>Fotografía del Postulante</label>
+                  <iframe frameborder="0" width="200" height="28" name="picture_loader"></iframe>
+                  <form id="form_picture" class="form_picture" method="POST" action="upload.php" enctype="multipart/form-data" target="picture_loader">
+                    <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+                    <input type="hidden" name="file_type" value="fotografia" />
+                    <div class="file-field input-field">
+                      <div class="btn">
+                        <span>Adjuntar</span>
+                        <input type="file" id="fotografia" name="fotografia" onchange="$('#form_picture').submit();">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <i style="right: 0!important; left: auto;" id="remove-picture" onclick="removePicturePath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                        <input style="width: 80%" class="file-path validate" id="picture-path" type="text" placeholder="Adjuntar Archivo">
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             

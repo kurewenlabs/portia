@@ -429,16 +429,18 @@ v        global $conn;
             $renta='';
             
             //tabla tbl_documento
-            $cv=null;
-            $cerAntecedentes=null;
-            $carnet=null;
-            $fotografia=null;
-            
-            $valores_enviados = array();
-            foreach($data['pos']['documentos'] AS $registro_i){
-                foreach($registro_i AS $id => $value){
-                    $valores_enviados[$id] = $value;
-                    $$id = $value;
+            $cv = null;
+            $cerAntecedentes = null;
+            $carnet = null;
+            $fotografia = null;
+
+            // Vemos los archivos cargados
+            $sql = "SELECT tipo_archivo, id FROM tbl_archivo WHERE id_post = '$idPost' AND estado = 1";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    $$row['tipo_archivo'] = $row['id'];
                 }
             }
 
@@ -456,7 +458,7 @@ v        global $conn;
                     '$rut',
                     " . (isset($cv) && $cv!=''?$cv:'null') . ",
                     " . (isset($cerAntecedentes) && $cerAntecedentes!=''?$cerAntecedentes:'null') . ",
-                    " . (isset($carnet) && $carnet!=''?$carnet:'null') . ",
+                    " . (isset($id) && $carnet!=''?$id:'null') . ",
                     " . (isset($fotografia) && $fotografia!=''?$fotografia:'null') . ");";
             
             if (isset($_SESSION["mode"])) {
