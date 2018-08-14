@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $data = $_SESSION["postdata"]["pos"];
     $dataPostulacion = $_SESSION["postdata"]["pos"]["pa"];
 
     if (isset($_SESSION["mode"])) {
@@ -38,7 +39,7 @@
 <div class="row">
   <div class="col s1"></div>
   <?php foreach($dataPostulacion as $cargo) {
-        echo "<div class='chip col''>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
+        echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
  } ?>
 </div>
 
@@ -122,6 +123,8 @@
           </div>
         </div>
         </div>
+        </form>      
+
         <div class="row">
           <h4>Adjuntos (Opcional)</h4>
           
@@ -129,18 +132,45 @@
             
               <div class="row">
                 <div class="col s6 m6 l6">
-                <label>Curriculum</label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="cv" name="curriculum">
-                  </div>
-                  <div class="file-path-wrapper">
-                    <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                    <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Adjuntar Archivo">
+                  <label>Curriculum</label>
+                  <form id="form_cv" class="form_cv" method="POST" enctype="multipart/form-data" onSubmit="return false;">
+                    <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+                    <input type="hidden" name="file_type" value="cv" />
+                    <div class="file-field input-field">
+                      <div class="btn">
+                        <span>Adjuntar</span>
+                        <input type="file" id="cv" name="cv" onchange="$('#form_cv').submit();">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                        <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Adjuntar Archivo">
+                      </div>
+                    </div>
+                  </form>
 
-                  </div>
-                </div>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                  <script>
+                  $(document).ready(function(event) {
+                    $('#form_cv').on('submit', function(event) {
+                      var dataForm = new FormData();
+                      dataForm.append("id_post", $('#id_post').val());
+                      dataForm.append("file_type", $('#file_type').val());
+                      dataForm.append("file", $('#cv').get(0).files[0]);
+                      event.preventDefault();               
+                      $.ajax({
+                        url: 'upload.php', 
+                        contentType: 'multipart/form-data',
+                        processData: false,
+                        cache: false,
+                        type: 'POST',
+                        data: dataForm,
+                        success: function(data) {
+                          // notie.alert({ type: 1, text: 'Archivo subido OK', position: 'bottom' });
+                        }
+                      });
+                    });
+                  });
+                  </script>
                 </div>
                 <div class="col s6 m6 l6">
                 <label>Certificado de antecedentes</label>
@@ -167,7 +197,6 @@
                   <div class="file-path-wrapper">
                       <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
                     <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
-
                   </div>
                 </div>
                 </div>
@@ -194,10 +223,9 @@
         <div class="row">
        
           <div class="col s6 m6 l6 pull-m6 right">
-            <button type="submit" class="waves-effect waves-light btn right" >Siguiente</button>
+            <button type="button" class="waves-effect waves-light btn right" onClick="this.process6form.submit();" >Siguiente</button>
           </div>
         </div>
-  </form>      
 </div><!--container-->
 <div class="row">
   <div class="col s12 m12 l12">

@@ -10,12 +10,12 @@
         $contents = ob_get_contents(); // put the buffer into a variable
         ob_end_clean();                // end capture
         error_log( $contents );        // log contents of the result of var_dump( $object )
-    }
+      }    
 
    function save_data_in_DB(){
 
         require_once 'db.php';
-        global $conn;
+v        global $conn;
      
         //leemos el JSON
         $data = $_SESSION["postdata"];
@@ -600,16 +600,26 @@
         // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
         $mail->Subject = 'Postulación enviada con éxito';
         $mail->Body = 'Se ha registrado la postulación de ' . $nombre . ' a los cargos de ' . $postulaciones . '.'; 
-        $mail->From = "contacto@kurewen.cl";
+        $mail->From = "postulacion@portia.cl";
         $mail->FromName = "Postulaciones Portia";
         
         $mail->IsSMTP();
-        $mail->Host = 'mail.kurewen.cl';
-        $mail->SMTPSecure = 'ssl'; // tls
-        $mail->Port = 465; // 587
-        $mail->SMTPAuth = true;
-        $mail->Username = 'andres@kurewen.cl';
-        $mail->Password = 'Andreskurewen';
+        if (isset($_SESSION["mode"])) {
+            $mail->Host = 'mail.kurewen.cl';
+            $mail->SMTPSecure = 'ssl'; // tls
+            $mail->Port = 465; // 587
+            $mail->SMTPAuth = true;
+            $mail->Username = 'andres@kurewen.cl';
+            $mail->Password = 'Andreskurewen';
+        }
+        else {
+            $mail->Host = 'correo.portia.cl';
+            $mail->SMTPSecure = 'ssl'; // tls
+            $mail->Port = 465; // 587
+            $mail->SMTPAuth = true;
+            $mail->Username = 'postulacion@portia.cl';
+            $mail->Password = 'PP.2018!!';
+        }
 
         $mail->send();
 

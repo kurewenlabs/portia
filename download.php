@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     $id = $_GET['identificador'];
     $file = $_GET['documento'];
     require_once 'db.php';

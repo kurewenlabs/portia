@@ -609,24 +609,6 @@ function postNumberPost(str){
                           return false
                   },
                   error:function(){
-
-                  }
-
-        })
-        return false;e.preventDefault();
-        var JSONData={};
-               
-        $.ajax({
-                  url : "processform.php",
-                  type: "post",
-                  data:{ action:"lastpagedata",data:null },
-                  success:function(data){
-                          //alert("data has been saved succeesssfully");
-                          window.location.href="gracias.php";
-                          return false
-                  },
-                  error:function(){
-
                   }
 
         })
@@ -1420,11 +1402,11 @@ function myFunctionRef() {
  }
 
 /*MULTIPLE SELECT 2*/
-$(document).ready(function() {
+/* $(document).ready(function() {
     $(".js-example-theme-multiple").select2({
         theme: "classic"
     });
-});
+}); */
 
 
 
@@ -1434,9 +1416,7 @@ $(document).ready(function() {
   });
 
   /*MODAL INIT*/
-   $(document).ready(function(){
-       
-       
+   $(document).ready(function(){ 
     $('.modal').modal();
   });
 
