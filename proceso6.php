@@ -179,11 +179,11 @@
                   <iframe frameborder="0" width="200" height="28" name="id_loader"></iframe>
                   <form id="form_id" class="form_id" method="POST" action="upload.php" enctype="multipart/form-data" target="id_loader">
                     <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
-                    <input type="hidden" name="file_type" value="id" />
+                    <input type="hidden" name="file_type" value="carnet" />
                     <div class="file-field input-field">
                       <div class="btn">
                         <span>Adjuntar</span>
-                        <input type="file" id="id" name="id" onchange="$('#form_id').submit();">
+                        <input type="file" id="carnet" name="carnet" onchange="$('#form_id').submit();">
                       </div>
                       <div class="file-path-wrapper">
                         <i style="right: 0!important; left: auto;" id="remove-id" onclick="removeIdPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->

@@ -35,11 +35,10 @@
         //identificador de postulacion
         $idPost=$data['pos']['id'];
         if (isset($_SESSION["mode"])) {
-            $idPost='Pte' . date('YmdHis');
+            //$idPost='Pte' . date('YmdHis');
         }
 
         $fecha_post = date('Y-m-d');
-        $tipo_documento='';
         $rut='';
         $pasaporte='';
         $noms='';
@@ -71,9 +70,10 @@
             foreach($registro_i AS $id => $value){
                 $valores_enviados[$id] = $value;
                 $$id = $value;
+                error_log($id . " = " . $value);
             }
         }
-        $tipo_documento = (isset($pasaporte)?'pasaporte':'rut');
+        $tipo_documento = (isset($pasaporte) && $pasaporte != ''?'pasaporte':'rut');
 
     //insert tabla tbl_postulante
     $sql =  "INSERT INTO tbl_postulante(
@@ -439,7 +439,7 @@
         $fotografia = null;
 
         // Vemos los archivos cargados
-        /* $sql = "SELECT tipo_archivo, id FROM tbl_archivo WHERE id_post = '$idPost' AND estado = 1";
+        $sql = "SELECT tipo_archivo, id FROM tbl_archivo WHERE id_post = '$idPost' AND estado = 1";
         if (isset($_SESSION["mode"])) {
             error_log('Query: '. $sql);
         }
@@ -447,9 +447,20 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                $$row['tipo_archivo'] = $row['id'];
+                if($row['tipo_archivo']=='cv'){
+                    $cv = $row['id'];
+                }
+                if($row['tipo_archivo']=='cerAntecedentes'){
+                    $cv = $row['cerAntecedentes'];
+                }
+                if($row['tipo_archivo']=='carnet'){
+                    $cv = $row['carnet'];
+                }
+                if($row['tipo_archivo']=='fotografia'){
+                    $cv = $row['fotografia'];
+                }
             }
-        } */
+        }
 
         $sql =  "INSERT INTO tbl_documento(
                 id_post, 
@@ -463,7 +474,7 @@
                 '$rut',
                 " . (isset($cv) && $cv!=''?$cv:'null') . ",
                 " . (isset($cerAntecedentes) && $cerAntecedentes!=''?$cerAntecedentes:'null') . ",
-                " . (isset($id) && $id!=''?$id:'null') . ",
+                " . (isset($carnet) && $carnet!=''?$carnet:'null') . ",
                 " . (isset($fotografia) && $fotografia!=''?$fotografia:'null') . ");";
         
         if (isset($_SESSION["mode"])) {
