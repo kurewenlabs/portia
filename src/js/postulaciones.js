@@ -495,7 +495,7 @@ function postNumberPost(str){
       return false;
     })
 	 $("form#proceso6form").submit(function(e){
-      e.preventDefault();
+         e.preventDefault();
           var chkArray = [];
           /* look for all checkboes that have a parent id  attached to it and check if it was checked */
          if($.trim($("#uniforme").val()) != "" ){

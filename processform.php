@@ -76,63 +76,63 @@
         $tipo_documento = (isset($pasaporte) && $pasaporte != ''?'pasaporte':'rut');
 
     //insert tabla tbl_postulante
-    $sql =  "INSERT INTO tbl_postulante(
-            id_post, 
-            fecha_post, 
-            tipo_documento,
-            rut, 
-            nombres, 
-            apellidop, 
-            apellidom, 
-            fecha_nacimiento, 
-            sexo, 
-            estado_civil, 
-            nacionalidad, 
-            telefono, 
-            telefono_recado, 
-            email, 
-            provincia, 
-            comuna, 
-            domicilio, 
-            tpolera, 
-            tpantalon, 
-            tpoleron, 
-            tzapatos, 
-            renta, 
-            tlicenciaconducir, 
-            afp, 
-            prestadorsalud, 
-            experiencialaboral, 
-            referencialaboral) 
-            VALUES (
-            '$idPost',
-            '$fecha_post',
-            '$tipo_documento',
-            '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
-            '$noms',
-            '$apeP',
-            '$apeM',
-            '$fNaci',
-            '$sexo',
-            '$eCivil',
-            '$nacionalidad',
-            '$telefono',
-            '$telRec',
-            '$email',
-            '$provi',
-            '$comuna',
-            '$direccion',
-            '$tPolera',
-            '$tPantalon',
-            '$tPoleron',
-            '$tZapatos',
-            '$renta',
-            '$tlicencia',
-            '$afp',
-            '$salud',
-            '$exLaboral ',
-            '$referencialaboral'
-            );";
+    $sql =  "INSERT INTO tbl_postulante (
+                         id_post, 
+                         fecha_post, 
+                         tipo_documento,
+                         rut, 
+                         nombres, 
+                         apellidop, 
+                         apellidom, 
+                         fecha_nacimiento, 
+                         sexo, 
+                         estado_civil, 
+                         nacionalidad, 
+                         telefono, 
+                         telefono_recado, 
+                         email, 
+                         provincia, 
+                         comuna, 
+                         domicilio, 
+                         tpolera, 
+                         tpantalon, 
+                         tpoleron, 
+                         tzapatos, 
+                         renta, 
+                         tlicenciaconducir, 
+                         afp, 
+                         prestadorsalud, 
+                         experiencialaboral, 
+                         referencialaboral ) 
+                  VALUES (
+                         '$idPost',
+                         '$fecha_post',
+                         '$tipo_documento',
+                         '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
+                         '$noms',
+                         '$apeP',
+                         '$apeM',
+                         '$fNaci',
+                         '$sexo',
+                         '$eCivil',
+                         '$nacionalidad',
+                         '$telefono',
+                         '$telRec',
+                         '$email',
+                         '$provi',
+                         '$comuna',
+                         '$direccion',
+                         '$tPolera',
+                         '$tPantalon',
+                         '$tPoleron',
+                         '$tZapatos',
+                         '$renta',
+                         '$tlicencia',
+                         '$afp',
+                         '$salud',
+                         '$exLaboral ',
+                         '$referencialaboral'
+                         );";
             
             if (isset($_SESSION["mode"])) {
                 error_log('Query: '. $sql);
@@ -162,23 +162,23 @@
             }
             
             //inset tbl_estudio
-            $sql =  "INSERT INTO tbl_estudio(
-                    id_post, 
-                    rut, 
-                    tipo_estudio, 
-                    titulo, 
-                    estado, 
-                    fecha_titulacion,
-                    semestres) 
-                    VALUES (
-                    '$idPost',
-                    '$rut',
-                    '$tipoEstudio',
-                    '$titulo',
-                    '$estado_estudio',
-                    '$fecha_titulacion',
-                    $semestres
-                    );";
+            $sql =  "INSERT INTO tbl_estudio (
+                                 id_post, 
+                                 rut, 
+                                 tipo_estudio, 
+                                 titulo, 
+                                 estado, 
+                                 fecha_titulacion,
+                                 semestres ) 
+                          VALUES (
+                                 '$idPost',
+                                 '$rut',
+                                 '$tipoEstudio',
+                                 '$titulo',
+                                 '$estado_estudio',
+                                 '$fecha_titulacion',
+                                 $semestres
+                                 );";
 
             if (isset($_SESSION["mode"])) {
                 error_log('Query: '. $sql);
@@ -202,18 +202,19 @@
                 $$id = $value;
             }
             
-            $sql = "INSERT INTO tbl_curso(
-                    id_post,
-                    rut,
-                    curso,
-                    fecha)
-                    VALUES(
-                    '$idPost',
-                    '$rut',
-                    '$nombre',    
-                    '$fecha')";
+            $sql = "INSERT INTO tbl_curso (
+                                id_post,
+                                rut,
+                                curso,
+                                fecha)
+                         VALUES (
+                                '$idPost',
+                                '$rut',
+                                '$nombre',    
+                                '$fecha')";
                     
-            if (isset($_SESSION["mode"])) {
+            if (isset($_SESSION["mode"])) 
+            {
                 error_log('Query: '. $sql);
             }
                             
@@ -223,11 +224,7 @@
                 die();
             }
         }
-        if(isset($imprimir_json_y_sqls) && ($imprimir_json_y_sqls == 1) ){
-            echo '<br/>';
-        }
-        
-        
+                
         //tabla tbl_experiencia_laboral
         foreach($data['pos']['experiencia'] AS $registro_i){
             
@@ -241,10 +238,14 @@
                 $valores_enviados[$id] = $value;
                 $$id = $value;
             }
-            if($experiencia != ''){
-                $sql = "UPDATE `tbl_postulante` SET `experiencialaboral` = '$experiencia'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
+            if($experiencia != '')
+            {
+                $sql = "UPDATE `tbl_postulante` 
+                           SET `experiencialaboral` = '$experiencia'  
+                         WHERE `tbl_postulante`.`id_post` = '$idPost'";
 
-                if (isset($_SESSION["mode"])) {
+                if (isset($_SESSION["mode"])) 
+                {
                     error_log('Query: '. $sql);
                 }
             
@@ -254,25 +255,26 @@
                     die();
                 }
                 
-            }else{
+            } else {
                 
-                $sql = "INSERT INTO tbl_experiencia_laboral(
-                        id_post,
-                        rut,
-                        empresa,
-                        cargo,
-                        fecha_desde,
-                        fecha_hasta)
-                        VALUES(
-                        '$idPost',
-                        '$rut',
-                        '$empresa',
-                        '$cargo',
-                        '$fechaDesde',
-                        '$fechaHasta'
-                        )";
+                $sql = "INSERT INTO tbl_experiencia_laboral (
+                                    id_post,
+                                    rut,
+                                    empresa,
+                                    cargo,
+                                    fecha_desde,
+                                    fecha_hasta )
+                             VALUES (
+                                    '$idPost',
+                                    '$rut',
+                                    '$empresa',
+                                    '$cargo',
+                                    '$fechaDesde',
+                                    '$fechaHasta'
+                                    )";
                         
-                if (isset($_SESSION["mode"])) {
+                if (isset($_SESSION["mode"])) 
+                {
                     error_log('Query: '. $sql);
                 }
         
@@ -284,7 +286,6 @@
             }
         }
 
-    
         //tabla tbl_referencia_laboral
         
         $valores_enviados = array();
@@ -302,7 +303,9 @@
             }
             
             if($referencia_laboral != ''){
-                $sql = "UPDATE `tbl_postulante` SET `referencialaboral` = '$referencia_laboral'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
+                $sql = "UPDATE `tbl_postulante` 
+                           SET `referencialaboral` = '$referencia_laboral'  
+                         WHERE `tbl_postulante`.`id_post` = '$idPost'";
                 
                 if (isset($_SESSION["mode"])) {
                     error_log('Query: '. $sql);
@@ -316,22 +319,22 @@
                 
             }else{
             
-                $sql = "INSERT INTO tbl_referencia_laboral(
-                        id_post,
-                        rut,
-                        empresa,
-                        nombre_contacto,
-                        cargo,
-                        telefono,
-                        email)
-                        VALUES(
-                        '$idPost',
-                        '$rut',
-                        '$empresa',
-                        '$nombreContacto',
-                        '$cargo',
-                        '$telefono',
-                        '$email')";
+                $sql = "INSERT INTO tbl_referencia_laboral (
+                                    id_post,
+                                    rut,
+                                    empresa,
+                                    nombre_contacto,
+                                    cargo,
+                                    telefono,
+                                    email)
+                             VALUES (
+                                    '$idPost',
+                                    '$rut',
+                                    '$empresa',
+                                    '$nombreContacto',
+                                    '$cargo',
+                                    '$telefono',
+                                    '$email')";
                 
                 if (isset($_SESSION["mode"])) {
                     error_log('Query: '. $sql);
@@ -414,7 +417,10 @@
             }
         }
         
-        $sql = "UPDATE `tbl_postulante` SET `afp` = '$afp', `prestadorsalud` = '$isapre'  WHERE `tbl_postulante`.`id_post` = '$idPost'";
+        $sql = "UPDATE `tbl_postulante` 
+                   SET `afp` = '$afp', 
+                       `prestadorsalud` = '$isapre'  
+                   WHERE `tbl_postulante`.`id_post` = '$idPost'";
         
         if (isset($_SESSION["mode"])) {
             error_log('Query: '. $sql);
