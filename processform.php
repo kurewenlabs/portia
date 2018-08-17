@@ -67,7 +67,7 @@
         $tipo_documento = (isset($pasaporte) && $pasaporte != ''?'pasaporte':'rut');
 
         //insert tabla tbl_postulante
-        $sql =  "INSERT INTO tbl_postulante (
+        $sql =  "REPLACE INTO tbl_postulante (
                             id_post, 
                             fecha_post, 
                             tipo_documento,
@@ -153,9 +153,24 @@
                 $$id = $value;
             }
         }
-            
-        //inset tbl_estudio
-        $sql =  "INSERT INTO tbl_estudio (
+
+        // Eliminamos el estudio anterior
+        $sql = "DELETE FROM tbl_estudio WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+        
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_estudio ' . mysqli_error($conn));
+            die();
+        }
+
+        // Insertar o actualizar tbl_estudio 
+        $sql =  "REPLACE INTO tbl_estudio (
+                                id, 
                                 id_post, 
                                 rut, 
                                 tipo_estudio, 
@@ -164,8 +179,9 @@
                                 fecha_titulacion,
                                 semestres ) 
                         VALUES (
+                                NULL,
                                 '$idPost',
-                                '$rut',
+                                '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
                                 '$tipoEstudio',
                                 '$titulo',
                                 '$estado_estudio',
@@ -184,7 +200,21 @@
             die();
         }
 
-        //tabla tbl_curso   
+        // Eliminamos los cursos anteriores
+        $sql = "DELETE FROM tbl_curso WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_curso ' . mysqli_error($conn));
+            die();
+        }
+
+        // Insertamos los cursos   
         $valores_enviados = array();
         foreach($data['pos']['cursos'] AS $registro_i)
         {
@@ -196,14 +226,16 @@
                 $$id = $value;
             }
             
-            $sql = "INSERT INTO tbl_curso (
+            $sql = "REPLACE INTO tbl_curso (
+                                id, 
                                 id_post,
                                 rut,
                                 curso,
                                 fecha)
                          VALUES (
+                                NULL,
                                 '$idPost',
-                                '$rut',
+                                '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
                                 '$nombre',    
                                 '$fecha')";
                     
@@ -219,7 +251,21 @@
             }
         }
                 
-        //tabla tbl_experiencia_laboral
+        // Eliminamos la experiencia anterior
+        $sql = "DELETE FROM tbl_experiencia_laboral WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+            die();
+        }
+
+        // Insertamos la experiencia laboral
         foreach($data['pos']['experiencia'] AS $registro_i)
         {   
             $empresa='';
@@ -236,9 +282,9 @@
 
             if($experiencia != '')
             {
-                $sql = "UPDATE `tbl_postulante` 
-                           SET `experiencialaboral` = '$experiencia'  
-                         WHERE `tbl_postulante`.`id_post` = '$idPost'";
+                $sql = "UPDATE tbl_postulante 
+                           SET experiencialaboral = '$experiencia'  
+                         WHERE id_post = '$idPost'";
 
                 if (isset($_SESSION["mode"])) 
                 {
@@ -253,7 +299,8 @@
                 
             } else {
                 
-                $sql = "INSERT INTO tbl_experiencia_laboral (
+                $sql = "REPLACE INTO tbl_experiencia_laboral (
+                                    id, 
                                     id_post,
                                     rut,
                                     empresa,
@@ -261,8 +308,9 @@
                                     fecha_desde,
                                     fecha_hasta )
                              VALUES (
+                                    NULL, 
                                     '$idPost',
-                                    '$rut',
+                                    '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
                                     '$empresa',
                                     '$cargo',
                                     '$fechaDesde',
@@ -282,7 +330,21 @@
             }
         }
 
-        // tabla tbl_referencia_laboral
+        // Eliminamos la referencia anterior
+        $sql = "DELETE FROM tbl_referencia_laboral WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_referencia_laboral ' . mysqli_error($conn));
+            die();
+        }
+
+        // Insertamos la referencia laboral
         $valores_enviados = array();
         foreach($data['pos']['referencia'] AS $registro_i)
         {    
@@ -300,9 +362,9 @@
             
             if($referencia_laboral != '')
             {
-                $sql = "UPDATE `tbl_postulante` 
-                           SET `referencialaboral` = '$referencia_laboral'  
-                         WHERE `tbl_postulante`.`id_post` = '$idPost'";
+                $sql = "UPDATE tbl_postulante 
+                           SET referencialaboral = '$referencia_laboral'  
+                         WHERE id_post = '$idPost'";
                 
                 if (isset($_SESSION["mode"])) 
                 {
@@ -316,7 +378,8 @@
                 }
                 
             } else {
-                $sql = "INSERT INTO tbl_referencia_laboral (
+                $sql = "REPLACE INTO tbl_referencia_laboral (
+                                    id, 
                                     id_post,
                                     rut,
                                     empresa,
@@ -325,8 +388,9 @@
                                     telefono,
                                     email)
                              VALUES (
+                                    NULL,
                                     '$idPost',
-                                    '$rut',
+                                    '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
                                     '$empresa',
                                     '$nombreContacto',
                                     '$cargo',
@@ -346,7 +410,21 @@
             }
         }
     
-        // tabla tbl_horario_trabajo
+        // Eliminamos horarios anteriores
+        $sql = "DELETE FROM tbl_horario_trabajo WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_horario_trabajo ' . mysqli_error($conn));
+            die();
+        }
+
+        // Insertamos los horarios
         $comunas='';
         $afp='';
         $isapre='';
@@ -373,14 +451,16 @@
             }
             if($dias != '')
             {                
-                $sql = "INSERT INTO tbl_horario_trabajo (
+                $sql = "REPLACE INTO tbl_horario_trabajo (
+                                    id, 
                                     id_post,
                                     rut,
                                     dias,
                                     horarios )
                              VALUES (
+                                    NULL, 
                                     '$idPost',
-                                    '$rut',
+                                    '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
                                     '$dias',
                                     '$horarios')";
                 
@@ -397,14 +477,31 @@
             }
             if($comunas != '')
             {    
-                $sql = "INSERT INTO tbl_comuna(
-                                    id_post,
-                                    region,
-                                    comuna)
-                             VALUES (
-                                    '$idPost',
-                                    '$region',
-                                    '$comunas')";
+                // Eliminamos comunas anteriores
+                $sql = "DELETE FROM tbl_comuna WHERE id_post = '$idPost'";
+
+                if (isset($_SESSION["mode"])) 
+                {
+                    error_log('Query: '. $sql);
+                }
+
+                if(!mysqli_query($conn,$sql))
+                {
+                    error_log('Error : tbl_comuna ' . mysqli_error($conn));
+                    die();
+                }
+
+                // Insertamos la comuna
+                $sql = "REPLACE INTO tbl_comuna(
+                            id, 
+                            id_post,
+                            region,
+                            comuna)
+                        VALUES (
+                            NULL,
+                            '$idPost',
+                            '$region',
+                            '$comunas')";
                 
                 if (isset($_SESSION["mode"])) 
                 {
@@ -468,13 +565,12 @@
             die();
         }
         
-        //tabla tbl_documento
+        // Vemos los archivos cargados
         $cv = '';
         $cerAntecedentes = '';
         $carnet = '';
         $fotografia = '';
 
-        // Vemos los archivos cargados
         $sql = "SELECT tipo_archivo, id 
                   FROM tbl_archivo 
                  WHERE id_post = '$idPost' 
@@ -483,7 +579,6 @@
         {
             error_log('Query: '. $sql);
         }
-
         $result = $conn->query($sql);
         if ($result->num_rows > 0) 
         {
@@ -509,7 +604,23 @@
             }
         }
 
-        $sql =  "INSERT INTO tbl_documento(
+        // Eliminamos documentos anteriores
+        $sql = "DELETE FROM tbl_documento WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_documento ' . mysqli_error($conn));
+            die();
+        }
+
+        // Insertamos los documentos
+        $sql =  "REPLACE INTO tbl_documento(
+                             id, 
                              id_post, 
                              rut, 
                              cv, 
@@ -517,8 +628,9 @@
                              carnet,
                              fotografia) 
                       VALUES (
+                             NULL, 
                              '$idPost',
-                             '$rut',
+                             '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
                              " . (isset($cv) && $cv!=''?$cv:'null') . ",
                              " . (isset($cerAntecedentes) && $cerAntecedentes!=''?$cerAntecedentes:'null') . ",
                              " . (isset($carnet) && $carnet!=''?$carnet:'null') . ",
@@ -535,7 +647,21 @@
             die();
         }
 
-        //tabla tbl_datos_postulacion_abierta
+        // Eliminamos postulaciones anteriores
+        $sql = "DELETE FROM tbl_datos_postulacion_abierta WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn));
+            die();
+        }
+
+        // Insertamos las postulaciones
         $valores_enviados = array();
         foreach($data['pos']['pa'] AS $registro_i)
         {    
@@ -548,15 +674,17 @@
                 $$id = $value;
             }
             
-            $sql = "INSERT INTO tbl_datos_postulacion_abierta(
+            $sql = "REPLACE INTO tbl_datos_postulacion_abierta(
+                                id, 
                                 id_post,
                                 rut,
                                 num,
                                 nombre,
                                 categoria)
                          VALUES (
+                                NULL, 
                                 '$idPost',
-                                '$rut',
+                                '". ($tipo_documento=='pasaporte'?$pasaporte:$rut) . "',
                                 '$nun',
                                 '$nom',
                                 '$cat')";
@@ -613,11 +741,22 @@
     if(isset($_POST['action']) && $_POST['action'] == 'seventhpagedata')
     {
         $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data'];
+        save_data_in_DB();
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'lastpagedata')
     {
+        /* var_error_log($_POST); die(); */
+        // $_SESSION["postdata"]["pos"]["pa"] = $_POST["data"]["pa"];
+        /* $_SESSION["postdata"]["pos"]["datos"] = $_POST["data"]["datos"];
+        $_SESSION["postdata"]["pos"]["estudios"] = $_POST["data"]["estudios"];
+        $_SESSION["postdata"]["pos"]["cursos"] = $_POST["data"]["cursos"];
+        $_SESSION["postdata"]["pos"]["experiencia"] = $_POST["data"]["experiencia"];
+        $_SESSION["postdata"]["pos"]["referencia"] = $_POST["data"]["referencia"];
+        $_SESSION["postdata"]["pos"]["horarioT"] = $_POST["data"]["horarioT"];
+        $_SESSION["postdata"]["pos"]["documentos"] = $_POST["data"]["documentos"]; 
+        save_data_in_DB(); */
+
         require_once('src/mailer/PHPMailerAutoload.php');
-        save_data_in_DB();
         $datos = $_SESSION["postdata"]["pos"];
         $email = '';
         $nombre = '';

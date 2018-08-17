@@ -12,59 +12,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Sistema de Postulación Portia</title>
-  <link rel="icon" href="src/img/Portia-favicon.png" type="image/png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.css">
-  <link rel="stylesheet" href="dist/css/main.min.css">
-  <!--REQUIRED STYLE SHEETS-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Sistema de Postulación Portia</title>
+    <link rel="icon" href="src/img/Portia-favicon.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.css">
+    <link rel="stylesheet" href="dist/css/main.min.css">
+    <!--REQUIRED STYLE SHEETS-->
   </head>
   <body>
- <nav class="teal">
-    <h6>Sistema de Postulación Portia</h6>
- </nav>
+    <nav class="teal">
+      <h6>Sistema de Postulación Portia</h6>
+    </nav>
 
- <div class="row"><!--titulo-->
-   <div class="col s6 col m6 col l6">
-     <h3>Tus Cargos Seleccionados</h3>
-   </div>
-    <div class="col s2 col m2 col l2 return">
-      <a href="index.php" class="">Volver a cargos</a>
+    <div class="row"><!--titulo-->
+      <div class="col s6 col m6 col l6">
+        <h3>Tus Cargos Seleccionados</h3>
+      </div>
+        <div class="col s2 col m2 col l2 return">
+          <a href="index.php" class="">Volver a cargos</a>
+        </div>
     </div>
- </div>
- <div class="row">
-  <div class="col s1"></div>
-    <?php foreach($dataPostulacion as $cargo) {
-        echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
-    } ?>
-  </div>
+    <div class="row">
+      <div class="col s1"></div>
+        <?php foreach($dataPostulacion as $cargo) {
+          echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
+        } ?>
+      </div>
 
+      <div class="container"> 
+        <div class="row">
+        <div class="col s12 m12 l12">
+          <h5 class="center">Revise su postulación completa antes de enviar a Portia. Usted podrá editar o corregir cualquier dato de su postulación en esta pantalla.</h5>
+          <p class="center">Consejo: Asegúrese que todos sus datos personales y contacto estén bien escritos antes de postular.</p>
+        </div>
+      </div>
 
-
-<div class="container"> 
-  <div class="row">
-  <div class="col s12 m12 l12">
-    <h5 class="center">Revise su postulación completa antes de enviar a Portia. Usted podrá editar o corregir cualquier dato de su postulación en esta pantalla.</h5>
-    <p class="center">Consejo: Asegúrese que todos sus datos personales y contacto estén bien escritos antes de postular.</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col s8 m8 l8">
-    <h4>Datos Personales</h4>
-  </div>
-</div>
-<div class="row">
-  
-
-  <form id="postularform" onsubmit="return false;">         
-  <?php
-    $datos = $data["pos"]["datos"];
-    $i = 0;
-  ?>
+      <div class="row">
+        <div class="col s8 m8 l8">
+          <h4>Datos Personales</h4>
+        </div>
+      </div>
+      <div class="row">
+        <form id="postularform" onsubmit="return false;">         
+        <?php
+          $datos = $data["pos"]["datos"];
+          $i = 0;
+        ?>
 
   <div class="row"><!--documentos-->
 
