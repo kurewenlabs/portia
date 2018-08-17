@@ -741,11 +741,13 @@
     if(isset($_POST['action']) && $_POST['action'] == 'seventhpagedata')
     {
         $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data'];
+
+        // Pre-guardado para asegurar que los datos estén a salvo antes de enviar
         save_data_in_DB();
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'lastpagedata')
     {
-        /* var_error_log($_POST); die(); */
+        // var_error_log($_POST); die();
         // $_SESSION["postdata"]["pos"]["pa"] = $_POST["data"]["pa"];
         /* $_SESSION["postdata"]["pos"]["datos"] = $_POST["data"]["datos"];
         $_SESSION["postdata"]["pos"]["estudios"] = $_POST["data"]["estudios"];
@@ -753,8 +755,10 @@
         $_SESSION["postdata"]["pos"]["experiencia"] = $_POST["data"]["experiencia"];
         $_SESSION["postdata"]["pos"]["referencia"] = $_POST["data"]["referencia"];
         $_SESSION["postdata"]["pos"]["horarioT"] = $_POST["data"]["horarioT"];
-        $_SESSION["postdata"]["pos"]["documentos"] = $_POST["data"]["documentos"]; 
-        save_data_in_DB(); */
+        $_SESSION["postdata"]["pos"]["documentos"] = $_POST["data"]["documentos"]; */ 
+
+        // Guardado definitivo que actualiza cualquier cambio en los datos del postulante
+        // save_data_in_DB();
 
         require_once('src/mailer/PHPMailerAutoload.php');
         $datos = $_SESSION["postdata"]["pos"];

@@ -567,7 +567,7 @@ $(document).ready(function () {
     $("form#postularform").submit(function(e){
         e.preventDefault();
         var chkArray = [];
-        chkArray["pa"] = getSelectionFormData();
+        /* chkArray["pa"] = getSelectionFormData();
         chkArray["datos"] = getFirstStepData();
         chkArray["estudios"] = getSecondPageDataPart1();
         chkArray["cursos"] = getSecondPageDataPart2();
@@ -575,7 +575,7 @@ $(document).ready(function () {
         chkArray["referencia"] = getFourthPageData();
         chkArray["horarioT"] = getFifthPageData();
         chkArray["documentos"] = getSixthPageData();
-        console.log(chkArray);
+        console.log(chkArray); */
 
         /* we join the array separated by the comma */
         var selected;
