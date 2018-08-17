@@ -38,7 +38,7 @@
 <div class="row">
     <div class="col s1"></div>
     <?php foreach($dataPostulacion as $cargo) {
-        echo "<div class='chip col''>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
+        echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
     } ?>
 
 </div>

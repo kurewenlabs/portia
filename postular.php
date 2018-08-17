@@ -36,13 +36,15 @@
           <a href="index.php" class="">Volver a cargos</a>
         </div>
     </div>
+
+    <!-- --------------------------- CARGOS ------------------------------ -->
+
     <div class="row">
       <div class="col s1"></div>
         <?php foreach($dataPostulacion as $cargo) {
           echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
         } ?>
       </div>
-
       <div class="container"> 
         <div class="row">
         <div class="col s12 m12 l12">
@@ -50,6 +52,8 @@
           <p class="center">Consejo: Asegúrese que todos sus datos personales y contacto estén bien escritos antes de postular.</p>
         </div>
       </div>
+
+      <!-- --------------------------- DATOS PERSONALES ------------------------------ -->
 
       <div class="row">
         <div class="col s8 m8 l8">
@@ -63,168 +67,169 @@
           $i = 0;
         ?>
 
-  <div class="row"><!--documentos-->
-
-      <div class=" input-field col s4 m4 l4">Documento de Identificacion
-        <select class="browser-default" onselect="this.className = ''" name="documento" id="tipo_doc">
-          <option value="rut" <?php if (array_key_exists('rut', $datos[0])) echo "selected" ?>>RUT</option>
-          <option value="pasaporte" <?php if (array_key_exists('pasaporte', $datos[0])) echo "selected" ?>>Pasaporte</option>
-        </select>
-      </div>
-      <div class=" input-field col s4 m4 l4 " id="rut_box">
-        <label for="rut">RUT</label>
-        <input placeholder="ej. 11111111-1" id="rut" type="tel" class="validate rut_box" value="<?php if (array_key_exists('rut', $datos[$i])) { echo $datos[$i]['rut']; $i++; } ?>">
-      </div>
-      <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
-        <label for="Pasaporte">Pasaporte</label>
-        <input  id="Pasaporte" type="tel" class="validate rut_box" value="<?php if (array_key_exists('pasaporte', $datos[$i])) { echo $datos[$i]['pasaporte']; $i++; } ?>">
-      </div>
-   </div>
-  </div><!--documentos-->
-<div class="row"><!--datos identificacion-->
-  <div class="tab">
-    <div class="tab input-field col s4 m4 l4">
-        <label for="first_name">Nombres</label>
-        <input  id="first_name" type="text" class="validate" value="<?php if (array_key_exists('noms', $datos[$i])) { echo $datos[$i]['noms']; $i++; }  ?>">
-      </div>
-      <div class="tab input-field col s4 m4 l4">
-        <label for="last_name">Apellido Paterno</label>
-        <input  id="last_name" type="text" class="validate" value="<?php if (array_key_exists('apeP', $datos[$i])) { echo $datos[$i]['apeP']; $i++; }  ?>">
-      </div>
-      <div class="tab input-field col s4 m4 l4">
-        <label for="last_name_2">Apellido Materno</label>
-        <input  id="last_name_2" type="text" class="validate" value="<?php if (array_key_exists('apeM', $datos[$i])) { echo $datos[$i]['apeM']; $i++; }  ?>">
-      </div>
-  </div>
-
-</div><!--datos identificacion-->
-<div class="row">
-  <div class="tab">
-    <div class="tab input-field col s3 m3 l3">
-      <label for="txtDate">Fecha de Nacimiento</label>
-      <input type="text" class="datepicker" id="txtDate" value="<?php if (array_key_exists('fNaci', $datos[$i])) { echo $datos[$i]['fNaci']; $i++; }  ?>"></div>
-    </div>
-    <div class="tab input-field col s3 m3 l3">
-       <select class="browser-default"  id="sexo" onselect="this.className = ''" name="sexo">
-        <option value="">Sexo</option>
-        <option value="femenino" <?php if (array_key_exists('sexo', $datos[$i]) && $datos[$i]['sexo'] == 'femenino') { echo "selected"; $i++; }  ?>>Femenino</option>
-        <option value="masculino" <?php if (array_key_exists('sexo', $datos[$i]) && $datos[$i]['sexo'] == 'masculino') { echo "selected"; $i++; }  ?>>Masculino</option>
-      </select>
-    </div>
-    <div class="tab input-field col s3 m3 l3">
-      <select class="browser-default" id="estado_civil" onselect="this.className = ''" name="estado_civil">
-        <option value="">Estado Civil</option>
-        <option value="soltero" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'soltero') { echo "selected"; $i++; }  ?>>Soltero(a)</option>
-        <option value="casado" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'casado') { echo "selected"; $i++; }  ?>>Casado(a)</option>
-        <option value="divorciado" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'divorciado') { echo "selected"; $i++; }  ?>>Divorciado(a)</option>
-        <option value="viudo" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'viudo') { echo "selected"; $i++; }  ?>>Viudo(a)</option>
-      </select>
-    </div>
-    <div class="tab input-field col s3 m3 l3">
-        <label for="nacionalidad">Nacionalidad</label>
-        <input  id="nacionalidad" type="text" class="validate" value="<?php if (array_key_exists('nacionalidad', $datos[$i])) { echo $datos[$i]['nacionalidad']; $i++; }  ?>">
-      </div>
-  </div><!--datos identificacion-->
-  <div class="row">
-    <div class="">
-      <div class="input-field col s4 m4 l4">
-          <input id="telefono" type="tel" class="validate" placeholder="+56(9)" value="<?php if (array_key_exists('telefono', $datos[$i])) { echo $datos[$i]['telefono']; $i++; }  ?>">
-          <label for="telefono">Telefono</label>
+      <!--documentos-->
+      <div class="row">
+        <div class=" input-field col s4 m4 l4">Documento de Identificacion
+          <select class="browser-default" onselect="this.className = ''" name="documento" id="tipo_doc">
+            <option value="rut" <?php if (array_key_exists('rut', $datos[0])) echo "selected" ?>>RUT</option>
+            <option value="pasaporte" <?php if (array_key_exists('pasaporte', $datos[0])) echo "selected" ?>>Pasaporte</option>
+          </select>
         </div>
-      <div class="input-field col s4 m4 l4">
-          <input id="telefono2" type="tel" placeholder="*Opcional" class="validate" value="<?php if (array_key_exists('telRec', $datos[$i])) { echo $datos[$i]['telRec']; $i++; } ?>">
-          <label for="telefono2">Telefono de Recado</label>
+        <div class=" input-field col s4 m4 l4 " id="rut_box">
+          <label for="rut">RUT</label>
+          <input placeholder="ej. 11111111-1" id="rut" type="tel" class="validate rut_box" value="<?php if (array_key_exists('rut', $datos[$i])) { echo $datos[$i]['rut']; $i++; } ?>">
         </div>
+        <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
+          <label for="pasaporte">Pasaporte</label>
+          <input  id="pasaporte" type="tel" class="validate rut_box" value="<?php if (array_key_exists('pasaporte', $datos[$i])) { echo $datos[$i]['pasaporte']; $i++; } ?>">
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
+    <!--documentos-->
+
+    <!--datos identificacion-->
+    <div class="row">
+      <div class="tab">
+        <div class="tab input-field col s4 m4 l4">
+          <label for="first_name">Nombres</label>
+          <input  id="first_name" type="text" class="validate" value="<?php if (array_key_exists('noms', $datos[$i])) { echo $datos[$i]['noms']; $i++; }  ?>">
+        </div>
+        <div class="tab input-field col s4 m4 l4">
+          <label for="last_name">Apellido Paterno</label>
+          <input  id="last_name" type="text" class="validate" value="<?php if (array_key_exists('apeP', $datos[$i])) { echo $datos[$i]['apeP']; $i++; }  ?>">
+        </div>
+        <div class="tab input-field col s4 m4 l4">
+          <label for="last_name_2">Apellido Materno</label>
+          <input  id="last_name_2" type="text" class="validate" value="<?php if (array_key_exists('apeM', $datos[$i])) { echo $datos[$i]['apeM']; $i++; }  ?>">
+        </div>
+      </div>
+    </div>
+    <!--datos identificacion-->
+
+    <div class="row">
+      <div class="tab">
+        <div class="tab input-field col s3 m3 l3">
+          <label for="txtDate">Fecha de Nacimiento</label>
+          <input type="text" class="datepicker" id="txtDate" value="<?php if (array_key_exists('fNaci', $datos[$i])) { echo $datos[$i]['fNaci']; $i++; }  ?>"></div>
+        </div>
+        <div class="tab input-field col s3 m3 l3">
+          <select class="browser-default" id="sexo" onselect="this.className = ''" name="sexo">
+            <option value="">Sexo</option>
+            <option value="femenino" <?php if (array_key_exists('sexo', $datos[$i]) && $datos[$i]['sexo'] == 'femenino') { echo "selected"; $i++; }  ?>>Femenino</option>
+            <option value="masculino" <?php if (array_key_exists('sexo', $datos[$i]) && $datos[$i]['sexo'] == 'masculino') { echo "selected"; $i++; }  ?>>Masculino</option>
+          </select>
+        </div>
+        <div class="tab input-field col s3 m3 l3">
+          <select class="browser-default" id="estado_civil" onselect="this.className = ''" name="estado_civil">
+            <option value="">Estado Civil</option>
+            <option value="soltero" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'soltero') { echo "selected"; $i++; }  ?>>Soltero(a)</option>
+            <option value="casado" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'casado') { echo "selected"; $i++; }  ?>>Casado(a)</option>
+            <option value="divorciado" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'divorciado') { echo "selected"; $i++; }  ?>>Divorciado(a)</option>
+            <option value="viudo" <?php if (array_key_exists('eCivil', $datos[$i]) && $datos[$i]['eCivil'] == 'viudo') { echo "selected"; $i++; }  ?>>Viudo(a)</option>
+          </select>
+        </div>
+        <div class="tab input-field col s3 m3 l3">
+          <label for="nacionalidad">Nacionalidad</label>
+          <input  id="nacionalidad" type="text" class="validate" value="<?php if (array_key_exists('nacionalidad', $datos[$i])) { echo $datos[$i]['nacionalidad']; $i++; }  ?>">
+        </div>
+      </div>
+      <div class="row">
+        <div class="">
+          <div class="input-field col s4 m4 l4">
+            <input id="telefono" type="tel" class="validate" placeholder="+56(9)" value="<?php if (array_key_exists('telefono', $datos[$i])) { echo $datos[$i]['telefono']; $i++; }  ?>">
+            <label for="telefono">Telefono</label>
+          </div>
+          <div class="input-field col s4 m4 l4">
+            <input id="telefono2" type="tel" placeholder="*Opcional" class="validate" value="<?php if (array_key_exists('telRec', $datos[$i])) { echo $datos[$i]['telRec']; $i++; } ?>">
+            <label for="telefono2">Telefono de Recado</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
           <input id="email" type="email" class="validate" value="<?php if (array_key_exists('email', $datos[$i])) { echo $datos[$i]['email']; $i++; } ?>">
           <label for="email">Email</label>
         </div>
-  </div>
-  <?php
-    // Obtenemos la información directa del servicio y la almacenamos localmente
-    $regiones = json_decode(file_get_contents('regiones.json'), true);
-  ?>
-<div class="row">
-  <div class=" input-field col s4 m4 l4">Region
-      <select class="browser-default validate" id="region" onselect="this.className = ''" name="region" onchange="cargarComunas();">
-      <option>Seleccione región</option>
-        <?php 
-          // Recorremos el JSON buscando los valores asociados a las regiones existentes
-          foreach($regiones['regiones'] as $region) {
-            echo "<option value='" . $region['region'] . "'" . (array_key_exists('provi', $datos[$i]) && $datos[$i]['provi'] == $region['region']?" selected":"") . ">" . $region['region'] . "</option>\n";
-          }
-          $i++;
-        ?>
-      </select> <!-- CONSUMIR API COMUNAS/REGIONES AQUI -->
-    
-    </div>
-    <script language="Javascript">
-      function cargarComunas() {
-        var comunas = {
-          <?php
-            // Creamos un arreglo asociativo dinámico que llene las comunas en función de la región seleccionada
-            $j = 1; 
-            $k = 0;
-            foreach($regiones['regiones'] as $region) {
-              echo "region" . $j . " : [";
-              $z = 1;
-              foreach($region['comunas'] as $comuna) {
-                echo "\"" . $comuna . "\", ";
-                if ($region['region'] == $datos[$i-1]['provi'] && $comuna == $datos[$i]['comuna']) {
-                  $k = $z;
-                }
-                $z++;
+      </div>
+
+      <?php
+        // Obtenemos la información directa del servicio y la almacenamos localmente
+        $regiones = json_decode(file_get_contents('regiones.json'), true);
+      ?>
+      <div class="row">
+        <div class=" input-field col s4 m4 l4">Region
+          <select class="browser-default validate" id="region" onselect="this.className = ''" name="region" onchange="cargarComunas();">
+          <option>Seleccione región</option>
+            <?php 
+              // Recorremos el JSON buscando los valores asociados a las regiones existentes
+              foreach($regiones['regiones'] as $region) {
+                echo "<option value='" . $region['region'] . "'" . (array_key_exists('provi', $datos[$i]) && $datos[$i]['provi'] == $region['region']?" selected":"") . ">" . $region['region'] . "</option>\n";
               }
-              echo "\"\"],\n";
-              $j++;
-            }
-            if ($k != 0) $i++;
+              $i++;
             ?>
-        };
-        
-        var campoRegion = document.getElementById('region');
-        var campoComuna = document.getElementById('comuna');
-        regionSeleccionada = campoRegion.selectedIndex;
-        campoComuna.innerHTML = '<option>Selecciona comuna</option>';
+          </select>        
+        </div>
+        <script language="Javascript">
+          function cargarComunas() {
+            var comunas = {
+              <?php
+                // Creamos un arreglo asociativo dinámico que llene las comunas en función de la región seleccionada
+                $j = 1; 
+                $k = 0;
+                foreach($regiones['regiones'] as $region) {
+                  echo "region" . $j . " : [";
+                  $z = 1;
+                  foreach($region['comunas'] as $comuna) {
+                    echo "\"" . $comuna . "\", ";
+                    if ($region['region'] == $datos[$i-1]['provi'] && $comuna == $datos[$i]['comuna']) {
+                      $k = $z;
+                    }
+                    $z++;
+                  }
+                  echo "\"\"],\n";
+                  $j++;
+                }
+                if ($k != 0) $i++;
+                ?>
+            };
+            
+            var campoRegion = document.getElementById('region');
+            var campoComuna = document.getElementById('comuna');
+            regionSeleccionada = campoRegion.selectedIndex;
+            campoComuna.innerHTML = '<option>Selecciona comuna</option>';
 
-        if (regionSeleccionada != "") {
-          regionSeleccionada = comunas["region" + regionSeleccionada];
-          regionSeleccionada.forEach(function(comuna){
-            if (comuna!="") {
-              var opcion = document.createElement('option');
-              opcion.value = comuna;
-              opcion.text = comuna;
-              campoComuna.add(opcion);
+            if (regionSeleccionada != "") {
+              regionSeleccionada = comunas["region" + regionSeleccionada];
+              regionSeleccionada.forEach(function(comuna){
+                if (comuna!="") {
+                  var opcion = document.createElement('option');
+                  opcion.value = comuna;
+                  opcion.text = comuna;
+                  campoComuna.add(opcion);
+                }
+              });
             }
-          });
-        }
+            campoComuna.selectedIndex = <?php echo $k; ?>;
+          }
+        </script>
+        <div class=" input-field col s4 m4 l4">Comuna
+          <select class="browser-default validate" id="comuna" onselect="this.className = ''" name="comuna">
+          </select> <!-- CONSUMIR API COMUNAS/REGIONES AQUI -->
+        </div>
+        <script language="javascript">
+          cargarComunas();
+        </script>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m12 l12">
+          <input id="direccion" type="text" class="validate" value="<?php if (array_key_exists('direccion', $datos[$i])) { echo $datos[$i]['direccion']; $i++; } ?>">
+          <label for="direccion">Direccion</label>
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="row"></div>
 
-        campoComuna.selectedIndex = <?php echo $k; ?>;
-      }
-    </script>
-
-    <div class=" input-field col s4 m4 l4">Comuna
-      <select class="browser-default validate" id="comuna" onselect="this.className = ''" name="comuna">
-      </select> <!-- CONSUMIR API COMUNAS/REGIONES AQUI -->
-  </div>
-
-    <script language="javascript">
-      cargarComunas();
-    </script>
-</div>
-<div class="row">
-  <div class="input-field col s12 m12 l12">
-    <input id="direccion" type="text" class="validate" value="<?php if (array_key_exists('direccion', $datos[$i])) { echo $datos[$i]['direccion']; $i++; } ?>">
-    <label for="direccion">Direccion</label>
-  </div>
-</div>
-<div class="row"></div>
-<div class="row"></div>
-
-<!-- --------------------------- ESTUDIOS ------------------------------ -->
+      <!-- --------------------------- ESTUDIOS ------------------------------ -->
 
 <div class="row">
     <h4>Estudios</h4>
@@ -260,7 +265,8 @@
           <select  onselect="this.className = ''" name="estado_estudio" class="browser-default" id="estado_estudio">
             <option value=""></option>
             <option value="En Curso" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'En Curso') { echo "selected"; $i++; }  ?>>En Curso</option>
-            <option value="Graduado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Graduado') { echo "selected"; $i++; }  ?>>Graduado</option>
+            <option value="Egresado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Egresado') { echo "selected"; $i++; }  ?>>Graduado</option>
+            <option value="Titulado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Titulado') { echo "selected"; $i++; }  ?>>Abandonado</option>
             <option value="Abandonado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Abandonado') { echo "selected"; $i++; }  ?>>Abandonado</option>
           </select>
         </div>

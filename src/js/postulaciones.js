@@ -582,7 +582,7 @@ $(document).ready(function () {
         selected = chkArray.join(' , ') ;
         
         var JSONData={};
-        /* $.ajax({
+        $.ajax({
             url : "processform.php",
             type: "post",
             data:{ action:"lastpagedata",data:chkArray },
@@ -592,7 +592,7 @@ $(document).ready(function () {
             },
             error:function(){
             }
-        }) */
+        })
         return false;
     })
 });

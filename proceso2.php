@@ -89,8 +89,9 @@
           <select  onselect="this.className = ''" name="estado_estudio" class="browser-default" id="estado_estudio">
             <option value=""></option>
             <option value="En Curso">En Curso</option>
-            <option value="Graduado">Egresado</option>
-            <option value="Abandonado">Titulado</option>
+            <option value="Egresado">Egresado</option>
+            <option value="Titulado">Titulado</option>
+            <option value="Abandonado">Abandonado</option>
           </select>
         </div>
         <div class=" input-field col s2 m2 l2">
