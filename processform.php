@@ -758,7 +758,7 @@
         $_SESSION["postdata"]["pos"]["documentos"] = $_POST["data"]["documentos"]; */ 
 
         // Guardado definitivo que actualiza cualquier cambio en los datos del postulante
-        // save_data_in_DB();
+        save_data_in_DB();
 
         require_once('src/mailer/PHPMailerAutoload.php');
         $datos = $_SESSION["postdata"]["pos"];

@@ -5,6 +5,7 @@
  * Copyright: 2010 - Allan Jardine
  * License:   GPL v2 or BSD (3-point)
  */
+session_start();
 require_once "db.php";
   
 class TableData {

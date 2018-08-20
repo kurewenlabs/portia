@@ -4,9 +4,9 @@
     $id = $_GET['identificador'];
     $file_type = $_GET['tipo'];
     require_once 'db.php';
-    global $conn;
 
     $sql = "SELECT nombre, tipo, contenido FROM tbl_archivo WHERE id = " . $id . ";";
+    echo $sql;
     $result = $conn->query($sql);
     $rows = $result->fetch_assoc();
     

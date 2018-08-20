@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,13 +158,46 @@
     });
 
     /*DATATABLES*/ 
-    //$(document).ready(function() {
+    $(document).ready(function() {
         $('#tablaPortia').DataTable( {
-            "processing": true,
-            "serverSide": true,
-            "ajax": "datatables_script.php<?php echo (isset($_GET["mode"])?"?mode=dev":""); ?>"
-        } );
-    //} );
+            "ajax": "datatables_script.php?",
+            "order": [[0, "desc"]],
+            "scrollY": 700,
+            "scrollX": false,
+            "scrollCollapse": true,
+            "paging": true,
+            "language": {
+                "decimal": ",",
+                "thousands": ".",
+                "emptyTable": "No hay postulaciones pendientes",
+                "info": "_START_ a _END_ de _TOTAL_ postulaciones",
+                "infoEmpty": "0 a 0 de 0 postulaciones",
+                "infoFiltered": "(Filtrado de _MAX_ postulaciones)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "_MENU_ Postulaciones",
+                "loadingRecords": "Preparando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron postulaciones",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Última",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": Ascendente",
+                    "sortDescending": ": Sescendente"
+                },
+            },
+        });
+    });
+</script>
+<script language="Javascript">
+<?php if (isset($_SESSION["mode"])) { ?>
+    notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
+<?php } ?>
 </script>
 </body>
 </html>

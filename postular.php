@@ -285,7 +285,7 @@
         
         </div>
         <div class=" input-field col s4 m4 l4">Licencia de Conducir
-          <select class="js-example-basic-multiple" multiple="multiple" onselect="this.className = ''" name="licencia" class="browser-default" id="licencia">
+          <select class="js-example-basic-multiple" multiple="multiple" onselect="this.className = ''" name="licencia" id="licencia">
             <option value=""></option>
             <?php $j = 0; ?>
             <option value="Sin licencia" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Sin licencia') { echo "selected";  $j++;}  ?>>Sin Licencia</option>
@@ -694,7 +694,7 @@
 ?>
 <div class="row"> 
   <div class="tab input-field col s6 m6 l6" id="datosPrevision">AFP
-        <select class="browser-default" onselect="this.className = ''" name="afp">
+        <select class="browser-default" onselect="this.className = ''" name="afp" id="afp">
           <option value=""></option>
           <option value="AFP Capital" <?php if (array_key_exists('afp', $datos[$i]) && $datos[$i]['afp'] == 'AFP Capital') { echo "selected"; $i++; } ?>>AFP Capital</option>
           <option value="AFP Cuprum" <?php if (array_key_exists('afp', $datos[$i]) && $datos[$i]['afp'] == 'AFP Cuprum') { echo "selected"; $i++; } ?>>AFP Cuprum</option>
@@ -705,17 +705,17 @@
         </select>
       </div>
       <div class="tab input-field col s6 m6 l6">Isapre o Fonasa
-        <select class="browser-default" onselect="this.className = ''" name="isapre">
+        <select class="browser-default" onselect="this.className = ''" name="isapre" id="isapre">
           <option value=""></option>
           <option value="Fonasa" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Fonasa') { echo "selected"; $i++; } ?>>Fonasa</option>
           <option value="Consalud" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Consalud') { echo "selected"; $i++; } ?>>Consalud</option>
           <option value="Colmena" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Colmena') { echo "selected"; $i++; } ?>>Colmena</option>
           <option value="Cruz Blanca" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Cruz Blanca') { echo "selected"; $i++; } ?>>Cruz Blanca</option>
           <option value="Chuquicamata" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Chuquicamata') { echo "selected"; $i++; } ?>>Chuquicamata</option>
-          <option value="Banmédica" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Banmédica') { echo "selected"; $i++; } ?>>Banmédica</option>
+          <option value="Banmédica" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Banmedica') { echo "selected"; $i++; } ?>>Banmédica</option>
           <option value="Cruz del Norte" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Cruz del Norte') { echo "selected"; $i++; } ?>>Cruz del Norte</option>
           <option value="Nueva Masvida" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Nueva Masvida') { echo "selected"; $i++; } ?>>Nueva Masvida</option>
-          <option value="Fundación" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Fundación') { echo "selected"; $i++; } ?>>Fundación</option>
+          <option value="Fundación" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Fundacion') { echo "selected"; $i++; } ?>>Fundación</option>
           <option value="Fusat" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Fusat') { echo "selected"; $i++; } ?>>Fusat</option>
           <option value="Río Blanco" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Río Blanco') { echo "selected"; $i++; } ?>>Río Blanco</option>
           <option value="San Lorenzo" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'San Lorenzo') { echo "selected"; $i++; } ?>>San Lorenzo</option>
@@ -1142,15 +1142,15 @@
     <div class="tab input-field col s4 m4 l4">
       <select class="browser-default" onselect="this.className = ' ' " name="renta">
         <option value="">Seleccione Rango</option>
-        <option value="275.000 - 350.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '275.000 - 350.000') { echo "selected"; $i++; } ?>>275.000 - 350.000</option>
-        <option value="350.000 - 400.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '350.000 - 300.000') { echo "selected"; $i++; } ?>>350.000 - 400.000</option>
-        <option value="400.000 - 450.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '400.000 - 450.000') { echo "selected"; $i++; } ?>>400.000 - 450.000</option>
-        <option value="450.000 - 500.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '450.000 - 500.000') { echo "selected"; $i++; } ?>>450.000 - 500.000</option>
-        <option value="500.000 - 550.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '500.000 - 550.000') { echo "selected"; $i++; } ?>>500.000 - 550.000</option>
-        <option value="550.000 - 600.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '550.000 - 600.000') { echo "selected"; $i++; } ?>>550.000 - 600.000</option>
-        <option value="600.000 - 800.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '600.000 - 800.000') { echo "selected"; $i++; } ?>>600.000 - 800.000</option>
-        <option value="800.000 - 1.000.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '800.000 - 1.000.000') { echo "selected"; $i++; } ?>>800.000 - 1.000.000</option>
-        <option value="Más de 1.000.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == 'Más de 1.000.000') { echo "selected"; $i++; } ?>>Más de 1.000.000</option>
+        <option value="275.000 - 350.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '275.000 - 350.000') { echo "selected"; } ?>>275.000 - 350.000</option>
+        <option value="350.000 - 400.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '350.000 - 300.000') { echo "selected"; } ?>>350.000 - 400.000</option>
+        <option value="400.000 - 450.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '400.000 - 450.000') { echo "selected"; } ?>>400.000 - 450.000</option>
+        <option value="450.000 - 500.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '450.000 - 500.000') { echo "selected"; } ?>>450.000 - 500.000</option>
+        <option value="500.000 - 550.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '500.000 - 550.000') { echo "selected"; } ?>>500.000 - 550.000</option>
+        <option value="550.000 - 600.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '550.000 - 600.000') { echo "selected"; } ?>>550.000 - 600.000</option>
+        <option value="600.000 - 800.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '600.000 - 800.000') { echo "selected"; } ?>>600.000 - 800.000</option>
+        <option value="800.000 - 1.000.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '800.000 - 1.000.000') { echo "selected"; } ?>>800.000 - 1.000.000</option>
+        <option value="Más de 1.000.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == 'Más de 1.000.000') { echo "selected"; } ?>>Más de 1.000.000</option>
       </select>
     </div>
   </div>
@@ -1158,16 +1158,31 @@
 </div>
    <div class="row">
           <h4>Adjuntos (Opcional)</h4>
+          <?php
+            require_once("db.php");
+            $files = null;
+            $sql = "SELECT id, tipo_archivo, nombre FROM tbl_archivo WHERE id_post = '" . $data["pos"]["id"] . "' AND estado = 1";
+            $results = $conn->query($sql);
+            if ($results) {
+              while($fila = $results->fetch_assoc()) {
+                $files[$fila["tipo_archivo"]]["id"] = $fila["id"];
+                $files[$fila["tipo_archivo"]]["nombre"] = $fila["nombre"];
+              }
+            }
+          ?>
           
           <div class="row">
             
               <div class="row">
                 <div class="col s6 m6 l6">
-                <label>Curriculum</label>
+                <label>
+                  Curriculum
+                  (<?php echo ($files!=null && array_key_exists("cv", $files)?"<a href=\"download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">" . $files["cv"]["nombre"] . "</a>":"Ninguno"); ?>)
+                </label>
                 <div class="file-field input-field">
                   <div class="btn">
                     <span>Adjuntar</span>
-                    <input type="file" id="cv" name="curriculum">
+                    <input type="file" id="cv" name="curriculum" value="">
                   </div>
                   <div class="file-path-wrapper">
                     <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
@@ -1177,11 +1192,14 @@
                 </div>
                 </div>
                 <div class="col s6 m6 l6">
-                <label>Certificado de antecedentes</label>
+                <label>
+                  Certificado de antecedentes
+                  (<?php echo ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">" . $files["cerAntecedentes"]["nombre"] . "</a>":"Ninguno"); ?>)
+                </label>
                 <div class="file-field input-field">
                   <div class="btn">
                     <span>Adjuntar</span>
-                    <input type="file" id="cerAntecedentes" name="antecedentes">
+                    <input type="file" id="cerAntecedentes" name="antecedentes" value="">
                   </div>
                   <div class="file-path-wrapper">
                       <i style="right: 0;left: auto" id="remove-antecedentes" onclick="removeAntecedentesPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
@@ -1192,11 +1210,14 @@
               </div>
               <div class="row">
                 <div class="col s6 m6 l6">
-                <label>Carnet o Pasaporte</label>
+                <label>
+                  Carnet o Pasaporte
+                  (<?php echo ($files!=null && array_key_exists("carnet", $files)?"<a href=\"download.php?identificador=" . $files["carnet"]["id"] . "&tipo=carnet\" target=\"blank\">" . $files["carnet"]["nombre"] . "</a>":"Ninguno"); ?>)
+                </label>
                 <div class="file-field input-field">
                   <div class="btn">
                     <span>Adjuntar</span>
-                    <input type="file" id="docIdentidad" name="docIdentidad">
+                    <input type="file" id="docIdentidad" name="docIdentidad" value="">
                   </div>
                   <div class="file-path-wrapper">
                       <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
@@ -1206,11 +1227,14 @@
                 </div>
                 </div>
                 <div class="col s6 m6 l6">
-                <label>Fotografía del o la Postulante</label>
+                <label>
+                  Fotografía del o la Postulante
+                  (<?php echo ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">" . $files["fotografia"]["nombre"] . "</a>":"Ninguno"); ?>)
+                </label>
                 <div class="file-field input-field">
                   <div class="btn">
                     <span>Adjuntar</span>
-                    <input type="file" id="fotografia" name="fotografia">
+                    <input type="file" id="fotografia" name="fotografia" value="">
                   </div>
                   <div class="file-path-wrapper">
                       <i style="right: 0;left: auto" id="remove-picture" onclick="removePicturePath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->

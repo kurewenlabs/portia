@@ -1434,7 +1434,7 @@ $("form#login").submit(function(e){
                 notie.alert({ type: 3, text: 'Nombre de usuario o contraseña inválidos', position: 'bottom' });
                 $('#email').css('border-color' , 'red');    
             } else {
-                window.location.href="userportia.html.php";
+                window.location.href="userportia2.html.php";
             }
             return false;
         },
