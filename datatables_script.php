@@ -121,7 +121,7 @@ class TableData {
 			$output['aaData'][] = $row;
 		}
 		
-		error_log(json_encode($output));
+		// error_log(json_encode($output));
 		echo json_encode( $output );
 	}
 }
@@ -130,8 +130,8 @@ header('Cache-Control: no-store, no-cache, must-revalidate');
 // Create instance of TableData class
 $table_data = new TableData();
 // Get the data
-$table_data->get('vta_postulaciones', 'id_post', 
-	array('fecha_post', 'id', 'nombre', 'nacionalidad', 'cargo', 'sexo', 'renta', 'estado', 'region', 'comuna'));
+$table_data->get('vta_postulaciones', 'id_postulacion', 
+	array('fecha_post', 'id', 'nombre', 'nacionalidad', 'cargo', 'sexo', 'renta', 'estado', 'region', 'comuna', 'id_post'));
 /*
  * Alternatively, you may want to use the same class for several differnt tables for different pages.
  * By adding something similar to the following to your .htaccess file you can control this a little more...

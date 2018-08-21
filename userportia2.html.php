@@ -123,6 +123,7 @@
                     <th>Estado</th>
                     <th>Región</th>
                     <th>Comuna</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tfoot>
@@ -136,7 +137,7 @@
                     <th>Renta</th>
                     <th>Estado</th>
                     <th>Región</th>
-                    <th>Comuna</th>
+                    <th>&nbsp;</th>
                 </tr>
             </tfoot>
         </table>
@@ -145,13 +146,15 @@
 </div><!--container-->
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.jqueryui.min.js"></script>
-<script src="src/jquery.table2excel.js"></script>
-<script src="src/js/postulaciones.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<!-- script src="src/jquery.table2excel.js"></script>
+<script src="src/js/postulaciones.js"></script -->
 <script>
     $("#exportXml").click(function(){
         window.location.href="userportia.xls.php";
@@ -159,13 +162,39 @@
 
     /*DATATABLES*/ 
     $(document).ready(function() {
-        $('#tablaPortia').DataTable( {
-            "ajax": "datatables_script.php?",
+        var postulaciones = $('#tablaPortia').DataTable( {
+            "ajax": "datatables_script.php",
+            /* "columns": [
+                { "data": "fecha_post" }, 
+                { "data": "id" }, 
+                { "data": "nombre" }, 
+                { "data": "nacionalidad" }, 
+                { "data": "cargo" }, 
+                { "data": "sexo" }, 
+                { "data": "renta" }, 
+                { "data": "estado" }, 
+                { "data": "comuna" }, 
+                { 
+                    "data": "id_post",
+                    "render": function ( data, type, row, meta ) {
+                        var cargo = row.cargo;
+                        return "<a href='adminportia.html.php?identificador=" + data + "&postulacion=" + cargo + "'>Ver</a>";
+                    }
+                }
+            ], */
+            "columnDefs": [
+                {
+                    "targets": 10,
+                    "render": function ( data, type, row, meta ) {
+                        return "<a href='adminedit.php?identificador=" + data + "&postulacion=" + row[4] + "'>Ver</a>";
+                    }
+                }
+            ],
             "order": [[0, "desc"]],
-            "scrollY": 700,
-            "scrollX": false,
             "scrollCollapse": true,
             "paging": true,
+            "pageLength": 50,
+            "select": true,  
             "language": {
                 "decimal": ",",
                 "thousands": ".",
@@ -189,10 +218,10 @@
                 "aria": {
                     "sortAscending": ": Ascendente",
                     "sortDescending": ": Sescendente"
-                },
-            },
-        });
-    });
+                }
+            } 
+        } );
+    } );
 </script>
 <script language="Javascript">
 <?php if (isset($_SESSION["mode"])) { ?>

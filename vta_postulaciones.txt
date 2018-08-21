@@ -1,4 +1,4 @@
-SELECT pa.id as id_post,
+SELECT pa.id as id_postulacion,
        pb.fecha_post, 
        pb.rut as id, 
        CONCAT(pb.nombres, ' ', pb.apellidop, ' ', pb.apellidom) as nombre, 
@@ -8,7 +8,8 @@ SELECT pa.id as id_post,
        pb.renta,
        pa.estado,
        pb.provincia as region,
-       pb.comuna
+       pb.comuna,
+	   pb.id_post
   FROM tbl_datos_postulacion_abierta pa, tbl_postulante pb
  WHERE pa.id_post = pb.id_post
  ORDER BY pb.fecha_post DESC 
