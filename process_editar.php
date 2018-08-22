@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: web1
- * Date: 26/07/2018
- * Time: 8:31
- */
+session_start();
 
 // 0.- Redcibir identificador
 $id = $_POST['identificador'];

@@ -97,9 +97,9 @@
     <div class="row">
         <div class="col s12 lineaDatos1">
             <ul class="tabs">
+                <li class="tab col s2"><a href="#test1" id="total"><span class="badge teal"><?php echo isset($postulacion_por_tipo[ 'total' ])? $postulacion_por_tipo[ 'total' ]: 0 ?></span>Todas</a></li>
                 <li class="tab col s2"><a href="#test6" id="sin_clasificar"><span class="badge yellow"><?php echo isset($postulacion_por_tipo[ 'Sin Clasificar' ])? $postulacion_por_tipo[ 'Sin Clasificar' ]: 0 ?></span>Sin Clasificar</a></li>
-                <li class="tab col s2"><a href="#test1" id="total"><span class="badge teal"><?php echo isset($postulacion_por_tipo[ 'total' ])? $postulacion_por_tipo[ 'total' ]: 0 ?></span>Postulaciones</a></li>
-                <li class="tab col s2"><a href="#test2" id="apto"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Seleccionado' ])? $postulacion_por_tipo[ 'Apto' ]: 0 ?></span>Seleccionadas Aptas</a></li>
+                <li class="tab col s2"><a href="#test2" id="apto"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Seleccionado' ])? $postulacion_por_tipo[ 'Seleccionado' ]: 0 ?></span>Aptos</a></li>
                 <li class="tab col s2"><a href="#test4" id="fuera"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera Rango Renta' ])? $postulacion_por_tipo[ 'Fuera Rango Renta' ]: 0 ?></span>Fuera Rango Renta</a></li>
                 <li class="tab col s2"><a href="#test3" id="no_apto"><span class="badge grey"><?php echo isset($postulacion_por_tipo[ 'No apto' ])? $postulacion_por_tipo[ 'No apto' ]: 0 ?></span>No Aptos</a></li>
                 <li class="tab col s2"><a href="#test5" id="eliminado"><span class="badge red"><?php echo isset($postulacion_por_tipo[ 'Eliminados' ])? $postulacion_por_tipo[ 'Eliminados' ]: 0 ?></span>Eliminados</a></li>

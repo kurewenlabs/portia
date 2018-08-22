@@ -1837,84 +1837,103 @@
                             </div>
                         </div>
                     </div>
+                </form>
+
+            <!----- SECCION DE ARCHIVOS ADJUNTOS ----->
+            
+            <div class="row">
+                <h4>Adjuntos (Opcional)</h4>
+                <?php
+                    require_once("db.php");
+                    $files = null;
+                    $sql = "SELECT id, tipo_archivo, nombre FROM tbl_archivo WHERE id_post = '" . $id . "' AND estado = 1";
+                    $results = $conn->query($sql);
+                    if ($results) {
+                        while($fila = $results->fetch_assoc()) {
+                            $files[$fila["tipo_archivo"]]["id"] = $fila["id"];
+                            $files[$fila["tipo_archivo"]]["nombre"] = $fila["nombre"];
+                        }
+                    }
+                ?>
+                <div class="row">
+
                     <div class="row">
-                        <h4>Adjuntos (Opcional)</h4>
-
-                        <div class="row">
-
-                            <div class="row">
-                                <div class="col s6 m6 l6">
-                                    <label>Curriculum</label>
-                                    <div class="file-field input-field">
-                                        <div class="btn-flat">
-                                            
-                                            <input type="file" id="cv" name="curriculum">
-                                            <?php echo ($result['cv']!=''?'<a href="download.php?identificador='. $result['cv'] . '&documento=Curriculum">Descargar</a>':''); ?>
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath()" class="material-icons btn-flat prefix">cancel</i>
-                                            <!-- este es el btn de remover -->
-                                            <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Descargar Archivo">
-                                        </div>
-                                    </div>
+                        <div class="col s6 m6 l6">
+                            <label>
+                                Curriculum
+                                (<?php echo ($files!=null && array_key_exists("cv", $files)?"<a href=\"download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">" . $files["cv"]["nombre"] . "</a>":"Ninguno"); ?>)
+                            </label>
+                            <div class="file-field input-field">
+                                <div class="btn-flat">                                            
+                                    <input type="file" id="cv" name="curriculum">
                                 </div>
-                                <div class="col s6 m6 l6">
-                                    <label>Certificado de antecedentes</label>
-                                    <div class="file-field input-field">
-                                        <div class="btn-flat">
-                                             <input type="file" id="cerAntecedentes" name="antecedentes">
-                                            <?php echo ($result['antecedentes']!=''?'<a href="download.php?identificador='. $result['antecedentes'] . '&documento=Antecedentes">Descargar</a>':''); ?>
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <i style="right: 0;left: auto" id="remove-antecedentes" onclick="removeAntecedentesPath()" class="material-icons btn-flat prefix">cancel</i>
-                                            <!-- este es el btn de remover -->
-                                            <input style="width: 80%" id="antecedentes-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
-                                        </div>
-                                    </div>
+                                <div class="file-path-wrapper">
+                                    <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath()" class="material-icons btn-flat prefix">cancel</i>
+                                    <!-- este es el btn de remover -->
+                                    <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Descargar Archivo">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col s6 m6 l6">
-                                    <label>Carnet o Pasaporte</label>
-                                    <div class="file-field input-field">
-                                        <div class="btn-flat">
-                                           
-                                            <input type="file" id="docIdentidad" name="docIdentidad">
-                                            <?php echo ($result['carnet']!=''?'<a href="download.php?identificador='. $result['carnet'] . '&documento=Carnet">Descargar</a>':''); ?>
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i>
-                                            <!-- este es el btn de remover -->
-                                            <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
-
-                                        </div>
-                                    </div>
+                        </div>
+                        <div class="col s6 m6 l6">
+                            <label>
+                                Certificado de antecedentes
+                                (<?php echo ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">" . $files["cerAntecedentes"]["nombre"] . "</a>":"Ninguno"); ?>)
+                            </label>
+                            <div class="file-field input-field">
+                                <div class="btn-flat">
+                                        <input type="file" id="cerAntecedentes" name="antecedentes">
                                 </div>
-                                <div class="col s6 m6 l6">
-                                    <label>Fotografía del o la Postulante</label>
-                                    <div class="file-field input-field">
-                                        <div class="btn-flat">
-                                            
-                                            <input type="file" id="fotografia" name="fotografia">
-                                            <?php echo ($result['fotografia']!=''?'<a href="download.php?identificador='. $result['fotografia'] . '&documento=Fotografia">Descargar</a>':''); ?>
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <i style="right: 0;left: auto" id="remove-picture" onclick="removePicturePath()" class="material-icons btn-flat prefix">cancel</i>
-                                            <!-- este es el btn de remover -->
-                                            <input style="width: 80%" id="picture-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
-                                        </div>
-                                    </div>
+                                <div class="file-path-wrapper">
+                                    <i style="right: 0;left: auto" id="remove-antecedentes" onclick="removeAntecedentesPath()" class="material-icons btn-flat prefix">cancel</i>
+                                    <!-- este es el btn de remover -->
+                                    <input style="width: 80%" id="antecedentes-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col s6 m6 l6">
+                            <label>
+                                Carnet o Pasaporte
+                                (<?php echo ($files!=null && array_key_exists("carnet", $files)?"<a href=\"download.php?identificador=" . $files["carnet"]["id"] . "&tipo=carnet\" target=\"blank\">" . $files["carnet"]["nombre"] . "</a>":"Ninguno"); ?>)
+                            </label>
+                            <div class="file-field input-field">
+                                <div class="btn-flat">                                           
+                                    <input type="file" id="docIdentidad" name="docIdentidad">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i>
+                                    <!-- este es el btn de remover -->
+                                    <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
 
-<br>
-           <br>
-<div class="divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s6 m6 l6">
+                            <label>
+                                Fotografía del o la Postulante
+                                (<?php echo ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">" . $files["fotografia"]["nombre"] . "</a>":"Ninguno"); ?>)
+                            </label>
+                            <div class="file-field input-field">
+                                <div class="btn-flat">                                            
+                                    <input type="file" id="fotografia" name="fotografia">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <i style="right: 0;left: auto" id="remove-picture" onclick="removePicturePath()" class="material-icons btn-flat prefix">cancel</i>
+                                    <!-- este es el btn de remover -->
+                                    <input style="width: 80%" id="picture-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="divider"></div>
 
             <!-- -----------------------------------------------BOTONES FINAL --------------------------------- -->
-           <div class="row">
+            <div class="row">
                 <form method="POST" action="process_editar.php" id="print-edit">
                     <input type="hidden" name="identificador" value="<?= $id ?>" />
                     <input type="hidden" name="postulacion" value="<?= $postula ?>" />
@@ -1933,7 +1952,7 @@
                             </p>
                             <p>
                                 <label for="apto2">
-                                    <input value="Apto" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Apto' ) echo
+                                    <input value="Apto" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Seleccionado' ) echo
                                         "checked='checked'"; else "";?>/>
                                     <span>
                                         <span class="badge green sinClasificar">Apto</span>
@@ -1961,14 +1980,10 @@
                         </div>
                         <div class="col s4 m4 l4">
                             <p class="left-align">Observación</p>
-                            <form>
-                                <div class="input-field">
-                                    <textarea id="textarea1" name="observacion" class="browser-default">
-                                        <?php echo $result['observacion']?>
-                                    </textarea>
-                                    <label for="textarea1"></label>
-                                </div>
-                            </form>
+                            <div class="input-field">
+                                <textarea id="textarea1" name="observacion" class="browser-default"><?php echo $result['observacion']?></textarea>
+                                <label for="textarea1"></label>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col s3 m3 l3">
@@ -1978,13 +1993,9 @@
                                 <button class="waves-effect waves-green btn save" type="submit" href="userportia.html.php">Guardar</button>
                             </div>
                         </div>
+                    </div>
                 </form>
-                </div>
-
-
             </div>
-
-           
         </div>
         <!--container-->
         <div class="row">
