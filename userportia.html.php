@@ -36,40 +36,38 @@
 <div class="container">
     <div class="row filaDatos">
        <div class="col s2 m2 l2 input-field empresa">
-        <select class="browser-default"  id="categoria" onselect="this.className = ''" name="Categoria">
-              <option value="">Categoria</option>
-              <option value="Sin Clasificar">Sin Clasificar</option>
-              <option value="Apto">Apto</option>
-              <option value="Fuera Rango Renta">Fuera Rango Renta</option>
-              <option value="No Apto">No Apto</option>
-            </select>
-       </div>
-       <div class="col s2 m2 l2 input-field empresa">
-        <select class="browser-default"  id="cargo" onselect="this.className = ''" name="cargo">
-              <option value="">cargo</option>
-              <!-- INSERTAR AQUI API DE LAS POSTULACIONES -->
-            </select>
-       </div>
-       <div class="col s2 m2 l2  input-field fecha">
-           <label for="txtDate5">Desde</label>
-              <input type="text" class="datepicker" id="txtDate5">
+            <!-- select class="browser-default"  id="categoria" onselect="this.className = ''" name="Categoria">
+                <option value="">Categoria</option>
+                <option value="Sin Clasificar">Sin Clasificar</option>
+                <option value="Apto">Apto</option>
+                <option value="Fuera Rango Renta">Fuera Rango Renta</option>
+                <option value="No Apto">No Apto</option>
+            </select -->
         </div>
-       <div class="col s2 m2 l2 input-field fecha">
-           <label for="txtDate5">Hasta</label>
-              <input type="text" class="datepicker" id="txtDate5">
+        <div class="col s2 m2 l2 input-field empresa">
+            <!-- select class="browser-default"  id="cargo" onselect="this.className = ''" name="cargo">
+                <option>Cargo</option>
+            </select -->
         </div>
-       <div class="col s2 m2 l2">
-          <a href="" class="waves-effect waves-light btn-small consulta">Consultar</a>
+        <div class="col s2 m2 l2  input-field fecha">
+            <!-- label for="txtDate5">Desde</label>
+            <input type="text" class="datepicker" id="txtDate5" -->
         </div>
-
-       </div>
+        <div class="col s2 m2 l2 input-field fecha">
+            <!-- label for="txtDate5">Hasta</label>
+            <input type="text" class="datepicker" id="txtDate5" -->
+        </div>
+        <div class="col s2 m2 l2">
+            <!-- a href="" class="waves-effect waves-light btn-small consulta">Consultar</a -->
+        </div>
+    </div>
     <div class="row">
-        <div class="col s12 empresa">
+        <div class="col s8 empresa">
             <h4>Detalles de Postulaciones</h4>
         </div>
     </div>
     <div class="row">
-        <div class="col s12 empresa">
+        <div class="col s4 empresa">
             <a id="exportXml" class="waves-effect btn-flat exportar"><i class="tiny material-icons">data_usage</i>Exportar XLS</a>
         </div>
     </div>
@@ -99,12 +97,12 @@
     <div class="row">
         <div class="col s12 lineaDatos1">
             <ul class="tabs">
-                <li class="tab col s2"><a href="#test6"><span class="badge yellow"><?php echo isset($postulacion_por_tipo[ 'Sin Clasificar' ])? $postulacion_por_tipo[ 'Sin Clasificar' ]: 0 ?></span>Sin Clasificar</a></li>
-                <li class="tab col s2"><a href="#test1"><span class="badge teal"><?php echo isset($postulacion_por_tipo[ 'total' ])? $postulacion_por_tipo[ 'total' ]: 0 ?></span>Postulaciones</a></li>
-                <li class="tab col s2"><a href="#test2"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Apto' ])? $postulacion_por_tipo[ 'Apto' ]: 0 ?></span>Seleccionadas Aptas</a></li>
-                <li class="tab col s2"><a href="#test4"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera Rango Renta' ])? $postulacion_por_tipo[ 'Fuera Rango Renta' ]: 0 ?></span>Fuera Rango Renta</a></li>
-                <li class="tab col s2"><a href="#test3"><span class="badge grey"><?php echo isset($postulacion_por_tipo[ 'No apto' ])? $postulacion_por_tipo[ 'No apto' ]: 0 ?></span>No Aptos</a></li>
-                <li class="tab col s2"><a href="#test5"><span class="badge red"><?php echo isset($postulacion_por_tipo[ 'Eliminados' ])? $postulacion_por_tipo[ 'Eliminados' ]: 0 ?></span>Eliminados</a></li>
+                <li class="tab col s2"><a href="#test6" id="sin_clasificar"><span class="badge yellow"><?php echo isset($postulacion_por_tipo[ 'Sin Clasificar' ])? $postulacion_por_tipo[ 'Sin Clasificar' ]: 0 ?></span>Sin Clasificar</a></li>
+                <li class="tab col s2"><a href="#test1" id="total"><span class="badge teal"><?php echo isset($postulacion_por_tipo[ 'total' ])? $postulacion_por_tipo[ 'total' ]: 0 ?></span>Postulaciones</a></li>
+                <li class="tab col s2"><a href="#test2" id="apto"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Seleccionado' ])? $postulacion_por_tipo[ 'Apto' ]: 0 ?></span>Seleccionadas Aptas</a></li>
+                <li class="tab col s2"><a href="#test4" id="fuera"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera Rango Renta' ])? $postulacion_por_tipo[ 'Fuera Rango Renta' ]: 0 ?></span>Fuera Rango Renta</a></li>
+                <li class="tab col s2"><a href="#test3" id="no_apto"><span class="badge grey"><?php echo isset($postulacion_por_tipo[ 'No apto' ])? $postulacion_por_tipo[ 'No apto' ]: 0 ?></span>No Aptos</a></li>
+                <li class="tab col s2"><a href="#test5" id="eliminado"><span class="badge red"><?php echo isset($postulacion_por_tipo[ 'Eliminados' ])? $postulacion_por_tipo[ 'Eliminados' ]: 0 ?></span>Eliminados</a></li>
                 
             </ul>
         </div>
@@ -153,8 +151,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.jqueryui.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
-<!-- script src="src/jquery.table2excel.js"></script>
-<script src="src/js/postulaciones.js"></script -->
+<!-- script src="src/jquery.table2excel.js"></script -->
+<script src="src/js/postulaciones.js"></script>
 <script>
     $("#exportXml").click(function(){
         window.location.href="userportia.xls.php";
@@ -162,7 +160,8 @@
 
     /*DATATABLES*/ 
     $(document).ready(function() {
-        var postulaciones = $('#tablaPortia').DataTable( {
+        var $postulaciones = $('#tablaPortia');
+        $postulaciones.DataTable( {
             "ajax": "datatables_script.php",
             /* "columns": [
                 { "data": "fecha_post" }, 
@@ -221,7 +220,33 @@
                 }
             } 
         } );
+
+        $("#sin_clasificar").click(function(){
+            $postulaciones.DataTable().search("Sin Clasificar").draw();
+        });
+
+        $("#total").click(function(){
+            $postulaciones.DataTable().search("").draw();
+        });
+
+        $("#apto").click(function(){
+            $postulaciones.DataTable().search("Seleccionado").draw();
+        });
+
+        $("#fuera").click(function(){
+            $postulaciones.DataTable().search("Fuera Rango Renta").draw();
+        });
+
+        $("#no_apto").click(function(){
+            $postulaciones.DataTable().search("No Apto").draw();
+        });
+
+        $("#eliminado").click(function(){
+            $postulaciones.DataTable().search("Eliminados").draw();
+        });
+
     } );
+
 </script>
 <script language="Javascript">
 <?php if (isset($_SESSION["mode"])) { ?>
