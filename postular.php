@@ -266,7 +266,7 @@
             <option value=""></option>
             <option value="En Curso" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'En Curso') { echo "selected"; $i++; }  ?>>En Curso</option>
             <option value="Egresado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Egresado') { echo "selected"; $i++; }  ?>>Graduado</option>
-            <option value="Titulado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Titulado') { echo "selected"; $i++; }  ?>>Abandonado</option>
+            <option value="Titulado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Titulado') { echo "selected"; $i++; }  ?>>Titulado</option>
             <option value="Abandonado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Abandonado') { echo "selected"; $i++; }  ?>>Abandonado</option>
           </select>
         </div>
@@ -1150,7 +1150,7 @@
         <option value="550.000 - 600.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '550.000 - 600.000') { echo "selected"; } ?>>550.000 - 600.000</option>
         <option value="600.000 - 800.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '600.000 - 800.000') { echo "selected"; } ?>>600.000 - 800.000</option>
         <option value="800.000 - 1.000.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '800.000 - 1.000.000') { echo "selected"; } ?>>800.000 - 1.000.000</option>
-        <option value="Más de 1.000.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == 'Más de 1.000.000') { echo "selected"; } ?>>Más de 1.000.000</option>
+        <option value="Más de 1.000.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == 'Mas de 1.000.000') { echo "selected"; } ?>>Más de 1.000.000</option>
       </select>
     </div>
   </div>

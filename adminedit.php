@@ -511,7 +511,8 @@
                 </div>
 
                 <form action="process_editar.php" method="POST">
-                    <input type="hidden" name="identificador" value="<?= $id ?>" />
+                    <input type="hidden" name="identificador" value="<?php echo $id; ?>" />
+                    <input type="hidden" name="cargo" value="<?php echo $postula; ?>" />
                     <input type="hidden" name="pagina" value="datos_personales" />
                     <div class="row">
                         <!--documentos-->
@@ -719,21 +720,22 @@
                             <select onselect="this.className = ''" name="estado_estudio" class="browser-default">
                                 <option value="">Estado</option>
                                 <option value="En Curso" <?php echo ($result[ 'estado_estudio']=='En Curso' ? "selected": ""); ?>>En Curso</option>
-                                <option value="Graduado" <?php echo ($result[ 'estado_estudio']=='Graduado' ? "selected": ""); ?>>Graduado</option>
+                                <option value="Egresado" <?php echo ($result[ 'estado_estudio']=='Egresado' ? "selected": ""); ?>>Egresado</option>
+                                <option value="Titulado" <?php echo ($result[ 'estado_estudio']=='Titulado' ? "selected": ""); ?>>Titulado</option>
                                 <option value="Abandonado" <?php echo ($result[ 'estado_estudio']=='Abandonado' ? "selected": ""); ?>>Abandonado</option>
                             </select>
                         </div>
                         <div class=" input-field col s2 m2 l2">
                             <div id="box_estudio" class="box_estudio">
-                                <label for="txtDate2ftitulacion">Año de Titulación</label>
-                                <input type="text" class="date" id="txtDate2ftitulacion" placeholder="Ingrese año" value="<?php echo $result['fecha_titulacion']; ?>">
+                                <label for="fechaEstudio">Año de Titulación</label>
+                                <input type="text" class="date" id="fechaEstudio" placeholder="Ingrese año" value="<?php echo $result['fecha_titulacion']; ?>">
                             </div>
 
                         </div>
                         <div class=" input-field col s2 m2 l2">
                             <div id="box_estudio" class="box_estudio">
-                                <label for="txtSemestres">Semestres cursados</label>
-                                <input type="text" class="date" id="txtSemestres" placeholder="" value="<?php echo $result['semestres']; ?>">
+                                <label for="semestres">Semestres cursados</label>
+                                <input type="text" class="date" id="semestres" placeholder="" value="<?php echo $result['semestres']; ?>">
                             </div>
 
                         </div>
@@ -1863,32 +1865,42 @@
                                 Curriculum
                                 (<?php echo ($files!=null && array_key_exists("cv", $files)?"<a href=\"download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">" . $files["cv"]["nombre"] . "</a>":"Ninguno"); ?>)
                             </label>
-                            <div class="file-field input-field">
-                                <div class="btn-flat">                                            
-                                    <input type="file" id="cv" name="curriculum">
+                            <iframe frameborder="0" width="200" height="28" name="cv_loader"></iframe>
+                            <form id="form_cv" class="form_cv" method="POST" action="upload.php" enctype="multipart/form-data" target="cv_loader">
+                                <input type="hidden" name="id_post" value="<?php echo $id; ?>" />
+                                <input type="hidden" name="file_type" value="cv" />
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Adjuntar</span>
+                                        <input type="file" id="cv" name="cv" onchange="$('#form_cv').submit();">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                                        <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Adjuntar Archivo">
+                                    </div>
                                 </div>
-                                <div class="file-path-wrapper">
-                                    <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath()" class="material-icons btn-flat prefix">cancel</i>
-                                    <!-- este es el btn de remover -->
-                                    <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Descargar Archivo">
-                                </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="col s6 m6 l6">
                             <label>
                                 Certificado de antecedentes
                                 (<?php echo ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">" . $files["cerAntecedentes"]["nombre"] . "</a>":"Ninguno"); ?>)
                             </label>
-                            <div class="file-field input-field">
-                                <div class="btn-flat">
-                                        <input type="file" id="cerAntecedentes" name="antecedentes">
+                            <iframe frameborder="0" width="200" height="28" name="antecedentes_loader"></iframe>
+                            <form id="form_antecedentes" class="form_antecedentes" method="POST" action="upload.php" enctype="multipart/form-data" target="antecedentes_loader">
+                                <input type="hidden" name="id_post" value="<?php echo $id; ?>" />
+                                <input type="hidden" name="file_type" value="cerAntecedentes" />
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Adjuntar</span>
+                                        <input type="file" id="cerAntecedentes" name="cerAntecedentes" onchange="$('#form_antecedentes').submit();">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <i style="right: 0!important; left: auto;" id="remove-antecedentes" onclick="removeAntecedentesPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                                        <input style="width: 80%" class="file-path validate" id="antecedentes-path" type="text" placeholder="Adjuntar Archivo">
+                                    </div>
                                 </div>
-                                <div class="file-path-wrapper">
-                                    <i style="right: 0;left: auto" id="remove-antecedentes" onclick="removeAntecedentesPath()" class="material-icons btn-flat prefix">cancel</i>
-                                    <!-- este es el btn de remover -->
-                                    <input style="width: 80%" id="antecedentes-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="row">
@@ -1897,33 +1909,42 @@
                                 Carnet o Pasaporte
                                 (<?php echo ($files!=null && array_key_exists("carnet", $files)?"<a href=\"download.php?identificador=" . $files["carnet"]["id"] . "&tipo=carnet\" target=\"blank\">" . $files["carnet"]["nombre"] . "</a>":"Ninguno"); ?>)
                             </label>
-                            <div class="file-field input-field">
-                                <div class="btn-flat">                                           
-                                    <input type="file" id="docIdentidad" name="docIdentidad">
+                            <iframe frameborder="0" width="200" height="28" name="id_loader"></iframe>
+                            <form id="form_id" class="form_id" method="POST" action="upload.php" enctype="multipart/form-data" target="id_loader">
+                                <input type="hidden" name="id_post" value="<?php echo $id; ?>" />
+                                <input type="hidden" name="file_type" value="carnet" />
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Adjuntar</span>
+                                        <input type="file" id="carnet" name="carnet" onchange="$('#form_id').submit();">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <i style="right: 0!important; left: auto;" id="remove-id" onclick="removeIdPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                                        <input style="width: 80%" class="file-path validate" id="id-path" type="text" placeholder="Adjuntar Archivo">
+                                    </div>
                                 </div>
-                                <div class="file-path-wrapper">
-                                    <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i>
-                                    <!-- este es el btn de remover -->
-                                    <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
-
-                                </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="col s6 m6 l6">
                             <label>
                                 Fotografía del o la Postulante
                                 (<?php echo ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">" . $files["fotografia"]["nombre"] . "</a>":"Ninguno"); ?>)
                             </label>
-                            <div class="file-field input-field">
-                                <div class="btn-flat">                                            
-                                    <input type="file" id="fotografia" name="fotografia">
+                            <iframe frameborder="0" width="200" height="28" name="picture_loader"></iframe>
+                            <form id="form_picture" class="form_picture" method="POST" action="upload.php" enctype="multipart/form-data" target="picture_loader">
+                                <input type="hidden" name="id_post" value="<?php echo $id; ?>" />
+                                <input type="hidden" name="file_type" value="fotografia" />
+                                <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>Adjuntar</span>
+                                    <input type="file" id="fotografia" name="fotografia" onchange="$('#form_picture').submit();">
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <i style="right: 0;left: auto" id="remove-picture" onclick="removePicturePath()" class="material-icons btn-flat prefix">cancel</i>
-                                    <!-- este es el btn de remover -->
-                                    <input style="width: 80%" id="picture-path" class="file-path validate" type="text" placeholder="Descargar Archivo">
+                                    <i style="right: 0!important; left: auto;" id="remove-picture" onclick="removePicturePath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                                    <input style="width: 80%" class="file-path validate" id="picture-path" type="text" placeholder="Adjuntar Archivo">
                                 </div>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -200,6 +200,20 @@
             die();
         }
 
+        // Insertar o actualizar tbl_estudio 
+        $sql =  "UPDATE tbl_postulante SET tlicenciaconducir = '$licencia[0]' WHERE id_post = '$idPost'";
+
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_estudio ' . mysqli_error($conn));
+            die();
+        }
+
         // Eliminamos los cursos anteriores
         $sql = "DELETE FROM tbl_curso WHERE id_post = '$idPost'";
 
