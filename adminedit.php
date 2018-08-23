@@ -1973,7 +1973,7 @@
                             </p>
                             <p>
                                 <label for="apto2">
-                                    <input value="Apto" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result[ 'estado']=='Seleccionado' ) echo
+                                    <input value="Seleccionado" id="apto2" class="with-gap" name="group1" type="radio" <?php if($result['estado']=='Seleccionado' ) echo
                                         "checked='checked'"; else "";?>/>
                                     <span>
                                         <span class="badge green sinClasificar">Apto</span>

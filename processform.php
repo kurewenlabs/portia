@@ -141,7 +141,7 @@
         $tipoEstudio='';
         $titulo='';
         $estado_estudio='';
-        $fecha_titulacion='';
+        $fechaEstudio='';
         $semestres='';
         
         $valores_enviados = array();
@@ -185,7 +185,7 @@
                                 '$tipoEstudio',
                                 '$titulo',
                                 '$estado_estudio',
-                                '$fecha_titulacion',
+                                '$fechaEstudio',
                                 $semestres
                                 );";
 
