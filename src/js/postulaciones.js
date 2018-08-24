@@ -204,17 +204,17 @@ $(document).ready(function () {
     }
 
     function getSecondPageDataPart2() {
-        var chkArray2 = [];
+        var chkArray = [];
         if($.trim($("#curso").val()) != "" ){
-            chkArray2.push( {"nombre" : $("#curso").val(), "fecha" : $("#txtDate3").val()} );
+            chkArray.push( {"nombre" : $("#curso").val(), "fecha" : $("#txtDate3").val()} );
         }
         if($.trim($("#curso2").val()) != "" ){
-            chkArray2.push( {"nombre" : $("#curso2").val(), "fecha" : $("#txtDate3c2").val()} );
+            chkArray.push( {"nombre" : $("#curso2").val(), "fecha" : $("#txtDate3c2").val()} );
         }
         if($.trim($("#curso3").val()) != "" ){
-            chkArray2.push( {"nombre" : $("#curso3").val(), "fecha" : $("#txtDate3c3").val()} );
+            chkArray.push( {"nombre" : $("#curso3").val(), "fecha" : $("#txtDate3c3").val()} );
         }   
-        return chkArray2;
+        return chkArray;
     }
 
     function getThirdPageData() {
@@ -305,6 +305,51 @@ $(document).ready(function () {
         if($.trim($("#dias5").val()) != "" ){
             chkArray.push( {"dias" : $("#dias5").val(), "horarios" : $("#id_label_multiple5").val()+' a '+$("#id_label_multiple15").val()} );
             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
+        }
+        return chkArray;
+    }
+
+    function getSixthPageData() {
+        var chkArray = [];
+        if($.trim($("#uniforme").val()) != "" ){
+            chkArray.push( {"uniforme" : $("#uniforme").val()} );
+            $('#uniforme').css('border-color' , '#f2f2f2');
+        } else {
+            notie.alert({ type: 3, text: 'Ingresa tu talla de polera', position: 'bottom' });
+            $('#uniforme').css('border-color' , 'red');
+            return false;
+        }
+        if($.trim($("#uniforme2").val()) != "" ){
+            chkArray.push( {"uniforme2" : $("#uniforme2").val()} );
+            $('#uniforme2').css('border-color' , '#f2f2f2');
+        } else {
+            notie.alert({ type: 3, text: 'Ingresa tu talla de polerón', position: 'bottom' });
+            $('#uniforme2').css('border-color' , 'red');
+            return false;
+        }
+        if($.trim($("#tallaZapato").val()) != "" ){
+            chkArray.push( {"tallaZapato" : $("#tallaZapato").val()} );
+            $('#tallaZapato').css('border-color' , '#f2f2f2');
+        } else {
+            notie.alert({ type: 3, text: 'Ingresa tu talla de calzado', position: 'bottom' });
+            $('#tallaZapato').css('border-color' , 'red');
+            return false;
+        }
+        if($.trim($("#tallaPantalon").val()) != "" ){
+            chkArray.push( {"tallaPantalon" : $("#tallaPantalon").val()} );
+            $('#tallaPantalon').css('border-color' , '#f2f2f2');
+        } else {
+            notie.alert({ type: 3, text: 'Ingresa tu talla de pantalón', position: 'bottom' });
+            $('#tallaPantalon').css('border-color' , 'red');
+            return false;
+        }
+        if($.trim($("#renta").val()) != "" ){
+            chkArray.push( {"renta" : $("#renta").val()} );
+            $('#renta').css('border-color' , '#f2f2f2');
+        } else {
+            notie.alert({ type: 3, text: 'Debes ingresar tus pretenciones de renta', position: 'bottom' });
+            $('#renta').css('border-color' , 'red');
+            return false;
         }
         return chkArray;
     }
@@ -496,51 +541,6 @@ $(document).ready(function () {
         return false;
     })
 
-    function getSixthPageData() {
-        var chkArray = [];
-        if($.trim($("#uniforme").val()) != "" ){
-            chkArray.push( {"uniforme" : $("#uniforme").val()} );
-            $('#uniforme').css('border-color' , '#f2f2f2');
-        } else {
-            notie.alert({ type: 3, text: 'Ingresa tu talla de polera', position: 'bottom' });
-            $('#uniforme').css('border-color' , 'red');
-            return false;
-        }
-        if($.trim($("#uniforme2").val()) != "" ){
-            chkArray.push( {"uniforme2" : $("#uniforme2").val()} );
-            $('#uniforme2').css('border-color' , '#f2f2f2');
-        } else {
-            notie.alert({ type: 3, text: 'Ingresa tu talla de polerón', position: 'bottom' });
-            $('#uniforme2').css('border-color' , 'red');
-            return false;
-        }
-        if($.trim($("#tallaZapato").val()) != "" ){
-            chkArray.push( {"tallaZapato" : $("#tallaZapato").val()} );
-            $('#tallaZapato').css('border-color' , '#f2f2f2');
-        } else {
-            notie.alert({ type: 3, text: 'Ingresa tu talla de calzado', position: 'bottom' });
-            $('#tallaZapato').css('border-color' , 'red');
-            return false;
-        }
-        if($.trim($("#tallaPantalon").val()) != "" ){
-            chkArray.push( {"tallaPantalon" : $("#tallaPantalon").val()} );
-            $('#tallaPantalon').css('border-color' , '#f2f2f2');
-        } else {
-            notie.alert({ type: 3, text: 'Ingresa tu talla de pantalón', position: 'bottom' });
-            $('#tallaPantalon').css('border-color' , 'red');
-            return false;
-        }
-        if($.trim($("#renta").val()) != "" ){
-            chkArray.push( {"renta" : $("#renta").val()} );
-            $('#renta').css('border-color' , '#f2f2f2');
-        } else {
-            notie.alert({ type: 3, text: 'Debes ingresar tus pretenciones de renta', position: 'bottom' });
-            $('#renta').css('border-color' , 'red');
-            return false;
-        }
-        return chkArray;
-    }
-
 	$("form#proceso6form").submit(function(e){
         e.preventDefault();
         var chkArray = getSixthPageData();
@@ -567,7 +567,6 @@ $(document).ready(function () {
     $("form#postularform").submit(function(e){
         e.preventDefault();
         var chkArray = [];
-        /* chkArray["pa"] = getSelectionFormData();
         chkArray["datos"] = getFirstStepData();
         chkArray["estudios"] = getSecondPageDataPart1();
         chkArray["cursos"] = getSecondPageDataPart2();
@@ -575,11 +574,10 @@ $(document).ready(function () {
         chkArray["referencia"] = getFourthPageData();
         chkArray["horarioT"] = getFifthPageData();
         chkArray["documentos"] = getSixthPageData();
-        console.log(chkArray); */
 
         /* we join the array separated by the comma */
         var selected;
-        selected = chkArray.join(' , ') ;
+        selected = chkArray.join(' , ');
         
         var JSONData={};
         $.ajax({

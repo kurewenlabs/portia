@@ -499,7 +499,7 @@
                 </div>
 
                 <div class="divider"></div>
-                <!-- AQUI COMIENZA LA POSTULACION --------------------------------------------------- -->
+                <!-- AQUI COMIENZA LA POSTULACION _______________________________________________ -->
 
 
 
@@ -678,10 +678,9 @@
                             </div>
                         </div>
 
-                </form>
                 <div class="divider"></div>
 
-                <!-- --------------------------- ESTUDIOS ------------------------------ -->
+                <!-- _______________________________ ESTUDIOS _________________________________ -->
 
                 <div class="row">
                     <div class="col s8 m8 l8">
@@ -771,11 +770,11 @@
                         <!--cursos-->
                         <div class=" input-field col s6 m6 l6 back-box1">
                             <label for="curso">Curso</label>
-                            <input id="curso" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["curso"]:" "); ?>">
+                            <input id="curso" name="curso" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["curso"]:" "); ?>">
                         </div>
                         <div class="col s4 m4 l4 input-field back-box1">
                             <label for="txtDate3">Fecha</label>
-                            <input type="text" class="date" id="txtDate3" placeholder="Ingrese mes/año" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["fecha"]:" "); ?>">
+                            <input type="text" class="date" id="txtDate3" name="txtDate3" placeholder="Ingrese mes/año" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["fecha"]:" "); ?>">
                         </div>
                         <div class="col s2 m2 l2">
                             <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso1" onclick="myFunctionCurso1()">Agregar</div>
@@ -790,11 +789,11 @@
                         <!--cursos-->
                         <div class=" input-field col s6 m6 l6 back-box1">
                             <label for="curso2">Curso</label>
-                            <input id="curso2" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["curso"]:" "); ?>">
+                            <input id="curso2" name="curso2" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["curso"]:" "); ?>">
                         </div>
                         <div class="col s4 m4 l4 input-field back-box1">
                             <label for="txtDate3c2">Fecha</label>
-                            <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c2" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["fecha"]:" "); ?>">
+                            <input type="text" class="date" name="txtDate3c2" placeholder="Ingrese mes/año" id="txtDate3c2" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["fecha"]:" "); ?>">
                         </div>
                         <div class="col s2 m2 l2">
                             <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso2" onclick="myFunctionCurso2()">Agregar</div>
@@ -809,11 +808,11 @@
                         <!--cursos-->
                         <div class=" input-field col s6 m6 l6 back-box1">
                             <label for="curso3">Curso</label>
-                            <input id="curso3" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["curso"]:" "); ?>">
+                            <input id="curso3" name="curso3" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["curso"]:" "); ?>">
                         </div>
                         <div class="col s4 m4 l4 input-field back-box1">
                             <label for="txtDate3c3">Fecha</label>
-                            <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c3" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["fecha"]:" "); ?>">
+                            <input type="text" class="date" name="txtDate3c3" placeholder="Ingrese mes/año" id="txtDate3c3" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["fecha"]:" "); ?>">
                         </div>
                         <div class="col s2 m2 l2">
                             <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso3" onclick="myFunctionCurso3()">Agregar</div>
@@ -832,7 +831,7 @@
                 </div>
 
                 <div class="divider"></div>
-                <!-- ----------------------------------------------- EXPERIENCIA LABORAL --------------------------------- -->
+                <!-- ___________________________________ EXPERIENCIA LABORAL ____________________________ -->
                 <div class="row">
                     <div class="col s8 m8 l8">
                         <h4>3.- Experiencia Laboral</h4>
@@ -1047,7 +1046,6 @@
                         </div>
                         <br><br>
 
-                    </form>
                 </div>
 
                 <div class="divider"></div>
@@ -1176,7 +1174,7 @@
                                 <p id="referenciaData" style="margin: 0"></p>
                             </div>
                         </div>
-                </div>
+                
 
                 <div class="row"></div>
                 <div class="divider"></div>
@@ -1837,6 +1835,7 @@
                                     </select>
                                 </div>
                             </div>
+                            <!-- button class="waves-effect waves-green btn save" type="submit" href="process_editar.php">Guardar</button -->
                         </div>
                     </div>
                 </form>

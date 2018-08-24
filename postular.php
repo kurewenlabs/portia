@@ -819,7 +819,7 @@
 </div>
 <div class="row">
   <div class="tab input-field col s5 m5 l5">Dias disponibles para trabajar
-      <select class="js-example-basic-multiple" id="id_label_multiple" multiple="multiple" style="width:60%">
+      <select class="js-example-basic-multiple" id="dias" multiple="multiple" style="width:60%">
          <option value="Todos">Todos</option>
          <option value="Lunes">Lunes</option>
          <option value="Martes">Martes</option>
@@ -848,7 +848,7 @@
       </select>   
   </div>
   <div class="tab input-field col s2 m2 l2">Hasta
-      <select class="js-example-basic-multiple" id="id_label_multiple" multiple="multiple" style="width:60%">
+      <select class="js-example-basic-multiple" id="id_label_multiple1" multiple="multiple" style="width:60%">
          <option value="13:00">13:00</option>
           <option value="14:00">14:00</option>
           <option value="15:00">15:00</option>
