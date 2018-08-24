@@ -707,7 +707,7 @@
                         </div>
                         <div class="tab input-field col s8 m8 l8">
                             <label for="carrera">Titulo de la Carrera</label>
-                            <input id="carrera" type="text" class="validate" value="<?php echo $result['titulo']; ?>">
+                            <input id="carrera" name="titulo" type="text" class="validate" value="<?php echo $result['titulo']; ?>">
                         </div>
                     </div>
                 </div>
@@ -727,14 +727,14 @@
                         <div class=" input-field col s2 m2 l2">
                             <div id="box_estudio" class="box_estudio">
                                 <label for="fechaEstudio">Año de Titulación</label>
-                                <input type="text" class="date" id="fechaEstudio" placeholder="Ingrese año" value="<?php echo $result['fecha_titulacion']; ?>">
+                                <input type="text" name="fecha_estudio" class="date" id="fechaEstudio" placeholder="Ingrese año" value="<?php echo $result['fecha_titulacion']; ?>">
                             </div>
 
                         </div>
                         <div class=" input-field col s2 m2 l2">
                             <div id="box_estudio" class="box_estudio">
                                 <label for="semestres">Semestres cursados</label>
-                                <input type="text" class="date" id="semestres" placeholder="" value="<?php echo $result['semestres']; ?>">
+                                <input type="text" name="semestres" class="date" id="semestres" placeholder="" value="<?php echo $result['semestres']; ?>">
                             </div>
 
                         </div>
@@ -770,17 +770,11 @@
                         <!--cursos-->
                         <div class=" input-field col s6 m6 l6 back-box1">
                             <label for="curso">Curso</label>
-                            <input id="curso" name="curso" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["curso"]:" "); ?>">
+                            <input id="curso" name="curso1" type="text" class="validate" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["curso"]:" "); ?>">
                         </div>
                         <div class="col s4 m4 l4 input-field back-box1">
                             <label for="txtDate3">Fecha</label>
-                            <input type="text" class="date" id="txtDate3" name="txtDate3" placeholder="Ingrese mes/año" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["fecha"]:" "); ?>">
-                        </div>
-                        <div class="col s2 m2 l2">
-                            <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso1" onclick="myFunctionCurso1()">Agregar</div>
-                            <div onclick="myFunctionEliminarCurso1()" class="waves-effect btn-delete" id="btn-delete-curso1">
-                                <i class="small material-icons ">cancel</i>
-                            </div>
+                            <input type="text" class="date" id="txtDate3" name="fecha_curso1" placeholder="Ingrese mes/año" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?$result["cursos"][0]["fecha"]:" "); ?>">
                         </div>
                     </div>
                 </div>
@@ -793,13 +787,7 @@
                         </div>
                         <div class="col s4 m4 l4 input-field back-box1">
                             <label for="txtDate3c2">Fecha</label>
-                            <input type="text" class="date" name="txtDate3c2" placeholder="Ingrese mes/año" id="txtDate3c2" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["fecha"]:" "); ?>">
-                        </div>
-                        <div class="col s2 m2 l2">
-                            <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso2" onclick="myFunctionCurso2()">Agregar</div>
-                            <div onclick="myFunctionEliminarCurso2()" class="waves-effect btn-delete" id="btn-delete-curso2">
-                                <i class="small material-icons ">cancel</i>
-                            </div>
+                            <input type="text" class="date" name="fecha_curso2" placeholder="Ingrese mes/año" id="txtDate3c2" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?$result["cursos"][1]["fecha"]:" "); ?>">
                         </div>
                     </div>
                 </div>
@@ -812,13 +800,7 @@
                         </div>
                         <div class="col s4 m4 l4 input-field back-box1">
                             <label for="txtDate3c3">Fecha</label>
-                            <input type="text" class="date" name="txtDate3c3" placeholder="Ingrese mes/año" id="txtDate3c3" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["fecha"]:" "); ?>">
-                        </div>
-                        <div class="col s2 m2 l2">
-                            <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso3" onclick="myFunctionCurso3()">Agregar</div>
-                            <div onclick="myFunctionEliminarCurso3()" class="waves-effect btn-delete" id="btn-delete-curso3">
-                                <i class="small material-icons ">cancel</i>
-                            </div>
+                            <input type="text" class="date" name="fecha_curso3" placeholder="Ingrese mes/año" id="txtDate3c3" value="<?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?$result["cursos"][2]["fecha"]:" "); ?>">
                         </div>
                     </div>
                 </div>
@@ -839,7 +821,6 @@
 
                 </div>
                 <div class="row">
-                    <form id="proceso3form" onsubmit="return false;">
                         <div class="row">
                             <div class=" input-field col s4 m4 l4">¿Posee experiencia laboral?
                                 <select class="browser-default" onselect="this.className = ''" name="experiencia" id="experiencia">
@@ -851,7 +832,6 @@
                         </div>
                         <div id="box_experiencia">
                             <div class="row" id="">
-                                <h4>Agregar Experiencia laboral</h4>
                                 <span class="comentario">*Ingrese Máximo 3</span>
                                 <div class="divider"></div>
                             </div>
@@ -859,19 +839,19 @@
                                 <div class="row">
                                     <div class=" input-field col s4 m4 l4">
                                         <label for="empresa">Empresa </label>
-                                        <input id="empresa" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["empresa"]:" "); ?>">
+                                        <input id="empresa" name="empresa1" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["empresa"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s4 m4 l4">
                                         <label for="cargo">Cargo</label>
-                                        <input id="cargo" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["cargo"]:" "); ?>">
+                                        <input id="cargo" name="cargo1" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["cargo"]:" "); ?>">
 
                                     </div>
                                     <div class="col s2 m2 l2 input-field dateUntil">
                                         <label for="txtDate4">Desde mes/año</label>
-                                        <input type="text" class="date" id="txtDate4" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_desde"]:" "); ?>">
+                                        <input type="text" name="fechaini_cargo1" class="date" id="txtDate4" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_desde"]:" "); ?>">
                                         <p>
                                             <label for="fechaCargo">
-                                                <input type="checkbox" value="Al presente" id="fechaCargo" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1 && $result["experiencia"][0]["fecha_hasta"]==""?"checked":""); ?>>
+                                                <input name="fecha_presente1" type="checkbox" value="Al presente" id="fechaCargo" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1 && $result["experiencia"][0]["fecha_hasta"]==""?"checked":""); ?>>
                                                 <span>Al presente</span>
                                             </label>
                                         </p>
@@ -879,11 +859,8 @@
                                     <div class="col s2 m2 l2 input-field" id="input-fecha-until">
 
                                         <label for="txtDate4h">Hasta mes/año</label>
-                                        <input type="text" class="date" id="txtDate4h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_hasta"]:" "); ?>">
+                                        <input type="text" name="fechafin_cargo1" class="date" id="txtDate4h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_hasta"]:" "); ?>">
 
-                                    </div>
-                                    <div class="col s2 m2 l2">
-                                        <div id="boton_exp_1" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar()">Agregar</div>
                                     </div>
                                 </div>
                             </div>
@@ -891,18 +868,18 @@
                                 <div class="row">
                                     <div class=" input-field col s4 m4 l4">
                                         <label for="empresa2">Empresa </label>
-                                        <input id="empresa2" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["empresa"]:" "); ?>">
+                                        <input id="empresa2" name="empresa2" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["empresa"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s4 m4 l4">
                                         <label for="cargo2">Cargo</label>
-                                        <input id="cargo2" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["cargo"]:" "); ?>">
+                                        <input id="cargo2" name="cargo2" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["cargo"]:" "); ?>">
                                     </div>
                                     <div class="col s2 m2 l2 input-field">
                                         <label for="txtDate42">Desde mes/año</label>
-                                        <input type="text" class="date" id="txtDate42" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_desde"]:" "); ?>">
+                                        <input type="text" name="fechaini_cargo2" class="date" id="txtDate42" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_desde"]:" "); ?>">
                                         <p>
                                             <label for="fechaCargo2">
-                                                <input type="checkbox" value="Al presente" id="fechaCargo2" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2 && $result["experiencia"][1]["fecha_hasta"]==""?"checked":""); ?>>
+                                                <input type="checkbox" name="fecha_presente2" value="Al presente" id="fechaCargo2" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2 && $result["experiencia"][1]["fecha_hasta"]==""?"checked":""); ?>>
                                                 <span>Al presente</span>
                                             </label>
                                         </p>
@@ -910,11 +887,8 @@
                                     <div class="col s2 m2 l2 input-field" id="input-fecha-until2">
 
                                         <label for="txtDate42h">Hasta mes/año</label>
-                                        <input type="text" class="date" id="txtDate42h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_hasta"]:" "); ?>">
+                                        <input type="text" name="fechafin_cargo2" class="date" id="txtDate42h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_hasta"]:" "); ?>">
 
-                                    </div>
-                                    <div class="col s2 m2 l2">
-                                        <div id="boton_exp_2" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar2()">Agregar</div>
                                     </div>
                                 </div>
                             </div>
@@ -922,19 +896,19 @@
                                 <div class="row">
                                     <div class=" input-field col s4 m4 l4">
                                         <label for="empresa3">Empresa </label>
-                                        <input id="empresa3" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["empresa"]:" "); ?>">
+                                        <input id="empresa3" name="empresa3" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["empresa"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s4 m4 l4">
                                         <label for="cargo3">Cargo</label>
-                                        <input id="cargo3" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["cargo"]:" "); ?>">
+                                        <input id="cargo3" name="cargo3" type="text" class="validate" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["cargo"]:" "); ?>">
 
                                     </div>
                                     <div class="col s2 m2 l2 input-field">
                                         <label for="txtDate43">Desde mes/año</label>
-                                        <input type="text" class="date" id="txtDate43" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_desde"]:" "); ?>">
+                                        <input type="text" name="fechaini_cargo3" class="date" id="txtDate43" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_desde"]:" "); ?>">
                                         <p>
                                             <label for="fechaCargo3">
-                                                <input type="checkbox" value="Al presente" id="fechaCargo3" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3 && $result["experiencia"][2]["fecha_hasta"]==""?"checked":""); ?>>
+                                                <input type="checkbox" name="fecha_presente3" value="Al presente" id="fechaCargo3" <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3 && $result["experiencia"][2]["fecha_hasta"]==""?"checked":""); ?>>
                                                 <span>Al presente</span>
                                             </label>
                                         </p>
@@ -942,108 +916,14 @@
                                     <div class="col s2 m2 l2 input-field" id="input-fecha-until3">
 
                                         <label for="txtDate43h">Hasta mes/año</label>
-                                        <input type="text" class="date" id="txtDate43h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_hasta "]:" "); ?>">
+                                        <input type="text" name="fechafin_cargo3" class="date" id="txtDate43h" value="<?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_hasta "]:" "); ?>">
 
-                                    </div>
-                                    <div class="col s2 m2 l2">
-                                        <div id="boton_exp_3" class="waves-effect waves-light btn-small right" onclick="myFunctionAgregar3()">Agregar</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col s12 m12 l12   boxsmart">
-                                <p id="experienciaData" style="margin: 0"></p>
-                                <div id="boxDataExp1">
-                                    <div class="boxDataExp">
-                                        <div class="col s4 m4 l4">
-                                            <span class="boxDataExpInfo" id="empresaData">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["empresa"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s4 m4 l4">
-                                            <span class="boxDataExpInfo" id="cargoData">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["cargo"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s1 m1 l1">
-                                            <span class="boxDataExpInfo" id="fecha1Data">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_desde"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s2 m2 l2 ">
-                                            <span class="boxDataExpInfo" id="fecha2Data">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?$result["experiencia"][0]["fecha_hasta"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s1 m1 l1 right-align">
-                                            <div onclick="elminarExp1()" class="waves-effect btnEliminarExp" id="btnDeleteExp1">
-                                                <i class="small material-icons">cancel</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="boxDataExp2">
-                                    <div class="boxDataExp">
-                                        <div class="col s4 m4 l4">
-                                            <span class="boxDataExpInfo" id="empresaData2">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["empresa"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s4 m4 l4">
-                                            <span class="boxDataExpInfo" id="cargoData2">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["cargo"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s1 m1 l1">
-                                            <span class="boxDataExpInfo" id="fecha1Data2">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_desde"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s2 m2 l2 ">
-                                            <span class="boxDataExpInfo" id="fecha2Data2">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?$result["experiencia"][1]["fecha_hasta"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s1 m1 l1 right-align">
-                                            <div onclick="elminarExp2()" class="waves-effect btnEliminarExp" id="btnDeleteExp2">
-                                                <i class="small material-icons">cancel</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="boxDataExp3">
-                                    <div class="boxDataExp">
-                                        <div class="col s4 m4 l4">
-                                            <span class="boxDataExpInfo" id="empresaData3">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["empresa"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s4 m4 l4">
-                                            <span class="boxDataExpInfo" id="cargoData3">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["cargo"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s1 m1 l1">
-                                            <span class="boxDataExpInfo" id="fecha1Data3">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_desde"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s2 m2 l2 ">
-                                            <span class="boxDataExpInfo" id="fecha2Data3">
-                                                <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?$result["experiencia"][2]["fecha_hasta"]:""); ?>
-                                            </span>
-                                        </div>
-                                        <div class="col s1 m1 l1 right-align">
-                                            <div onclick="elminarExp3()" class="waves-effect btnEliminarExp" id="btnDeleteExp3">
-                                                <i class="small material-icons">cancel</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <br><br>
 
                 </div>
@@ -1057,7 +937,6 @@
 
                 </div>
                 <div class="row">
-                    <form id="proceso4form" onsubmit="return false;">
                         <div class="row">
                             <div class="tab input-field col s5 m5 l5">¿Cuenta con referencias laborales?
                                 <select class="browser-default" onselect="this.className = ''" name="referencia" id="referencia_laboral">
@@ -1069,112 +948,82 @@
                         </div>
                         <div id="container_ref">
                             <div class="row">
-                                <h4>Agregar Referencias</h4>
                                 <span class="comentario">*Ingrese Máximo 3</span>
                                 <div class="divider"></div>
                             </div>
                             <div class="row" id="refs_box1">
                                 <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="empresaref">Empresa </label>
-                                    <input id="empresaref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["empresa"]:" "); ?>">
+                                    <input id="empresaref" name="empresaref1" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["empresa"]:" "); ?>">
                                 </div>
                                 <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="contactoref">Nombre del Contacto</label>
-                                    <input id="contactoref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["nombre_contacto"]:" "); ?>">
+                                    <input id="contactoref" name="contactoref1" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["nombre_contacto"]:" "); ?>">
                                 </div>
                                 <div class="row">
                                     <div class=" input-field col s4 m4 l4 back-box2">
                                         <label for="cargoref">Cargo</label>
-                                        <input id="cargoref" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["cargo"]:" "); ?>">
+                                        <input id="cargoref" name="cargoref1" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["cargo"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s3 m3 l3 back-box2">
                                         <label for="telefonoref">Telefono</label>
-                                        <input id="telefonoref" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["telefono"]:" "); ?>">
+                                        <input id="telefonoref" name="telefonoref1" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["telefono"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s4 m4 l4 back-box2">
                                         <label for="emailref">Email</label>
-                                        <input id="emailref" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["email"]:" "); ?>">
-                                    </div>
-                                    <div class="col s2 m2 l2 ">
-                                        <div id="boton_refs1" class="waves-effect waves-light btn-small add" onclick="myFunctionRef()">Agregar</div>
-                                        <div onclick="myFunctionEliminarRef1()" class="waves-effect btn-delete-ref" id="btn-delete-ref1">
-                                            <i class="small material-icons ">cancel</i>
-                                        </div>
+                                        <input id="emailref" name="emailref1" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?$result["referencias"][0]["email"]:" "); ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row" id="refs_box2">
                                 <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="empresaref2">Empresa 2</label>
-                                    <input id="empresaref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["empresa"]:" "); ?>">
+                                    <input id="empresaref2" name="empresaref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["empresa"]:" "); ?>">
                                 </div>
                                 <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="contactoref2">Nombre del Contacto</label>
-                                    <input id="contactoref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["nombre_contacto"]:" "); ?>">
+                                    <input id="contactoref2" name="contactoref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["nombre_contacto"]:" "); ?>">
                                 </div>
                                 <div class="row">
                                     <div class=" input-field col s4 m4 l4 back-box2">
                                         <label for="cargoref2">Cargo</label>
-                                        <input id="cargoref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["cargo"]:" "); ?>">
+                                        <input id="cargoref2" name="cargoref2" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["cargo"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s3 m3 l3 back-box2">
                                         <label for="telefonoref2">Telefono</label>
-                                        <input id="telefonoref2" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["telefono"]:" "); ?>">
+                                        <input id="telefonoref2" name="telefonoref2" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["telefono"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s4 m4 l4 back-box2">
                                         <label for="emailref2">Email</label>
-                                        <input id="emailref2" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["email"]:" "); ?>">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s2 m2 l2">
-                                            <div id="boton_refs2" class="waves-effect waves-light btn-small add" onclick="myFunctionRef2()">Agregar</div>
-                                            <div onclick="myFunctionEliminarRef2()" class="waves-effect btn-delete-ref" id="btn-delete-ref2">
-                                                <i class="small material-icons ">cancel</i>
-                                            </div>
-                                        </div>
+                                        <input id="emailref2" name="emailref2" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?$result["referencias"][1]["email"]:" "); ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row" id="refs_box3">
                                 <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="empresaref3">Empresa 3</label>
-                                    <input id="empresaref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["empresa"]:" "); ?>">
+                                    <input id="empresaref3" name="empresaref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["empresa"]:" "); ?>">
                                 </div>
                                 <div class=" input-field col s5 m5 l5 back-box3">
                                     <label for="contactoref3">Nombre del Contacto</label>
-                                    <input id="contactoref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["nombre_contacto"]:" "); ?>">
+                                    <input id="contactoref3" name="contactoref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["nombre_contacto"]:" "); ?>">
                                 </div>
                                 <div class="row">
                                     <div class=" input-field col s4 m4 l4 back-box2">
                                         <label for="cargoref3">Cargo</label>
-                                        <input id="cargoref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["cargo"]:" "); ?>">
+                                        <input id="cargoref3" name="cargoref3" type="text" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["cargo"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s3 m3 l3 back-box2">
                                         <label for="telefonoref3">Telefono</label>
-                                        <input id="telefonoref3" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["telefono"]:" "); ?>">
+                                        <input id="telefonoref3" name="telefonoref3" type="tel" class="validate" placeholder="+56(9)" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["telefono"]:" "); ?>">
                                     </div>
                                     <div class=" input-field col s4 m4 l4 back-box2">
                                         <label for="emailref3">Email</label>
-                                        <input id="emailref3" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["email"]:" "); ?>">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s2 m2 l2">
-                                            <div id="boton_refs3" class="waves-effect waves-light btn-small add" onclick="myFunctionRef3()">Agregar</div>
-                                            <div onclick="myFunctionEliminarRef3()" class="waves-effect btn-delete-ref" id="btn-delete-ref3">
-                                                <i class="small material-icons ">cancel</i>
-                                            </div>
-                                        </div>
+                                        <input id="emailref3" name="emailref3" type="email" class="validate" value="<?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?$result["referencias"][2]["email"]:" "); ?>">
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="row">
-                            <div class="col s12 m12 l12 box_referencias boxsmart">
-                                <p id="referenciaData" style="margin: 0"></p>
-                            </div>
-                        </div>
-                
 
                 <div class="row"></div>
                 <div class="divider"></div>
@@ -1202,14 +1051,14 @@
                     <div class=" input-field col s6 m6 l6">
                         <select class="browser-default" onselect="this.className = ''" name="isapre" id="isapre">
                             <option value="">Isapre o Fonasa</option>
-                            <option value="Banmédica" <?php echo ($result["prestadorsalud"]=='Banmedica' ? "selected": ""); ?>>Banmédica</option>
+                            <option value="Banmedica" <?php echo ($result["prestadorsalud"]=='Banmedica' ? "selected": ""); ?>>Banmédica</option>
                             <option value="Chuquicamata" <?php echo ($result["prestadorsalud"]=='Chuquicamata' ? "selected": ""); ?>>Chuquicamata</option>
                             <option value="Consalud" <?php echo ($result["prestadorsalud"]=='Consalud' ? "selected": ""); ?>>Consalud</option>
                             <option value="Colmena" <?php echo ($result["prestadorsalud"]=='Colmena' ? "selected": ""); ?>>Colmena</option>
                             <option value="Cruz Blanca" <?php echo ($result["prestadorsalud"]=='Cruz Blanca' ? "selected": ""); ?>>Cruz Blanca</option>
                             <option value="Cruz del Norte" <?php echo ($result["prestadorsalud"]=='Cruz del Norte' ? "selected": ""); ?>>Cruz del Norte</option>
                             <option value="Fonasa" <?php echo ($result["prestadorsalud"]=='Fonasa' ? "selected": ""); ?>>Fonasa</option>
-                            <option value="Fundación" <?php echo ($result["prestadorsalud"]=='Fundacion' ? "selected": ""); ?>>Fundación</option>
+                            <option value="Fundacion" <?php echo ($result["prestadorsalud"]=='Fundacion' ? "selected": ""); ?>>Fundación</option>
                             <option value="Fusat" <?php echo ($result["prestadorsalud"]=='Fusat' ? "selected": ""); ?>>Fusat</option>
                             <option value="Nueva Masvida" <?php echo ($result["prestadorsalud"]=='Nueva Masvida' ? "selected": ""); ?>>Nueva Masvida</option>
                             <option value="Río Blanco" <?php echo ($result["prestadorsalud"]=='Rio Blanco' ? "selected": ""); ?>>Río Blanco</option>
@@ -1219,7 +1068,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h4>Comunas disponibles para Trabajar</h4>
+                    <h4>6.- Comunas Disponibles para Trabajar</h4>
                     <div class="divider"></div>
                 </div>
                 <?php
@@ -1297,7 +1146,7 @@
                     </script>
                     <div class="divider"></div>
                     <div id="containerInputHoras">
-                        <h4>Seleccione Horario</h4>
+                        <h4>7.- Horario Disponibles para Trabajar</h4>
                         <div id="inputDiaHora">
                             <?php
                                 $dias_array = false;
@@ -1306,8 +1155,8 @@
                                 }
                             ?>
                                 <div class="row">
-                                    <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
-                                        <select class="js-example-basic-multiple" id="dias" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
+                                    <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
+                                        <select name="dias_work1" class="js-example-basic-multiple" id="dias" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
                                             <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
                                             <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
                                             <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
@@ -1318,9 +1167,9 @@
                                             <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Horario Desde
-                                        <select class="js-example-basic-multiple" id="id_label_multiple" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Horario Desde
+                                        <select name="horaini_work1" class="js-example-basic-multiple" id="id_label_multiple" style="width:60%">
+                                            <option value=""></option>
                                             <option value="1:00" <?php echo (count($result[ "horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"],'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
                                             <option value="2:00" <?php echo (count($result[ "horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"],'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
                                             <option value="3:00" <?php echo (count($result[ "horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"],'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
@@ -1335,9 +1184,9 @@
                                             <option value="12:00" <?php echo (count($result[ "horarios"])>=1 && substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Hasta
-                                        <select class="js-example-basic-multiple" id="id_label_multiple1" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Hasta
+                                        <select name="horafin_work1" class="js-example-basic-multiple" id="id_label_multiple1" style="width:60%">
+                                            <option value=""></option>
                                             <option value="13:00" <?php echo (count($result[ "horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                                             <option value="14:00" <?php echo (count($result[ "horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                                             <option value="15:00" <?php echo (count($result[ "horarios"])>=1 && substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1353,16 +1202,6 @@
                                         </select>
                                     </div>
 
-                                    <div class="row">
-
-
-                                        <div class="col s2 m2 l2">
-                                            <div id="boton_dias1" class="waves-effect waves-light btn-small add1" onclick="agregarDias1()">Agregar</div>
-                                        </div>
-
-                                    </div>
-
-
                                 </div>
                         </div>
 
@@ -1374,8 +1213,8 @@
                                 }
                             ?>
                                 <div class="row">
-                                    <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
-                                        <select class="js-example-basic-multiple" id="dias2" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
+                                    <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
+                                        <select name="dias_work2" class="js-example-basic-multiple" id="dias2" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
                                             <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
                                             <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
                                             <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
@@ -1386,9 +1225,9 @@
                                             <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Horario Desde
-                                        <select class="js-example-basic-multiple" id="id_label_multiple2" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Horario Desde
+                                        <select name="horaini_work2" class="js-example-basic-multiple" id="id_label_multiple2" style="width:60%">
+                                            <option value=""></option>
                                             <option value="1:00" <?php echo (count($result[ "horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"],'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
                                             <option value="2:00" <?php echo (count($result[ "horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"],'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
                                             <option value="3:00" <?php echo (count($result[ "horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"],'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
@@ -1403,9 +1242,9 @@
                                             <option value="12:00" <?php echo (count($result[ "horarios"])>=2 && substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Hasta
-                                        <select class="js-example-basic-multiple" id="id_label_multiple12" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Hasta
+                                        <select name="horafin_work2" class="js-example-basic-multiple" id="id_label_multiple12" style="width:60%">
+                                            <option value=""></option>
                                             <option value="13:00" <?php echo (count($result[ "horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                                             <option value="14:00" <?php echo (count($result[ "horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                                             <option value="15:00" <?php echo (count($result[ "horarios"])>=2 && substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1421,15 +1260,6 @@
                                         </select>
                                     </div>
 
-                                    <div class="row">
-
-                                        <div class="col s2 m2 l2">
-                                            <div id="boton_dias2" class="waves-effect waves-light btn-small add1 " onclick="agregarDias2()">Agregar</div>
-                                        </div>
-
-                                    </div>
-
-
                                 </div>
                         </div>
                         <div id="inputDiaHora3">
@@ -1440,8 +1270,8 @@
                                 }
                             ?>
                                 <div class="row">
-                                    <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
-                                        <select class="js-example-basic-multiple" id="dias3" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
+                                    <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
+                                        <select name="dias_work3" class="js-example-basic-multiple" id="dias3" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
                                             <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
                                             <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
                                             <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
@@ -1452,9 +1282,9 @@
                                             <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Horario Desde
-                                        <select class="js-example-basic-multiple" id="id_label_multiple3" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Horario Desde
+                                        <select name="horaini_work3" class="js-example-basic-multiple" id="id_label_multiple3" style="width:60%">
+                                            <option value=""></option>
                                             <option value="1:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"],'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
                                             <option value="2:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"],'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
                                             <option value="3:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"],'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
@@ -1469,9 +1299,9 @@
                                             <option value="12:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Hasta
-                                        <select class="js-example-basic-multiple" id="id_label_multiple13" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Hasta
+                                        <select name="horafin_work3" class="js-example-basic-multiple" id="id_label_multiple13" style="width:60%">
+                                            <option value=""></option>
                                             <option value="13:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                                             <option value="14:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                                             <option value="15:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1486,15 +1316,6 @@
                                             <option value="24:00" <?php echo (count($result[ "horarios"])>=3 && substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"],'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                                         </select>
                                     </div>
-
-                                    <div class="row">
-
-                                        <div class="col s2 m2 l2">
-                                            <div id="boton_dias3" class="waves-effect waves-light btn-small add1 " onclick="agregarDias3()">Agregar</div>
-                                        </div>
-
-                                    </div>
-
                                 </div>
                         </div>
                         <div id="inputDiaHora4">
@@ -1505,8 +1326,8 @@
                                 }
                             ?>
                                 <div class="row">
-                                    <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
-                                        <select class="js-example-basic-multiple" id="dias4" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
+                                    <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
+                                        <select name="dias_work4" class="js-example-basic-multiple" id="dias4" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
                                             <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
                                             <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
                                             <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
@@ -1517,9 +1338,9 @@
                                             <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Horario Desde
-                                        <select class="js-example-basic-multiple" id="id_label_multiple4" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Horario Desde
+                                        <select name="horaini_work4" class="js-example-basic-multiple" id="id_label_multiple4" style="width:60%">
+                                            <option value=""></option>
                                             <option value="1:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"],'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
                                             <option value="2:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"],'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
                                             <option value="3:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"],'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
@@ -1534,9 +1355,9 @@
                                             <option value="12:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
                                         </select>
                                     </div>
-                                    <div class=" input-field col s2 m2 l2">Hasta
-                                        <select class="js-example-basic-multiple" id="id_label_multiple14" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                    <div class="input-field col s2 m2 l2">Hasta
+                                        <select name="horafin_work4" class="js-example-basic-multiple" id="id_label_multiple14" style="width:60%">
+                                            <option value=""></option>
                                             <option value="13:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                                             <option value="14:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                                             <option value="15:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1551,16 +1372,6 @@
                                             <option value="24:00" <?php echo (count($result[ "horarios"])>=4 && substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"],'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                                         </select>
                                     </div>
-
-                                    <div class="row">
-
-                                        <div class="col s2 m2 l2">
-                                            <div id="boton_dias4" class="waves-effect waves-light btn-small add1 " onclick="agregarDias4()">Agregar</div>
-                                        </div>
-
-                                    </div>
-
-
                                 </div>
                         </div>
                         <div id="inputDiaHora5">
@@ -1571,8 +1382,8 @@
                                 }
                             ?>
                                 <div class="row">
-                                    <div class=" input-field col s5 m5 l5">Dias disponibles para trabajar
-                                        <select class="js-example-basic-multiple" id="dias5" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
+                                    <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
+                                        <select name="dias_work5" class="js-example-basic-multiple" id="dias5" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
                                             <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
                                             <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
                                             <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
@@ -1584,8 +1395,8 @@
                                         </select>
                                     </div>
                                     <div class=" input-field col s2 m2 l2">Horario Desde
-                                        <select class="js-example-basic-multiple" id="id_label_multiple5" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                        <select name="horaini_work5" class="js-example-basic-multiple" id="id_label_multiple5" style="width:60%">
+                                            <option value=""></option>
                                             <option value="1:00" <?php echo (count($result[ "horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"],'a')-1)=="1:00"?"selected":""); ?>>1:00</option>
                                             <option value="2:00" <?php echo (count($result[ "horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"],'a')-1)=="2:00"?"selected":""); ?>>2:00</option>
                                             <option value="3:00" <?php echo (count($result[ "horarios"])>=5 && substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"],'a')-1)=="3:00"?"selected":""); ?>>3:00</option>
@@ -1601,8 +1412,8 @@
                                         </select>
                                     </div>
                                     <div class=" input-field col s2 m2 l2">Hasta
-                                        <select class="js-example-basic-multiple" id="id_label_multiple15" style="width:60%">
-                                            <option value="">Obligatorio</option>
+                                        <select name="horafin_work5" class="js-example-basic-multiple" id="id_label_multiple15" style="width:60%">
+                                            <option value=""></option>
                                             <option value="13:00" <?php echo (count($result[ "horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                                             <option value="14:00" <?php echo (count($result[ "horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                                             <option value="15:00" <?php echo (count($result[ "horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1617,157 +1428,8 @@
                                             <option value="24:00" <?php echo (count($result[ "horarios"])>=5 && substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"],'a')+2)=="24:00"?"selected":""); ?>>24:00</option>
                                         </select>
                                     </div>
-
-                                    <div class="row">
-
-                                        <div class="col s2 m2 l2">
-                                            <div id="boton_dias5" class="waves-effect waves-light btn-small add1 " onclick="agregarDias5()">Agregar</div>
-                                        </div>
-
-                                    </div>
-
-
                                 </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <h4 style="color:#838383">Horarios Agregados</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12 l12  boxsmart">
-                            <div id="containerDataHoras">
-                                <div class="boxSmartContent" id="dias1Box">
-                                    <div class="col s4 m4 l4">
-                                        <span style="font-size: 20px" id="diasData1">
-                                            <?php echo (count($result["horarios"])>=1?$result["horarios"][0]["dias"]:""); ?>
-                                        </span>
-                                    </div>
-                                    <div class="col s5 m5 l5">
-                                        <span style="font-size: 20px" id="comunasData1"></span>
-                                    </div>
-                                    <div class="col s2 m2 l2 right-align">
-                                        <span style="font-size: 20px" class="right-align">
-                                            <span id="horasData1">
-                                                <?php echo (count($result["horarios"])>=1?substr($result["horarios"][0]["horarios"], 0, strpos($result["horarios"][0]["horarios"], 'a')-1):""); ?>
-                                            </span>
-                                            <span>a</span>
-                                            <span id="horasData1h">
-                                                <?php echo (count($result["horarios"])>=1?substr($result["horarios"][0]["horarios"], strpos($result["horarios"][0]["horarios"], 'a')+2):""); ?>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="col s1 m1 l1 right-align">
-                                        <div onclick="myFunctionEliminarHora1()" class="waves-effect" id="btn-hora-hora1">
-                                            <i class="small material-icons" style="color: red">cancel</i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="boxSmartContent" id="dias2Box">
-                                    <div class="col s4 m4 l4">
-                                        <span style="font-size: 20px" id="diasData2">
-                                            <?php echo (count($result["horarios"])>=2?$result["horarios"][1]["dias"]:""); ?>
-                                        </span>
-                                    </div>
-                                    <div class="col s5 m5 l5">
-                                        <span style="font-size: 20px" id="comunasData2"></span>
-                                    </div>
-                                    <div class="col s2 m2 l2 right-align">
-                                        <span style="font-size: 20px" class="right-align">
-                                            <span id="horasData2">
-                                                <?php echo (count($result["horarios"])>=2?substr($result["horarios"][1]["horarios"], 0, strpos($result["horarios"][1]["horarios"], 'a')-1):""); ?>
-                                            </span>
-                                            <span>a</span>
-                                            <span id="horasData2h">
-                                                <?php echo (count($result["horarios"])>=2?substr($result["horarios"][1]["horarios"], strpos($result["horarios"][1]["horarios"], 'a')+2):""); ?>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="col s1 m1 l1 right-align">
-                                        <div onclick="myFunctionEliminarHora2()" class="waves-effect" id="btn-hora-hora2">
-                                            <i class="small material-icons" style="color: red">cancel</i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="boxSmartContent" id="dias3Box">
-                                    <div class="col s4 m4 l4">
-                                        <span style=" font-size: 20px" id="diasData3">
-                                            <?php echo (count($result["horarios"])>=3?$result["horarios"][2]["dias"]:""); ?>
-                                        </span>
-                                    </div>
-                                    <div class="col s5 m5 l5">
-                                        <span style=" font-size: 20px" id="comunasData3"></span>
-                                    </div>
-                                    <div class="col s2 m2 l2 right-align">
-                                        <span style=" font-size: 20px" class="right-align">
-                                            <span id="horasData3">
-                                                <?php echo (count($result["horarios"])>=3?substr($result["horarios"][2]["horarios"], 0, strpos($result["horarios"][2]["horarios"], 'a')-1):""); ?>
-                                            </span>
-                                            <span>a</span>
-                                            <span id="horasData3h">
-                                                <?php echo (count($result["horarios"])>=3?substr($result["horarios"][2]["horarios"], strpos($result["horarios"][2]["horarios"], 'a')+2):""); ?>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="col s1 m1 l1 right-align">
-                                        <div onclick="myFunctionEliminarHora3()" class="waves-effect" id="btn-hora-hora3">
-                                            <i class="small material-icons" style="color: red">cancel</i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="boxSmartContent" id="dias4Box">
-                                    <div class="col s4 m4 l4">
-                                        <span style=" font-size: 20px" id="diasData4">
-                                            <?php echo (count($result["horarios"])>=4?$result["horarios"][3]["dias"]:""); ?>
-                                        </span>
-                                    </div>
-                                    <div class="col s5 m5 l5">
-                                        <span style=" font-size: 20px" id="comunasData4"></span>
-                                    </div>
-                                    <div class="col s2 m2 l2 right-align">
-                                        <span style=" font-size: 20px" class="right-align">
-                                            <span id="horasData4">
-                                                <?php echo (count($result["horarios"])>=4?substr($result["horarios"][3]["horarios"], 0, strpos($result["horarios"][3]["horarios"], 'a')-1):""); ?>
-                                            </span>
-                                            <span>a</span>
-                                            <span id="horasData4h">
-                                                <?php echo (count($result["horarios"])>=4?substr($result["horarios"][3]["horarios"], strpos($result["horarios"][3]["horarios"], 'a')+2):""); ?>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="col s1 m1 l1 right-align">
-                                        <div onclick="myFunctionEliminarHora4()" class="waves-effect" id="btn-hora-hora4">
-                                            <i class="small material-icons" style="color: red">cancel</i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="boxSmartContent" id="dias5Box">
-                                    <div class="col s4 m4 l4">
-                                        <span style=" font-size: 20px" id="diasData5"></span>
-                                    </div>
-                                    <div class="col s5 m5 l5">
-                                        <span style=" font-size: 20px" id="comunasData5"></span>
-                                    </div>
-                                    <div class="col s2 m2 l2 right-align">
-                                        <span style=" font-size: 20px" class="right-align">
-                                            <span id="horasData5">
-                                                <?php echo (count($result["horarios"])>=5?substr($result["horarios"][4]["horarios"], 0, strpos($result["horarios"][4]["horarios"], 'a')-1):""); ?>
-                                            </span>
-                                            <span>a</span>
-                                            <span id="horasData5h">
-                                                <?php echo (count($result["horarios"])>=5?substr($result["horarios"][4]["horarios"], strpos($result["horarios"][4]["horarios"], 'a')+2):""); ?>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="col s1 m1 l1 right-align">
-                                        <div onclick="myFunctionEliminarHora5()" class="waves-effect" id="btn-hora-hora5">
-                                            <i class="small material-icons" style="color: red">cancel</i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="row"></div>
@@ -1776,7 +1438,7 @@
 
                     <div class="row">
                         <div class="col s8 m8 l8">
-                            <h4>Datos Uniforme</h4>
+                            <h4>8.- Datos Uniforme</h4>
                         </div>
                     </div>
 
@@ -1806,12 +1468,12 @@
                             </div>
                             <div class="tab input-field col s4 m4 l4">
                                 <label for="tallaZapato">Talla de zapatos</label>
-                                <input id="tallaZapato" type="text" class="validate" value="<?php echo $result["tzapatos"]; ?>">
+                                <input id="tallaZapato" name="talla_zapato" type="text" class="validate" value="<?php echo $result["tzapatos"]; ?>">
                             </div>
                             <div class="row">
                                 <div class="tab input-field col s8 m8 l8">
                                     <label for="tallaPantalon">Talla de Pantalon (ingrese detalles si necesita)</label>
-                                    <input id="tallaPantalon" type="text" class="validate" value="<?php echo $result["tpantalon"]; ?>">
+                                    <input id="tallaPantalon" name="talla_pantalon" type="text" class="validate" value="<?php echo $result["tpantalon"]; ?>">
                                 </div>
                             </div>
                         </div>
@@ -1834,16 +1496,25 @@
                                         <option value="Más de 1.000.000" <?php echo ($result[ "renta"]=='Mas de 1.000.000' ? "selected": ""); ?>>Más de 1.000.000</option>
                                     </select>
                                 </div>
+                                <div class="tab input-field col s5 m5 l5">
+                                </div>
+                                <div class="tab input-field col s3 m3 l3">
+                                    <button class="waves-effect waves-green btn save" type="submit" href="process_editar.php">Guardar</button>
+                                </div>
                             </div>
-                            <!-- button class="waves-effect waves-green btn save" type="submit" href="process_editar.php">Guardar</button -->
                         </div>
                     </div>
                 </form>
+                <br />
+                <br />
+                <br />
+                <div class="row"></div>
+                <div class="divider"></div>
 
             <!----- SECCION DE ARCHIVOS ADJUNTOS ----->
             
             <div class="row">
-                <h4>Adjuntos (Opcional)</h4>
+                <h4>9.- Adjuntos (Opcional)</h4>
                 <?php
                     require_once("db.php");
                     $files = null;
@@ -2024,19 +1695,21 @@
             </div>
         </div>
 
-
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type = "text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
-        <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
-        <!-- script src="src/js/postulaciones.js"></script -->
+        <script src="src/js/postulaciones.js"></script>
         <script language="Javascript">
             <?php
-    $error = $_POST['mensaje'];
-    if($error <> null) { }
-?>
+                $error = $_GET['actualizado'];
+                if($error != null && $error == 'error1') { 
+                    ?>
+                    notie.alert({ type: 3, text: 'No se ha podido guardar la postulación', position: 'bottom' });
+                    <?php
+                }
+            ?>
+
             // RUT/Pasaporte
             if ($('#documento').val() == 'rut') {
                 $('#rut_box').show();
@@ -2060,73 +1733,35 @@
                 $("#fechaEstudio").prop("checked", false);
             }
 
-            // Otros Conocimientos
-            $('#curso1before').show();
-            $('#btn-send-curso1').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?"hide()":"show()"); ?>;
-            $('#btn-delete-curso1').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=1?"show()":"hide()"); ?>;
-            $('#curso2before').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?"show()":"hide()"); ?>;
-            $('#btn-send-curso2').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?"hide()":"show()"); ?>;
-            $('#btn-delete-curso2').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=2?"show()":"hide()"); ?>;
-            $('#curso3before').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?"show()":"hide()"); ?>;
-            $('#btn-send-curso3').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?"hide()":"show()"); ?>;
-            $('#btn-delete-curso3').
-            <?php echo (array_key_exists("cursos", $result) && count($result["cursos"])>=3?"show()":"hide()"); ?>;
+            // Cursos
+            $('#curso1_box').show();
+            $('#curso2_box').show();
+            $('#curso3_box').show();
 
-            // Experiencia Laboral
-            $('#boxDataExp1').
-            <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=1?"show()":"hide()"); ?>;
-            $('#boxDataExp2').
-            <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=2?"show()":"hide()"); ?>;
-            $('#boxDataExp3').
-            <?php echo (array_key_exists("experiencia", $result) && count($result["experiencia"])>=3?"show()":"hide()"); ?>;
+            // Experiencia
+            $('#box_experiencia').show();
+            $('#experiencia_box_1').show();
+            $('#experiencia_box_2').show();
+            $('#experiencia_box_3').show();
 
             // Referencias
-            $('#refs_box1').
-            <?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=1?"show()":"hide()"); ?>;
-            $('#refs_box2').
-            <?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=2?"show()":"hide()"); ?>;
-            $('#refs_box3').
-            <?php echo (array_key_exists("referencias", $result) && count($result["referencias"])>=3?"show()":"hide()"); ?>;
+            $('#container_ref').show();
+            $('#refs_box1').show();
+            $('#refs_box2').show();
+            $('#refs_box3').show();
 
-            // Horarios Disponibles
-            var containerHoras = $('#containerInputHoras');
-            var inputDiaHora1 = $('#inputDiaHora');
-            var boxData1 = $('#dias1Box');
-            $(boxData1).
-            <?php echo (count($result["horarios"])>=1?"show()":"hide()") ?>;
-            $(inputDiaHora1).
-            <?php echo (count($result["horarios"])==0?"show()":"hide()") ?>;
-            var inputDiaHora2 = $('#inputDiaHora2');
-            var boxData2 = $('#dias2Box');
-            $(boxData2).
-            <?php echo (count($result["horarios"])>=2?"show()":"hide()") ?>;
-            $(inputDiaHora2).
-            <?php echo (count($result["horarios"])==1?"show()":"hide()") ?>;
-            var inputDiaHora3 = $('#inputDiaHora3');
-            var boxData3 = $('#dias3Box');
-            $(boxData3).
-            <?php echo (count($result["horarios"])>=3?"show()":"hide()") ?>;
-            $(inputDiaHora3).
-            <?php echo (count($result["horarios"])==2?"show()":"hide()") ?>;
-            var inputDiaHora4 = $('#inputDiaHora4');
-            var boxData4 = $('#dias4Box');
-            $(boxData4).
-            <?php echo (count($result["horarios"])>=4?"show()":"hide()") ?>;
-            $(inputDiaHora4).
-            <?php echo (count($result["horarios"])==3?"show()":"hide()") ?>;
-            var inputDiaHora5 = $('#inputDiaHora5');
-            var boxData5 = $('#dias5Box');
-            $(boxData5).
-            <?php echo (count($result["horarios"])>=5?"show()":"hide()") ?>;
-            $(inputDiaHora5).
-            <?php echo (count($result["horarios"])==4?"show()":"hide()") ?>;
+            // Disponibilidad
+            $('#inputDiaHora').show();
+            $('#dias1Box').show();            
+            $('#inputDiaHora2').show();
+            $('#dias2Box').show();
+            $('#inputDiaHora3').show();
+            $('#dias3Box').show();
+            $('#inputDiaHora4').show();
+            $('#dias4Box').show();
+            $('#inputDiaHora5').show();
+            $('#dias5Box').show();
+            
         </script>
         <script language="Javascript">
         <?php if (isset($_SESSION["mode"])) { ?>

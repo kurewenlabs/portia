@@ -61,7 +61,6 @@
             {
                 $valores_enviados[$id] = $value;
                 $$id = $value;
-                error_log($id . " = " . $value);
             }
         }
         $tipo_documento = (isset($pasaporte) && $pasaporte != ''?'pasaporte':'rut');
