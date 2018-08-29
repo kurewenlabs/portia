@@ -85,6 +85,17 @@
         }
     }
 
+    $files = null;
+    $sql = "SELECT id, tipo_archivo, nombre FROM tbl_archivo WHERE id_post = '" . $id . "' AND estado = 1";
+    $results = $conn->query($sql);
+    if ($results) {
+        while($fila = $results->fetch_assoc()) {
+            $files[$fila["tipo_archivo"]]["id"] = $fila["id"];
+            $files[$fila["tipo_archivo"]]["nombre"] = $fila["nombre"];
+        }
+    }
+    $base_url = substr($_SERVER['HTTP_REFERER'], 0, strrpos($_SERVER['HTTP_REFERER'], "/")+1);
+
     $content_pdf = '<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -227,10 +238,10 @@
                 <p><strong>Renta :</strong></p>     
             </div>
             <div class="col s6 m6 l6">Adjuntos
-                <p><strong>Curriculum : ' . ($result['cv']!=''?'<a href="download.php?identificador='. $result['cv'] . '&documento=Curriculum">Descargar</a>':'No entregado') . '</strong></p><!--solo indicar si o no de lo que adjunto -->
-                <p><strong>Certificado de antecedentes : ' . ($result['antecedentes']!=''?'<a href="download.php?identificador='. $result['antecedentes'] . '&documento=Antecedentes">Descargar</a>':'No entregado') . '</strong></p><!--solo indicar si o no de lo que adjunto -->
-                <p><strong>Fotografía del o la Postulante : ' . ($result['fotografia']!=''?'<a href="download.php?identificador='. $result['fotografia'] . '&documento=Fotografia">Descargar</a>':'No entregado') . '</strong></p><!--solo indicar si o no de lo que adjunto -->
-                <p><strong>Carnet o Pasaporte : ' . ($result['carnet']!=''?'<a href="download.php?identificador='. $result['carnet'] . '&documento=Carnet">Descargar</a>':'No entregado') . '</strong></p><!--solo indicar si o no de lo que adjunto -->  
+                <p><strong>Curriculum : ' . ($files!=null && array_key_exists("cv", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">" . $files["cv"]["nombre"] . "</a>":"No entregado") . '</strong></p><!--solo indicar si o no de lo que adjunto -->
+                <p><strong>Certificado de antecedentes : ' . ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">" . $files["cerAntecedentes"]["nombre"] . "</a>":"No entregado") . '</strong></p><!--solo indicar si o no de lo que adjunto -->
+                <p><strong>Fotografía del o la Postulante : ' . ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">" . $files["fotografia"]["nombre"] . "</a>":"No entregado") . '</strong></p><!--solo indicar si o no de lo que adjunto -->
+                <p><strong>Carnet o Pasaporte : ' . ($files!=null && array_key_exists("carnet", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["carnet"]["id"] . "&tipo=carnet\" target=\"blank\">" . $files["carnet"]["nombre"] . "</a>":"No entregado") . '</strong></p><!--solo indicar si o no de lo que adjunto -->  
             </div>
         </div>
 

@@ -11,7 +11,7 @@
     $rows = $result->fetch_assoc();
     
     header("Content-Type: " . $rows['tipo']);    
-    header("Content-Disposition: attachment; filename=" . $file_type . "." . $rows['tipo']);  
+    header("Content-Disposition: attachment; filename=" . $rows['nombre']);  
     header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
     header("Expires: 0");
     ob_clean();

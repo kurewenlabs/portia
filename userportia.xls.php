@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'db.php';
     global $conn, $separator;
 
@@ -27,8 +28,7 @@
 
         $fecha_post = date("d/m/Y", strtotime($row["fecha_post"]));
 
-        $fila_post = '<tr>
-                        <td> '.$fecha_post.'</td>
+        $fila_post = '  <td> '.$fecha_post.'</td>
                         <td>'.$row["rut"].'</td>
                         <td>'.$row["nombres"].' '. $row["apellidop"].'</td>
                         <td>'.$row["nacionalidad"].'</td>
@@ -36,12 +36,30 @@
                         <td>'.$row["renta"].'</td></td>
                         <td>'.$row["estado"].'</td>';
 
-        $fila_post .= '<td>'.$row["sexo"].'</td>
+        $fila_post .= ' <td>'.$row["sexo"].'</td>
                         <td>'.$row["provincia"].'</td>
                         <td>'.$row["comuna"].'</td>';
-        $fila_post .= '</tr>';
 
         return $fila_post;
+    }
+    function imprimir_files_post($id) {
+
+        global $conn;
+        $files = null;
+        $sql = "SELECT id, tipo_archivo, nombre FROM tbl_archivo WHERE id_post = '" . $id . "' AND estado = 1";
+        $results = $conn->query($sql);
+        if ($results) {
+            while($fila = $results->fetch_assoc()) {
+                $files[$fila["tipo_archivo"]]["id"] = $fila["id"];
+                $files[$fila["tipo_archivo"]]["nombre"] = $fila["nombre"];
+            }
+        }
+        $base_url = substr($_SERVER['HTTP_REFERER'], 0, strrpos($_SERVER['HTTP_REFERER'], "/")+1);
+        $files_post = ($files!=null && array_key_exists("cv", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">Curriculum</a><br />":"") . '
+                  ' . ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">Antecedentes</a><br />":"") . '
+                  ' . ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">Fotografía</a><br />":"") . '
+                  ' . ($files!=null && array_key_exists("carnet", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["carnet"]["id"] . "&tipo=carnet\" target=\"blank\">Carnet o Pasaporte</a>":"");
+        return $files_post;
     }
 
     require_once 'db.php';
@@ -63,6 +81,7 @@
                 <th>Sexo</th>
                 <th>Region</th>
                 <th>Comuna</th>
+                <th>Documentos</th>
             </tr>
             </thead>
             <tbody>
@@ -70,7 +89,7 @@
             //        require_once 'db.php';
             //        global $conn;
 
-            $sql = "SELECT a.nombre, a.estado, b.* "
+            $sql = "SELECT a.id_post, a.nombre, a.estado, b.* "
             . "FROM tbl_datos_postulacion_abierta a, tbl_postulante b "
             . "WHERE a.id_post = b.id_post";
             $result = $conn->query($sql);
@@ -78,9 +97,12 @@
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    //        echo "id: " . $row["id_post"]." " .$row["rut"]  ." - Name: " . $row["nombres"]. " " . $row["apellidop"]. "<br>";
+                    echo "<tr>";
                     $fila_post = imprimir_fila_post($row);
                     echo $fila_post;
+                    $files_post = imprimir_files_post($row["id_post"]);
+                    echo "<td>" . $files_post . "</td>";
+                    echo "</tr>";
                 }
             }
             // else {
