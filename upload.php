@@ -10,7 +10,7 @@
     $id_post = $_POST['id_post'];
     $file_type = $_POST['file_type']; 
 
-    function var_error_log( $object=null ){
+    function var_error_log( $object = null ){
         ob_start();                    // start buffer capture
         var_dump( $object );           // dump the values
         $contents = ob_get_contents(); // put the buffer into a variable
@@ -20,6 +20,7 @@
     
     if (isset($_SESSION["mode"])) {
         var_error_log($_POST);
+        var_error_log($_FILES);
     }
 
     error_log("Trying to upload the file " . $file_type);
@@ -32,10 +33,11 @@
             global $conn;
      
             // Gather all required data
-            $name = $conn->real_escape_string($_FILES[$file_type]['name']);
-            $mime = $conn->real_escape_string($_FILES[$file_type]['type']);
-            $data = $conn->real_escape_string(file_get_contents($_FILES  [$file_type]['tmp_name']));
-            $size = intval($_FILES[$file_type]['size']);
+            $name = $_FILES[$file_type]['name'];
+            $mime = $_FILES[$file_type]['type'];
+            $size = $_FILES[$file_type]['size'];
+            $tmpn = $_FILES[$file_type]['tmp_name'];
+            $data = addslashes(fread(fopen($tmpn, 'rb'), filesize($tmpn)));
      
             // Create the SQL query
             $query = "UPDATE tbl_archivo SET estado = 0 WHERE id_post = '{$id_post}' AND tipo_archivo = '{$file_type}'";
@@ -83,6 +85,9 @@
                     </script> 
                 <?php
             }
+
+            // Close the mysql connection
+            $conn->close();
         }
         else {
             error_log("An error accured while the file was being uploaded. Error code: ". intval($_FILES[$file_type]['error']));
@@ -94,8 +99,6 @@
             <?php
         }
      
-        // Close the mysql connection
-        $conn->close();
     }
     else {
         error_log('Error! A file was not sent!');
