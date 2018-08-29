@@ -92,7 +92,7 @@
             </div>
             <div class="tab input-field col s4 m4 l4">Talla de zapatos
                 <label for="tallaZapato"></label>
-                <input  id="tallaZapato" type="text" class="validate">
+                <input  id="tallaZapato" type="text" class="validate" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
               </div>
               <div class="row">
                 <div class="tab input-field col s8 m8 l8">Talla de Pantalon (ingrese detalles si necesita)
@@ -235,7 +235,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
-
+  <script src="src/js/tools.js"></script>
   <script language="Javascript">
     <?php 
       if (isset($_SESSION["mode"])) {

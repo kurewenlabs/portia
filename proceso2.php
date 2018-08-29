@@ -70,7 +70,7 @@
       <div class=" input-field col s4 m4 l4">Tipo de Estudios
         <select id="tipoEstudio" class="browser-default" onselect="this.className = ''" name="estudio">
           <option value=""></option>
-          <option value="Básica">Enseñanza Básica</option>
+          <option value="Basica">Enseñanza Básica</option>
           <option value="Media">Enseñanza Media</option>
           <option value="Técnico Superior">Técnico Superior</option>
           <option value="Universitario">Universitario</option>
@@ -79,7 +79,7 @@
       </div>
       <div class="input-field col s8 m8 l8 carreraBox" id="carrerabox">
         <label for="carrera">Titulo de la Carrera</label>
-        <input id="carrera" type="text" class="validate">
+        <input id="carrera" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
       </div>
     </div>
   </div><!--documentos-->
@@ -97,14 +97,14 @@
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
             <label for="fechaEstudio">Año </label>
-            <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año">
+            <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
           </div>
         
         </div>
         <div class=" input-field col s2 m2 l2">
           <div class="box_estudio" id="estudiobox">
             <label for="semestres">Semestres cursados</label>
-            <input type="text" class="date" id="semestres" namew="semestres" placeholder="Semestres">
+            <input type="text" class="date" id="semestres" namew="semestres" placeholder="Semestres" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
           </div>
         </div>
 
@@ -136,11 +136,11 @@
     <div class="row" id="curso_box" ><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso">Curso</label>
-        <input  id="curso" type="text" class="validate">
+        <input  id="curso" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
       </div>
       <div class="col s4 m4 l4 input-field back-box1">
         <label for="txtDate3">Fecha</label>
-        <input type="text" class="date" id="txtDate3" placeholder="Ingrese mes/año">
+        <input type="text" class="date" id="txtDate3" placeholder="Ingrese mes/año" onchange="esfechavalida2(this.value)">
       </div>
       <div class="col s2 m2 l2">
         <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso1" onclick="myFunctionCurso1()">Agregar</div>
@@ -215,7 +215,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
-
+  <script src="src/js/tools.js"></script>
   <script language="Javascript">
   <?php 
     if (isset($_SESSION["mode"])) {

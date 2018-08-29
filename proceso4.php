@@ -82,24 +82,24 @@
           <div class="row" id="refs_box1">
               <div class=" input-field col s6 m6 l6 back-box3">
                   <label for="empresaref">Empresa </label>
-                  <input  id="empresaref" type="text" class="validate">
+                  <input  id="empresaref" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
               </div>
               <div class=" input-field col s6 m6 l6 back-box3" >
                   <label for="contactoref">Nombre del Contacto</label>
-                  <input  id="contactoref" type="text" class="validate">
+                  <input  id="contactoref" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
               </div>
               <div class="row">
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="cargoref">Cargo</label>
-                      <input  id="cargoref" type="text" class="validate">
+                      <input  id="cargoref" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
                   </div>
                   <div class=" input-field col s3 m3 l3 back-box2">
                       <label for="telefonoref">Telefono</label>
-                      <input  id="telefonoref" type="tel" class="validate" placeholder="+56(9)">
+                      <input  id="telefonoref" type="tel" class="validate" placeholder="+56(9)" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                   </div>
                   <div class=" input-field col s4 m4 l4 back-box2">
                       <label for="emailref">Email</label>
-                      <input  id="emailref" type="email" class="validate">
+                      <input  id="emailref" type="email" class="validate" onblur="validarEmail(this.value)">
                   </div>
                   <div class="col s2 m2 l2 ">
                       <div id="boton_refs1" class="waves-effect waves-light btn-small add" onclick="myFunctionRef()">Agregar</div>
@@ -197,7 +197,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
-
+  <script src="src/js/tools.js"></script>
   <script language="Javascript">
   <?php 
     if (isset($_SESSION["mode"])) {

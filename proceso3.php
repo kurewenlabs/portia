@@ -84,16 +84,16 @@
             <div class="row">
                 <div class=" input-field col s4 m4 l4">
                     <label for="empresa">Empresa </label>
-                    <input  id="empresa" type="text" class="validate">
+                    <input  id="empresa" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
                 </div>
                 <div class=" input-field col s4 m4 l4" >
                     <label for="cargo">Cargo</label>
-                    <input  id="cargo" type="text" class="validate">
+                    <input  id="cargo" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
 
                 </div>
                 <div class="col s2 m2 l2 input-field dateUntil">
                     <label for="txtDate4">Desde mes/año</label>
-                    <input type="text" class="date" id="txtDate4" placeholder="01/2018">
+                    <input type="text" class="date" id="txtDate4" placeholder="01/2018" onchange="esfechavalida2(this.value)">
                     <p>
                         <label for="fechaCargo">
                             <input type="checkbox" value="Al presente" id="fechaCargo">
@@ -104,7 +104,7 @@
                 <div class="col s2 m2 l2 input-field" id="input-fecha-until">
                   
                         <label for="txtDate4h">Hasta mes/año</label>
-                        <input type="text" class="date" id="txtDate4h"  placeholder="01/2018">
+                        <input type="text" class="date" id="txtDate4h"  placeholder="01/2018" onchange="esfechavalida2(this.value)">
                     
                 </div>
                 <div class="col s2 m2 l2">
@@ -265,7 +265,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
-
+  <script src="src/js/tools.js"></script>
   <script language="Javascript">
   <?php 
     if (isset($_SESSION["mode"])) {

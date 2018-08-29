@@ -75,11 +75,11 @@
       </div>
       <div class=" input-field col s4 m4 l4 " id="rut_box">
         <label for="rut">RUT</label>
-        <input placeholder="sin puntos ni guion" id="rut" type="tel" class="validate rut_box">
+        <input placeholder="123456789" id="rut" class="validate" type="text" onblur="esrut(this.value)">
       </div>
       <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
         <label for="pasaporte">Pasaporte</label>
-        <input  id="pasaporte" type="tel" class="validate rut_box">
+        <input  id="pasaporte" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
       </div>
     </div>
   </div><!--documentos-->
@@ -87,15 +87,15 @@
   <div class="">
     <div class=" input-field col s4 m4 l4">
         <label for="first_name">Nombres</label>
-        <input  id="first_name" type="text" class="validate">
+        <input  id="first_name" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
       </div>
       <div class=" input-field col s4 m4 l4">
         <label for="last_name">Apellido Paterno</label>
-        <input  id="last_name" type="text" class="validate">
+        <input  id="last_name" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
       </div>
       <div class=" input-field col s4 m4 l4">
         <label for="last_name_2">Apellido Materno</label>
-        <input  id="last_name_2" type="text" class="validate">
+        <input  id="last_name_2" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
       </div>
   </div>
 
@@ -104,7 +104,7 @@
   <div class="">
     <div class=" input-field col s3 m3 l3">
       <label for="txtDate">Fecha de Nacimiento</label>
-      <input type="text" class="datepicker" id="txtDate"></div>
+      <input type="text"  id="txtDate" onchange="esfechavalida(this.value)"></div>
     </div>
     <div class=" input-field col s3 m3 l3">
        <select class="browser-default"  id="sexo" onselect="this.className = ''" name="sexo">
@@ -124,24 +124,24 @@
     </div>
     <div class=" input-field col s3 m3 l3">
         <label for="nacionalidad">Nacionalidad</label>
-        <input  id="nacionalidad" type="text" class="validate">
+        <input  id="nacionalidad" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
       </div>
   </div><!--datos identificacion-->
   <div class="row">
     <div class="">
       <div class="input-field col s4 m4 l4">
-          <input id="telefono" type="tel" class="validate" placeholder="+56(9)">
+          <input id="telefono" type="tel" class="validate" placeholder="+56(9)" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
           <label for="telefono">Telefono</label>
         </div>
       <div class="input-field col s4 m4 l4">
-          <input id="telefono2" type="tel" placeholder="*+56(9) Opcional " class="validate" >
+          <input id="telefono2" type="tel" placeholder="*+56(9) Opcional " class="validate" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
           <label for="telefono2">Telefono de Recado</label>
         </div>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input id="email" type="email" class="validate" onblur="validarEmail(this.value)">
           <label for="email">Email</label>
         </div>
   </div>
@@ -205,7 +205,7 @@
 </div>
 <div class="row">
   <div class="input-field col s12 m12 l12">
-    <input id="direccion" type="text" class="validate">
+    <input id="direccion" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
     <label for="direccion">Direccion</label>
   </div>
 </div>
@@ -233,7 +233,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.js"></script>
   <script src="src/js/postulaciones.js"></script>
-
+  <script src="src/js/tools.js"></script>
   <script language="Javascript">
   <?php 
     if (isset($_SESSION["mode"])) {
