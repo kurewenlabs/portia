@@ -104,7 +104,7 @@
   <div class="">
     <div class=" input-field col s3 m3 l3">
       <label for="txtDate">Fecha de Nacimiento</label>
-      <input type="text"  id="txtDate" onchange="esfechavalida(this.value)"></div>
+      <input type="text"  id="txtDate" placeholder="01/01/2018" onchange="esfechavalida(this.value)"></div>
     </div>
     <div class=" input-field col s3 m3 l3">
        <select class="browser-default"  id="sexo" onselect="this.className = ''" name="sexo">
@@ -134,7 +134,7 @@
           <label for="telefono">Telefono</label>
         </div>
       <div class="input-field col s4 m4 l4">
-          <input id="telefono2" type="tel" placeholder="*+56(9) Opcional " class="validate" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
+          <input id="telefono2" type="tel" placeholder="+56(9) Opcional " class="validate" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
           <label for="telefono2">Telefono de Recado</label>
         </div>
     </div>
