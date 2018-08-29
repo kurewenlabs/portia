@@ -115,7 +115,7 @@
 
         <div class="row">
             <div class="col s6 m6 l6">
-                <h5>' . $result['nombre'] . '' . $result['apellidoP'] . '</h5><!-- pasar aqui el nombre dle psotulante -->
+                <h5>' . $result['nombres'] . '' . $result['apellidoP'] . '</h5><!-- pasar aqui el nombre dle psotulante -->
                 <p><strong>Cargo al que postula : ' . $result['nombre'] . '</strong> </p> 
                 <p><strong>' . ($result['tipo_documento']=='rut'?'RUT':'Pasaporte') . ' Numero : ' . $result['rut'] . '</strong></p> 
                 <p><strong>Fecha de Nacimiento : ' . $result['fecha_nacimiento'] . '</strong> </p> 
