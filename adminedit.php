@@ -1708,6 +1708,11 @@
                     notie.alert({ type: 3, text: 'No se ha podido guardar la postulación', position: 'bottom' });
                     <?php
                 }
+                else {
+                    ?>
+                    notie.alert({ type: 1, text: 'La postulación se ha actualizado correctamente', position: 'bottom' });
+                    <?php
+                }
             ?>
 
             // RUT/Pasaporte

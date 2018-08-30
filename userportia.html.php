@@ -102,8 +102,7 @@
                 <li class="tab col s2"><a href="#test2" id="apto"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Seleccionado' ])? $postulacion_por_tipo[ 'Seleccionado' ]: 0 ?></span>Aptos</a></li>
                 <li class="tab col s2"><a href="#test4" id="fuera"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera Rango Renta' ])? $postulacion_por_tipo[ 'Fuera Rango Renta' ]: 0 ?></span>Fuera Rango Renta</a></li>
                 <li class="tab col s2"><a href="#test3" id="no_apto"><span class="badge grey"><?php echo isset($postulacion_por_tipo[ 'No apto' ])? $postulacion_por_tipo[ 'No apto' ]: 0 ?></span>No Aptos</a></li>
-                <li class="tab col s2"><a href="#test5" id="eliminado"><span class="badge red"><?php echo isset($postulacion_por_tipo[ 'Eliminados' ])? $postulacion_por_tipo[ 'Eliminados' ]: 0 ?></span>Eliminados</a></li>
-                
+                <li class="tab col s2"><a href="#test5" id="eliminado"><span class="badge red"><?php echo isset($postulacion_por_tipo[ 'Eliminado' ])? $postulacion_por_tipo[ 'Eliminado' ]: 0 ?></span>Eliminados</a></li>
             </ul>
         </div>
     </div>
@@ -135,6 +134,7 @@
                     <th>Renta</th>
                     <th>Estado</th>
                     <th>Región</th>
+                    <th>Comuna</th>
                     <th>&nbsp;</th>
                 </tr>
             </tfoot>
@@ -163,29 +163,15 @@
         var $postulaciones = $('#tablaPortia');
         $postulaciones.DataTable( {
             "ajax": "datatables_script.php",
-            /* "columns": [
-                { "data": "fecha_post" }, 
-                { "data": "id" }, 
-                { "data": "nombre" }, 
-                { "data": "nacionalidad" }, 
-                { "data": "cargo" }, 
-                { "data": "sexo" }, 
-                { "data": "renta" }, 
-                { "data": "estado" }, 
-                { "data": "comuna" }, 
-                { 
-                    "data": "id_post",
-                    "render": function ( data, type, row, meta ) {
-                        var cargo = row.cargo;
-                        return "<a href='adminportia.html.php?identificador=" + data + "&postulacion=" + cargo + "'>Ver</a>";
-                    }
-                }
-            ], */
             "columnDefs": [
                 {
                     "targets": 10,
                     "render": function ( data, type, row, meta ) {
-                        return "<a href='adminedit.php?identificador=" + data + "&postulacion=" + row[4] + "'>Ver</a>";
+                        if (row[7] != 'Eliminado') {
+                            return "<a href='adminedit.php?identificador=" + data + "&postulacion=" + row[4] + "'>Ver</a><br/>" +
+                                   "<a href='process_editar.php?identificador=" + data + "&postulacion=" + row[4] + "&pagina=actualizar_estado&group1=Eliminado'>Eliminar</a>";
+                        }
+                        return "<a href='process_editar.php?identificador=" + data + "&postulacion=" + row[4] + "&pagina=actualizar_estado&group1=Sin Clasificar'>Recuperar</a>";
                     }
                 }
             ],
@@ -221,28 +207,28 @@
             } 
         } );
 
-        $("#sin_clasificar").click(function(){
-            $postulaciones.DataTable().search("Sin Clasificar").draw();
+        $("#total").click(function(){
+            $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&mModif_7=NOT&sSearch_7=Eliminado').load();
         });
 
-        $("#total").click(function(){
-            $postulaciones.DataTable().search("").draw();
+        $("#sin_clasificar").click(function(){
+            $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&sSearch_7=Sin Clasificar').load();
         });
 
         $("#apto").click(function(){
-            $postulaciones.DataTable().search("Seleccionado").draw();
+            $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&sSearch_7=Seleccionado').load();
         });
 
         $("#fuera").click(function(){
-            $postulaciones.DataTable().search("Fuera Rango Renta").draw();
+            $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&sSearch_7=Fuera Rango Renta').load();
         });
 
         $("#no_apto").click(function(){
-            $postulaciones.DataTable().search("No Apto").draw();
+            $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&sSearch_7=No Apto').load();
         });
 
         $("#eliminado").click(function(){
-            $postulaciones.DataTable().search("Eliminados").draw();
+            $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&sSearch_7=Eliminado').load();
         });
 
     } );
@@ -252,6 +238,20 @@
 <?php if (isset($_SESSION["mode"])) { ?>
     notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
 <?php } ?>
+
+<?php
+    $error = $_GET['actualizado'];
+    if($error != null && $error == 'error1') { 
+        ?>
+        notie.alert({ type: 3, text: 'No se ha podido procesar la postulación', position: 'bottom' });
+        <?php
+    }
+    else {
+        ?>
+        notie.alert({ type: 1, text: 'La postulación ha sido procesada correctamente', position: 'bottom' });
+        <?php
+    }
+?>
 </script>
 </body>
 </html>

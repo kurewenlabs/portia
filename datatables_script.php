@@ -72,7 +72,7 @@ class TableData {
 				else {
 					$sWhere .= " AND ";
 				}
-				$sWhere .= "`".$columns[$i]."` LIKE :search".$i." ";
+				$sWhere .= "`".$columns[$i]."` ". $_GET['mModif_'.$i] ." LIKE :search".$i." ";
 			}
 		}
 		
@@ -132,23 +132,4 @@ $table_data = new TableData();
 // Get the data
 $table_data->get('vta_postulaciones', 'id_postulacion', 
 	array('fecha_post', 'id', 'nombre', 'nacionalidad', 'cargo', 'sexo', 'renta', 'estado', 'region', 'comuna', 'id_post'));
-/*
- * Alternatively, you may want to use the same class for several differnt tables for different pages.
- * By adding something similar to the following to your .htaccess file you can control this a little more...
- *
- * RewriteRule ^pagename/data/?$ data.php?_page=PAGENAME [L,NC,QSA]
- *
- 
-switch ($_SERVER['REQUEST_METHOD']) {
-    case 'GET':
-        if (isset($_REQUEST['_page'])) {
-        	if($_REQUEST['_page'] === 'PAGENAME') {
-	            $table_data->get('table_name', 'index_column', array('column1', 'column2', 'columnN'));
-	        }
-        }
-        break;
-    default:
-        header('HTTP/1.1 400 Bad Request');
-}
-*/
 ?>

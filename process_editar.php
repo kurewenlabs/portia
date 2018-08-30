@@ -2,8 +2,8 @@
 session_start();
 
 // 0.- Redcibir identificador
-$id = $_POST['identificador'];
-$postula = $_POST['postulacion'];
+$id = (isset($_POST['identificador'])?$_POST['identificador']:$_GET['identificador']);
+$postula = (isset($_POST['postulacion'])?$_POST['postulacion']:$_GET['postulacion']);
 
 // 1.- Conectarse a base de datos
 require_once 'db.php';
@@ -781,7 +781,7 @@ function save_data_in_DB(){
     }
 }
 
-$pagina = $_POST['pagina'];
+$pagina = (isset($_POST['pagina'])?$_POST['pagina']:$_GET['pagina']);
 switch ($pagina) {
     case 'datos_personales':
         $sql = "SELECT COUNT(*) AS cantidad FROM tbl_postulante where id_post='".$id."'";
@@ -804,8 +804,8 @@ switch ($pagina) {
         }
         break;
     case 'actualizar_estado':
-        $estado = $_POST['group1'];
-        $observacion = $_POST['observacion'];
+        $estado = (isset($_POST['group1'])?$_POST['group1']:$_GET['group1']);
+        $observacion = (isset($_POST['observacion'])?$_POST['observacion']:"");
         $sql = "UPDATE tbl_datos_postulacion_abierta "
             . " SET estado = '". $estado ."', "
             . " observacion = '" . $observacion . "' "
@@ -814,10 +814,10 @@ switch ($pagina) {
 
         if($conn->query($sql) === TRUE) {
             //echo 'Estado actualizado de forma exitosa';
-            header('Location: ' . $_SERVER["HTTP_REFERER"] .'&actualizado=ok1');
+            header('Location: ' . $_SERVER["HTTP_REFERER"] . (isset($_POST["pagina"])?"&":"?") . 'actualizado=ok1');
         }
         else {
-            header('Location: ' . $_SERVER["HTTP_REFERER"] .'&actualizado=error1');
+            header('Location: ' . $_SERVER["HTTP_REFERER"] . (isset($_POST["pagina"])?"&":"?") . 'actualizado=error1');
         }
         break;
     default:
