@@ -1678,7 +1678,7 @@
                         </div>
                         <div class="row">
                             <div class="col s3 m3 l3">
-                                <a href="#!" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
+                                <a href="process_editar.php?identificador=<?php echo $id; ?>&postulacion=<?php echo $postula; ?>&pagina=actualizar_estado&group1=Eliminado" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
                             </div>
                             <div class="col s3 m3 l3">
                                 <button class="waves-effect waves-green btn save" type="submit" href="userportia.html.php">Guardar</button>
@@ -1772,6 +1772,19 @@
         <?php if (isset($_SESSION["mode"])) { ?>
             notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
         <?php } ?>
+        <?php
+            $error = $_GET['actualizado'];
+            if($error != null && $error == 'error1') { 
+                ?>
+                notie.alert({ type: 3, text: 'No se ha podido procesar la postulación', position: 'bottom' });
+                <?php
+            }
+            else {
+                ?>
+                location.href='userportia.html.php?actualizado=ok1';
+                <?php
+            }
+        ?>
         </script>
     </body>
 </html>

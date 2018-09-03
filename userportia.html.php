@@ -97,7 +97,7 @@
     <div class="row">
         <div class="col s12 lineaDatos1">
             <ul class="tabs">
-                <li class="tab col s2"><a href="#test1" id="total"><span class="badge teal"><?php echo isset($postulacion_por_tipo[ 'total' ])? $postulacion_por_tipo[ 'total' ]: 0 ?></span>Todas</a></li>
+                <li class="tab col s2"><a href="#test1" id="total"><span class="badge teal"><?php echo isset($postulacion_por_tipo[ 'total' ])? $postulacion_por_tipo[ 'total' ]-(isset($postulacion_por_tipo[ 'Eliminado' ])? $postulacion_por_tipo[ 'Eliminado' ]: 0): 0 ?></span>Todas</a></li>
                 <li class="tab col s2"><a href="#test6" id="sin_clasificar"><span class="badge yellow"><?php echo isset($postulacion_por_tipo[ 'Sin Clasificar' ])? $postulacion_por_tipo[ 'Sin Clasificar' ]: 0 ?></span>Sin Clasificar</a></li>
                 <li class="tab col s2"><a href="#test2" id="apto"><span class="badge green"><?php echo isset($postulacion_por_tipo[ 'Seleccionado' ])? $postulacion_por_tipo[ 'Seleccionado' ]: 0 ?></span>Aptos</a></li>
                 <li class="tab col s2"><a href="#test4" id="fuera"><span class="badge orange"><?php echo isset($postulacion_por_tipo[ 'Fuera Rango Renta' ])? $postulacion_por_tipo[ 'Fuera Rango Renta' ]: 0 ?></span>Fuera Rango Renta</a></li>
@@ -231,6 +231,7 @@
             $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&sSearch_7=Eliminado').load();
         });
 
+        $postulaciones.DataTable().ajax.url('datatables_script.php?bSearchable_7=true&mModif_7=NOT&sSearch_7=Eliminado').load();
     } );
 
 </script>
