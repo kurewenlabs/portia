@@ -1779,15 +1779,17 @@
         <?php } ?>
         <?php
             $error = $_GET['actualizado'];
-            if($error != null && $error == 'error1') { 
-                ?>
-                notie.alert({ type: 3, text: 'No se ha podido procesar la postulación', position: 'bottom' });
-                <?php
-            }
-            else {
-                ?>
-                location.href='userportia.html.php?actualizado=ok1';
-                <?php
+            if (isset($error)) {
+                if($error != null && $error == 'error1') { 
+                    ?>
+                    notie.alert({ type: 3, text: 'No se ha podido procesar la postulación', position: 'bottom' });
+                    <?php
+                }
+                else {
+                    ?>
+                    location.href='userportia.html.php?actualizado=ok1';
+                    <?php
+                }
             }
         ?>
         </script>
