@@ -82,15 +82,28 @@
   <script src="src/js/postulaciones.js"></script>
 
   <script language="Javascript">
-  <?php if (isset($_GET["status"])) { ?>
-    notie.alert({ type: 3, text: 'Nombre de usuario o contraseña inválidos', position: 'bottom' });
-    $('#email').css('border-color' , 'red');
-  <?php } ?>
   <?php if (isset($_SESSION["mode"])) { ?>
       notie.alert({ type: 1, text: 'Modo desarrollador activado', position: 'bottom' });
   <?php 
       if (isset($_GET["flush"])) {
         unset($_SESSION["postdata"]);
+      }
+    } 
+  ?>
+
+  <?php 
+    if (isset($_GET["status"])) 
+    {
+      if ($_GET["status"]==-1)
+      {
+        ?>
+          notie.alert({ type: 3, text: 'Su sesión ha expirado, favor vuelva a conectarse', position: 'bottom' });
+        <?php 
+      } else { 
+        ?>
+          notie.alert({ type: 3, text: 'Nombre de usuario o contraseña inválidos', position: 'bottom' });
+          $('#email').css('border-color' , 'red');
+        <?php 
       }
     } 
   ?>

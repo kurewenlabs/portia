@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     function validateLogin($user, $pass) {
         require_once 'db.php';
         global $conn;
@@ -22,5 +24,15 @@
             error_log('Error : tbl_usuario ');
             echo 'FAIL';
         }
+        $_SESSION["active_user"] = $_POST['data'][0]['email'];
+        $_SESSION["active_data"] = date("Y-m-d H:i:s");
+        var_error_log($_SESSION);
+    } 
+
+    if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+        unset($_SESSION["active_user"]);
+        unset($_SESSION["active_data"]);
+        header("Location: adminportia.php", true, 301);
+        exit();
     } 
 ?>

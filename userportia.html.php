@@ -1,5 +1,10 @@
 <?php
   session_start();
+
+  if (!isset($_SESSION["active_user"])) {
+    header("Location: adminportia.php?status=-1", true, 301);
+    exit();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -242,15 +247,17 @@
 
 <?php
     $error = $_GET['actualizado'];
-    if($error != null && $error == 'error1') { 
-        ?>
-        notie.alert({ type: 3, text: 'No se ha podido procesar la postulación', position: 'bottom' });
-        <?php
-    }
-    else {
-        ?>
-        notie.alert({ type: 1, text: 'La postulación ha sido procesada correctamente', position: 'bottom' });
-        <?php
+    if (isset($error)) {
+        if($error != null && $error == 'error1') { 
+            ?>
+            notie.alert({ type: 3, text: 'No se ha podido procesar la postulación', position: 'bottom' });
+            <?php
+        }
+        else {
+            ?>
+            notie.alert({ type: 1, text: 'La postulación ha sido procesada correctamente', position: 'bottom' });
+            <?php
+        }
     }
 ?>
 </script>

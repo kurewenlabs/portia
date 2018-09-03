@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION["active_user"])) {
+        header("Location: adminportia.php?status=-1", true, 301);
+        exit();
+    }
+
     require_once 'db.php';
     global $conn, $separator;
 

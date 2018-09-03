@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["active_user"])) {
+        header("Location: adminportia.php?status=-1", true, 301);
+        exit();
+    }
+
     $id = $_GET['identificador'];
     $postula = $_GET['postulacion'];
     require_once 'db.php';
