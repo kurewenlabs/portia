@@ -783,6 +783,22 @@ function save_data_in_DB(){
 
 $pagina = (isset($_POST['pagina'])?$_POST['pagina']:$_GET['pagina']);
 switch ($pagina) {
+    case 'actualizar_cargo':
+        $cargo = (isset($_POST['cargo'])?$_POST['cargo']:$_GET['cargo']);
+        $sql = "UPDATE tbl_datos_postulacion_abierta "
+            . " SET nombre = '". $cargo ."' "
+            . " WHERE id_post = '". $id ."'" 
+            . " AND nombre = '". $postula ."'";
+        
+        error_log($sql);
+
+        if($conn->query($sql) === TRUE) {
+            header('Location: ' . $_SERVER["HTTP_REFERER"] . '&actualizado=ok1');
+        }
+        else {
+            header('Location: ' . $_SERVER["HTTP_REFERER"] . '&actualizado=error1');
+        }
+        break;
     case 'datos_personales':
         $sql = "SELECT COUNT(*) AS cantidad FROM tbl_postulante where id_post='".$id."'";
         $cantidad = 1;

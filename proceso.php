@@ -75,7 +75,7 @@
       </div>
       <div class=" input-field col s4 m4 l4 " id="rut_box">
         <label for="rut">RUT</label>
-        <input placeholder="123456789" id="rut" class="validate" type="text" onblur="esrut(this.value)">
+        <input placeholder="123456789" name="rut" id="rut" class="validate" type="text" onblur="esRUT(this);">
       </div>
       <div class=" input-field col s4 m4 l4 " id="pasaporte_box">
         <label for="pasaporte">Pasaporte</label>
@@ -87,15 +87,15 @@
   <div class="">
     <div class=" input-field col s4 m4 l4">
         <label for="first_name">Nombres</label>
-        <input  id="first_name" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
+        <input  id="first_name" type="text" class="validate" onblur="toUpperCase(this.value,this.id);">
       </div>
       <div class=" input-field col s4 m4 l4">
         <label for="last_name">Apellido Paterno</label>
-        <input  id="last_name" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
+        <input  id="last_name" type="text" class="validate" onblur="toUpperCase(this.value,this.id)">
       </div>
       <div class=" input-field col s4 m4 l4">
         <label for="last_name_2">Apellido Materno</label>
-        <input  id="last_name_2" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
+        <input  id="last_name_2" type="text" class="validate" onblur="toUpperCase(this.value,this.id)">
       </div>
   </div>
 
@@ -124,7 +124,7 @@
     </div>
     <div class=" input-field col s3 m3 l3">
         <label for="nacionalidad">Nacionalidad</label>
-        <input  id="nacionalidad" type="text" class="validate" onblur="aMayusculas(this.value,this.id)">
+        <input  id="nacionalidad" type="text" class="validate" onblur="toUpperCase(this.value, this.id)">
       </div>
   </div><!--datos identificacion-->
   <div class="row">
