@@ -174,7 +174,7 @@
                     "render": function ( data, type, row, meta ) {
                         if (row[7] != 'Eliminado') {
                             return "<a href='adminedit.php?identificador=" + data + "&postulacion=" + row[4] + "'>Ver</a><br/>" +
-                                   "<a href='process_editar.php?identificador=" + data + "&postulacion=" + row[4] + "&pagina=actualizar_estado&group1=Eliminado'>Eliminar</a>";
+                                   "<a href='process_editar.php?identificador=" + data + "&postulacion=" + row[4] + "&pagina=actualizar_estado&group1=Eliminado' onClick='return confirm(\"¿Está seguro de eliminar la postulación?\");'>Eliminar</a>";
                         }
                         return "<a href='process_editar.php?identificador=" + data + "&postulacion=" + row[4] + "&pagina=actualizar_estado&group1=Sin Clasificar'>Recuperar</a>";
                     }
