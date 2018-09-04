@@ -699,15 +699,13 @@
                         <div class="tab input-field col s4 m4 l4">
                             <select class="browser-default" onselect="this.className = ''" name="estudio">
                                 <option value="">Tipo de Estudios</option>
-                                <option value="Secundario" <?php echo ($result[ 'tipo_estudio']=='Secundario' ? "selected": ""); ?>>Secundario</option>
+                                <option value="Basica">Enseñanza Básica</option>
+                                <option value="Media" <?php echo ($result[ 'tipo_estudio']=='Secundario' ? "selected": ""); ?>>Enseñanza Media</option>
                                 <option value="Técnico Superior" <?php echo ($result[ 'tipo_estudio']=='Técnico Superior' ? "selected": ""); ?>>Técnico Superior</option>
                                 <option value="Universitario" <?php echo ($result[ 'tipo_estudio']=='Universitario' ? "selected": ""); ?>>Universitario</option>
                                 <option value="Posgrado">
                                     <?php echo ($result['tipo_estudio']=='Posgrado'?"selected":""); ?>
                                 </option>
-                                <option value="Master" <?php echo ($result[ 'tipo_estudio']=='Master' ? "selected": ""); ?>>Master</option>
-                                <option value="Doctorado" <?php echo ($result[ 'tipo_estudio']=='Doctorado' ? "selected": ""); ?>>Doctorado</option>
-                                <option value="Otro" <?php echo ($result[ 'tipo_estudio']=='Otro' ? "selected": ""); ?>>Otro</option>
                             </select>
                         </div>
                         <div class="tab input-field col s8 m8 l8">
@@ -731,7 +729,7 @@
                         </div>
                         <div class=" input-field col s2 m2 l2">
                             <div id="box_estudio" class="box_estudio">
-                                <label for="fechaEstudio">Año de Titulación</label>
+                                <label for="fechaEstudio">Año </label>
                                 <input type="text" name="fecha_estudio" class="date" id="fechaEstudio" placeholder="Ingrese año" value="<?php echo $result['fecha_titulacion']; ?>">
                             </div>
 
