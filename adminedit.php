@@ -1681,7 +1681,7 @@
                         </div>
                         <div class="row">
                             <div class="col s3 m3 l3">
-                                <a href="process_editar.php?identificador=<?php echo $id; ?>&postulacion=<?php echo $postula; ?>&pagina=actualizar_estado&group1=Eliminado" onClick="return confirm('¿Está seguro de eliminar la postulación?');" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
+                                <a href="process_editar.php?identificador=<?php echo $id; ?>&postulacion=<?php echo $postula; ?>&pagina=eliminar_postulacion&group1=Eliminado" onClick="return confirm('¿Está seguro de eliminar la postulación?');" class=" waves-effect waves-green btn-flat borrar">Eliminar</a>
                             </div>
                             <div class="col s3 m3 l3">
                                 <button class="waves-effect waves-green btn save" type="submit" href="userportia.html.php">Guardar</button>

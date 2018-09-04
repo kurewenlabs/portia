@@ -836,6 +836,23 @@ switch ($pagina) {
             header('Location: ' . $_SERVER["HTTP_REFERER"] . (isset($_POST["pagina"])?"&":"?") . 'actualizado=error1');
         }
         break;
+    case 'eliminar_postulacion':
+        $estado = (isset($_POST['group1'])?$_POST['group1']:$_GET['group1']);
+        $observacion = (isset($_POST['observacion'])?$_POST['observacion']:"");
+        $sql = "UPDATE tbl_datos_postulacion_abierta "
+            . " SET estado = '". $estado ."', "
+            . " observacion = '" . $observacion . "' "
+            . " WHERE id_post = '". $id ."'" 
+            . " AND nombre = '". $postula ."'";
+
+        if($conn->query($sql) === TRUE) {
+            //echo 'Estado actualizado de forma exitosa';
+            header('Location: userportia.html.php?actualizado=ok1');
+        }
+        else {
+            header('Location: userportia.html.php?actualizado=error1');
+        }
+        break;
     default:
 
 }
