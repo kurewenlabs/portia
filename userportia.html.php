@@ -170,6 +170,17 @@
             "ajax": "datatables_script.php",
             "columnDefs": [
                 {
+                    "targets": 7,
+                    "render": function ( data, type, row, meta ) {
+                        var color = "yellow";
+                        if (data == 'Seleccionado') color = "green";
+                        if (data == 'Fuera Rango Renta') color = "orange";
+                        if (data == 'No Apto') color = "gray";
+                        if (data == 'Eliminado') color = "red";
+                        return "<span class=\"badge " + color + "\">" + data + "</span>";
+                    }
+                },
+                {
                     "targets": 10,
                     "render": function ( data, type, row, meta ) {
                         if (row[7] != 'Eliminado') {
