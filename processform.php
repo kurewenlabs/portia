@@ -131,7 +131,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_postulante ' . mysqli_error($conn));
+            error_log('Error : tbl_postulante ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
    
@@ -163,7 +163,7 @@
         
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_estudio ' . mysqli_error($conn));
+            error_log('Error : tbl_estudio ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -185,7 +185,7 @@
                                 '$titulo',
                                 '$estado_estudio',
                                 '$fechaEstudio',
-                                $semestres
+                                " . (isset($semestres)?$semestres:'0') . "
                                 );";
 
         if (isset($_SESSION["mode"])) 
@@ -195,8 +195,8 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_estudio ' . mysqli_error($conn));
-            die();
+            error_log('Error : tbl_estudio ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
+            // die();
         }
 
         // Insertar o actualizar tbl_estudio 
@@ -209,7 +209,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_estudio ' . mysqli_error($conn));
+            error_log('Error : tbl_estudio ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -223,7 +223,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_curso ' . mysqli_error($conn));
+            error_log('Error : tbl_curso ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -259,7 +259,7 @@
                             
             if(!mysqli_query($conn,$sql))
             {
-                error_log('Error : tbl_curso ' . mysqli_error($conn));
+                error_log('Error : tbl_curso ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                 die();
             }
         }
@@ -274,7 +274,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+            error_log('Error : tbl_experiencia_laboral ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -306,7 +306,7 @@
             
                 if(!mysqli_query($conn,$sql))
                 {
-                    error_log('Error : tbl_postulante' . mysqli_error($conn));
+                    error_log('Error : tbl_postulante' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                     die();
                 }
                 
@@ -337,7 +337,7 @@
         
                 if(!mysqli_query($conn,$sql))
                 {
-                    error_log('Error : tbl_experiencia_laboral ' . mysqli_error($conn));
+                    error_log('Error : tbl_experiencia_laboral ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                     die();
                 }
             }
@@ -353,7 +353,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_referencia_laboral ' . mysqli_error($conn));
+            error_log('Error : tbl_referencia_laboral ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -386,7 +386,7 @@
     
                 if(!mysqli_query($conn,$sql))
                 {
-                    error_log('Error : tbl_postulante ' . mysqli_error($conn));
+                    error_log('Error : tbl_postulante ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                     die();
                 }
                 
@@ -417,7 +417,7 @@
 
                 if(!mysqli_query($conn,$sql))
                 {
-                    error_log('Error : tbl_referencia_laboral ' . mysqli_error($conn));
+                    error_log('Error : tbl_referencia_laboral ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                     die();    
                 }
             }
@@ -433,7 +433,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_horario_trabajo ' . mysqli_error($conn));
+            error_log('Error : tbl_horario_trabajo ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -484,7 +484,7 @@
 
                 if(!mysqli_query($conn,$sql))
                 {
-                    error_log('Error : tbl_horario_trabajo ' . mysqli_error($conn));
+                    error_log('Error : tbl_horario_trabajo ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                     die();
                 }
             }
@@ -500,7 +500,7 @@
 
                 if(!mysqli_query($conn,$sql))
                 {
-                    error_log('Error : tbl_comuna ' . mysqli_error($conn));
+                    error_log('Error : tbl_comuna ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                     die();
                 }
 
@@ -523,7 +523,7 @@
                     
                 if(!mysqli_query($conn,$sql))
                 {
-                    error_log('Error : tbl_comuna ' . mysqli_error($conn));
+                    error_log('Error : tbl_comuna ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                     die();    
                 }
             }
@@ -541,7 +541,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_postulante ' . mysqli_error($conn));
+            error_log('Error : tbl_postulante ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -574,7 +574,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_postulante ' . mysqli_error($conn));
+            error_log('Error : tbl_postulante ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
         
@@ -627,7 +627,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_documento ' . mysqli_error($conn));
+            error_log('Error : tbl_documento ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -656,7 +656,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_documento ' . mysqli_error($conn));
+            error_log('Error : tbl_documento ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -670,7 +670,7 @@
 
         if(!mysqli_query($conn,$sql))
         {
-            error_log('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn));
+            error_log('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
             die();
         }
 
@@ -709,7 +709,7 @@
 
             if(!mysqli_query($conn,$sql))
             {
-                error_log('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn));
+                error_log('Error : tbl_datos_postulacion_abierta ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
                 die();
             }
         }
