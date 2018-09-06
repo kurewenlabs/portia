@@ -185,7 +185,7 @@
                                 '$titulo',
                                 '$estado_estudio',
                                 '$fechaEstudio',
-                                " . (isset($semestres)?$semestres:'0') . "
+                                " . (isset($semestres) && $semestre!=''?$semestres:'0') . "
                                 );";
 
         if (isset($_SESSION["mode"])) 
@@ -196,7 +196,7 @@
         if(!mysqli_query($conn,$sql))
         {
             error_log('Error : tbl_estudio ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
-            // die();
+            die();
         }
 
         // Insertar o actualizar tbl_estudio 
