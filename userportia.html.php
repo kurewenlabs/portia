@@ -175,7 +175,7 @@
                         var color = "yellow";
                         if (data == 'Seleccionado') color = "green";
                         if (data == 'Fuera Rango Renta') color = "orange";
-                        if (data == 'No Apto') color = "gray";
+                        if (data == 'No Apto') color = "blue";
                         if (data == 'Eliminado') color = "red";
                         return "<span class=\"badge " + color + "\">" + data + "</span>";
                     }
