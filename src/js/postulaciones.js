@@ -566,6 +566,7 @@ $(document).ready(function () {
 
     $("form#postularform").submit(function(e){
         e.preventDefault();
+        // qconfirm("¿Seguro que quiere enviar su postulación?");
         var chkArray = [];
         chkArray["datos"] = getFirstStepData();
         chkArray["estudios"] = getSecondPageDataPart1();

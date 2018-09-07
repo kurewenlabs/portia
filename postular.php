@@ -84,7 +84,6 @@
           <input  id="pasaporte" type="tel" class="validate rut_box" value="<?php if (array_key_exists('pasaporte', $datos[$i])) { echo $datos[$i]['pasaporte']; $i++; } ?>">
         </div>
       </div>
-    </div>
     <!--documentos-->
 
     <!--datos identificacion-->
@@ -238,7 +237,6 @@
   $datos = $data["pos"]["estudios"];
   $i = 0;
 ?>
-<form id="proceso2form" onsubmit="return false;">
   <div class="row"><!--documentos-->
     <div class="">
       <div class=" input-field col s4 m4 l4">Tipo de Estudios
@@ -307,7 +305,7 @@
   <?php
     $datos = $data["pos"]["cursos"];
     $i = 0;
-    $maxcursos = sizeof($datos);
+    $maxcursos = (isset($datos)?sizeof($datos):0);
   ?>
   <div class="row">
     <h4>Otros Conocimientos (Opcional)</h4>
@@ -318,11 +316,11 @@
     <div class="row" id="curso_box"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso">Curso</label>
-        <input  id="curso" type="text" class="validate" value="<?php if (array_key_exists('nombre', $datos[$i])) { echo $datos[$i]['nombre']; } ?>">
+        <input  id="curso" type="text" class="validate" value="<?php if (isset($datos) && array_key_exists('nombre', $datos[$i])) { echo $datos[$i]['nombre']; } ?>">
       </div>
       <div class="col s4 m4 l4 input-field back-box1">
         <label for="txtDate3">Fecha</label>
-        <input type="text" class="date" id="txtDate3" placeholder="Ingrese mes/año" value="<?php if (array_key_exists('fecha', $datos[$i])) { echo $datos[$i]['fecha']; $i++; } ?>">
+        <input type="text" class="date" id="txtDate3" placeholder="Ingrese mes/año" value="<?php if (isset($datos) && array_key_exists('fecha', $datos[$i])) { echo $datos[$i]['fecha']; $i++; } ?>">
       </div>
       <div class="col s2 m2 l2">
         <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso1" onclick="myFunctionCurso1()">Agregar</div>
@@ -334,11 +332,11 @@
     <div class="row" id="curso2_box"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso2">Curso</label>
-        <input  id="curso2" type="text" class="validate" value="<?php if (array_key_exists('nombre', $datos[$i])) { echo $datos[$i]['nombre']; } ?>">
+        <input  id="curso2" type="text" class="validate" value="<?php if (isset($datos) && array_key_exists('nombre', $datos[$i])) { echo $datos[$i]['nombre']; } ?>">
       </div>
       <div class="col s4 m4 l4 input-field back-box1">
         <label for="txtDate3c2">Fecha</label>
-        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c2" value="<?php if (array_key_exists('fecha', $datos[$i])) { echo $datos[$i]['fecha']; $i++; } ?>">
+        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c2" value="<?php if (isset($datos) && array_key_exists('fecha', $datos[$i])) { echo $datos[$i]['fecha']; $i++; } ?>">
       </div>
       <div class="col s2 m2 l2">
         <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso2" onclick="myFunctionCurso2()">Agregar</div>
@@ -350,11 +348,11 @@
     <div class="row" id="curso3_box"><!--cursos-->
       <div class=" input-field col s6 m6 l6 back-box1">
         <label for="curso3">Curso</label>
-        <input  id="curso3" type="text" class="validate" value="<?php if (array_key_exists('nombre', $datos[$i])) { echo $datos[$i]['nombre']; } ?>">
+        <input  id="curso3" type="text" class="validate" value="<?php if (isset($datos) && array_key_exists('nombre', $datos[$i])) { echo $datos[$i]['nombre']; } ?>">
       </div>
       <div class="col s4 m4 l4 input-field back-box1">
         <label for="txtDate3c3">Fecha</label>
-        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c3" value="<?php if (array_key_exists('fecha', $datos[$i])) { echo $datos[$i]['fecha']; $i++; } ?>">
+        <input type="text" class="date" placeholder="Ingrese mes/año" id="txtDate3c3" value="<?php if (isset($datos) && array_key_exists('fecha', $datos[$i])) { echo $datos[$i]['fecha']; $i++; } ?>">
       </div>
       <div class="col s2 m2 l2">
         <div class="waves-effect waves-light btn btn-send-curso" id="btn-send-curso3" onclick="myFunctionCurso3()">Agregar</div>
@@ -1155,97 +1153,115 @@
     </div>
   </div>
 </div>
+
 </div>
-   <div class="row">
-          <h4>Adjuntos (Opcional)</h4>
-          <?php
-            require_once("db.php");
-            $files = null;
-            $sql = "SELECT id, tipo_archivo, nombre FROM tbl_archivo WHERE id_post = '" . $data["pos"]["id"] . "' AND estado = 1";
-            $results = $conn->query($sql);
-            if ($results) {
-              while($fila = $results->fetch_assoc()) {
-                $files[$fila["tipo_archivo"]]["id"] = $fila["id"];
-                $files[$fila["tipo_archivo"]]["nombre"] = $fila["nombre"];
-              }
-            }
-          ?>
-          
-          <div class="row">
-            
-              <div class="row">
-                <div class="col s6 m6 l6">
-                <label>
-                  Curriculum
-                  (<?php echo ($files!=null && array_key_exists("cv", $files)?"<a href=\"download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">" . $files["cv"]["nombre"] . "</a>":"Ninguno"); ?>)
-                </label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="cv" name="curriculum" value="">
-                  </div>
-                  <div class="file-path-wrapper">
-                    <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                    <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Adjuntar Archivo">
+</form>      
 
-                  </div>
-                </div>
-                </div>
-                <div class="col s6 m6 l6">
-                <label>
-                  Certificado de antecedentes
-                  (<?php echo ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">" . $files["cerAntecedentes"]["nombre"] . "</a>":"Ninguno"); ?>)
-                </label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="cerAntecedentes" name="antecedentes" value="">
-                  </div>
-                  <div class="file-path-wrapper">
-                      <i style="right: 0;left: auto" id="remove-antecedentes" onclick="removeAntecedentesPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                      <input style="width: 80%"  id="antecedentes-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
-                  </div>
-                </div>
-                </div>
+<div class="row">
+  <h4>Adjuntos (Opcional)</h4>
+  <?php
+    require_once("db.php");
+    $files = null;
+    $sql = "SELECT id, tipo_archivo, nombre FROM tbl_archivo WHERE id_post = '" . $data["pos"]["id"] . "' AND estado = 1";
+    $results = $conn->query($sql);
+    if ($results) {
+      while($fila = $results->fetch_assoc()) {
+        $files[$fila["tipo_archivo"]]["id"] = $fila["id"];
+        $files[$fila["tipo_archivo"]]["nombre"] = $fila["nombre"];
+      }
+    }
+  ?>          
+  <div class="row">
+    
+      <div class="row">
+        <div class="col s6 m6 l6">
+          <label>
+            Curriculum
+            (<?php echo ($files!=null && array_key_exists("cv", $files)?"<a href=\"download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">" . $files["cv"]["nombre"] . "</a>":"Ninguno"); ?>)
+          </label>
+          <iframe frameborder="0" width="200" height="28" name="cv_loader"></iframe>
+          <form id="form_cv" class="form_cv" method="POST" action="upload.php" enctype="multipart/form-data" target="cv_loader">
+            <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+            <input type="hidden" name="file_type" value="cv" />
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Adjuntar</span>
+                <input type="file" id="cv" name="cv" onchange="$('#form_cv').submit();">
               </div>
-              <div class="row">
-                <div class="col s6 m6 l6">
-                <label>
-                  Carnet o Pasaporte
-                  (<?php echo ($files!=null && array_key_exists("carnet", $files)?"<a href=\"download.php?identificador=" . $files["carnet"]["id"] . "&tipo=carnet\" target=\"blank\">" . $files["carnet"]["nombre"] . "</a>":"Ninguno"); ?>)
-                </label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="docIdentidad" name="docIdentidad" value="">
-                  </div>
-                  <div class="file-path-wrapper">
-                      <i style="right: 0;left: auto;" id="remove-id" onclick="removeIdPath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                    <input style="width: 80%" id="id-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
-
-                  </div>
-                </div>
-                </div>
-                <div class="col s6 m6 l6">
-                <label>
-                  Fotografía del o la Postulante
-                  (<?php echo ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">" . $files["fotografia"]["nombre"] . "</a>":"Ninguno"); ?>)
-                </label>
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>Adjuntar</span>
-                    <input type="file" id="fotografia" name="fotografia" value="">
-                  </div>
-                  <div class="file-path-wrapper">
-                      <i style="right: 0;left: auto" id="remove-picture" onclick="removePicturePath()" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
-                    <input style="width: 80%" id="picture-path" class="file-path validate" type="text" placeholder="Adjuntar Archivo">
-                  </div>
-                </div>
-                </div>
+              <div class="file-path-wrapper">
+                <i style="right: 0!important; left: auto;" id="remove-cv" onclick="removeCvPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                <input style="width: 80%" class="file-path validate" id="cv-path" type="text" placeholder="Adjuntar Archivo">
               </div>
-            
-          </div>
+            </div>
+          </form>
         </div>
+        <div class="col s6 m6 l6">
+          <label>
+            Certificado de antecedentes
+            (<?php echo ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">" . $files["cerAntecedentes"]["nombre"] . "</a>":"Ninguno"); ?>)
+          </label>
+          <iframe frameborder="0" width="200" height="28" name="antecedentes_loader"></iframe>
+          <form id="form_antecedentes" class="form_antecedentes" method="POST" action="upload.php" enctype="multipart/form-data" target="antecedentes_loader">
+            <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+            <input type="hidden" name="file_type" value="cerAntecedentes" />
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Adjuntar</span>
+                <input type="file" id="cerAntecedentes" name="cerAntecedentes" onchange="$('#form_antecedentes').submit();">
+              </div>
+              <div class="file-path-wrapper">
+                <i style="right: 0!important; left: auto;" id="remove-antecedentes" onclick="removeAntecedentesPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                <input style="width: 80%" class="file-path validate" id="antecedentes-path" type="text" placeholder="Adjuntar Archivo">
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="row">
+        <div class="col s6 m6 l6">
+          <label>
+            Carnet o Pasaporte
+            (<?php echo ($files!=null && array_key_exists("carnet", $files)?"<a href=\"download.php?identificador=" . $files["carnet"]["id"] . "&tipo=carnet\" target=\"blank\">" . $files["carnet"]["nombre"] . "</a>":"Ninguno"); ?>)
+          </label>
+          <iframe frameborder="0" width="200" height="28" name="id_loader"></iframe>
+          <form id="form_id" class="form_id" method="POST" action="upload.php" enctype="multipart/form-data" target="id_loader">
+            <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+            <input type="hidden" name="file_type" value="carnet" />
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Adjuntar</span>
+                <input type="file" id="carnet" name="carnet" onchange="$('#form_id').submit();">
+              </div>
+              <div class="file-path-wrapper">
+                <i style="right: 0!important; left: auto;" id="remove-id" onclick="removeIdPath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                <input style="width: 80%" class="file-path validate" id="id-path" type="text" placeholder="Adjuntar Archivo">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col s6 m6 l6">
+          <label>
+            Fotografía del Postulante
+            (<?php echo ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">" . $files["fotografia"]["nombre"] . "</a>":"Ninguno"); ?>)
+          </label>
+          <iframe frameborder="0" width="200" height="28" name="picture_loader"></iframe>
+          <form id="form_picture" class="form_picture" method="POST" action="upload.php" enctype="multipart/form-data" target="picture_loader">
+            <input type="hidden" name="id_post" value="<?php echo $data["id"]; ?>" />
+            <input type="hidden" name="file_type" value="fotografia" />
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Adjuntar</span>
+                <input type="file" id="fotografia" name="fotografia" onchange="$('#form_picture').submit();">
+              </div>
+              <div class="file-path-wrapper">
+                <i style="right: 0!important; left: auto;" id="remove-picture" onclick="removePicturePath();" class="material-icons btn-flat prefix">cancel</i><!-- este es el btn de remover -->
+                <input style="width: 80%" class="file-path validate" id="picture-path" type="text" placeholder="Adjuntar Archivo">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    
+  </div>
 </div>
 
 <div class="row"></div>
@@ -1254,10 +1270,9 @@
 <!-- -----------------------------------------------BOTONES FINAL --------------------------------- -->
 <div class="row">
   <div class="col s6 m6 l6 right">
-    <button type="submit" class="waves-effect waves-light btn right" >Postular</button>
+    <button type="button" class="waves-effect waves-light btn right" onClick="$('#postularform').submit();">Postular</button>
   </div>
 </div>
-</form>
 </div><!--container-->
 
 <div class="row">
