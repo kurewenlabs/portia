@@ -760,7 +760,7 @@
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'lastpagedata')
     {
-        // var_error_log($_POST);
+        var_error_log($_POST);
         // $_SESSION["postdata"]["pos"]["pa"] = $_POST["data"]["pa"];
         // $_SESSION["postdata"]["pos"]["datos"] = $_POST["data"]["datos"];
         // $_SESSION["postdata"]["pos"]["estudios"] = $_POST["data"]["estudios"];

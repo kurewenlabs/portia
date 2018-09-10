@@ -566,15 +566,15 @@ $(document).ready(function () {
 
     $("form#postularform").submit(function(e){
         e.preventDefault();
-        // qconfirm("¿Seguro que quiere enviar su postulación?");
+        // confirm("¿Seguro que quiere enviar su postulación?");
         var chkArray = [];
-        chkArray["datos"] = getFirstStepData();
-        chkArray["estudios"] = getSecondPageDataPart1();
-        chkArray["cursos"] = getSecondPageDataPart2();
-        chkArray["experiencia"] = getThirdPageData();
-        chkArray["referencia"] = getFourthPageData();
-        chkArray["horarioT"] = getFifthPageData();
-        chkArray["documentos"] = getSixthPageData();
+        // chkArray["datos"] = getFirstStepData();
+        // chkArray["estudios"] = getSecondPageDataPart1();
+        // chkArray["cursos"] = getSecondPageDataPart2();
+        // chkArray["experiencia"] = getThirdPageData();
+        // chkArray["referencia"] = getFourthPageData();
+        // chkArray["horarioT"] = getFifthPageData();
+        // chkArray["documentos"] = getSixthPageData();
 
         /* we join the array separated by the comma */
         var selected;

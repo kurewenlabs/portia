@@ -1160,14 +1160,14 @@
                                 <div class="row">
                                     <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
                                         <select name="dias_work1" class="js-example-basic-multiple" id="dias" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                                            <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
-                                            <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
-                                            <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
-                                            <option value="Miercoles" <?php echo ($dias_array && array_search( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
-                                            <option value="Jueves" <?php echo ($dias_array && array_search( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
-                                            <option value="Viernes" <?php echo ($dias_array && array_search( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
-                                            <option value="Sabado" <?php echo ($dias_array && array_search( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
-                                            <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
+                                            <option value="Todos" <?php echo ($dias_array && in_array( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
+                                            <option value="Lunes" <?php echo ($dias_array && in_array( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
+                                            <option value="Martes" <?php echo ($dias_array && in_array( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
+                                            <option value="Miercoles" <?php echo ($dias_array && in_array( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
+                                            <option value="Jueves" <?php echo ($dias_array && in_array( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
+                                            <option value="Viernes" <?php echo ($dias_array && in_array( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
+                                            <option value="Sabado" <?php echo ($dias_array && in_array( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
+                                            <option value="Domingo" <?php echo ($dias_array && in_array( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
                                     <div class="input-field col s2 m2 l2">Horario Desde
@@ -1218,14 +1218,14 @@
                                 <div class="row">
                                     <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
                                         <select name="dias_work2" class="js-example-basic-multiple" id="dias2" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                                            <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
-                                            <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
-                                            <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
-                                            <option value="Miercoles" <?php echo ($dias_array && array_search( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
-                                            <option value="Jueves" <?php echo ($dias_array && array_search( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
-                                            <option value="Viernes" <?php echo ($dias_array && array_search( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
-                                            <option value="Sabado" <?php echo ($dias_array && array_search( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
-                                            <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
+                                            <option value="Todos" <?php echo ($dias_array && in_array( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
+                                            <option value="Lunes" <?php echo ($dias_array && in_array( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
+                                            <option value="Martes" <?php echo ($dias_array && in_array( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
+                                            <option value="Miercoles" <?php echo ($dias_array && in_array( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
+                                            <option value="Jueves" <?php echo ($dias_array && in_array( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
+                                            <option value="Viernes" <?php echo ($dias_array && in_array( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
+                                            <option value="Sabado" <?php echo ($dias_array && in_array( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
+                                            <option value="Domingo" <?php echo ($dias_array && in_array( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
                                     <div class="input-field col s2 m2 l2">Horario Desde
@@ -1275,14 +1275,14 @@
                                 <div class="row">
                                     <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
                                         <select name="dias_work3" class="js-example-basic-multiple" id="dias3" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                                            <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
-                                            <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
-                                            <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
-                                            <option value="Miercoles" <?php echo ($dias_array && array_search( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
-                                            <option value="Jueves" <?php echo ($dias_array && array_search( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
-                                            <option value="Viernes" <?php echo ($dias_array && array_search( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
-                                            <option value="Sabado" <?php echo ($dias_array && array_search( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
-                                            <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
+                                            <option value="Todos" <?php echo ($dias_array && in_array( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
+                                            <option value="Lunes" <?php echo ($dias_array && in_array( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
+                                            <option value="Martes" <?php echo ($dias_array && in_array( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
+                                            <option value="Miercoles" <?php echo ($dias_array && in_array( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
+                                            <option value="Jueves" <?php echo ($dias_array && in_array( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
+                                            <option value="Viernes" <?php echo ($dias_array && in_array( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
+                                            <option value="Sabado" <?php echo ($dias_array && in_array( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
+                                            <option value="Domingo" <?php echo ($dias_array && in_array( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
                                     <div class="input-field col s2 m2 l2">Horario Desde
@@ -1331,14 +1331,14 @@
                                 <div class="row">
                                     <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
                                         <select name="dias_work4" class="js-example-basic-multiple" id="dias4" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                                            <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
-                                            <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
-                                            <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
-                                            <option value="Miercoles" <?php echo ($dias_array && array_search( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
-                                            <option value="Jueves" <?php echo ($dias_array && array_search( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
-                                            <option value="Viernes" <?php echo ($dias_array && array_search( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
-                                            <option value="Sabado" <?php echo ($dias_array && array_search( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
-                                            <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
+                                            <option value="Todos" <?php echo ($dias_array && in_array( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
+                                            <option value="Lunes" <?php echo ($dias_array && in_array( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
+                                            <option value="Martes" <?php echo ($dias_array && in_array( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
+                                            <option value="Miercoles" <?php echo ($dias_array && in_array( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
+                                            <option value="Jueves" <?php echo ($dias_array && in_array( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
+                                            <option value="Viernes" <?php echo ($dias_array && in_array( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
+                                            <option value="Sabado" <?php echo ($dias_array && in_array( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
+                                            <option value="Domingo" <?php echo ($dias_array && in_array( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
                                     <div class="input-field col s2 m2 l2">Horario Desde
@@ -1387,14 +1387,14 @@
                                 <div class="row">
                                     <div class="input-field col s5 m5 l5">Dias disponibles para trabajar
                                         <select name="dias_work5" class="js-example-basic-multiple" id="dias5" multiple="multiple" style="width:60%" onChange="changeStatus(this);">
-                                            <option value="Todos" <?php echo ($dias_array && array_search( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
-                                            <option value="Lunes" <?php echo ($dias_array && array_search( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
-                                            <option value="Martes" <?php echo ($dias_array && array_search( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
-                                            <option value="Miercoles" <?php echo ($dias_array && array_search( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
-                                            <option value="Jueves" <?php echo ($dias_array && array_search( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
-                                            <option value="Viernes" <?php echo ($dias_array && array_search( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
-                                            <option value="Sabado" <?php echo ($dias_array && array_search( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
-                                            <option value="Domingo" <?php echo ($dias_array && array_search( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
+                                            <option value="Todos" <?php echo ($dias_array && in_array( 'Todos', $dias_array)? "selected": ""); ?>>Todos</option>
+                                            <option value="Lunes" <?php echo ($dias_array && in_array( 'Lunes', $dias_array)? "selected": ""); ?>>Lunes</option>
+                                            <option value="Martes" <?php echo ($dias_array && in_array( 'Martes', $dias_array)? "selected": ""); ?>>Martes</option>
+                                            <option value="Miercoles" <?php echo ($dias_array && in_array( 'Miercoles', $dias_array)? "selected": ""); ?>>Miercoles</option>
+                                            <option value="Jueves" <?php echo ($dias_array && in_array( 'Jueves', $dias_array)? "selected": ""); ?>>Jueves</option>
+                                            <option value="Viernes" <?php echo ($dias_array && in_array( 'Viernes', $dias_array)? "selected": ""); ?>>Viernes</option>
+                                            <option value="Sabado" <?php echo ($dias_array && in_array( 'Sabado', $dias_array)? "selected": ""); ?>>Sabado</option>
+                                            <option value="Domingo" <?php echo ($dias_array && in_array( 'Domingo', $dias_array)? "selected": ""); ?>>Domingo</option>
                                         </select>
                                     </div>
                                     <div class=" input-field col s2 m2 l2">Horario Desde
