@@ -35,40 +35,40 @@
 <div class="row">
   <h5>¿A través de que medio se enteró de la postulación?</h5>
   <div class="col s6 m6 l6">
-   <form action="#">
+   <form id="gracias" action="#">
     <p>
       <label>
-        <input name=" " type="radio" class="with-gap" />
+        <input id="facebook" name="medio" type="radio" value="Facebook" class="with-gap" />
         <span>Facebook</span>
       </label>
     </p>
     <p>
       <label>
-        <input name=" " type="radio" class="with-gap"/>
+        <input id="laborum" name="medio" type="radio" value="Laborum" class="with-gap"/>
         <span>Laborum</span>
       </label>
     </p>
     <p>
       <label>
-        <input class="with-gap" name=" " type="radio"  />
+        <input class="with-gap" id="linkedin" name="medio" value="Linkedin" type="radio"  />
         <span>Linkedin</span>
       </label>
     </p>
     <p>
       <label>
-        <input name=" " type="radio" class="with-gap" />
+        <input type="radio" id="computrabajo" name="medio" value="Computrabajo" class="with-gap" />
         <span>Computrabajo</span>
       </label>
     </p>
     <p>
       <label>
-        <input name=" " type="radio" class="with-gap" />
+        <input type="radio" id="recomendacion" name="medio" value="Recomendacion" class="with-gap" />
         <span>Recomendacion</span>
       </label>
     </p>
     <p>
       <label>
-        <input name=" " type="radio" class="with-gap" />
+        <input id="otro" name="medio" value="Otro" type="radio" class="with-gap" />
         <span>Otros</span>
       </label>
     </p>
@@ -77,7 +77,7 @@
 
 
   </div>
-  <button onclick="myFunctionGracias()" class="waves-effect waves-light btn right">Enviar</button>
+  <button onclick="$('form#gracias').submit();" class="waves-effect waves-light btn right">Enviar</button>
   </div>
 
   <div class="row">

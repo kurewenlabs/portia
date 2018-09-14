@@ -1,4 +1,4 @@
-  function toUppercase(obj,id){
+  function toUppercase(obj, id){
       obj = obj.toUpperCase();
       document.getElementById(id).value = obj;
   }

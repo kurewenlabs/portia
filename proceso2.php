@@ -70,11 +70,14 @@
       <div class=" input-field col s4 m4 l4">Tipo de Estudios
         <select id="tipoEstudio" class="browser-default" onselect="this.className = ''" name="estudio">
           <option value=""></option>
-          <option value="Basica">Enseñanza Básica</option>
-          <option value="Media">Enseñanza Media</option>
+          <option value="Primario">Básica</option>
+          <option value="Secundario">Media</option>
           <option value="Técnico Superior">Técnico Superior</option>
           <option value="Universitario">Universitario</option>
           <option value="Posgrado">Posgrado</option>
+          <option value="Master">Magister</option>
+          <option value="Doctorado">Doctorado</option>
+          <option value="Otro">Otro</option>
         </select>
       </div>
       <div class="input-field col s8 m8 l8 carreraBox" id="carrerabox">
@@ -96,7 +99,7 @@
         </div>
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
-            <label for="fechaEstudio">Año </label>
+            <label for="fechaEstudio">Año de Término</label>
             <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
           </div>
         

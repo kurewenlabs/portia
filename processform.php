@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once 'db.php';
 
     function var_error_log( $object=null ){
         ob_start();                    // start buffer capture
@@ -11,7 +12,6 @@
 
     function save_data_in_DB(){
 
-        require_once 'db.php';
         global $conn;
     
         if (isset($_SESSION["mode"])) 
@@ -167,6 +167,8 @@
             die();
         }
 
+        error_log($semestres);
+
         // Insertar o actualizar tbl_estudio 
         $sql =  "REPLACE INTO tbl_estudio (
                                 id, 
@@ -185,7 +187,7 @@
                                 '$titulo',
                                 '$estado_estudio',
                                 '$fechaEstudio',
-                                " . (isset($semestres) && $semestre!=''?$semestres:'0') . "
+                                " . (isset($semestres)?$semestres:'0') . "
                                 );";
 
         if (isset($_SESSION["mode"])) 
@@ -719,8 +721,8 @@
             error_log("Postulación " . $idPost . " almacenada en DB!");
         }
     }
-   
-   
+
+    // Captura de los datos por cada uno de los pasos de la postulación
     if(!isset($_SESSION["postdata"]))
     {
         $_SESSION["postdata"]=array("post"=>array());
@@ -756,22 +758,21 @@
         $_SESSION["postdata"]["pos"]["documentos"] = $_POST['data'];
 
         // Pre-guardado para asegurar que los datos estén a salvo antes de enviar
-        save_data_in_DB();
+        // save_data_in_DB();
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'lastpagedata')
     {
-        var_error_log($_POST);
-        // $_SESSION["postdata"]["pos"]["pa"] = $_POST["data"]["pa"];
-        // $_SESSION["postdata"]["pos"]["datos"] = $_POST["data"]["datos"];
-        // $_SESSION["postdata"]["pos"]["estudios"] = $_POST["data"]["estudios"];
-        // $_SESSION["postdata"]["pos"]["cursos"] = $_POST["data"]["cursos"];
-        // $_SESSION["postdata"]["pos"]["experiencia"] = $_POST["data"]["experiencia"];
-        // $_SESSION["postdata"]["pos"]["referencia"] = $_POST["data"]["referencia"];
-        // $_SESSION["postdata"]["pos"]["horarioT"] = $_POST["data"]["horarioT"];
-        // $_SESSION["postdata"]["pos"]["documentos"] = $_POST["data"]["documentos"];
+        $session_back = $_SESSION["postdata"]["pos"];
+        $_SESSION["postdata"]["pos"]["datos"] = $_POST["dataDatos"];
+        $_SESSION["postdata"]["pos"]["estudios"] = $_POST["dataEstudios"];
+        $_SESSION["postdata"]["pos"]["cursos"] = $_POST["dataCursos"];
+        $_SESSION["postdata"]["pos"]["experiencia"] = $_POST["dataExperiencia"];
+        $_SESSION["postdata"]["pos"]["referencia"] = $_POST["dataReferencia"];
+        $_SESSION["postdata"]["pos"]["horarioT"] = $_POST["dataHorarios"];
+        $_SESSION["postdata"]["pos"]["documentos"] = $_POST["dataDocumentos"];
 
         // Guardado definitivo que actualiza cualquier cambio en los datos del postulante
-        // save_data_in_DB();
+        save_data_in_DB();
 
         require_once('src/mailer/PHPMailerAutoload.php');
         $datos = $_SESSION["postdata"]["pos"];
@@ -851,6 +852,26 @@
         if (isset($_SESSION["mode"])) 
         {
             error_log('DONE!');
+        }
+    } 
+    if(isset($_POST['action']) && $_POST['action'] == 'graciaspage')
+    {
+        $idPost = $_SESSION["postdata"]["pos"]["id"];
+        $medio  = $_POST['data'][0]['medio'];
+
+        $sql = "UPDATE tbl_postulante 
+                   SET medio = '$medio' 
+                 WHERE id_post = '$idPost'";
+        
+        if (isset($_SESSION["mode"])) 
+        {
+            error_log('Query: '. $sql);
+        }
+
+        if(!mysqli_query($conn,$sql))
+        {
+            error_log('Error : tbl_postulante ' . mysqli_error($conn) . ' (Query : ' . $sql . ')');
+            die();
         }
     }
 ?>

@@ -21,27 +21,27 @@ $(document).ready(function () {
     }
 
     function getSelectionFormData() {
-        var chkArray = [];
+        var dataArray = [];
         $("#retail input:checked").each(function() {
-            chkArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"retail"});
+            dataArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"retail"});
         });
         $("#administrativo input:checked").each(function() {
-            chkArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Administrativo"});
+            dataArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Administrativo"});
         });
         $("#industrial input:checked").each(function() {
-            chkArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Industrial"});
+            dataArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Industrial"});
         });
         $("#otros input:checked").each(function() {
-            chkArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Otros"});
+            dataArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Otros"});
         });
-        return chkArray;
+        return dataArray;
     }
 
     function getFirstStepData() {
-        var chkArray = [];
+        var dataArray = [];
         if($.trim($("#tipo_doc").val()) == "rut") {
             if($.trim($("#rut").val()) != "" ) {
-                chkArray.push( {"rut" : $("#rut").val()} );
+                dataArray.push( {"rut" : $("#rut").val()} );
                 $('#rut').css('border-color' , '#f2f2f2');
             } else {
                 notie.alert({ type: 3, text: 'Debes ingresar rut', position: 'bottom' });
@@ -50,7 +50,7 @@ $(document).ready(function () {
             }
         } else {
             if($.trim($("#pasaporte").val()) != "" ){
-                chkArray.push( {"pasaporte" : $("#pasaporte").val()} );
+                dataArray.push( {"pasaporte" : $("#pasaporte").val()} );
                 $('#pasaporte').css('border-color' , '#f2f2f2');
             } else {
                 notie.alert({ type: 3, text: 'Debes ingresar pasaporte', position: 'bottom' });
@@ -59,7 +59,7 @@ $(document).ready(function () {
             }
         }
         if($.trim($("#first_name").val()) != "" ){
-            chkArray.push( {"noms" : $("#first_name").val()} );
+            dataArray.push( {"noms" : $("#first_name").val()} );
             $('#first_name').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu nombre', position: 'bottom' });
@@ -67,7 +67,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#last_name").val()) != "" ){
-            chkArray.push( {"apeP" : $("#last_name").val()} );
+            dataArray.push( {"apeP" : $("#last_name").val()} );
             $('#last_name').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu apellido', position: 'bottom' });
@@ -75,7 +75,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#last_name_2").val()) != "" ){
-            chkArray.push( {"apeM" : $("#last_name_2").val()} );
+            dataArray.push( {"apeM" : $("#last_name_2").val()} );
             $('#last_name_2').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu apellido materno', position: 'bottom' });
@@ -83,7 +83,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#txtDate").val()) != "" ){
-            chkArray.push( {"fNaci" : $("#txtDate").val() } );
+            dataArray.push( {"fNaci" : $("#txtDate").val() } );
             $('#txtDate').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu fecha de nacimiento', position: 'bottom' });
@@ -91,7 +91,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#sexo").val()) != "" ){
-            chkArray.push( {"sexo" : $("#sexo").val()} );
+            dataArray.push( {"sexo" : $("#sexo").val()} );
             $('#sexo').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu sexo', position: 'bottom' });
@@ -99,7 +99,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#estado_civil").val()) != "" ){
-            chkArray.push( {"eCivil" : $("#estado_civil").val()} );
+            dataArray.push( {"eCivil" : $("#estado_civil").val()} );
             $('#estado_civil').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu estado civil', position: 'bottom' });
@@ -107,7 +107,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#nacionalidad").val()) != "" ){
-            chkArray.push( {"nacionalidad" : $("#nacionalidad").val()} );
+            dataArray.push( {"nacionalidad" : $("#nacionalidad").val()} );
             $('#nacionalidad').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu nacionalidad', position: 'bottom' });
@@ -115,7 +115,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#telefono").val()) != "" ){
-            chkArray.push( {"telefono" : $("#telefono").val()} );
+            dataArray.push( {"telefono" : $("#telefono").val()} );
             $('#telefono').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu numero de teléfono', position: 'bottom' });
@@ -123,10 +123,10 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#telefono2").val()) != "" ){
-            chkArray.push( {"telRec" : $("#telefono2").val()} );
+            dataArray.push( {"telRec" : $("#telefono2").val()} );
         }
         if($.trim($("#email").val()) != "" ){
-            chkArray.push( {"email" : $("#email").val()} );
+            dataArray.push( {"email" : $("#email").val()} );
             $('#email').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu email', position: 'bottom' });
@@ -134,7 +134,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#region").val()) != "" ){
-            chkArray.push( {"provi" : $("#region").val()} );
+            dataArray.push( {"provi" : $("#region").val()} );
             $('#region').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu región', position: 'bottom' });
@@ -142,7 +142,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#comuna").val()) != "" ){
-            chkArray.push( {"comuna" : $("#comuna").val()} );
+            dataArray.push( {"comuna" : $("#comuna").val()} );
             $('#comuna').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu comuna', position: 'bottom' });
@@ -150,20 +150,20 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#direccion").val()) != "" ){
-            chkArray.push( {"direccion" : $("#direccion").val()} );
+            dataArray.push( {"direccion" : $("#direccion").val()} );
             $('#direccion').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu dirección', position: 'bottom' });
             $('#direccion').css('border-color' , 'red');
             return false;
         }
-        return chkArray;
+        return dataArray;
     }
 
     function getSecondPageDataPart1() {
-        var chkArray = [];
+        var dataArray = [];
         if($.trim($("#tipoEstudio").val()) != "" ){
-            chkArray.push( {"tipoEstudio" : $("#tipoEstudio").val()} );
+            dataArray.push( {"tipoEstudio" : $("#tipoEstudio").val()} );
             $('#tipoEstudio').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tipo de estudios', position: 'bottom' });
@@ -172,7 +172,7 @@ $(document).ready(function () {
         }
         if($('#tipoEstudio').val() !== "Media"){
             if($.trim($("#carrera").val()) != "" ){
-                chkArray.push( {"titulo" : $("#carrera").val()} );
+                dataArray.push( {"titulo" : $("#carrera").val()} );
                 $('#carrera').css('border-color' , '#f2f2f2');
             } else {
                 notie.alert({ type: 3, text: 'Debes ingresar Titulo de la carrera', position: 'bottom' });
@@ -182,80 +182,80 @@ $(document).ready(function () {
         }
         if($.trim($("#estado_estudio").val()) == "Graduado" ){
             if($.trim($("#txtDate2ftitulacion").val()) != "" ){
-                chkArray.push( {"fecha_titulacion" : $("#txtDate2ftitulacion").val()} );
+                dataArray.push( {"fecha_titulacion" : $("#txtDate2ftitulacion").val()} );
             } else {
                 notie.alert({ type: 3, text: 'Debes ingresar fecha de titulación', position: 'bottom' });
                 return false;
             }
         }
         if($.trim($("#estado_estudio").val()) != "" ){
-            chkArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
+            dataArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
         }
         if($.trim($("#fechaEstudio").val()) != "" ){
-            chkArray.push( {"fechaEstudio" : $("#fechaEstudio").val()} );
+            dataArray.push( {"fechaEstudio" : $("#fechaEstudio").val()} );
         }
         if($.trim($("#semestres").val()) != "" ){
-            chkArray.push( {"semestres" : $("#semestres").val()} );
+            dataArray.push( {"semestres" : $("#semestres").val()} );
         }
         if($.trim($("#licencia").val()) != "" ){
-            chkArray.push( {"licencia" : $("#licencia").val()} );
+            dataArray.push( {"licencia" : $("#licencia").val()} );
         }
-        return chkArray;
+        return dataArray;
     }
 
     function getSecondPageDataPart2() {
-        var chkArray = [];
+        var dataArray = [];
         if($.trim($("#curso").val()) != "" ){
-            chkArray.push( {"nombre" : $("#curso").val(), "fecha" : $("#txtDate3").val()} );
+            dataArray.push( {"nombre" : $("#curso").val(), "fecha" : $("#txtDate3").val()} );
         }
         if($.trim($("#curso2").val()) != "" ){
-            chkArray.push( {"nombre" : $("#curso2").val(), "fecha" : $("#txtDate3c2").val()} );
+            dataArray.push( {"nombre" : $("#curso2").val(), "fecha" : $("#txtDate3c2").val()} );
         }
         if($.trim($("#curso3").val()) != "" ){
-            chkArray.push( {"nombre" : $("#curso3").val(), "fecha" : $("#txtDate3c3").val()} );
+            dataArray.push( {"nombre" : $("#curso3").val(), "fecha" : $("#txtDate3c3").val()} );
         }   
-        return chkArray;
+        return dataArray;
     }
 
     function getThirdPageData() {
-        var chkArray = [];
+        var dataArray = [];
         if($.trim($("#empresa").val()) != "" ){
-            chkArray.push( {"empresa" : $("#empresa").val(), "cargo" : $("#cargo").val(), "fechaDesde" : $("#txtDate4").val(), "fechaHasta" : $("#txtDate4h").val()} );
+            dataArray.push( {"empresa" : $("#empresa").val(), "cargo" : $("#cargo").val(), "fechaDesde" : $("#txtDate4").val(), "fechaHasta" : $("#txtDate4h").val()} );
         }
         if($.trim($("#empresa2").val()) != "" ){
-            chkArray.push( {"empresa" : $("#empresa2").val(), "cargo" : $("#cargo2").val(), "fechaDesde" : $("#txtDate42").val(), "fechaHasta" : $("#txtDate42h").val()} );
+            dataArray.push( {"empresa" : $("#empresa2").val(), "cargo" : $("#cargo2").val(), "fechaDesde" : $("#txtDate42").val(), "fechaHasta" : $("#txtDate42h").val()} );
         }
         if($.trim($("#empresa3").val()) != "" ){
-            chkArray.push( {"empresa" : $("#empresa3").val(), "cargo" : $("#cargo3").val(), "fechaDesde" : $("#txtDate43").val(), "fechaHasta" : $("#txtDate43h").val()} );
+            dataArray.push( {"empresa" : $("#empresa3").val(), "cargo" : $("#cargo3").val(), "fechaDesde" : $("#txtDate43").val(), "fechaHasta" : $("#txtDate43h").val()} );
         }
         if($.trim($("#experiencia").val()) != "" ){
-            chkArray.push( {"experiencia" : $("#experiencia").val()} );
+            dataArray.push( {"experiencia" : $("#experiencia").val()} );
         }
-        return chkArray;
+        return dataArray;
     }
 
     function getFourthPageData() {
-        var chkArray = [];
+        var dataArray = [];
         /* look for all checkboes that have a parent id  attached to it and check if it was checked */
         if($.trim($("#empresaref").val()) != "" ){
-            chkArray.push( {"empresa" : $("#empresaref").val(), "nombreContacto" : $("#contactoref").val(), "cargo" : $("#cargoref").val(), "telefono" : $("#telefonoref").val(), "email" : $("#emailref").val()} );
+            dataArray.push( {"empresa" : $("#empresaref").val(), "nombreContacto" : $("#contactoref").val(), "cargo" : $("#cargoref").val(), "telefono" : $("#telefonoref").val(), "email" : $("#emailref").val()} );
         }
         if($.trim($("#empresaref").val()) != "" ){
-            chkArray.push( {"empresa" : $("#empresaref2").val(), "nombreContacto" : $("#contactoref2").val(), "cargo" : $("#cargoref2").val(), "telefono" : $("#telefonoref2").val(), "email" : $("#emailref2").val()} );
+            dataArray.push( {"empresa" : $("#empresaref2").val(), "nombreContacto" : $("#contactoref2").val(), "cargo" : $("#cargoref2").val(), "telefono" : $("#telefonoref2").val(), "email" : $("#emailref2").val()} );
         }
         if($.trim($("#empresaref").val()) != "" ){
-            chkArray.push( {"empresa" : $("#empresaref3").val(), "nombreContacto" : $("#contactoref3").val(), "cargo" : $("#cargoref3").val(), "telefono" : $("#telefonoref3").val(), "email" : $("#emailref3").val()} );
+            dataArray.push( {"empresa" : $("#empresaref3").val(), "nombreContacto" : $("#contactoref3").val(), "cargo" : $("#cargoref3").val(), "telefono" : $("#telefonoref3").val(), "email" : $("#emailref3").val()} );
         }
         if($.trim($("#referencia_laboral").val()) != "" ){
-            chkArray.push( {"referencia_laboral" : $("#referencia_laboral").val()} );
+            dataArray.push( {"referencia_laboral" : $("#referencia_laboral").val()} );
         }
-        return chkArray;
+        return dataArray;
     }
 
     function getFifthPageData() {
-        var chkArray = [];
+        var dataArray = [];
         if($.trim($("#afp").val()) != "" ){
-            chkArray.push( {"afp" : $("#afp").val()} );
+            dataArray.push( {"afp" : $("#afp").val()} );
             $('#afp').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes elegir AFP', position: 'bottom' });
@@ -263,7 +263,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#isapre").val()) != "" ){
-            chkArray.push( {"isapre" : $("#isapre").val()} );
+            dataArray.push( {"isapre" : $("#isapre").val()} );
             $('#isapre').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes elegir tu previsión de salud', position: 'bottom' });
@@ -271,7 +271,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#comunaswork").val()) != "" ){
-            chkArray.push( {"region" : $("#regionwork").val(), "comunas" : $("#comunaswork").val()} );
+            dataArray.push( {"region" : $("#regionwork").val(), "comunas" : $("#comunaswork").val()} );
             $('#comunas').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes elegir las comunas disponibles para trabajar', position: 'bottom' });
@@ -279,7 +279,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#dias").val()) != "" ){
-            chkArray.push( {"dias" : $("#dias").val(), "horarios" : $("#id_label_multiple").val()+' a '+$("#id_label_multiple1").val()} );
+            dataArray.push( {"dias" : $("#dias").val(), "horarios" : $("#id_label_multiple").val()+' a '+$("#id_label_multiple1").val()} );
             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
             $('#id_label_multiple').siblings('input').css('border-color' , '#f2f2f2');
             $('#id_label_multiple1').siblings('input').css('border-color' , '#f2f2f2');
@@ -291,28 +291,28 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#dias2").val()) != "" ){
-            chkArray.push( {"dias" : $("#dias2").val(), "horarios" : $("#id_label_multiple2").val()+' a '+$("#id_label_multiple12").val()} );
+            dataArray.push( {"dias" : $("#dias2").val(), "horarios" : $("#id_label_multiple2").val()+' a '+$("#id_label_multiple12").val()} );
             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
         }
         if($.trim($("#dias3").val()) != "" ){
-            chkArray.push( {"dias" : $("#dias3").val(), "horarios" : $("#id_label_multiple3").val()+' a '+$("#id_label_multiple13").val()} );
+            dataArray.push( {"dias" : $("#dias3").val(), "horarios" : $("#id_label_multiple3").val()+' a '+$("#id_label_multiple13").val()} );
             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
         }
         if($.trim($("#dias4").val()) != "" ){
-            chkArray.push( {"dias" : $("#dias4").val(), "horarios" : $("#id_label_multiple4").val()+' a '+$("#id_label_multiple14").val()} );
+            dataArray.push( {"dias" : $("#dias4").val(), "horarios" : $("#id_label_multiple4").val()+' a '+$("#id_label_multiple14").val()} );
             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
         }
         if($.trim($("#dias5").val()) != "" ){
-            chkArray.push( {"dias" : $("#dias5").val(), "horarios" : $("#id_label_multiple5").val()+' a '+$("#id_label_multiple15").val()} );
+            dataArray.push( {"dias" : $("#dias5").val(), "horarios" : $("#id_label_multiple5").val()+' a '+$("#id_label_multiple15").val()} );
             $('#dias').siblings('input').css('border-color' , '#f2f2f2');
         }
-        return chkArray;
+        return dataArray;
     }
 
     function getSixthPageData() {
-        var chkArray = [];
+        var dataArray = [];
         if($.trim($("#uniforme").val()) != "" ){
-            chkArray.push( {"uniforme" : $("#uniforme").val()} );
+            dataArray.push( {"uniforme" : $("#uniforme").val()} );
             $('#uniforme').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Ingresa tu talla de polera', position: 'bottom' });
@@ -320,7 +320,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#uniforme2").val()) != "" ){
-            chkArray.push( {"uniforme2" : $("#uniforme2").val()} );
+            dataArray.push( {"uniforme2" : $("#uniforme2").val()} );
             $('#uniforme2').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Ingresa tu talla de polerón', position: 'bottom' });
@@ -328,7 +328,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#tallaZapato").val()) != "" ){
-            chkArray.push( {"tallaZapato" : $("#tallaZapato").val()} );
+            dataArray.push( {"tallaZapato" : $("#tallaZapato").val()} );
             $('#tallaZapato').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Ingresa tu talla de calzado', position: 'bottom' });
@@ -336,7 +336,7 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#tallaPantalon").val()) != "" ){
-            chkArray.push( {"tallaPantalon" : $("#tallaPantalon").val()} );
+            dataArray.push( {"tallaPantalon" : $("#tallaPantalon").val()} );
             $('#tallaPantalon').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Ingresa tu talla de pantalón', position: 'bottom' });
@@ -344,14 +344,14 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#renta").val()) != "" ){
-            chkArray.push( {"renta" : $("#renta").val()} );
+            dataArray.push( {"renta" : $("#renta").val()} );
             $('#renta').css('border-color' , '#f2f2f2');
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tus pretenciones de renta', position: 'bottom' });
             $('#renta').css('border-color' , 'red');
             return false;
         }
-        return chkArray;
+        return dataArray;
     }
 
     $("form#selectionForm").submit(function(e){
@@ -566,15 +566,21 @@ $(document).ready(function () {
 
     $("form#postularform").submit(function(e){
         e.preventDefault();
-        // confirm("¿Seguro que quiere enviar su postulación?");
+
+        if (!confirm("¿Seguro que quiere enviar su postulación? Esto puede tardar algún tiempo")) {
+            return false;
+        }
+
+        $("#postularbutton").attr("disabled", true);
+        
         var chkArray = [];
-        // chkArray["datos"] = getFirstStepData();
-        // chkArray["estudios"] = getSecondPageDataPart1();
-        // chkArray["cursos"] = getSecondPageDataPart2();
-        // chkArray["experiencia"] = getThirdPageData();
-        // chkArray["referencia"] = getFourthPageData();
-        // chkArray["horarioT"] = getFifthPageData();
-        // chkArray["documentos"] = getSixthPageData();
+        chkArray["Datos"] = getFirstStepData();
+        chkArray["Estudios"] = getSecondPageDataPart1();
+        chkArray["Cursos"] = getSecondPageDataPart2();
+        chkArray["Experiencia"] = getThirdPageData();
+        chkArray["Referencia"] = getFourthPageData();
+        chkArray["Horarios"] = getFifthPageData();
+        chkArray["Documentos"] = getSixthPageData();
 
         /* we join the array separated by the comma */
         var selected;
@@ -582,18 +588,71 @@ $(document).ready(function () {
         
         var JSONData={};
         $.ajax({
-            url : "processform.php",
-            type: "post",
-            data:{ action:"lastpagedata",data:chkArray },
-            success:function(data){
+            url    : "processform.php",
+            method : "post",
+            data   : { action         :"lastpagedata", 
+                       dataDatos      :chkArray["Datos"], 
+                       dataEstudios   :chkArray["Estudios"], 
+                       dataCursos     :chkArray["Cursos"], 
+                       dataExperiencia:chkArray["Experiencia"], 
+                       dataReferencia :chkArray["Referencia"], 
+                       dataHorarios   :chkArray["Horarios"], 
+                       dataDocumentos :chkArray["Documentos"] },
+            success: function(data){
                 window.location.href="gracias.php";
                 return false
             },
-            error:function(){
+            error  : function(){
             }
         })
         return false;
     })
+
+    $("form#gracias").submit(function(e){
+        e.preventDefault();
+
+        alert("Gracias por contestar nuestra encuesta. Haga click en botón Ok para volver a postulaciones." );
+
+        var chkArray = [];
+        if($("#facebook").is(":checked")){
+            chkArray.push({"medio" : "Facebook"});
+        }
+        if($("#laborum").is(":checked")){
+            chkArray.push({"medio" : "Laborum"});
+        }
+        if($("#linkedin").is(":checked")){
+            chkArray.push({"medio" : "Linkedin"});
+        }
+        if($("#computrabajo").is(":checked")){
+            chkArray.push({"medio" : "Computrabajo"});
+        }
+        if($("#recomendacion").is(":checked")){
+            chkArray.push({"medio" : "Recomendacion"});
+        }
+        if($("#otro").is(":checked")){
+            chkArray.push({"medio" : "Otro"});
+        }
+
+        /* we join the array separated by the comma */
+        var selected;
+        selected = chkArray.join(' , ');
+        
+        var JSONData={};
+        $.ajax({
+            url    : "processform.php",
+            method : "post",
+            data   : { action : "graciaspage", 
+                       data   : chkArray },
+            success: function(data){
+                window.location.href="index.php";
+                return false
+            },
+            error  : function(){
+            }
+        })
+        return false;
+    })    
+    
 });
 
 
@@ -1398,11 +1457,6 @@ $(document).ready(function(){
 $(document).ready(function(){ 
     $('.modal').modal();
 });
-
-function myFunctionGracias() {
-    alert("Gracias por contestar nuestra encuesta. Haga click en botón Ok para volver a postulaciones." );
-    window.location.href="index.php";
-}
 
 // Admin
 $("form#login").submit(function(e){

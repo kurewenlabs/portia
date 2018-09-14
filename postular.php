@@ -242,11 +242,12 @@
       <div class=" input-field col s4 m4 l4">Tipo de Estudios
         <select id="tipoEstudio" class="browser-default" onselect="this.className = ''" name="estudio">
           <option value=""></option>
-          <option value="Secundario" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Secundario') { echo "selected"; $i++; }  ?>>Secundario</option>
+          <option value="Primario" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Primario') { echo "selected"; $i++; }  ?>>Básica</option>
+          <option value="Secundario" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Secundario') { echo "selected"; $i++; }  ?>>Media</option>
           <option value="Técnico Superior" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Técnico Superior') { echo "selected"; $i++; }  ?>>Técnico Superior</option>
           <option value="Universitario" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Universitario') { echo "selected"; $i++; }  ?>>Universitario</option>
           <option value="Posgrado" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Posgrado') { echo "selected"; $i++; }  ?>>Posgrado</option>
-          <option value="Master" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Master') { echo "selected"; $i++; }  ?>>Master</option>
+          <option value="Master" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Master') { echo "selected"; $i++; }  ?>>Magister</option>
           <option value="Doctorado" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Doctorado') { echo "selected"; $i++; }  ?>>Doctorado</option>
           <option value="Otro" <?php if (array_key_exists('tipoEstudio', $datos[$i]) && $datos[$i]['tipoEstudio'] == 'Otro') { echo "selected"; $i++; }  ?>>Otro</option>
         </select>
@@ -270,7 +271,7 @@
         </div>
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
-            <label for="fechaEstudio">Año de Titulación</label>
+            <label for="fechaEstudio">Año de Término</label>
             <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año" value="<?php if (array_key_exists('fechaEstudio', $datos[$i])) { echo $datos[$i]['fechaEstudio']; $i++; } ?>">
           </div>
         
@@ -568,7 +569,7 @@
 ?>
 <div class="row"> 
   <div class="tab input-field col s5 m5 l5" id="referenciasLaborales">¿Cuenta con referencias laborales?
-        <select class="browser-default" onselect="this.className = ''" name="referencia">
+        <select class="browser-default" onselect="this.className = ''" name="referencia_laboral" id="referencia_laboral">
           <option value=""></option>
           <option value="Si" <?php echo (count($datos)>1?"selected":""); ?>>Si</option>
           <option value="No" <?php echo (count($datos)==1?"selected":""); ?>>No</option>
@@ -710,12 +711,12 @@
           <option value="Colmena" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Colmena') { echo "selected"; $i++; } ?>>Colmena</option>
           <option value="Cruz Blanca" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Cruz Blanca') { echo "selected"; $i++; } ?>>Cruz Blanca</option>
           <option value="Chuquicamata" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Chuquicamata') { echo "selected"; $i++; } ?>>Chuquicamata</option>
-          <option value="Banmédica" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Banmedica') { echo "selected"; $i++; } ?>>Banmédica</option>
+          <option value="Banmedica" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Banmedica') { echo "selected"; $i++; } ?>>Banmédica</option>
           <option value="Cruz del Norte" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Cruz del Norte') { echo "selected"; $i++; } ?>>Cruz del Norte</option>
           <option value="Nueva Masvida" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Nueva Masvida') { echo "selected"; $i++; } ?>>Nueva Masvida</option>
           <option value="Fundación" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Fundacion') { echo "selected"; $i++; } ?>>Fundación</option>
           <option value="Fusat" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Fusat') { echo "selected"; $i++; } ?>>Fusat</option>
-          <option value="Río Blanco" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Río Blanco') { echo "selected"; $i++; } ?>>Río Blanco</option>
+          <option value="Rio Blanco" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Río Blanco') { echo "selected"; $i++; } ?>>Río Blanco</option>
           <option value="San Lorenzo" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'San Lorenzo') { echo "selected"; $i++; } ?>>San Lorenzo</option>
           <option value="Vida Tres" <?php if (array_key_exists('isapre', $datos[$i]) && $datos[$i]['isapre'] == 'Vida Tres') { echo "selected"; $i++; } ?>>Vida Tres</option>
         </select>
@@ -1118,9 +1119,9 @@
   $i = 0;
 ?>
 <div class="row">
-  <div class="tab" id="uniforme">
+  <div class="tab">
     <div class="tab input-field col s4 m4 l4">Talla Polera/camisa
-      <select class="browser-default" onselect="this.className = ' ' " name="uniforme">
+      <select class="browser-default" onselect="this.className = ' ' " name="uniforme" id="uniforme">
         <option value=""></option>
         <option value="XS" <?php if (array_key_exists('uniforme', $datos[$i]) && $datos[$i]['uniforme'] == 'XS') { echo "selected"; $i++; } ?>>XS</option>
         <option value="S" <?php if (array_key_exists('uniforme', $datos[$i]) && $datos[$i]['uniforme'] == 'S') { echo "selected"; $i++; } ?>>S</option>
@@ -1131,7 +1132,7 @@
       </select>
     </div>
     <div class="tab input-field col s4 m4 l4">Talla Poleron
-      <select class="browser-default" onselect="this.className = ' ' " name="uniforme2">
+      <select class="browser-default" onselect="this.className = ' ' " name="uniforme2" id="uniforme2">
         <option value=""></option>
         <option value="XS" <?php if (array_key_exists('uniforme2', $datos[$i]) && $datos[$i]['uniforme2'] == 'XS') { echo "selected"; $i++; } ?>>XS</option>
         <option value="S" <?php if (array_key_exists('uniforme2', $datos[$i]) && $datos[$i]['uniforme2'] == 'S') { echo "selected"; $i++; } ?>>S</option>
@@ -1158,7 +1159,7 @@
   <div class="row">
   <div class="tab">
     <div class="tab input-field col s4 m4 l4">
-      <select class="browser-default" onselect="this.className = ' ' " name="renta">
+      <select class="browser-default" onselect="this.className = ' ' " name="renta" id="renta">
         <option value="">Seleccione Rango</option>
         <option value="275.000 - 350.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '275.000 - 350.000') { echo "selected"; } ?>>275.000 - 350.000</option>
         <option value="350.000 - 400.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '350.000 - 300.000') { echo "selected"; } ?>>350.000 - 400.000</option>
@@ -1290,7 +1291,7 @@
 <!-- -----------------------------------------------BOTONES FINAL --------------------------------- -->
 <div class="row">
   <div class="col s6 m6 l6 right">
-    <button type="button" class="waves-effect waves-light btn right" onClick="$('#postularform').submit();">Postular</button>
+    <button type="button" class="waves-effect waves-light btn right" onClick="$('#postularform').submit();" id="postularbutton">Postular</button>
   </div>
 </div>
 </div><!--container-->
