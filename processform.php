@@ -829,7 +829,7 @@ Portia';
         $mail->FromName = "Postulaciones Portia";
         
         $mail->IsSMTP();
-        /* if (isset($_SESSION["mode"])) {
+        if (isset($_SESSION["mode"])) {
             // Solo en ambiente de desarrollo
             $mail->AddAddress('contacto@kurewen.cl', 'contacto');
             $mail->AddAddress('andres@kurewen.cl', 'contacto');
@@ -840,7 +840,7 @@ Portia';
             $mail->Username = 'contacto@kurewen.cl';
             $mail->Password = 'malf0805';
         }
-        else { */
+        else {
             // Ambiente de producción
             // $mail->AddAddress('curzua@portia.cl', 'curzua@portia.cl');
             // $mail->AddAddress('drincon@portia.cl', 'drincon@portia.cl');
@@ -852,7 +852,7 @@ Portia';
             $mail->SMTPAuth = true;
             $mail->Username = 'postulacion@portia.cl';
             $mail->Password = 'PP.2018!!';
-        // }
+        }
 
         $mail->send();
         if (isset($_SESSION["mode"])) 
