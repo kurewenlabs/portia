@@ -796,7 +796,7 @@
             {
                 $nombre .= ' ' . $field["apeP"];
             }
-            if (array_key_exists('apeP', $field)) 
+            if (array_key_exists('apeM', $field)) 
             {
                 $nombre .= ' ' . $field["apeM"];
             }
@@ -817,13 +817,19 @@
         $mail = new PHPMailer();
 
         $mail->AddAddress($email, $nombre);
-        $mail->Subject = 'Postulación enviada con éxito';
-        $mail->Body = 'Se ha registrado la postulación de ' . $nombre . ' a los cargos de ' . $postulaciones . '.'; 
+        $mail->Subject = 'Postulación Recibida';
+        $mail->Body = '
+Estimado ' . $nombre . '.\n\n
+Hemos recibido su postulación para los cargos de ' . $postulaciones . '. 
+Por favor, espere que revisemos su solicitud y le informemos del estado del proceso de selección.\n\n
+Saludos cordiales\n
+Equipo de Selección de Personal\n
+Portia'; 
         $mail->From = "postulacion@portia.cl";
         $mail->FromName = "Postulaciones Portia";
         
         $mail->IsSMTP();
-        if (isset($_SESSION["mode"])) {
+        /* if (isset($_SESSION["mode"])) {
             // Solo en ambiente de desarrollo
             $mail->AddAddress('contacto@kurewen.cl', 'contacto');
             $mail->AddAddress('andres@kurewen.cl', 'contacto');
@@ -834,7 +840,7 @@
             $mail->Username = 'contacto@kurewen.cl';
             $mail->Password = 'malf0805';
         }
-        else {
+        else { */
             // Ambiente de producción
             // $mail->AddAddress('curzua@portia.cl', 'curzua@portia.cl');
             // $mail->AddAddress('drincon@portia.cl', 'drincon@portia.cl');
@@ -846,7 +852,7 @@
             $mail->SMTPAuth = true;
             $mail->Username = 'postulacion@portia.cl';
             $mail->Password = 'PP.2018!!';
-        }
+        // }
 
         $mail->send();
         if (isset($_SESSION["mode"])) 

@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Administracion Sistema de Postulación Portia</title>
-    <link rel="icon" href="src/img/Portia-favicon.png" type="image/png" />
+    <!-- link rel="icon" href="src/img/Portia-favicon.png" type="image/png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.min.css">
     <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
-    <link rel="stylesheet" href="dist/css/main.min.css">
+    <link rel="stylesheet" href="dist/css/main.min.css" -->
     <!--REQUIRED STYLE SHEETS-->
 </head>
 <body>
@@ -157,13 +157,6 @@
     <div class="divider"></div>
         
             <p>Llego a través de: <!--INDICAR OPCION ELEGIDA EN GRACIAS.PHP "ESTO ES PARA DESPUES" --></p>
-
-
-
-
-
-
-
 
     </div>
 </body>
