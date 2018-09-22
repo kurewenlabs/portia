@@ -128,7 +128,7 @@
 
         <section style="border:1px solid #eee; margin-top: 30px; padding-left: 10px">
             <table>
-                <tr><td colspan=3"><h3>' . $result['nombres'] . ' ' . $result['apellidop'] . ' ' . $result['apellidom'] .'</td></tr>
+                <tr><td colspan="3"><h3>' . $result['nombres'] . ' ' . $result['apellidop'] . ' ' . $result['apellidom'] .'</h3></td></tr>
                 <tr><td>Cargo al que postula</td><td>:</td><td>' . $result['nombre'] . '</td></tr> 
                 <tr><td>' . ($result['tipo_documento']=='rut'?'RUT':'Pasaporte') . ' Numero</td><td>:</td><td>' . $result['rut'] . '</td></tr> 
                 <tr><td>Fecha de Nacimiento</td><td>:</td><td>' . $result['fecha_nacimiento'] . '</td></tr> 
@@ -145,7 +145,7 @@
 
         <section style="border:1px solid #eee; margin-top: 30px; padding-left: 10px">
             <table>
-                <tr><td colspan=3"><h3>Estudios</td></tr>       
+                <tr><td colspan="3"><h3>Estudios</h3></td></tr>       
                 <tr><td>Nivel</td><td>:</td><td>' . $result['tipo_estudio'] . '</td></tr> 
                 <tr><td>Título (si aplica)</td><td>:</td><td>' . $result['titulo'] . '</td></tr> 
                 <tr><td>Año de Egreso</td><td>:</td><td>' . $result['fecha_titulacion'] . '</td></tr>
@@ -161,57 +161,48 @@
             
         <section style="border:1px solid #eee; margin-top: 30px; padding-left: 10px">
             <table>
-                <tr><td colspan="4"><h3>Experiencia Laboral</td></tr>       
-                <tr>
-                    <td>Empresa</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=1?$result['experiencia'][0]['empresa']:'') . '</td>
-                    <td>Cargo</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=1?$result['experiencia'][0]['cargo']:'') . '</td>
-                    <td>Desde</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=1?$result['experiencia'][0]['fecha_desde']:'') . '</td> 
-                    <td>Hasta</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=1?$result['experiencia'][0]['fecha_hasta']:'') . '</td>
-                </tr>
-                <tr>
-                    <td>Empresa</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=2?$result['experiencia'][1]['empresa']:'') . '</td>
-                    <td>Cargo</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=2?$result['experiencia'][1]['cargo']:'') . '</td>
-                    <td>FecDesdehas</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=2?$result['experiencia'][1]['fecha_desde']:'') . '</td> 
-                    <td>Hasta</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=2?$result['experiencia'][1]['fecha_hasta']:'') . '</td>
-                </tr>
-                <tr>
-                    <td>Empresa</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=3?$result['experiencia'][2]['empresa']:'') . '</td>
-                    <td>Desde</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=3?$result['experiencia'][2]['cargo']:'') . '</td>
-                    <td>Fechas</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=3?$result['experiencia'][2]['fecha_desde']:'') . '</td> 
-                    <td>Hasta</td><td>:</td><td>' . (isset($result['experiencia']) && count($result['experiencia'])>=3?$result['experiencia'][2]['fecha_hasta']:'') . '</td>
-                </tr>
-            </table>
+                <tr><td colspan="12"><h3>Experiencia Laboral</h3></td></tr>';
+                if (isset($result['experiencia'])) {
+                    for($i=0; $i<count($result['experiencia']); $i++) {
+                        $content_pdf .= '                <tr>
+                    <td>Empresa</td><td>:</td><td>' . $result['experiencia'][$i]['empresa'] . '</td>
+                    <td>Cargo</td><td>:</td><td>' . $result['experiencia'][$i]['cargo'] . '</td>
+                    <td>Desde</td><td>:</td><td>' . $result['experiencia'][$i]['fecha_desde'] . '</td> 
+                    <td>Hasta</td><td>:</td><td>' . ($result['experiencia'][$i]['fecha_hasta']!=''?$result['experiencia'][$i]['fecha_hasta']:'Actualidad') . '</td>
+                </tr>';
+                    }
+                }
+                else {
+                    $content_pdf .= '                <tr><td colspan="12">No tiene</td></tr>';
+                }
+                $content_pdf .= '            </table>
             <br />
         </section>
             
         <section style="border:1px solid #eee; margin-top: 30px; padding-left: 10px">
             <table>
-                <tr><td colspan="4"><h3>Referencias Laborales</td></tr>       
-                <tr>
-                    <td>Empresa</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=1?$result['referencias'][0]['empresa']:'') . '</td>
-                    <td>Nombre</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=1?$result['referencias'][0]['nombre contacto']:'') . '</td> 
-                    <td>Telefono</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=1?$result['referencias'][0]['telefono']:'') . '</td>
-                    <td>Email</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=1?$result['referencias'][0]['email']:'') . '</td>  
-                </tr>
-                <tr>
-                    <td>Empresa</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=1?$result['referencias'][1]['empresa']:'') . '</td>
-                    <td>Nombre</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=2?$result['referencias'][1]['nombre contacto']:'') . '</td> 
-                    <td>Telefono</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=2?$result['referencias'][1]['telefono']:'') . '</td>
-                    <td>Email</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=2?$result['referencias'][1]['email']:'') . '</td>  
-                </tr>
-                <tr>
-                    <td>Empresa</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=3?$result['referencias'][2]['empresa']:'') . '</td>
-                    <td>Nombre</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=3?$result['referencias'][2]['nombre contacto']:'') . '</td> 
-                    <td>Telefono</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=3?$result['referencias'][2]['telefono']:'') . '</td>
-                    <td>Email</td><td>:</td><td>' . (isset($result['referencias']) && count($result['referencias'])>=3?$result['referencias'][2]['email']:'') . '</td>  
-                </tr>
-            </table>
+                <tr><td><h3>Referencias Laborales</h3></td></tr>';
+                if (isset($result['referencias'])) {
+                    for($i=0; $i<count($result['referencias']); $i++) {
+                        $content_pdf .= '                <tr><td><table>
+                    <tr><td>Empresa</td><td>:</td><td>' . $result['referencias'][$i]['empresa'] . '</td></tr>
+                    <tr><td>Nombre</td><td>:</td><td>' . $result['referencias'][$i]['nombre_contacto'] . '</td></tr>
+                    <tr><td>Cargo</td><td>:</td><td>' . $result['referencias'][$i]['cargo'] . '</td></tr>
+                    <tr><td>Telefono</td><td>:</td><td>' . $result['referencias'][$i]['telefono'] . '</td></tr>
+                    <tr><td>Email</td><td>:</td><td>' . $result['referencias'][$i]['email'] . '</td></tr>  
+                </table></td></tr>';
+                    }
+                }
+                else {
+                    $content_pdf .= '                <tr><td>No tiene</td></tr>';
+                }
+                $content_pdf .= '            </table>
             <br /> 
         </section>
 
         <section style="border:1px solid #eee; margin-top: 30px; padding-left: 10px">
             <table>
-                <tr><td colspan="3"><h3>Otros Datos</td></tr>       
+                <tr><td colspan="3"><h3>Otros Datos</h3></td></tr>       
                 <tr><td>AFP</td><td>:</td><td>' . $result['afp'] . '</td></tr> 
                 <tr><td>Isapre o Fonasa</td><td>:</td><td>' . $result['prestadorsalud'] . '</td></tr>
                 <tr><td>Comunas para Trabajar</td><td>:</td><td>' . $result['comunas'][0]['comuna'] . ', región ' . $result['comunas'][0]['region'] . ' </td></tr>
@@ -232,7 +223,7 @@
 
         <section style="border:1px solid #eee; margin-top: 30px; padding-left: 10px">
             <table>
-                <tr><td colspan="3"><h3>Adjuntos</td></tr>       
+                <tr><td colspan="3"><h3>Adjuntos</h3></td></tr>       
                 <tr><td>Curriculum</td><td>:</td><td>' . ($files!=null && array_key_exists("cv", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["cv"]["id"] . "&tipo=cv\" target=\"blank\">" . $files["cv"]["nombre"] . "</a>":"No entregado") . '</td></tr>
                 <tr><td>Certificado de antecedentes</td><td>:</td><td>' . ($files!=null && array_key_exists("cerAntecedentes", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["cerAntecedentes"]["id"] . "&tipo=antecedentes\" target=\"blank\">" . $files["cerAntecedentes"]["nombre"] . "</a>":"No entregado") . '</td></tr>
                 <tr><td>Fotografía del o la Postulante</td><td>:</td><td>' . ($files!=null && array_key_exists("fotografia", $files)?"<a href=\"" . $base_url . "download.php?identificador=" . $files["fotografia"]["id"] . "&tipo=fotografia\" target=\"blank\">" . $files["fotografia"]["nombre"] . "</a>":"No entregado") . '</td></tr>
