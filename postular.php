@@ -1161,6 +1161,7 @@
     <div class="tab input-field col s4 m4 l4">
       <select class="browser-default" onselect="this.className = ' ' " name="renta" id="renta">
         <option value="">Seleccione Rango</option>
+        <option value="150.000 - 275.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '150.000 - 275.000') { echo "selected"; } ?>>150.000 - 275.000</option>
         <option value="275.000 - 350.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '275.000 - 350.000') { echo "selected"; } ?>>275.000 - 350.000</option>
         <option value="350.000 - 400.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '350.000 - 300.000') { echo "selected"; } ?>>350.000 - 400.000</option>
         <option value="400.000 - 450.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '400.000 - 450.000') { echo "selected"; } ?>>400.000 - 450.000</option>

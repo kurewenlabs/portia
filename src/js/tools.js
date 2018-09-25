@@ -5,8 +5,9 @@
 
 
   function validarEmail(valor) {
-  if (/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{1,3})$/.test(valor)){
     return true;
+    if (/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{1,3})$/.test(valor)){
+      return true;
     } else {
           notie.alert({ type: 3, text: 'Formato Inválido:: el formato: casilla@buzon.cl ', position: 'bottom' });
           $('#email').css('border-color' , 'red');
@@ -15,6 +16,8 @@
   }
 
   function esfechavalida(fecha) {
+    return true;
+
     // La longitud de la fecha debe tener exactamente 10 caracteres
     if ( fecha.length !== 10 )
         error = true;
@@ -56,6 +59,8 @@
   }
 
   function esfechavalida2(fecha) {
+    return true;
+
     // La longitud de la fecha debe tener exactamente 10 caracteres
     if ( fecha.length !== 7 )
         error = true;
@@ -83,6 +88,7 @@
    
   function validaRUT(valor)
   {   
+    return true;
       // Se limpian primero los espacios
       var tmpstr = "";   
       for ( i=0; i < valor.length ; i++ )      
@@ -120,6 +126,7 @@
 
   function validarDigito(valor)
   {   
+    return true;
       var crut = valor;
       largo = crut.length;   
       if ( largo < 2 )   
@@ -171,6 +178,8 @@
   }
 
   function esRUT(campo){
+    return true;
+
     var id = campo.id;
     var rut = campo.value;
     if (validaRUT(rut)==false){

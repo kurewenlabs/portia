@@ -109,6 +109,7 @@
             <div class="tab input-field col s4 m4 l4">
               <select class="browser-default" onselect="this.className = ' ' " name="renta" id="renta">
                 <option value="">Seleccione Rango</option>
+                <option value="150.000 - 275.000">150.000 - 275.000</option>
                 <option value="275.000 - 350.000">275.000 - 350.000</option>
                 <option value="350.000 - 400.000">350.000 - 400.000</option>
                 <option value="400.000 - 450.000">400.000 - 450.000</option>

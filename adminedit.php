@@ -1488,6 +1488,7 @@
                                 <div class="tab input-field col s4 m4 l4">
                                     <select class="browser-default" onselect="this.className = ' ' " name="renta">
                                         <option value="">Seleccione Rango</option>
+                                        <option value="150.000 - 275.000" <?php echo ($result[ "renta"]=='150.000 - 275.000' ? "selected": ""); ?>>150.000 - 275.000</option>
                                         <option value="275.000 - 350.000" <?php echo ($result[ "renta"]=='275.000 - 350.000' ? "selected": ""); ?>>275.000 - 350.000</option>
                                         <option value="350.000 - 400.000" <?php echo ($result[ "renta"]=='350.000 - 400.000' ? "selected": ""); ?>>350.000 - 400.000</option>
                                         <option value="400.000 - 450.000" <?php echo ($result[ "renta"]=='400.000 - 450.000' ? "selected": ""); ?>>400.000 - 450.000</option>
