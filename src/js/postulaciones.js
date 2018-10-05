@@ -23,7 +23,7 @@ $(document).ready(function () {
     function getSelectionFormData() {
         var dataArray = [];
         $("#retail input:checked").each(function() {
-            dataArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"retail"});
+            dataArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Retail"});
         });
         $("#administrativo input:checked").each(function() {
             dataArray.push({nun : $(this).data("index"),"nom": $(this).next("span").text(),"cat":"Administrativo"});
@@ -376,6 +376,36 @@ $(document).ready(function () {
             data:{ action:"firstpagedata",data:chkArray,pid:pid },
             success:function(data){
                 window.location.href="proceso.php";
+                return false
+            },
+            error:function(){
+            }
+        })
+        return false;
+    })
+
+    $("form#selectionChange").submit(function(e){
+        e.preventDefault();
+        var chkArray = getSelectionFormData();
+          
+        /* we join the array separated by the comma */
+        var selected;
+        selected = chkArray.join(' , ') ;
+          
+        /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
+        if(selected.length== 0){
+            notie.alert({ type: 3, text: 'Selecciona al menos 1 cargo.', position: 'bottom' });
+            return false;
+        }
+
+        var JSONData={};
+        var pid = postNumberPost("test");
+        $.ajax({
+            url : "processform.php",
+            type: "post",
+            data:{ action:"firstpagedata",data:chkArray,pid:pid },
+            success:function(data){
+                window.location.href=window.location.search.substring(1);
                 return false
             },
             error:function(){

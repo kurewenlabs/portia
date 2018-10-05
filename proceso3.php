@@ -27,10 +27,14 @@
     <h6>Sistema de Postulación Portia</h6>
  </nav>
 
+<form id="selectionChange" onsubmit="return false;">
  <div class="row"><!--titulo-->
    <div class="col s6 col m6 col l6">
      <h3>Tus Cargos Seleccionados</h3>
    </div>
+   <div class="col s2 col m2 col l2">
+      <a data-target="modal2" class="btn btn-small modal-trigger botonCargos">Editar cargos</a>
+    </div>
     <div class="col s2 col m2 col l2 return">
       <a href="index.php" class="">Volver a cargos</a>
     </div>
@@ -38,9 +42,65 @@
 <div class="row">
     <div class="col s1"></div>
     <?php foreach($dataPostulacion as $cargo) {
-        echo "<div class='chip col'>" . $cargo['nom'] .  "<i class=\"close material-icons\">close</i></div>";
+        echo "<div class='chip col'>" . ucwords($cargo['nom']) .  "<i class=\"close material-icons\">close</i></div>";
     } ?>
+
 </div>
+
+<!-- Modal EDITAR CARGOS -->
+<?php
+  // Cargar cargos
+  $positions = array();
+  $content = file_get_contents('cargos.txt');
+  $lines = explode("\n", $content);
+  $i=0;
+  foreach($lines as $line) {
+    $positions[$i] = explode(";", $line);
+    $i++;
+  }
+  $mercados = array('retail', 'administrativo', 'industrial', 'otros');
+?>
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <h4>Seleccione Cargo</h4>
+        <div class="row">
+          <?php 
+            foreach($mercados as $mercado) {
+          ?>
+          <div class="col s12 m3 l3">
+            <!--retail-->
+            <h5><?php echo ucwords($mercado); ?></h5>
+            <div id="<?php echo $mercado; ?>">
+              <?php
+                $column = 1;
+                foreach($positions as $position) {
+                  if(strcmp(rtrim($position[3]), $mercado) == 0) {
+              ?>
+              <p>
+                <label for="<?php echo $mercado[0] . $position[0]; ?>">
+                  <input type="checkbox" name="cargo" value="<?php echo $position[1]; ?>" data-index="<?php echo $position[0]; ?>" id="<?php echo $mercado[0] . $position[0]; ?>"<?php echo (array_search($position[0], array_column($dataPostulacion, 'nun'))!==FALSE?' checked':''); ?>>
+                  <span><?php echo $position[2]; ?></span>
+                </label>
+              </p>
+              <?php
+                    $column++;
+                  }
+                }
+              ?>
+            </div>
+          </div>
+          <?php
+            }
+          ?>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="waves-effect waves-light btn" id="buttonParent" href="proceso2.php" > Actualizar </button>
+        </div>
+    </div>
+
+</div>
+</form>
 
 <div class="container"> 
 

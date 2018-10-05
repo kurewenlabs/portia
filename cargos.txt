@@ -1,0 +1,50 @@
+1;reponedor supermercados;Reponedor de Supermercados;retail
+2;reponedor grandes superficies;Reponedor de Grandes Superficies;retail
+3;promotor grandes tiendas;Promotor de Grandes Tiendas;retail
+4;promotor supermercados;Promotor de Supermercados;retail
+5;vendedor de intangibles;Vendedor de Intangibles;retail
+6;vendedor de tangibles;Vendedor de Tangibles;retail
+7;supervisor de promotores;Supervisor de Promotores;retail
+8;supervisor de mercaderistas;Supervisor de Mercaderistas;retail
+9;merchandising;Merchandising;retail
+10;trade marketing;Trade Marketing;retail
+11;digitador;Digitador;administrativo
+12;asistente de calidad;Asistente de Calidad;administrativo
+13;asistente contable;Asistente Contable;administrativo
+14;ejecutiva de cuenta;Ejecutiva de Cuenta;administrativo
+15;analista de inventario;Analista de Inventario;administrativo
+16;gestor de ventas;Gestor de Ventas;administrativo
+17;ejecutivo de call center;Ejecutivo de Call Center;administrativo
+18;informatico;Informático;administrativo
+19;alumno en practica;Alumno en Práctica;administrativo
+20;secretaria;Secretaria;administrativo
+21;junior;Junior;administrativo
+22;capacitador;Capacitador;administrativo
+23;captador;Captador;administrativo
+24;administrativo de archivo;Administrativo de Archivo;administrativo
+25;ejecutiva de beneficios;Ejecutiva de Beneficios;administrativo
+26;administrativo de despacho;Administrativo de Despacho;administrativo
+27;conductor grua horquilla;Conductor de Gruía Horquilla;industrial
+28;operario produccion;Operario de Producción;industrial
+29;operario de bodega;Operario de Bodega;industrial
+30;manipuladoras de alimentos;Manipuladoras de Alimentos;industrial
+31;maestro panadero;Maestro Panadero;industrial
+32;maestro de cocina;Maestro de Cocina;industrial
+33;ayudante de cocina;Ayudante de Cocina;industrial
+34;ayudante de panadero;Ayudante de Panadero;industrial
+35;runner;Runner;industrial
+36;peoneta;Peoneta;industrial
+37;colorista;Colorista;industrial
+38;carnicero;Carnicero;industrial
+39;envasador;Envasador;industrial
+40;empaquetador;Empaquetador;industrial
+41;mecanico;Mecánico;industrial
+42;encargado de area;Encargado de Área;industrial
+43;supervisor de produccion;Supervisor de Producción;industrial
+44;conductor licencia A3;Conductor Licencia A3;otros
+45;conductor licencia B;Conductor Licencia B;otros
+46;guardia;Guardia;otros
+47;auxiliar de aseo;Auxiliar de Aseo;otros
+48;asesora del hogar;Asesora del Hogar;otros
+49;manicurista;Manicurista;otros
+50;cajero;Cajero;otros
