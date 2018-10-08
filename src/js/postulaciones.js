@@ -20,6 +20,144 @@ $(document).ready(function () {
         return result;
     }
 
+    function validarRUT(valor)
+    {   
+        // Se limpian primero los espacios
+        var tmpstr = "";   
+        for ( i=0; i < valor.length ; i++ )      
+          if ( valor.charAt(i) != ' ') // && valor.charAt(i) != '.' && valor.charAt(i) != '-' )
+              tmpstr = tmpstr + valor.charAt(i);   
+        valor = tmpstr;
+        
+        // Se calcula el largo mínimo de un RUT igual a 3 caracteres (p.e. 1-9)
+        largo = valor.length;
+        if ( largo < 3 )   
+        {      
+          return false;   
+        }   
+  
+        // Se valida que todos los caracteres sean los esperados (números, k, . y -)
+        for ( i=0; i < largo ; i++ )   
+          if ( '0123456789k.-'.indexOf(valor.charAt(i)) == -1 )
+              return false;      
+  
+        // Se valida que esté en el formato adecuado (12.345.678-9)
+        // PENDIENTE      
+        
+        // Se limpia el string de los . y -
+        var numeroRUT = "";
+        for ( i=0; i < valor.length ; i++ )      
+          if ( valor.charAt(i) != '.' && valor.charAt(i) != '-' )
+            numeroRUT = numeroRUT + valor.charAt(i);   
+  
+        // Se valida el dígito verificador
+        if ( validarDigito(numeroRUT) )      
+          return true;   
+        else
+          return false;
+    }
+  
+    function validarDigito(valor)
+    {   
+        var crut = valor;
+        largo = crut.length;   
+        if ( largo < 2 )   
+        {      
+          return false;   
+        }   
+        if ( largo > 2 )      
+          rut = crut.substring(0, largo - 1);   
+        else      
+        rut = crut.charAt(0);   
+        dv = crut.charAt(largo-1);   
+        
+        if ( dv != '0' && dv != '1' && dv != '2' && dv != '3' && dv != '4' && dv != '5' && dv != '6' && dv != '7' && dv != '8' && dv != '9' && dv != 'k'  && dv != 'K')   
+        {      
+          return false;   
+        }      
+  
+        if ( rut == null || dv == null )
+          return 0;
+  
+        var dvr = '0'   
+        suma = 0   
+        mul  = 2   
+  
+        for (i= rut.length -1 ; i >= 0; i--)   
+        {   
+          suma = suma + rut.charAt(i) * mul      
+          if (mul == 7)         
+              mul = 2      
+          else             
+              mul++   
+        }   
+        res = suma % 11   
+        if (res==1)      
+          dvr = 'k'   
+        else if (res==0)      
+          dvr = '0'   
+        else   
+        {      
+          dvi = 11-res      
+          dvr = dvi + ""   
+        }
+        if ( dvr != dv)   
+        {      
+          return false;
+        }
+  
+        return true;
+    }
+
+    function validarFecha(fecha) {
+        // La longitud de la fecha debe tener exactamente 10 caracteres
+        if ( fecha.length !== 10 )
+            error = true;
+    
+        // Primero verifica el patron
+        if ( !/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(fecha) )
+            error = true;
+    
+        // Mediante el delimitador "/" separa dia, mes y año
+        var fecha = fecha.split("/");
+        var day = parseInt(fecha[0]);
+        var month = parseInt(fecha[1]);
+        var year = parseInt(fecha[2]);
+    
+        // Verifica que dia, mes, año, solo sean numeros
+        error = ( isNaN(day) || isNaN(month) || isNaN(year) );
+    
+        // Lista de dias en los meses, por defecto no es año bisiesto
+        var ListofDays = [31,28,31,30,31,30,31,31,30,31,30,31];
+        if ( month === 1 || month > 2 )
+            if ( day > ListofDays[month-1] || day < 0 || ListofDays[month-1] === undefined )
+              error = true;
+    
+        // Detecta si es año bisiesto y asigna a febrero 29 dias
+        if ( month === 2 ) {
+            var lyear = ( (!(year % 4) && year % 100) || !(year % 400) );
+            if ( lyear === false && day >= 29 )
+              error = true;
+            if ( lyear === true && day > 29 )
+              error = true;
+        }
+        if ( error === true ) {
+          notie.alert({ type: 3, text: 'Fecha Inválida: el formato: dd/mm/aaaa (dia/mes/año) ', position: 'bottom' });
+          $('#txtDate').css('border-color' , 'red');
+          return false;
+        }
+        else
+        return true;
+    }
+
+    function validarEmail(valor) {
+        if (/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{1,3})$/.test(valor)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function getSelectionFormData() {
         var dataArray = [];
         $("#retail input:checked").each(function() {
@@ -41,8 +179,15 @@ $(document).ready(function () {
         var dataArray = [];
         if($.trim($("#tipo_doc").val()) == "rut") {
             if($.trim($("#rut").val()) != "" ) {
-                dataArray.push( {"rut" : $("#rut").val()} );
-                $('#rut').css('border-color' , '#f2f2f2');
+                if (validarRUT($.trim($("#rut").val()))) {
+                    dataArray.push( {"rut" : $("#rut").val()} );
+                    $('#rut').css('border-color' , '#f2f2f2');
+                }
+                else {
+                    notie.alert({ type: 3, text: 'El rut ingresado no es válido', position: 'bottom' });
+                    $('#rut').css('border-color' , 'red');
+                    return false;
+                }
             } else {
                 notie.alert({ type: 3, text: 'Debes ingresar rut', position: 'bottom' });
                 $('#rut').css('border-color' , 'red');
@@ -83,8 +228,15 @@ $(document).ready(function () {
             return false;
         }
         if($.trim($("#txtDate").val()) != "" ){
-            dataArray.push( {"fNaci" : $("#txtDate").val() } );
-            $('#txtDate').css('border-color' , '#f2f2f2');
+            if (validarFecha($("#txtDate").val())) {
+                dataArray.push( {"fNaci" : $("#txtDate").val() } );
+                $('#txtDate').css('border-color' , '#f2f2f2');
+            }
+            else {
+                notie.alert({ type: 3, text: 'La fecha ingresada es inválida', position: 'bottom' });
+                $('#txtDate').css('border-color' , 'red');
+                return false;
+            }
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu fecha de nacimiento', position: 'bottom' });
             $('#txtDate').css('border-color' , 'red');
@@ -126,8 +278,14 @@ $(document).ready(function () {
             dataArray.push( {"telRec" : $("#telefono2").val()} );
         }
         if($.trim($("#email").val()) != "" ){
-            dataArray.push( {"email" : $("#email").val()} );
-            $('#email').css('border-color' , '#f2f2f2');
+            if (validarEmail($("#email").val())) {
+                dataArray.push( {"email" : $("#email").val()} );
+                $('#email').css('border-color' , '#f2f2f2');
+            } else {
+                notie.alert({ type: 3, text: 'El email ingresado no es válido', position: 'bottom' });
+                $('#email').css('border-color' , 'red');
+                return false;
+            }
         } else {
             notie.alert({ type: 3, text: 'Debes ingresar tu email', position: 'bottom' });
             $('#email').css('border-color' , 'red');
@@ -170,7 +328,7 @@ $(document).ready(function () {
             $('#tipoEstudio').css('border-color' , 'red');
             return false;
         }
-        if($('#tipoEstudio').val() !== "Media"){
+        if($('#tipoEstudio').val() != "Primario" && $('#tipoEstudio').val() != "Secundario"){
             if($.trim($("#carrera").val()) != "" ){
                 dataArray.push( {"titulo" : $("#carrera").val()} );
                 $('#carrera').css('border-color' , '#f2f2f2');
@@ -180,16 +338,19 @@ $(document).ready(function () {
                 return false;
             }
         }
-        if($.trim($("#estado_estudio").val()) == "Graduado" ){
-            if($.trim($("#txtDate2ftitulacion").val()) != "" ){
+        if($.trim($("#estado_estudio").val()) != "" ){
+            dataArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
+            if($.trim($("#estado_estudio").val()) == "En Curso" || $.trim($("#estado_estudio").val()) != "En Curso" && $.trim($("#txtDate2ftitulacion").val()) != "" ){
                 dataArray.push( {"fecha_titulacion" : $("#txtDate2ftitulacion").val()} );
             } else {
                 notie.alert({ type: 3, text: 'Debes ingresar fecha de titulación', position: 'bottom' });
+                $('#txtDate2ftitulacion').css('border-color' , 'red');
                 return false;
             }
-        }
-        if($.trim($("#estado_estudio").val()) != "" ){
-            dataArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
+        } else {
+            notie.alert({ type: 3, text: 'Debes indicar el estado de tu carrera', position: 'bottom' });
+            $('#estado_estudio').css('border-color' , 'red');
+            return false;
         }
         if($.trim($("#fechaEstudio").val()) != "" ){
             dataArray.push( {"fechaEstudio" : $("#fechaEstudio").val()} );
@@ -199,20 +360,42 @@ $(document).ready(function () {
         }
         if($.trim($("#licencia").val()) != "" ){
             dataArray.push( {"licencia" : $("#licencia").val()} );
-        }
+        } else {
+            notie.alert({ type: 3, text: 'Debes ingresar el tipo de licencia de conducir', position: 'bottom' });
+            $('#licencia').css('border-color' , 'red');
+            return false;
+        } 
         return dataArray;
     }
 
     function getSecondPageDataPart2() {
         var dataArray = [];
         if($.trim($("#curso").val()) != "" ){
-            dataArray.push( {"nombre" : $("#curso").val(), "fecha" : $("#txtDate3").val()} );
+            if ($.trim($("#txtDate3").val()) != "") {
+                dataArray.push( {"nombre" : $("#curso").val(), "fecha" : $("#txtDate3").val()} );
+            } else {
+                /* notie.alert({ type: 3, text: 'Debes ingresar la fecha de término del curso', position: 'bottom' });
+                $('#txtDate3').css('border-color' , 'red');
+                return false; */
+            }
         }
         if($.trim($("#curso2").val()) != "" ){
-            dataArray.push( {"nombre" : $("#curso2").val(), "fecha" : $("#txtDate3c2").val()} );
+            if ($.trim($("#txtDate3c2").val()) != "") {
+                dataArray.push( {"nombre" : $("#curso2").val(), "fecha" : $("#txtDate3c2").val()} );
+            } else {
+                /* notie.alert({ type: 3, text: 'Debes ingresar la fecha de término del curso', position: 'bottom' });
+                $('#txtDate3c2').css('border-color' , 'red');
+                return false; */
+            }
         }
         if($.trim($("#curso3").val()) != "" ){
-            dataArray.push( {"nombre" : $("#curso3").val(), "fecha" : $("#txtDate3c3").val()} );
+            if ($.trim($("#txtDate3c3").val()) != "") {
+                dataArray.push( {"nombre" : $("#curso3").val(), "fecha" : $("#txtDate3c3").val()} );
+            } else {
+                /* notie.alert({ type: 3, text: 'Debes ingresar la fecha de término del curso', position: 'bottom' });
+                $('#txtDate3c3').css('border-color' , 'red');
+                return false; */
+            }
         }   
         return dataArray;
     }
@@ -742,7 +925,7 @@ $('#tipo_doc').change(function(){
  });
 
 $('#tipoEstudio').change(function(){
-    if($('#tipoEstudio').val() == 'basica' || $('#tipoEstudio').val() == 'media' ) {
+    if($('#tipoEstudio').val() == 'Primario' || $('#tipoEstudio').val() == 'Secundario' ) {
         $('#carrerabox').hide();
         $('#estudiobox').hide();
     } else {
