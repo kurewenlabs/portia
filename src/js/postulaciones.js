@@ -340,8 +340,8 @@ $(document).ready(function () {
         }
         if($.trim($("#estado_estudio").val()) != "" ){
             dataArray.push( {"estado_estudio" : $("#estado_estudio").val()} );
-            if($.trim($("#estado_estudio").val()) == "En Curso" || $.trim($("#estado_estudio").val()) != "En Curso" && $.trim($("#txtDate2ftitulacion").val()) != "" ){
-                dataArray.push( {"fecha_titulacion" : $("#txtDate2ftitulacion").val()} );
+            if($.trim($("#estado_estudio").val()) == "En Curso" || $.trim($("#estado_estudio").val()) != "En Curso" && $.trim($("#fechaEstudio").val()) != "" ){
+                dataArray.push( {"fecha_titulacion" : $("#fechaEstudio").val()} );
             } else {
                 notie.alert({ type: 3, text: 'Debes ingresar fecha de titulación', position: 'bottom' });
                 $('#txtDate2ftitulacion').css('border-color' , 'red');
@@ -351,9 +351,6 @@ $(document).ready(function () {
             notie.alert({ type: 3, text: 'Debes indicar el estado de tu carrera', position: 'bottom' });
             $('#estado_estudio').css('border-color' , 'red');
             return false;
-        }
-        if($.trim($("#fechaEstudio").val()) != "" ){
-            dataArray.push( {"fechaEstudio" : $("#fechaEstudio").val()} );
         }
         if($.trim($("#semestres").val()) != "" ){
             dataArray.push( {"semestres" : $("#semestres").val()} );
@@ -419,7 +416,6 @@ $(document).ready(function () {
 
     function getFourthPageData() {
         var dataArray = [];
-        /* look for all checkboes that have a parent id  attached to it and check if it was checked */
         if($.trim($("#empresaref").val()) != "" ){
             dataArray.push( {"empresa" : $("#empresaref").val(), "nombreContacto" : $("#contactoref").val(), "cargo" : $("#cargoref").val(), "telefono" : $("#telefonoref").val(), "email" : $("#emailref").val()} );
         }
@@ -453,11 +449,18 @@ $(document).ready(function () {
             $('#isapre').css('border-color' , 'red');
             return false;
         }
-        if($.trim($("#comunaswork").val()) != "" ){
-            dataArray.push( {"region" : $("#regionwork").val(), "comunas" : $("#comunaswork").val()} );
-            $('#comunas').css('border-color' , '#f2f2f2');
+        if($.trim($("#comunas_disponibles").val()) != "" ){
+            var comunas_str = $("#comunas_disponibles").val();
+            var comunas_arr = comunas_str.split(";");
+            for(var i=0; i<comunas_arr.length; i++) {
+                if (comunas_arr[i] != "") {
+                    var comuna = comunas_arr[i].split("/");
+                    dataArray.push( {"region" : comuna[0], "comunas" : comuna[1]} );
+                    $('#comunas').css('border-color' , '#f2f2f2');
+                }
+            }
         } else {
-            notie.alert({ type: 3, text: 'Debes elegir las comunas disponibles para trabajar', position: 'bottom' });
+            notie.alert({ type: 3, text: 'Debes elegir comunas disponibles para trabajar', position: 'bottom' });
             $('#comunas').css('border-color' , 'red');
             return false;
         }

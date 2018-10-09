@@ -24,7 +24,7 @@
 24;administrativo de archivo;Administrativo de Archivo;administrativo
 25;ejecutiva de beneficios;Ejecutiva de Beneficios;administrativo
 26;administrativo de despacho;Administrativo de Despacho;administrativo
-27;conductor grua horquilla;Conductor de Gruía Horquilla;industrial
+27;conductor grua horquilla;Conductor de Grúa Horquilla;industrial
 28;operario produccion;Operario de Producción;industrial
 29;operario de bodega;Operario de Bodega;industrial
 30;manipuladoras de alimentos;Manipuladoras de Alimentos;industrial

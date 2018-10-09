@@ -241,6 +241,17 @@
                 <select class=".js-example-data-array browser-default" id="comunaswork" name="comunaswork" onselect="this.className = ''">
                 </select>
             </div> 
+            <div class="col s2 m2 l2">
+                <div id="boton_comunas" class="waves-effect waves-light btn-small add1" onclick="agregarComunas()">Agregar</div>
+            </div> 
+        </div>
+        <div class="row">
+            <h4 style="color:#838383">Comunas Agregadas</h4>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <input name="comunas_disponibles" id="comunas_disponibles" type="text" readonly />
+            </div> 
         </div>
       <script language="Javascript">
         function changeStatus(select) {
@@ -249,6 +260,14 @@
               select.options[i].selected = false;
             }
           }
+        }
+        function agregarComunas() {
+            var campoRegion = document.getElementById('regionwork');
+            var campoComuna = document.getElementById('comunaswork');
+            regionSeleccionada = campoRegion.value;
+            comunaSeleccionada = campoComuna.value;
+            var campoSeleccionadas = document.getElementById('comunas_disponibles');
+            campoSeleccionadas.value = regionSeleccionada + "/" + comunaSeleccionada + ";" + campoSeleccionadas.value;
         }
       </script>
       <div class="divider"></div>

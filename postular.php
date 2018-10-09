@@ -321,37 +321,39 @@
       <div class=" input-field col s4 m4 l4">Estado
           <select  onselect="this.className = ''" name="estado_estudio" class="browser-default" id="estado_estudio">
             <option value=""></option>
-            <option value="En Curso" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'En Curso') { echo "selected"; $i++; }  ?>>En Curso</option>
-            <option value="Egresado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Egresado') { echo "selected"; $i++; }  ?>>Graduado</option>
-            <option value="Titulado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Titulado') { echo "selected"; $i++; }  ?>>Titulado</option>
-            <option value="Abandonado" <?php if (array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Abandonado') { echo "selected"; $i++; }  ?>>Abandonado</option>
+            <option value="En Curso" <?php if ($i<count($datos) && array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'En Curso') { echo "selected"; $i++; }  ?>>En Curso</option>
+            <option value="Egresado" <?php if ($i<count($datos) && array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Egresado') { echo "selected"; $i++; }  ?>>Graduado</option>
+            <option value="Titulado" <?php if ($i<count($datos) && array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Titulado') { echo "selected"; $i++; }  ?>>Titulado</option>
+            <option value="Abandonado" <?php if ($i<count($datos) && array_key_exists('estado_estudio', $datos[$i]) && $datos[$i]['estado_estudio'] == 'Abandonado') { echo "selected"; $i++; }  ?>>Abandonado</option>
           </select>
         </div>
         <div class=" input-field col s2 m2 l2">
           <div id="box_estudio" class="box_estudio">
             <label for="fechaEstudio">Año de Término</label>
-            <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año" value="<?php if (array_key_exists('fechaEstudio', $datos[$i])) { echo $datos[$i]['fechaEstudio']; $i++; } ?>">
+            <input type="text" class="date" id="fechaEstudio" name="fechaEstudio" placeholder="Ingrese año" value="<?php if ($i<count($datos) && array_key_exists('fecha_titulacion', $datos[$i])) { echo $datos[$i]['fecha_titulacion']; $i++; } ?>">
           </div>
         
         </div>
         <div class=" input-field col s2 m2 l2">
-          <div id="box_estudio" class="box_estudio">
+          <div id="estudiobox" class="box_estudio">
             <label for="semestres">Semestres cursados</label>
-            <input type="text" class="date" id="semestres" name="semestres" placeholder="" value="<?php if (array_key_exists('semestres', $datos[$i])) { echo $datos[$i]['semestres']; $i++; } ?>">
+            <input type="text" class="date" id="semestres" name="semestres" placeholder="" value="<?php if ($i<count($datos) && array_key_exists('semestres', $datos[$i])) { echo $datos[$i]['semestres']; $i++; } ?>">
           </div>
         
         </div>
+        <?php 
+          $j = 0; 
+        ?>
         <div class=" input-field col s4 m4 l4">Licencia de Conducir
           <select class="js-example-basic-multiple" multiple="multiple" onselect="this.className = ''" name="licencia" id="licencia">
             <option value=""></option>
-            <?php $j = 0; ?>
             <option value="Sin licencia" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Sin licencia') { echo "selected";  $j++;}  ?>>Sin Licencia</option>
             <option value="Clase A1" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase A1') { echo "selected"; $j++; }  ?>>Clase A1</option>
             <option value="Clase A2" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase A2') { echo "selected"; $j++; }  ?>>Clase A2</option>
             <option value="Clase A3" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase A3') { echo "selected"; $j++; }  ?>>Clase A3</option>
             <option value="Clase A4" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase A4') { echo "selected"; $j++; }  ?>>Clase A4</option>
             <option value="Clase A5" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase A5') { echo "selected"; $j++; }  ?>>Clase A5</option>
-            <option value="Clase B" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase B') { echo "selected"; $j++;}  ?>>Clase B</option>
+            <option value="Clase B" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase B') { echo "selected"; $j++; }  ?>>Clase B</option>
             <option value="Clase C" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase C') { echo "selected"; $j++; }  ?>>Clase C</option>
             <option value="Clase D" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase D') { echo "selected"; $j++; }  ?>>Clase D</option>
             <option value="Clase E" <?php if (array_key_exists('licencia', $datos[$i]) && $datos[$i]['licencia'][$j] == 'Clase E') { echo "selected"; $j++; }  ?>>Clase E</option>
@@ -791,7 +793,7 @@
         <?php 
           // Recorremos el JSON buscando los valores asociados a las regiones existentes
           foreach($regiones['regiones'] as $region) {
-            echo "<option value='" . $region['region'] . "'" . (array_key_exists('region', $datos[$i]) && $datos[$i]['region'] == $region['region']?" selected":"") . ">" . $region['region'] . "</option>\n";
+            echo "<option value='" . $region['region'] . "'>" . $region['region'] . "</option>\n";
           }
         ?>
         </select> <!-- CONSUMIR API COMUNAS/REGIONES AQUI -->
@@ -799,54 +801,26 @@
 
         <script language="Javascript">
             function cargarComunas2() {
-                // var comunas = [
                 var comunas = {
                 <?php
+                    $comunas_select = "";
+                    while(array_key_exists("region", $datos[$i])) {
+                      $comunas_select = $datos[$i]['region'] . "/" . $datos[$i]['comunas'] . ";" . $comunas_select;
+                      $i++;
+                    }
+
                     $j = 1;
-                    $k = 0;
                     foreach($regiones['regiones'] as $region) {
                         echo "region" . $j . " : [";
                         natsort($region['comunas']);
-                        $z = 1;
                         foreach($region['comunas'] as $comuna) {
                             echo "\"" . $comuna . "\", ";
-                            if ($region['region'] == $datos[$i]['region'] && $comuna == $datos[$i]['comunas']) {
-                              $k = $z;
-                            }
-                            $z++;
                         }
                         echo "\"\"],\n";
                         $j++;
                     }
-                    /* $i = 1;
-                    foreach($regiones['regiones'] as $region) {
-                        echo "                {\n";
-                        echo "                    region" . $i . " : [\n";
-                        natsort($region['comunas']);
-                        $j = 1;
-                        foreach($region['comunas'] as $comuna) {
-                            echo "                        {\n";
-                            echo "                            id: '" . $comuna . "',\n";
-                            echo "                            text: '" . $comuna . "'\n";
-                            echo "                        }" . ($j<sizeof($region['comunas'])?",":"") . "\n";
-                            $j++;
-                        }
-                        echo "                    ]\n";
-                        echo "                }" . ($i<sizeof($regiones['regiones'])?",":"") . "\n";
-                        $i++;
-                    } */
                 ?>
                 };
-                // ];
-                
-                /* var campoRegion = document.getElementById('region');
-                regionSeleccionada = campoRegion.selectedIndex;
-                var data = comunas["region" + regionSeleccionada];
-
-                $("#comuna").select2({
-                    data: data,
-                    closeOnSelect: false
-                }); */                      
                 var campoRegion = document.getElementById('regionwork');
                 var campoComuna = document.getElementById('comunaswork');
                 regionSeleccionada = campoRegion.selectedIndex;
@@ -862,17 +836,38 @@
                     });
                 }
 
-                campoComuna.selectedIndex = <?php echo $k; ?>;
+                var campoSeleccionadas = document.getElementById('comunas_disponibles');
+                campoSeleccionadas.value = '<?php echo $comunas_select; ?>';
             }
         </script>
       <div class=" input-field col s4 m4 l4">Comuna
         <select class=".js-example-data-array browser-default" id="comunaswork" name="comunaswork" onselect="this.className = ''">
         </select>
-     </div> 
+      </div>
+      <div class="col s2 m2 l2">
+        <div id="boton_comunas" class="waves-effect waves-light btn-small add1" onclick="agregarComunas()">Agregar</div>
+      </div> 
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <h4 style="color:#838383">Comunas Agregadas</h4>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col s12 m12 l12">
+              <input name="comunas_disponibles" id="comunas_disponibles" type="text" readonly />
+          </div> 
+      </div>
      <script language="Javascript">
         cargarComunas2();
+        function agregarComunas() {
+            var campoRegion = document.getElementById('regionwork');
+            var campoComuna = document.getElementById('comunaswork');
+            regionSeleccionada = campoRegion.value;
+            comunaSeleccionada = campoComuna.value;
+            var campoSeleccionadas = document.getElementById('comunas_disponibles');
+            campoSeleccionadas.value = regionSeleccionada + "/" + comunaSeleccionada + ";" + campoSeleccionadas.value;
+        }
      </script>
-     <?php $i++; ?>
 </div>
 
 <div id="inputDiaHora">
@@ -910,11 +905,35 @@
                     <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
                     <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
                     <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
+                    <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="13:00"?"selected":""); ?>>13:00</option>
+                    <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="14:00"?"selected":""); ?>>14:00</option>
+                    <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="15:00"?"selected":""); ?>>15:00</option>
+                    <option value="16:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="16:00"?"selected":""); ?>>16:00</option>
+                    <option value="17:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="17:00"?"selected":""); ?>>17:00</option>
+                    <option value="18:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="18:00"?"selected":""); ?>>18:00</option>
+                    <option value="19:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="19:00"?"selected":""); ?>>19:00</option>
+                    <option value="20:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="20:00"?"selected":""); ?>>20:00</option>
+                    <option value="21:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="21:00"?"selected":""); ?>>21:00</option>
+                    <option value="22:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="22:00"?"selected":""); ?>>22:00</option>
+                    <option value="23:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="23:00"?"selected":""); ?>>23:00</option>
+                    <option value="24:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="24:00"?"selected":""); ?>>24:00</option>
                 </select>
             </div>
             <div class="input-field col s2 m2 l2">Hasta
                 <select name="horafin_work1" class="js-example-basic-multiple" id="id_label_multiple1" style="width:60%">
                     <option value=""></option>
+                    <option value="1:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="1:00"?"selected":""); ?>>1:00</option>
+                    <option value="2:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="2:00"?"selected":""); ?>>2:00</option>
+                    <option value="3:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="3:00"?"selected":""); ?>>3:00</option>
+                    <option value="4:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="4:00"?"selected":""); ?>>4:00</option>
+                    <option value="5:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="5:00"?"selected":""); ?>>5:00</option>
+                    <option value="6:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="6:00"?"selected":""); ?>>6:00</option>
+                    <option value="7:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="7:00"?"selected":""); ?>>7:00</option>
+                    <option value="8:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="8:00"?"selected":""); ?>>8:00</option>
+                    <option value="9:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="9:00"?"selected":""); ?>>9:00</option>
+                    <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="10:00"?"selected":""); ?>>10:00</option>
+                    <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="11:00"?"selected":""); ?>>11:00</option>
+                    <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="12:00"?"selected":""); ?>>12:00</option>
                     <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                     <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                     <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -969,11 +988,35 @@
                     <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
                     <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
                     <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
+                    <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="13:00"?"selected":""); ?>>13:00</option>
+                    <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="14:00"?"selected":""); ?>>14:00</option>
+                    <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="15:00"?"selected":""); ?>>15:00</option>
+                    <option value="16:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="16:00"?"selected":""); ?>>16:00</option>
+                    <option value="17:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="17:00"?"selected":""); ?>>17:00</option>
+                    <option value="18:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="18:00"?"selected":""); ?>>18:00</option>
+                    <option value="19:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="19:00"?"selected":""); ?>>19:00</option>
+                    <option value="20:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="20:00"?"selected":""); ?>>20:00</option>
+                    <option value="21:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="21:00"?"selected":""); ?>>21:00</option>
+                    <option value="22:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="22:00"?"selected":""); ?>>22:00</option>
+                    <option value="23:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="23:00"?"selected":""); ?>>23:00</option>
+                    <option value="24:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="24:00"?"selected":""); ?>>24:00</option>
                 </select>
             </div>
             <div class="input-field col s2 m2 l2">Hasta
                 <select name="horafin_work2" class="js-example-basic-multiple" id="id_label_multiple12" style="width:60%">
                     <option value=""></option>
+                    <option value="1:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="1:00"?"selected":""); ?>>1:00</option>
+                    <option value="2:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="2:00"?"selected":""); ?>>2:00</option>
+                    <option value="3:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="3:00"?"selected":""); ?>>3:00</option>
+                    <option value="4:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="4:00"?"selected":""); ?>>4:00</option>
+                    <option value="5:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="5:00"?"selected":""); ?>>5:00</option>
+                    <option value="6:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="6:00"?"selected":""); ?>>6:00</option>
+                    <option value="7:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="7:00"?"selected":""); ?>>7:00</option>
+                    <option value="8:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="8:00"?"selected":""); ?>>8:00</option>
+                    <option value="9:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="9:00"?"selected":""); ?>>9:00</option>
+                    <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="10:00"?"selected":""); ?>>10:00</option>
+                    <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="11:00"?"selected":""); ?>>11:00</option>
+                    <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="12:00"?"selected":""); ?>>12:00</option>
                     <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                     <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                     <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1027,11 +1070,35 @@
                     <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
                     <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
                     <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
+                    <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="13:00"?"selected":""); ?>>13:00</option>
+                    <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="14:00"?"selected":""); ?>>14:00</option>
+                    <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="15:00"?"selected":""); ?>>15:00</option>
+                    <option value="16:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="16:00"?"selected":""); ?>>16:00</option>
+                    <option value="17:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="17:00"?"selected":""); ?>>17:00</option>
+                    <option value="18:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="18:00"?"selected":""); ?>>18:00</option>
+                    <option value="19:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="19:00"?"selected":""); ?>>19:00</option>
+                    <option value="20:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="20:00"?"selected":""); ?>>20:00</option>
+                    <option value="21:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="21:00"?"selected":""); ?>>21:00</option>
+                    <option value="22:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="22:00"?"selected":""); ?>>22:00</option>
+                    <option value="23:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="23:00"?"selected":""); ?>>23:00</option>
+                    <option value="24:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="24:00"?"selected":""); ?>>24:00</option>
                 </select>
             </div>
             <div class="input-field col s2 m2 l2">Hasta
                 <select name="horafin_work3" class="js-example-basic-multiple" id="id_label_multiple13" style="width:60%">
                     <option value=""></option>
+                    <option value="1:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="1:00"?"selected":""); ?>>1:00</option>
+                    <option value="2:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="2:00"?"selected":""); ?>>2:00</option>
+                    <option value="3:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="3:00"?"selected":""); ?>>3:00</option>
+                    <option value="4:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="4:00"?"selected":""); ?>>4:00</option>
+                    <option value="5:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="5:00"?"selected":""); ?>>5:00</option>
+                    <option value="6:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="6:00"?"selected":""); ?>>6:00</option>
+                    <option value="7:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="7:00"?"selected":""); ?>>7:00</option>
+                    <option value="8:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="8:00"?"selected":""); ?>>8:00</option>
+                    <option value="9:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="9:00"?"selected":""); ?>>9:00</option>
+                    <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="10:00"?"selected":""); ?>>10:00</option>
+                    <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="11:00"?"selected":""); ?>>11:00</option>
+                    <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="12:00"?"selected":""); ?>>12:00</option>
                     <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                     <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                     <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1089,6 +1156,18 @@
             <div class="input-field col s2 m2 l2">Hasta
                 <select name="horafin_work4" class="js-example-basic-multiple" id="id_label_multiple14" style="width:60%">
                     <option value=""></option>
+                    <option value="1:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="1:00"?"selected":""); ?>>1:00</option>
+                    <option value="2:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="2:00"?"selected":""); ?>>2:00</option>
+                    <option value="3:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="3:00"?"selected":""); ?>>3:00</option>
+                    <option value="4:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="4:00"?"selected":""); ?>>4:00</option>
+                    <option value="5:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="5:00"?"selected":""); ?>>5:00</option>
+                    <option value="6:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="6:00"?"selected":""); ?>>6:00</option>
+                    <option value="7:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="7:00"?"selected":""); ?>>7:00</option>
+                    <option value="8:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="8:00"?"selected":""); ?>>8:00</option>
+                    <option value="9:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="9:00"?"selected":""); ?>>9:00</option>
+                    <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="10:00"?"selected":""); ?>>10:00</option>
+                    <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="11:00"?"selected":""); ?>>11:00</option>
+                    <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="12:00"?"selected":""); ?>>12:00</option>
                     <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                     <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                     <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1141,11 +1220,35 @@
                     <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="10:00"?"selected":""); ?>>10:00</option>
                     <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="11:00"?"selected":""); ?>>11:00</option>
                     <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="12:00"?"selected":""); ?>>12:00</option>
+                    <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="13:00"?"selected":""); ?>>13:00</option>
+                    <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="14:00"?"selected":""); ?>>14:00</option>
+                    <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="15:00"?"selected":""); ?>>15:00</option>
+                    <option value="16:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="16:00"?"selected":""); ?>>16:00</option>
+                    <option value="17:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="17:00"?"selected":""); ?>>17:00</option>
+                    <option value="18:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="18:00"?"selected":""); ?>>18:00</option>
+                    <option value="19:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="19:00"?"selected":""); ?>>19:00</option>
+                    <option value="20:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="20:00"?"selected":""); ?>>20:00</option>
+                    <option value="21:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="21:00"?"selected":""); ?>>21:00</option>
+                    <option value="22:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="22:00"?"selected":""); ?>>22:00</option>
+                    <option value="23:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="23:00"?"selected":""); ?>>23:00</option>
+                    <option value="24:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], 0, strpos($datos[$i]['horarios'],'a')-1)=="24:00"?"selected":""); ?>>24:00</option>
                 </select>
             </div>
             <div class=" input-field col s2 m2 l2">Hasta
                 <select name="horafin_work5" class="js-example-basic-multiple" id="id_label_multiple15" style="width:60%">
                     <option value=""></option>
+                    <option value="1:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="1:00"?"selected":""); ?>>1:00</option>
+                    <option value="2:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="2:00"?"selected":""); ?>>2:00</option>
+                    <option value="3:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="3:00"?"selected":""); ?>>3:00</option>
+                    <option value="4:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="4:00"?"selected":""); ?>>4:00</option>
+                    <option value="5:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="5:00"?"selected":""); ?>>5:00</option>
+                    <option value="6:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="6:00"?"selected":""); ?>>6:00</option>
+                    <option value="7:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="7:00"?"selected":""); ?>>7:00</option>
+                    <option value="8:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="8:00"?"selected":""); ?>>8:00</option>
+                    <option value="9:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="9:00"?"selected":""); ?>>9:00</option>
+                    <option value="10:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="10:00"?"selected":""); ?>>10:00</option>
+                    <option value="11:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="11:00"?"selected":""); ?>>11:00</option>
+                    <option value="12:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="12:00"?"selected":""); ?>>12:00</option>
                     <option value="13:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="13:00"?"selected":""); ?>>13:00</option>
                     <option value="14:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="14:00"?"selected":""); ?>>14:00</option>
                     <option value="15:00" <?php echo ($dias_array && substr($datos[$i]['horarios'], strpos($datos[$i]['horarios'],'a')+2)=="15:00"?"selected":""); ?>>15:00</option>
@@ -1221,7 +1324,7 @@
         <option value="">Seleccione Rango</option>
         <option value="150.000 - 275.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '150.000 - 275.000') { echo "selected"; } ?>>150.000 - 275.000</option>
         <option value="275.000 - 350.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '275.000 - 350.000') { echo "selected"; } ?>>275.000 - 350.000</option>
-        <option value="350.000 - 400.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '350.000 - 300.000') { echo "selected"; } ?>>350.000 - 400.000</option>
+        <option value="350.000 - 400.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '350.000 - 400.000') { echo "selected"; } ?>>350.000 - 400.000</option>
         <option value="400.000 - 450.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '400.000 - 450.000') { echo "selected"; } ?>>400.000 - 450.000</option>
         <option value="450.000 - 500.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '450.000 - 500.000') { echo "selected"; } ?>>450.000 - 500.000</option>
         <option value="500.000 - 550.000" <?php if (array_key_exists('renta', $datos[$i]) && $datos[$i]['renta'] == '500.000 - 550.000') { echo "selected"; } ?>>500.000 - 550.000</option>
@@ -1377,17 +1480,19 @@
     }
 
     // Estudios
-    if($('#tipoEstudio').val() == 'Secundario') {
+    if($('#tipoEstudio').val() == 'Primario' || $('#tipoEstudio').val() == 'Secundario') {
       $('.carreraBox').hide();
+      $('#fechaEstudio').hide();
     } else {
       $('.carreraBox').show();
+      $('#fechaEstudio').show();
     }
     if($('#estado_estudio').val() == 'En Curso') {
       $('#box_estudio').hide();
-      $("#fechaEstudio").prop("checked", true);
+      $("#estudiobox").hide();
     } else {
       $('#box_estudio').show();
-      $("#fechaEstudio").prop("checked", false);
+      $("#estudiobox").show();
     }
 
     // Otros Conocimientos
