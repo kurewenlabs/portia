@@ -814,50 +814,73 @@
             error_log('Sending mail...');
         }
 
-        $mail = new PHPMailer();
+        $mail = new PHPMailer(true);
 
-        $mail->AddAddress($email, $nombre);
-        $mail->Subject = 'Postulación Recibida';
-        $mail->Body = '
-Estimado ' . $nombre . '.\n\n
-Hemos recibido su postulación para los cargos de ' . $postulaciones . '. 
-Por favor, espere que revisemos su solicitud y le informemos del estado del proceso de selección.\n\n
-Saludos cordiales\n
-Equipo de Selección de Personal\n
-Portia'; 
-        $mail->From = "postulacion@portia.cl";
-        $mail->FromName = "Postulaciones Portia";
-        
-        $mail->IsSMTP();
-        if (isset($_SESSION["mode"])) {
-            // Solo en ambiente de desarrollo
-            $mail->AddAddress('contacto@kurewen.cl', 'contacto');
-            $mail->AddAddress('andres@kurewen.cl', 'contacto');
-            $mail->Host = 'mail.kurewen.cl';
-            $mail->SMTPSecure = 'ssl'; // tls
-            $mail->Port = 465; // 587
-            $mail->SMTPAuth = true;
-            $mail->Username = 'contacto@kurewen.cl';
-            $mail->Password = 'malf0805';
-        }
-        else {
-            // Ambiente de producción
-            // $mail->AddAddress('curzua@portia.cl', 'curzua@portia.cl');
-            // $mail->AddAddress('drincon@portia.cl', 'drincon@portia.cl');
-            // $mail->AddAddress('aferreira@portia.cl', 'aferreira@portia.cl');
-            $mail->AddAddress('contacto@kurewen.cl', 'contacto');
-            $mail->Host = 'correo.portia.cl';
-            $mail->SMTPSecure = 'ssl'; // tls
-            $mail->Port = 465; // 587
-            $mail->SMTPAuth = true;
-            $mail->Username = 'postulacion@portia.cl';
-            $mail->Password = 'PP.2018!!';
-        }
+        try {
+            $mail->addAddress($email, $nombre);
+            $mail->Subject = 'Postulación Recibida';
+            $mail->Body = '<table width="400" border="0">
+<tbody>
+<tr>
+<th align="left">Estimado ' . $nombre . '</th>
+</tr>
+<tr>
+<th><table width="400" border="0">
+<tbody>
+<tr>
+<th align="left"><p>Hemos recibido su postulaci&oacuten para los cargos de: <p></th>
+</tr>
+<tr>
+<th align="left">' . $postulaciones . '</th>
+</tr>
+<tr>
+<th align="left"><p>Por favor, espere que revisemos su solicitud y le informemos del estado del proceso de selecci&oacuten. Saludos cordiales</th>
+</tr>
+</tbody>
+</table>
+</th>
+</tr>
+<tr>
+<th align="left">Equipo de Selecci&oacuten de Personal Portia.</th>
+</tr>
+</tbody>
+</table>
+</body>
+</html>'; 
+            $mail->FromName = "Postulaciones Portia";
+            
+            $mail->SMTPDebug = 2;
+            $mail->isSMTP();
+            if (isset($_SESSION["mode"])) {
+                // Solo en ambiente de desarrollo
+                $mail->setFrom("postulacion@portia.cl", "Postulaciones Portia");
+                $mail->addBCC('contacto@kurewen.cl', 'Contacto');
+                $mail->Host = 'mail.kurewen.cl';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'contacto@kurewen.cl';
+                $mail->Password = 'malf0805';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+            }
+            else {
+                // Ambiente de producción
+                $mail->setFrom("postulacion@portia.cl", "Postulaciones Portia");
+                $mail->addBCC('contacto@kurewen.cl', 'Contacto');
+                $mail->Host = 'correo.portia.cl';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'postulacion@portia.cl';
+                $mail->Password = 'PP.2018!!';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+            }
 
-        $mail->send();
-        if (isset($_SESSION["mode"])) 
-        {
-            error_log('DONE!');
+            $mail->send();
+            if (isset($_SESSION["mode"])) 
+            {
+                error_log('DONE!');
+            }
+        } catch (Exception $e) {
+            error_log('ERROR! ' . $mail->ErrorInfo);
         }
     } 
     if(isset($_POST['action']) && $_POST['action'] == 'graciaspage')
