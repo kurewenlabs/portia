@@ -819,13 +819,16 @@
         try {
             $mail->addAddress($email, $nombre);
             $mail->Subject = 'Postulación Recibida';
-            $mail->Body = '<table width="400" border="0">
+            $mail->Body = '<html>
+<body>
+<table width="400" border="0">
 <tbody>
 <tr>
 <th align="left">Estimado ' . $nombre . '</th>
 </tr>
 <tr>
-<th><table width="400" border="0">
+<th>
+<table width="400" border="0">
 <tbody>
 <tr>
 <th align="left"><p>Hemos recibido su postulaci&oacuten para los cargos de: <p></th>
@@ -847,6 +850,7 @@
 </table>
 </body>
 </html>'; 
+            $mail->isHTML(true);
             $mail->FromName = "Postulaciones Portia";
             
             $mail->SMTPDebug = 2;
